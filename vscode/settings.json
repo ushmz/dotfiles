@@ -1,0 +1,95 @@
+{
+    /****************************************
+     * Editor settings
+     ****************************************/
+    "editor.fontFamily": "Source Code Pro",
+    "editor.suggestSelection": "first",
+    "editor.quickSuggestions": {
+        "comments": false,
+        "strings": false,
+        "other": true
+      },
+    
+    "[java]": {
+        "editor.tabSize": 4,
+        "editor.rulers": [72,79,100]
+    },
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.rulers": [72,79]
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.rulers": [72,79,120]
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+        "editor.rulers": [72,79,120]
+    },
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
+    "[erb]": {
+        "editor.tabSize":2
+    },
+    "explorer.confirmDragAndDrop": false,
+
+    /****************************************
+     * Workbench settings
+     ****************************************/
+    "workbench.colorTheme": "Iceberg",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorCustomizations": {
+        "[Iceberg]": {
+            "editor.selectionBackground": "#666b8a",
+            "editor.selectionHighlightBackground": "#43465c"
+        }
+    },
+    
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    
+    /****************************************
+     * Go lang settings    
+     ****************************************/    
+    "go.formatTool": "goimports",
+    
+    /****************************************
+     * Java settings
+     ****************************************/
+    "java.semanticHighlighting.enabled": true,
+    "java.debug.settings.hotCodeReplace": "auto",    
+    
+    /****************************************
+     * Python settings    
+     ****************************************/
+    "python.dataScience.sendSelectionToInteractiveWindow": false,
+    "python.dataScience.textOutputLimit": 0,
+    "python.dataScience.themeMatplotlibPlots": true,
+    "python.jediEnabled": false,
+    "python.pythonPath": "/usr/local/bin/python3",
+    
+    /****************************************
+     * Ruby settings
+     ****************************************/
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.format": "rubocop",
+    "ruby.intellisense": "rubyLocate",
+    "ruby.useLanguageServer": true,
+    "ruby.lint": {
+        "reek": true,
+        "rubocop": true,
+        "ruby": true, //Runs ruby -wc
+        "fasterer": true,
+        "debride": true,
+        "ruby-lint": true
+    },
+    "ruby.locate": {
+        "exclude": "{**/@(test|spec|tmp|.*),**/@(test|spec|tmp|.*)/**,**/*_spec.rb}",
+        "include": "**/*.rb"
+    },
+    "emmet.includeLanguages": {
+        "erb": "html"
+    }
+    
+}

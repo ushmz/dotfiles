@@ -1,0 +1,41 @@
+# Mac users
+.DS_Store
+
+# VScode users
+.vscode
+*.code-workspace
+
+# Jupyter users
+.ipynb_checkpoints
+
+# Node projects
+node_modules
+
+# Python projects
+site_packages
+__pycache__/
+*.pyc
+.venv
+.python-version
+*.ini
+
+# Environments
+.env
+.env.*
+
+# Folders
+private
+privates
+
+# Outputs
+out
+dist
+dest
+*.log
+*log*
+
+# backup file
+*.bak
+
+# Vagrant
+.vagrant
