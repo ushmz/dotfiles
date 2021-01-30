@@ -1,4 +1,4 @@
-# dotfiles
+# dotfiles(and more)
 
 Put symbolic link, run
 ```sh
