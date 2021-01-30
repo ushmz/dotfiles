@@ -15,16 +15,18 @@ alias '...'='cd ../../'
 alias '....'='cd ../../../'
 alias jn='/Users/yusuk/Library/Python/3.8/bin/jupyter notebook'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-
 alias stat='stat -x'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-alias ls="exa -g --time-style=long-iso"
-alias ll="ls -l"
-alias la="ls -al"
+alias cat='bat'
+alias find='fd'
+alias ls="exa -gh --time-style=long-iso"
+alias ll="ls -lF"
+alias la="ls -alF"
+alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first"
 
-alias dc='~/bin/typo.sh; dc'
+alias tm='~/bin/tm.sh'
 alias ssh='~/bin/ssh_change_profile.sh'
 alias zshrc='vi ~/.zshrc'
 alias zshenv='vi ~/.zshenv'
@@ -67,19 +69,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 # /usr/local/Cellar/php/7.4.4/bin
-export PATH="usr/local/Cellar/git/2.26.1_1/bin:$PATH"
 
 # Go lang(Set GOPATH)
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
-
-##########################################################
-# Package Manager
-##########################################################
-
-# poetry
-export PATH="$HOME/.poetry/bin:$PATH"
 
 ##########################################################
 # Virtual Environments
@@ -121,8 +115,26 @@ if [ -d ${HOME}/node_modules/.bin ]; then
     export PATH=${PATH}:${HOME}/node_modules/.bin
 fi
 
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # postgres
 export PGDATA="/usr/local/var/postgres"
 
 ##########################################################
+# Alcaritty auto complation setting
+##########################################################
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+##########################################################
+# typo hook
+##########################################################
+function command_not_found_handler(){
+    if [ -e ~/bin/typo.sh ]; then
+        ~/bin/typo.sh
+    else
+        echo "Command $0 not found."
+    fi
+    return 127
+}
 
