@@ -1,12 +1,18 @@
 # dotfiles(and more)
 
+Clone this
+```sh
+git clone https://github.com/rabhareit/dotfiles.git
+```
+
 Put symbolic link, run
 ```sh
-scripts/putlink.sh
+cd dotfiles
+make link
 ```
 
 Install all tools, run
 ```sh
-scripts/install.sh
+cd dotfiles
+make install
 ```
-
