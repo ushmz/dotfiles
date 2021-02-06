@@ -2,11 +2,41 @@
 # [ -r /etc/zshrc ] && . /etc/zshrc
 
 ##########################################################
-# Prompt settings 
+# zsh settings 
 ##########################################################
 # bindkey -v
 setopt auto_cd
+setopt auto_pushd
+setopt pushd_silent
+
+# zsh history
 setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_no_store
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000  # save in RAM
+SAVEHIST=1000000 # save in file
+
+# Enable `cdr`
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+# save dirstack to ~/.cache/shell
+mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/shell"
+touch "${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack"
+my_save_dirstack () {
+    dirstack=(${(@u)$(<"${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack")})
+    dirs -lp >! "${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack"
+}
+chpwd_functions+=my_save_dirstack
+my_save_dirstack
+
+# `cdr` settings
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
+zstyle ':chpwd:*' recent-dirs-pushd true
 
 # aliases
 alias c='clear'
@@ -30,6 +60,8 @@ alias tm='~/bin/tm.sh'
 alias ssh='~/bin/ssh_change_profile.sh'
 alias zshrc='vi ~/.zshrc'
 alias zshenv='vi ~/.zshenv'
+alias sorc='source ~/.zshrc'
+alias soenv='source ~/.zshenv'
 
 alias repo='cd /Users/yusuk/rabhare6it'
 alias delds='find . -name ".DS_Store" | xargs rm'
@@ -137,4 +169,70 @@ function command_not_found_handler(){
     fi
     return 127
 }
+
+##########################################################
+# peco functions
+##########################################################
+# Search command history
+function peco_select_history() {
+  BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N peco_select_history
+bindkey '^r' peco_select_history
+
+## Search s distination from cdr list
+function peco_get_destination_from_cdr() {
+  cdr -l | \
+  sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+  peco --query "$LBUFFER"
+}
+
+# Search directory from history
+function peco_cdr() {
+  local destination="$(peco_get_destination_from_cdr)"
+  if [ -n "$destination" ]; then
+    BUFFER="cd $destination"
+    zle accept-line
+  else
+    zle reset-prompt
+  fi
+}
+zle -N peco_cdr
+bindkey '^u' peco_cdr
+
+# Switch branch with peco
+alias -g branches='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+
+# Delete branch with peco
+alias -g delbranch='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+
+# Search tmux session
+## This cause freezing peco window...
+# function peco_tmux_sessions() {
+#  local res=$(tmux list-sessions | peco --query "$LBUFFER" | awk -F':' '{print $1}')
+#   if [ -n "$res" ]; then
+#     BUFFER="tmux attach -t $res"
+#     CURSOR=$#BUFFER
+#     zle clear-screen
+#   else
+#     zle reset-prompt
+#   fi
+# }
+# zle -N peco_tmux_sessions
+# bindkey '^s' peco_tmux_sessions
+
+function peco_ssh_host() {
+  local res=$(grep "Host " ~/.ssh/config | grep -v '*' | cut -b 6- | peco)
+  if [ -n "$res" ]; then
+    BUFFER="ssh $res"
+    CURSOR=$#BUFFER
+    zle clear-screen
+  else
+    zle reset-prompt
+  fi
+}
+zle -N peco_ssh_host
+bindkey '^h' peco_ssh_host
 
