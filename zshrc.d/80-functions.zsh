@@ -23,7 +23,7 @@ function command_not_found_handler(){
 
 function googleit() {
     IFS="+$IFS"
-    brave "https://www.google.com/search?q=$*"
+    brave "https://www.google.com/search?q=$*" 1>/dev/null 2>&1
     IFS=${IFS#?}
 }
 alias what="googleit"
