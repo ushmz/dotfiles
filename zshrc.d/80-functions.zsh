@@ -27,3 +27,5 @@ function googleit() {
     IFS=${IFS#?}
 }
 alias what="googleit"
+
+function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
