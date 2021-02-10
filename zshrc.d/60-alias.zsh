@@ -41,6 +41,8 @@ alias ll="ls -lF"
 alias la="ls -alF"
 alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first"
 alias ssh='~/bin/ssh_change_profile.sh'
+alias vi='nvim'
+alias vim='nvim'
 
 ##########################################################
 # peco aliases
