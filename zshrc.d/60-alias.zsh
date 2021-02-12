@@ -7,9 +7,6 @@ alias so='source'
 alias jn='/Users/yusuk/Library/Python/3.8/bin/jupyter notebook'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
 
 alias '...'='cd ../../'
 alias '....'='cd ../../../'
@@ -28,11 +25,14 @@ alias soprof='source ~/.zprofile'
 ##########################################################
 # Shorten my script
 ##########################################################
-alias tm='~/bin/tm.sh'
+alias tm='~/.scripts/tm.sh'
 
 ##########################################################
 # Alternative aliases
 ##########################################################
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
 alias stat='stat -x'
 alias cat='bat'
 alias find='fd'
@@ -40,7 +40,7 @@ alias ls="exa -gh --time-style=long-iso"
 alias ll="ls -lF"
 alias la="ls -alF"
 alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first"
-alias ssh='~/bin/ssh_change_profile.sh'
+alias ssh='~/.scripts/ssh_change_profile.sh'
 alias vi='nvim'
 alias vim='nvim'
 

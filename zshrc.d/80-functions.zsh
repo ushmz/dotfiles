@@ -13,7 +13,7 @@
 # typo hook
 ##########################################################
 function command_not_found_handler(){
-    if [ -e ~/bin/typo.sh ]; then
+    if [ -e ~/.scripts/typo.sh ]; then
         ~/bin/typo.sh
     else
         echo "Command $0 not found."
