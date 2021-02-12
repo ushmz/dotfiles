@@ -1,20 +1,49 @@
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.75686274509803919,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.55686274509803924,
-    "Alpha Component" : 1,
-    "Green Component" : 0.19607843137254902
-  },
+  "Right Option Key Sends" : 0,
   "Tags" : [
 
   ],
   "Ansi 12 Color" : {
     "Green Component" : 0.3333333432674408,
-    "Red Component" : 0.3333333432674408,
-    "Blue Component" : 1
+    "Blue Component" : 1,
+    "Red Component" : 0.3333333432674408
   },
-  "Use Non-ASCII Font" : false,
+  "Has Hotkey" : false,
+  "Ansi 7 Color" : {
+    "Red Component" : 0.84313725490196079,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.73333333333333328,
+    "Alpha Component" : 1,
+    "Green Component" : 0.7686274509803922
+  },
+  "Bold Color" : {
+    "Green Component" : 1,
+    "Blue Component" : 1,
+    "Red Component" : 1
+  },
+  "Ansi 8 Color" : {
+    "Red Component" : 0.396078431372549,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.396078431372549,
+    "Alpha Component" : 1,
+    "Green Component" : 0.40392156862745099
+  },
+  "Ansi 9 Color" : {
+    "Red Component" : 0.96862745098039216,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.18431372549019609,
+    "Alpha Component" : 1,
+    "Green Component" : 0.36078431372549019
+  },
+  "Ansi 6 Color" : {
+    "Red Component" : 0.49019607843137253,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.87058823529411766,
+    "Alpha Component" : 1,
+    "Green Component" : 0.72549019607843135
+  },
+  "Rows" : 40,
+  "Default Bookmark" : "No",
   "Ansi 0 Color" : {
     "Red Component" : 0.10980392156862745,
     "Color Space" : "sRGB",
@@ -22,28 +51,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.10980392156862745
   },
-  "Bold Color" : {
-    "Green Component" : 1,
-    "Red Component" : 1,
-    "Blue Component" : 1
-  },
-  "Normal Font" : "Monaco 13",
-  "Ansi 1 Color" : {
-    "Red Component" : 0.80000000000000004,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.22745098039215686,
-    "Alpha Component" : 1,
-    "Green Component" : 0.32941176470588235
-  },
-  "Horizontal Spacing" : 1,
-  "Rows" : 28,
-  "Default Bookmark" : "No",
-  "Ansi 4 Color" : {
-    "Green Component" : 0,
-    "Red Component" : 0,
-    "Blue Component" : 0.73333334922790527
-  },
-  "Blend" : 0.42687508947562175,
+  "Blend" : 0.20237612100171792,
   "Non-ASCII Anti Aliased" : true,
   "Use Bright Bold" : true,
   "Ansi 10 Color" : {
@@ -69,8 +77,8 @@
   },
   "Foreground Color" : {
     "Green Component" : 0.73333334922790527,
-    "Red Component" : 0.73333334922790527,
-    "Blue Component" : 0.73333334922790527
+    "Blue Component" : 0.73333334922790527,
+    "Red Component" : 0.73333334922790527
   },
   "Bound Hosts" : [
 
@@ -94,7 +102,7 @@
   },
   "Initial Use Transparency" : true,
   "Only The Default BG Color Uses Transparency" : true,
-  "Columns" : 100,
+  "Columns" : 120,
   "Idle Code" : 0,
   "Background Image Mode" : 2,
   "Ansi 13 Color" : {
@@ -136,164 +144,164 @@
   "Unlimited Scrollback" : false,
   "Keyboard Map" : {
     "0xf700-0x260000" : {
-      "Text" : "[1;6A",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;6A"
     },
     "0x37-0x40000" : {
-      "Text" : "0x1f",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1f"
     },
     "0x32-0x40000" : {
-      "Text" : "0x00",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x00"
     },
     "0xf709-0x20000" : {
-      "Text" : "[17;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[17;2~"
     },
     "0xf70c-0x20000" : {
-      "Text" : "[20;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[20;2~"
     },
     "0xf729-0x20000" : {
-      "Text" : "[1;2H",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2H"
     },
     "0xf72b-0x40000" : {
-      "Text" : "[1;5F",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;5F"
     },
     "0xf705-0x20000" : {
-      "Text" : "[1;2Q",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2Q"
     },
     "0xf703-0x260000" : {
-      "Text" : "[1;6C",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;6C"
     },
     "0xf700-0x220000" : {
-      "Text" : "[1;2A",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2A"
     },
     "0xf701-0x280000" : {
-      "Text" : "0x1b 0x1b 0x5b 0x42",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1b 0x1b 0x5b 0x42"
     },
     "0x38-0x40000" : {
-      "Text" : "0x7f",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x7f"
     },
     "0x33-0x40000" : {
-      "Text" : "0x1b",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1b"
     },
     "0xf703-0x220000" : {
-      "Text" : "[1;2C",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2C"
     },
     "0xf701-0x240000" : {
-      "Text" : "[1;5B",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;5B"
     },
     "0xf70d-0x20000" : {
-      "Text" : "[21;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[21;2~"
     },
     "0xf702-0x260000" : {
-      "Text" : "[1;6D",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;6D"
     },
     "0xf729-0x40000" : {
-      "Text" : "[1;5H",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;5H"
     },
     "0xf706-0x20000" : {
-      "Text" : "[1;2R",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2R"
     },
     "0x34-0x40000" : {
-      "Text" : "0x1c",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1c"
     },
     "0xf700-0x280000" : {
-      "Text" : "0x1b 0x1b 0x5b 0x41",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1b 0x1b 0x5b 0x41"
     },
     "0x2d-0x40000" : {
-      "Text" : "0x1f",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1f"
     },
     "0xf70e-0x20000" : {
-      "Text" : "[23;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[23;2~"
     },
     "0xf702-0x220000" : {
-      "Text" : "[1;2D",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2D"
     },
     "0xf703-0x280000" : {
-      "Text" : "0x1b 0x1b 0x5b 0x43",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1b 0x1b 0x5b 0x43"
     },
     "0xf700-0x240000" : {
-      "Text" : "[1;5A",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;5A"
     },
     "0xf707-0x20000" : {
-      "Text" : "[1;2S",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2S"
     },
     "0xf70a-0x20000" : {
-      "Text" : "[18;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[18;2~"
     },
     "0x35-0x40000" : {
-      "Text" : "0x1d",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1d"
     },
     "0xf70f-0x20000" : {
-      "Text" : "[24;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[24;2~"
     },
     "0xf703-0x240000" : {
-      "Text" : "[1;5C",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;5C"
     },
     "0xf701-0x260000" : {
-      "Text" : "[1;6B",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;6B"
     },
     "0xf702-0x280000" : {
-      "Text" : "0x1b 0x1b 0x5b 0x44",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1b 0x1b 0x5b 0x44"
     },
     "0xf72b-0x20000" : {
-      "Text" : "[1;2F",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2F"
     },
     "0x36-0x40000" : {
-      "Text" : "0x1e",
-      "Action" : 11
+      "Action" : 11,
+      "Text" : "0x1e"
     },
     "0xf708-0x20000" : {
-      "Text" : "[15;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[15;2~"
     },
     "0xf701-0x220000" : {
-      "Text" : "[1;2B",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2B"
     },
     "0xf70b-0x20000" : {
-      "Text" : "[19;2~",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[19;2~"
     },
     "0xf702-0x240000" : {
-      "Text" : "[1;5D",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;5D"
     },
     "0xf704-0x20000" : {
-      "Text" : "[1;2P",
-      "Action" : 10
+      "Action" : 10,
+      "Text" : "[1;2P"
     }
   },
   "Window Type" : 0,
@@ -319,14 +327,14 @@
   "Name" : "millet",
   "Cursor Text Color" : {
     "Green Component" : 1,
-    "Red Component" : 1,
-    "Blue Component" : 1
+    "Blue Component" : 1,
+    "Red Component" : 1
   },
-  "Shortcut" : "",
+  "Shortcut" : "2",
   "Cursor Color" : {
     "Green Component" : 0.73333334922790527,
-    "Red Component" : 0.73333334922790527,
-    "Blue Component" : 0.73333334922790527
+    "Blue Component" : 0.73333334922790527,
+    "Red Component" : 0.73333334922790527
   },
   "Transparency" : 0,
   "Guid" : "DE228310-87B9-46A1-96FA-7035B1D459D5",
@@ -337,13 +345,6 @@
     "Alpha Component" : 1,
     "Green Component" : 0.75686274509803919
   },
-  "Link Color" : {
-    "Red Component" : 0.4823529411764706,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.82352941176470584,
-    "Alpha Component" : 1,
-    "Green Component" : 0.56470588235294117
-  },
   "Ansi 3 Color" : {
     "Red Component" : 0.96862745098039216,
     "Color Space" : "sRGB",
@@ -351,35 +352,34 @@
     "Alpha Component" : 1,
     "Green Component" : 0.85098039215686272
   },
-  "Right Option Key Sends" : 0,
-  "Has Hotkey" : false,
-  "Ansi 7 Color" : {
-    "Red Component" : 0.84313725490196079,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.73333333333333328,
-    "Alpha Component" : 1,
-    "Green Component" : 0.7686274509803922
+  "Ansi 4 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0.73333334922790527,
+    "Red Component" : 0
   },
-  "Ansi 8 Color" : {
-    "Red Component" : 0.396078431372549,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.75686274509803919,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.396078431372549,
+    "Blue Component" : 0.55686274509803924,
     "Alpha Component" : 1,
-    "Green Component" : 0.40392156862745099
+    "Green Component" : 0.19607843137254902
   },
-  "Ansi 9 Color" : {
-    "Red Component" : 0.96862745098039216,
+  "Use Non-ASCII Font" : false,
+  "Ansi 1 Color" : {
+    "Red Component" : 0.80000000000000004,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.18431372549019609,
+    "Blue Component" : 0.22745098039215686,
     "Alpha Component" : 1,
-    "Green Component" : 0.36078431372549019
+    "Green Component" : 0.32941176470588235
   },
-  "Ansi 6 Color" : {
-    "Red Component" : 0.49019607843137253,
+  "Normal Font" : "HackNerdFontComplete-Regular 13",
+  "Horizontal Spacing" : 1,
+  "Link Color" : {
+    "Red Component" : 0.4823529411764706,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.87058823529411766,
+    "Blue Component" : 0.82352941176470584,
     "Alpha Component" : 1,
-    "Green Component" : 0.72549019607843135
+    "Green Component" : 0.56470588235294117
   },
   "Custom Directory" : "No"
 }
