@@ -14,7 +14,7 @@
 ##########################################################
 function command_not_found_handler(){
     if [ -e ~/.scripts/typo.sh ]; then
-        ~/bin/typo.sh
+        ~/.scripts/typo.sh
     else
         echo "Command $0 not found."
     fi
