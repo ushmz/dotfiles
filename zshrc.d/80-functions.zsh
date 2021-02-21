@@ -49,8 +49,7 @@ function tmux_session() {
 	    tmux attach-session -t $1
 	fi
     else
-	tmux
+    	tmux
     fi
 }
 alias mux='tmux_session'
-
