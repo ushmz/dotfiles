@@ -2,5 +2,4 @@ add_newline = true
 
 [directory]
 trunsaction_length = 100
-truncate_to_repo = false
 
