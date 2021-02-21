@@ -32,7 +32,6 @@ out
 dist
 dest
 *.log
-*log*
 
 # backup file
 *.bak
