@@ -11,7 +11,6 @@ alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 alias '...'='cd ../../'
 alias '....'='cd ../../../'
 alias delds='find . -name ".DS_Store" | xargs rm'
-alias repo='cd /Users/yusuk/rabhare6it'
 alias slpon='sudo pmset -a disablesleep 0'
 alias slpoff='sudo pmset -a disablesleep 1'
 
