@@ -28,6 +28,7 @@ private
 privates
 
 # Outputs
+**/build/
 out
 dist
 dest
