@@ -72,3 +72,16 @@ function ghq_list() {
 }
 zle -N ghq_list
 bindkey '^g' ghq_list
+
+# Open local repository with VSCode
+function ghq_code() {
+    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+      BUFFER="code ${selected_dir}"
+      zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N ghq_code
+bindkey '^e' ghq_code
+
