@@ -58,3 +58,6 @@ let g:vim_json_syntax_conceal = 0
 let g:jsx_ext_required = 0
 let g:coc_filetype_map = 1
 
+autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
