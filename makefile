@@ -10,8 +10,22 @@ link:
 	ln -sf `pwd`/.hyper.js $(HOME)/.hyper.js
 	ln -sf `pwd`/.tmux.conf $(HOME)/.tmux.conf
 
+	mkdir -p "$(HOME)/.vscode/setting.json"
 	ln -sf `pwd`/vscode/settings.json $(HOME)/.vscode/setting.json
 	git config --global core.excludesfile $(HOME)/.gitignore_global	
+
+	mkdir -p "$(HOME)/.config/nvim/colors"
+	mkdir -p "$(HOME)/.config/nvim/plugins"
+	ln -sf `pwd`/.vim/rc/dein.toml $(HOME)/.config/nvim/dein.toml
+	ln -sf `pwd`/.vim/rc/dein_lazy.toml $(HOME)/.config/nvim/dein_lazy.toml
+
+	ln -sf `pwd`/.config/nvim/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
+
+	ln -sf `pwd`/.config/nvim/colors/hybrid.vim $(HOME)/.config/nvim/colors/hybrid.vim
+
+	ln -sf `pwd`/.config/nvim/plugins/coc.rc.vim $(HOME)/.config/nvim/plugins/coc.rc.vim
+	ln -sf `pwd`/.config/nvim/plugins/defx.rc.vim $(HOME)/.config/nvim/plugins/defx.rc.vim
+	ln -sf `pwd`/.config/nvim/plugins/denite.rc.vim $(HOME)/.config/nvim/plugins/denite.rc.vim
 
 install:
 	`pwd`/scripts/install.sh
