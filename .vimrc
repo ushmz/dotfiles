@@ -48,11 +48,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-nmap <silent> <space>df <Plug>(coc-definition)
-nmap <silent> <space>rf <Plug>(coc-references)
-nmap <silent> <space>rn <Plug>(coc-rename)
-nmap <silent> <space>fmt <Plug>(coc-format)
-
 let g:go_disable_autoinstall = 1
 let g:vim_json_syntax_conceal = 0
 let g:jsx_ext_required = 0
@@ -60,4 +55,5 @@ let g:coc_filetype_map = 1
 
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
 
