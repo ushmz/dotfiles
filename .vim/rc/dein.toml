@@ -27,8 +27,7 @@ source ~/.config/nvim/plugins/denite.rc.vim
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
+repo = 'segeljakt/vim-silicon'
+hook_add = """
+source ~/.config/nvim/plugins/silicon.rc.vim
+"""
