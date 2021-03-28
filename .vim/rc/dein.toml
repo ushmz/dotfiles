@@ -31,3 +31,12 @@ repo = 'segeljakt/vim-silicon'
 hook_add = """
 source ~/.config/nvim/plugins/silicon.rc.vim
 """
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'tpope/vim-surround'

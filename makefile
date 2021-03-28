@@ -26,6 +26,7 @@ link:
 	ln -sf `pwd`/.config/nvim/plugins/coc.rc.vim $(HOME)/.config/nvim/plugins/coc.rc.vim
 	ln -sf `pwd`/.config/nvim/plugins/defx.rc.vim $(HOME)/.config/nvim/plugins/defx.rc.vim
 	ln -sf `pwd`/.config/nvim/plugins/denite.rc.vim $(HOME)/.config/nvim/plugins/denite.rc.vim
+	ln -sf `pwd`/.config/nvim/plugins/silicon.rc.vim $(HOME)/.config/nvim/plugins/silicon.rc.vim
 
 install:
 	`pwd`/scripts/install.sh

@@ -1,5 +1,8 @@
 set number
 
+set tabstop=4
+set shiftwidth=4
+
 set background=dark
 let g:hybrid_use_term_colors = 1
 let g:hybrid_reduced_contrast = 1
