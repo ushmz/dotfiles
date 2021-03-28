@@ -44,9 +44,9 @@ function tmux_session() {
 	    tmux attach-session -t "${1}-${2}"
 	    itermprof kahma
 	else
-	    tmux new -d -s $1
+	    tmux new -d -s "${1}-${PWD##*/}"
 	    tmux send-keys -t $1 "tm $1" C-m
-	    tmux attach-session -t $1
+	    tmux attach-session -t "${1}-${PWD##*/}"
 	fi
     else
     	tmux
