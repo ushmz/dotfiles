@@ -24,7 +24,7 @@ alias soprof='source ~/.zprofile'
 ##########################################################
 # Shorten my script
 ##########################################################
-alias tm='~/.scripts/tm.sh'
+alias 'mux.sh'='~/.scripts/mux.sh'
 
 ##########################################################
 # Alternative aliases
