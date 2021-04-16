@@ -39,3 +39,7 @@ dest
 
 # Vagrant
 .vagrant
+
+# firebase projects
+.firebaserc
+.firebase/
