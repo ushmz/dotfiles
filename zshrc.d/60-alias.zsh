@@ -43,6 +43,7 @@ alias ssh='~/.scripts/ssh_change_profile.sh'
 alias vi='nvim'
 alias vim='nvim'
 # alias silicon="silicon --theme OneHalfDark"
+alias -g makecv='/Users/yusuk/src/github.com/kaityo256/yaml_cv/make_cv.rb'
 
 ##########################################################
 # peco aliases
