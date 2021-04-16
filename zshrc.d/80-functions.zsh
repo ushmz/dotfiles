@@ -53,3 +53,10 @@ function tmux_session() {
     fi
 }
 alias mux='tmux_session'
+
+# `track` is online coding examination platform.
+# `track-cli` is interface that I can take exam in local machine.
+function uninstall_track_cli() {
+	rm /usr/local/bin/track
+}
+
