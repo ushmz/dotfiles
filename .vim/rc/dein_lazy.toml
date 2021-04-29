@@ -7,6 +7,10 @@ repo = 'prabirshrestha/async.vim'
 on_ft = ['typescript' 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
+repo = 'mattn/vim-maketable'
+on_ft = ['markdown']
+
+[[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = ['rust']
 
@@ -43,3 +47,8 @@ on_ft = ['dart']
 [[plugins]]
 repo = 'thosakwe/vim-flutter'
 on_ft = ['dart']
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
+
