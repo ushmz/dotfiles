@@ -9,9 +9,7 @@
 # chpwd_functions+=my_save_dirstack
 # my_save_dirstack
 
-##########################################################
 # typo hook
-##########################################################
 function command_not_found_handler(){
     if [ -e ~/.scripts/typo.sh ]; then
         ~/.scripts/typo.sh
@@ -21,6 +19,7 @@ function command_not_found_handler(){
     return 127
 }
 
+# Google it func
 function googleit() {
     IFS="+$IFS"
     brave "https://www.google.com/search?q=$*" 1>/dev/null 2>&1
@@ -28,8 +27,10 @@ function googleit() {
 }
 alias what="googleit"
 
+# Change iTerm profile
 function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
 
+# (Make tmux session if needed) and split pane
 function tmux_session() {
     if [ -n "$TMUX" ]; then
         mux.sh "$@"

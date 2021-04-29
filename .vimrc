@@ -1,21 +1,17 @@
-set number
+"--------------------------------
+" python path setting
+"--------------------------------
+let g:python3_host_prog = '/Users/yusuk/.pyenv/shims/python'
+let g:python2_host_prog = '/Users/yusuk/.pyenv/shims/python'
 
-set tabstop=4
-set shiftwidth=4
-
-set background=dark
-let g:hybrid_use_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-colorscheme hybrid
-syntax on
-
-hi LineNr ctermbg=0 ctermfg=7
-hi CursorLineNr ctermbg=4 ctermfg=0
-set cursorline
-hi clear CursorLine
-
+"--------------------------------
+" Key binding
+"--------------------------------
 inoremap <silent> jj <ESC>
 
+"--------------------------------
+" Plugins
+"--------------------------------
 if &compatible
   set nocompatible
 endif
@@ -31,6 +27,7 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
+" dein configuration
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
@@ -44,13 +41,14 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-filetype plugin indent on
-syntax enable
-
+" dein plugin install check
 if dein#check_install()
   call dein#install()
 endif
 
+"--------------------------------
+" Variables
+"--------------------------------
 let g:go_disable_autoinstall = 1
 let g:vim_json_syntax_conceal = 0
 let g:jsx_ext_required = 0
@@ -59,4 +57,114 @@ let g:coc_filetype_map = 1
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
+"--------------------------------
+" Appearance
+"--------------------------------
+set number
+set ruler
+
+" tab & indent
+set tabstop=4
+set shiftwidth=4
+set textwidth=0
+set expandtab
+set autoindent
+
+" multi-bite words
+set ambiwidth=double
+
+" disable screen bell
+set novisualbell
+
+" color scheme
+syntax on
+set background=dark
+colorscheme hybrid
+let g:hybrid_use_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+
+" cursor
+hi LineNr ctermbg=0 ctermfg=7
+hi CursorLineNr ctermbg=4 ctermfg=0
+set cursorline
+
+filetype plugin indent on
+
+"--------------------------------
+" Edit
+"--------------------------------
+set showmatch
+" add bracket pair '<' and '>'
+set matchpairs& matchpairs+=<:>
+
+" Stop auto back up
+set nowritebackup
+set noswapfile
+set nobackup
+
+
+"--------------------------------
+" lightline appearance(plugin)
+"--------------------------------
+let g:lightline = {
+      \ 'colorscheme': 'seoul256'
+      \ }
+" let g:lightline = {
+"         \ 'colorscheme': 'wombat',
+"         \ 'mode_map': {'c': 'NORMAL'},
+"         \ 'active': {
+"         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+"         \ },
+"         \ 'component_function': {
+"         \   'modified': 'LightlineModified',
+"         \   'readonly': 'LightlineReadonly',
+"         \   'fugitive': 'LightlineFugitive',
+"         \   'filename': 'LightlineFilename',
+"         \   'fileformat': 'LightlineFileformat',
+"         \   'filetype': 'LightlineFiletype',
+"         \   'fileencoding': 'LightlineFileencoding',
+"         \   'mode': 'LightlineMode'
+"         \ }
+"         \ }
+" 
+" function! LightlineModified()
+"   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+" endfunction
+" 
+" function! LightlineReadonly()
+"   return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+" endfunction
+" 
+" function! LightlineFilename()
+"   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+"         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+"         \  &ft == 'unite' ? unite#get_status_string() :
+"         \  &ft == 'vimshell' ? vimshell#get_status_string() :
+"         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+"         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+" endfunction
+" 
+" function! LightlineFugitive()
+"   if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+"     return fugitive#head()
+"   else
+"     return ''
+"   endif
+" endfunction
+" 
+" function! LightlineFileformat()
+"   return winwidth(0) > 70 ? &fileformat : ''
+" endfunction
+" 
+" function! LightlineFiletype()
+"   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+" endfunction
+" 
+" function! LightlineFileencoding()
+"   return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+" endfunction
+" 
+" function! LightlineMode()
+"   return winwidth(0) > 60 ? lightline#mode() : ''
+" endfunction
 

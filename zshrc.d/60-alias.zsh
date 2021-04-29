@@ -25,6 +25,7 @@ alias soprof='source ~/.zprofile'
 # Shorten my script
 ##########################################################
 alias 'mux.sh'='~/.scripts/mux.sh'
+alias 'bib'='python ~/.scripts/biblio_poll.py'
 
 ##########################################################
 # Alternative aliases

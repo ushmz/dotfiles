@@ -40,3 +40,7 @@ repo = 'kristijanhusak/defx-icons'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
