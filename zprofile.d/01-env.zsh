@@ -66,3 +66,7 @@ export PGDATA="/usr/local/var/postgres"
 # neovim
 export XDG_CONFIG_HOME=$HOME/.config
 
+# nnn
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui-ext;d:diffs;t:nmount;v:imgview'
+
