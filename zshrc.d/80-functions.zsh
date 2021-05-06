@@ -61,3 +61,6 @@ function uninstall_track_cli() {
 	rm /usr/local/bin/track
 }
 
+function pslist() {
+    ps aux | peco | awk '{print $2}'
+}
