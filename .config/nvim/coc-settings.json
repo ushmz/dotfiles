@@ -5,7 +5,8 @@
     "javascript",
     "typescript",
     "go",
-    "dart"
+    "dart",
+    "python"
   ],
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
   "tslint.enable": true,
@@ -14,7 +15,8 @@
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
   "tsserver.enableJavascript": false,
-  "python.linting.pylintEnabled": false,
+  "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
   "suggest.completionItemKindLabels": {
