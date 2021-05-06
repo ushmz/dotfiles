@@ -1,8 +1,8 @@
 "--------------------------------
 " python path setting
 "--------------------------------
-let g:python3_host_prog = '/Users/yusuk/.pyenv/shims/python'
-let g:python2_host_prog = '/Users/yusuk/.pyenv/shims/python'
+let g:python3_host_prog = '/Users/yusuk/.config/nvim/pynvim/bin/python'
+let g:python_host_prog = '/Users/yusuk/.config/nvim/pynvim/bin/python'
 
 "--------------------------------
 " Key binding
