@@ -19,6 +19,7 @@
   "python.linting.pylintEnabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
+  "java.home": "~/.jenv/versions/11",
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
