@@ -44,7 +44,13 @@ alias ssh='~/.scripts/ssh_change_profile.sh'
 alias vi='nvim'
 alias vim='nvim'
 # alias silicon="silicon --theme OneHalfDark"
+
+# Make my cv with yaml file
 alias -g makecv='/Users/yusuk/src/github.com/kaityo256/yaml_cv/make_cv.rb'
+
+# clean cache
+alias 'pipcc'='rm -rf ~/Library/Caches/pip'
+alias 'mavencc'='rm -rf ~/.m2/repository'
 
 ##########################################################
 # peco aliases
