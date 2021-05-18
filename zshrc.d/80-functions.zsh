@@ -61,6 +61,15 @@ function uninstall_track_cli() {
 	rm /usr/local/bin/track
 }
 
+function sourse_pyenv() {
+    if [[  -f './.venv' ]]; then
+        source ./.venv/bin/activate
+    else
+        echo 'Connot find pyenv environment.'
+    fi
+}
+alias venv='sourse_pyenv'
+
 function pslist() {
     ps aux | peco | awk '{print $2}'
 }
