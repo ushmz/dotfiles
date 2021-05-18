@@ -43,6 +43,7 @@ alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directorie
 alias ssh='~/.scripts/ssh_change_profile.sh'
 alias vi='nvim'
 alias vim='nvim'
+alias src="cd `ghq root`"
 # alias silicon="silicon --theme OneHalfDark"
 
 # Make my cv with yaml file
