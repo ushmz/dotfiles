@@ -90,15 +90,41 @@ filetype plugin indent on
 "--------------------------------
 " Edit
 "--------------------------------
+
+" Show matched bracket pair
 set showmatch
-" add bracket pair '<' and '>'
+
+" Add bracket pair '<' and '>'
 set matchpairs& matchpairs+=<:>
 
 " Stop auto back up
-set nowritebackup
-set noswapfile
 set nobackup
+set nowritebackup
 
+" Stop swap file
+set noswapfile
+
+" Re-read when editting file is changed
+set autoread
+
+" Complement on command line
+set wildmode=list:longest
+
+"--------------------------------
+" Search
+"--------------------------------
+
+" Search regardless of upper/lower case if query is lowercase only
+set ignorecase
+
+" Distinguish with upper/lower case if query contains uppercase
+set smartcase
+
+" Increment search
+set incsearch
+
+" Double ESC to turn off highlight
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "--------------------------------
 " lightline appearance(plugin)
