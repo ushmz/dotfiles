@@ -1,6 +1,9 @@
 # Mac users
 .DS_Store
 
+# vim settings
+.vim
+
 # VScode users
 .vscode
 *.code-workspace
