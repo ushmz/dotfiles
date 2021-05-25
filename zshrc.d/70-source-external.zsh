@@ -1,5 +1,5 @@
 
-source /Users/yusuk/.scripts/cmdnotif.sh
+source ~/.scripts/cmdnotif.sh
 
 # zsh auto completions
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

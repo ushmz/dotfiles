@@ -4,19 +4,17 @@
 ##########################################################
 alias c='clear'
 alias so='source'
-alias jn='/Users/yusuk/Library/Python/3.8/bin/jupyter notebook'
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 
 alias '...'='cd ../../'
 alias '....'='cd ../../../'
 alias delds='find . -name ".DS_Store" | xargs rm'
 alias slpon='sudo pmset -a disablesleep 0'
 alias slpoff='sudo pmset -a disablesleep 1'
+alias jn='jupyter notebook'
 
 alias zshenv='vi ~/.zshenv'
-alias zprof='vi ~/.zprofile'
-alias zshrc='vi ~/.zshrc'
+alias zprof='vi ~/dotfiles/zprofile.d'
+alias zshrc='vi ~/dotfiles/zshrc.d'
 alias soenv='source ~/.zshenv'
 alias sorc='source ~/.zshrc'
 alias soprof='source ~/.zprofile'
@@ -46,9 +44,6 @@ alias vim='nvim'
 alias src="cd `ghq root`"
 # alias silicon="silicon --theme OneHalfDark"
 
-# Make my cv with yaml file
-alias -g makecv='/Users/yusuk/src/github.com/kaityo256/yaml_cv/make_cv.rb'
-
 # clean cache
 alias 'pipcc'='rm -rf ~/Library/Caches/pip'
 alias 'mavencc'='rm -rf ~/.m2/repository'
@@ -57,7 +52,13 @@ alias 'mavencc'='rm -rf ~/.m2/repository'
 # peco aliases
 ##########################################################
 # Switch branch with peco
-alias -g branches='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+alias -g edas='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 
 # Delete branch with peco
-alias -g delbranch='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+alias -g prune='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+
+##########################################################
+# OS specific aliases
+##########################################################
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
