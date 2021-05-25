@@ -8,13 +8,22 @@
     "dart",
     "python"
   ],
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "sh.enable": true,
+  "tsserver.enableJavascript": false,
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
   "tslint.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
-  "tsserver.enableJavascript": false,
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true,
   "python.linting.flake8Enabled": true,
