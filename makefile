@@ -1,32 +1,41 @@
-link:
-	if [ -L $(HOME)/.zprofile ]; then unlink $(HOME)/.zprofile; fi
-	echo "#\!/bin/zsh\nfor i in \$$(command ls $(shell pwd)/zprofile.d/*.zsh | sort)\ndo\n  source \$$i\ndone" > $(HOME)/.zprofile
+define _help
+	echo 'Apue!!'
+	echo "up\t: Put all config files"
+	echo "install\t: Install brew packages"
+	echo "vim\t: Put .vimrc(For vim, not for nvim)"
+endef
 
-	if [ -L $(HOME)/.zshrc ]; then unlink $(HOME)/.zshrc; fi
-	echo "#\!/bin/zsh\nfor i in \$$(command ls $(shell pwd)/zshrc.d/*.zsh | sort)\ndo\n  source \$$i\ndone" > $(HOME)/.zshrc
+default:
+	@$(call _help)
 
-	ln -sf `pwd`/.gitmessage $(HOME)/.gitmessage
-	ln -sf `pwd`/.gitignore_global $(HOME)/.gitignore_global
-	git config --global core.excludesfile $(HOME)/.gitignore_global	
-	ln -sf `pwd`/.tmux.conf $(HOME)/.tmux.conf
+install: ./scripts/install.sh 
+	# ---------------------
+	# Install brew packages
+	# ---------------------
+	sh `pwd`/scripts/install.sh
 
-	mkdir -p "$(HOME)/.vscode/setting.json"
-	ln -sf `pwd`/vscode/settings.json $(HOME)/.vscode/setting.json
+up: ./scripts/install.sh
+	# ---------------------
+	# Put config files
+	# ---------------------
+	sh `pwd`/scripts/put.sh
 
-	mkdir -p "$(XDG_CONFIG_HOME)/nvim/colors"
-	mkdir -p "$(XDG_CONFIG_HOME)/nvim/plugins"
-	ln -sf `pwd`/.vim/rc/dein.toml $(XDG_CONFIG_HOME)/nvim/dein.toml
-	ln -sf `pwd`/.vim/rc/dein_lazy.toml $(XDG_CONFIG_HOME)/nvim/dein_lazy.toml
+apue: ./scripts/install.sh ./scripts/install.sh
+	# ---------------------
+	# Put config files and install brew packages
+	# ---------------------
+	sh `pwd`/scripts/put.sh
+	sh `pwd`/scripts/install.sh
 
-	ln -sf `pwd`/.config/nvim/coc-settings.json $(XDG_CONFIG_HOME)/nvim/coc-settings.json
+hyper: .hyper.js
+	# ---------------------
+	#  Put hyper config file
+	# ---------------------
+	ln -sf `pwd`/.hyper.js $(HOME)/.hyper.js
 
-	ln -sf `pwd`/.config/nvim/colors/hybrid.vim $(XDG_CONFIG_HOME)/nvim/colors/hybrid.vim
+vim: .vimrc
+	# ---------------------
+	#  Put .vimrc (for vim, not nvim)
+	# ---------------------
+	ln -sf `pwd`/.vimrc $(HOME)/.vimrc
 
-	ln -sf `pwd`/.config/nvim/plugins/coc.rc.vim $(XDG_CONFIG_HOME)/nvim/plugins/coc.rc.vim
-	ln -sf `pwd`/.config/nvim/plugins/defx.rc.vim $(XDG_CONFIG_HOME)/nvim/plugins/defx.rc.vim
-	ln -sf `pwd`/.config/nvim/plugins/denite.rc.vim $(XDG_CONFIG_HOME)/nvim/plugins/denite.rc.vim
-	ln -sf `pwd`/.config/nvim/plugins/silicon.rc.vim $(XDG_CONFIG_HOME)/nvim/plugins/silicon.rc.vim
-	ln -sf `pwd`/.config/alacritty/alacritty.yml $(XDG_CONFIG_HOME)/alacritty/alacritty.yml
-
-install:
-	`pwd`/scripts/install.sh

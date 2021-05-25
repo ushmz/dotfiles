@@ -26,6 +26,7 @@ function googleit() {
     IFS=${IFS#?}
 }
 alias what="googleit"
+alias ggr="googleit"
 
 # Change iTerm profile
 function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
@@ -61,6 +62,7 @@ function uninstall_track_cli() {
 	rm /usr/local/bin/track
 }
 
+# Source python venv if exists
 function sourse_pyenv() {
     if [[  -e './.venv' ]]; then
         source ./.venv/bin/activate
@@ -70,6 +72,7 @@ function sourse_pyenv() {
 }
 alias venv='sourse_pyenv'
 
+# Show ps with peco
 function pslist() {
     ps aux | peco | awk '{print $2}'
 }
