@@ -62,7 +62,7 @@ function uninstall_track_cli() {
 }
 
 function sourse_pyenv() {
-    if [[  -f './.venv' ]]; then
+    if [[  -e './.venv' ]]; then
         source ./.venv/bin/activate
     else
         echo 'Connot find pyenv environment.'
