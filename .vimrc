@@ -58,7 +58,8 @@ let g:jsx_ext_required = 0
 let g:coc_filetype_map = 1
 
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 
 "--------------------------------
 " Appearance

@@ -4,6 +4,8 @@
     "css",
     "javascript",
     "typescript",
+    "javascriptreact",
+    "typescriptreact",
     "go",
     "dart",
     "python"
