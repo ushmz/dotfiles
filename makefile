@@ -8,34 +8,34 @@ endef
 default:
 	@$(call _help)
 
-install: ./scripts/install.sh 
-	# ---------------------
-	# Install brew packages
-	# ---------------------
-	sh `pwd`/scripts/install.sh
+# ---------------------
+# Install brew packages
+# ---------------------
+install: ./install.sh 
+	sh `pwd`/install.sh
 
-up: ./scripts/install.sh
-	# ---------------------
-	# Put config files
-	# ---------------------
-	sh `pwd`/scripts/put.sh
+# ---------------------
+# Put config files
+# ---------------------
+up: ./put.sh
+	sh `pwd`/put.sh
 
-apue: ./scripts/install.sh ./scripts/install.sh
-	# ---------------------
-	# Put config files and install brew packages
-	# ---------------------
-	sh `pwd`/scripts/put.sh
-	sh `pwd`/scripts/install.sh
+# ---------------------
+# Put config files and install brew packages
+# ---------------------
+apue: ./install.sh ./install.sh
+	sh `pwd`/put.sh
+	sh `pwd`/install.sh
 
+# ---------------------
+#  Put hyper config file
+# ---------------------
 hyper: .hyper.js
-	# ---------------------
-	#  Put hyper config file
-	# ---------------------
 	ln -sf `pwd`/.hyper.js $(HOME)/.hyper.js
 
+# ---------------------
+#  Put .vimrc (for vim, not nvim)
+# ---------------------
 vim: .vimrc
-	# ---------------------
-	#  Put .vimrc (for vim, not nvim)
-	# ---------------------
 	ln -sf `pwd`/.vimrc $(HOME)/.vimrc
 

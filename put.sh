@@ -3,13 +3,13 @@
 if [ -L $HOME/.zprofile ]; then
     unlink $HOME/.zprofile
 fi
-echo "#!/bin/zsh\nfor i in \$(command ls \`pwd\`/zprofile.d/*.zsh | sort)\ndo\n  source \$i\ndone" > $HOME/.zprofile
+echo "#\!/bin/zsh\nfor i in \$(command ls `pwd`/zprofile.d/*.zsh | sort)\ndo\n  source \$i\ndone" > $HOME/.zprofile
 
 # Remove `~/.zshrc` if exists, and write my `.zshrc`.
 if [ -L $HOME/.zshrc ]; then
     unlink $HOME/.zshrc
 fi
-echo "#!/bin/zsh\nfor i in \$(command ls \`pwd\`/zshrc.d/*.zsh | sort)\ndo\n  source \$i\ndone" > $HOME/.zshrc
+echo "#\!/bin/zsh\nfor i in \$(command ls `pwd`/zshrc.d/*.zsh | sort)\ndo\n  source \$i\ndone" > $HOME/.zshrc
 
 # Put symbolic links.
 # .gitmessage
@@ -27,7 +27,7 @@ ln -sf `pwd`/.config/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritt
 ln -sf `pwd`/.tmux.conf $HOME/.tmux.conf
 
 # starship.toml
-ln -sf `pwd`/starship.toml $HOME/starship.toml
+ln -sf `pwd`/starship.toml $HOME/.config/starship.toml
 
 # vscode setting file
 mkdir -p "$HOME/.vscode/"
@@ -36,6 +36,7 @@ ln -sf `pwd`/vscode/settings.json $HOME/.vscode/setting.json
 # nvim config files
 # dein plugin files
 mkdir -p $XDG_CONFIG_HOME/nvim/
+ln -sf `pwd`/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 ln -sf `pwd`/.config/nvim/dein.toml $XDG_CONFIG_HOME/nvim/dein.toml
 ln -sf `pwd`/.config/nvim/dein_lazy.toml $XDG_CONFIG_HOME/nvim/dein_lazy.toml
 
@@ -52,4 +53,10 @@ ln -sf `pwd`/.config/nvim/plugins/coc.rc.vim $XDG_CONFIG_HOME/nvim/plugins/coc.r
 ln -sf `pwd`/.config/nvim/plugins/defx.rc.vim $XDG_CONFIG_HOME/nvim/plugins/defx.rc.vim
 ln -sf `pwd`/.config/nvim/plugins/denite.rc.vim $XDG_CONFIG_HOME/nvim/plugins/denite.rc.vim
 ln -sf `pwd`/.config/nvim/plugins/silicon.rc.vim $XDG_CONFIG_HOME/nvim/plugins/silicon.rc.vim
+
+# Utility scripts
+ln -sf `pwd`/.scripts/cmdnotif.sh $HOME/.scripts/cmdnotif.sh
+ln -sf `pwd`/.scripts/mux.sh $HOME/.scripts/mux.sh
+ln -sf `pwd`/.scripts/typo.sh $HOME/.scripts/typo.sh
+ln -sf `pwd`/.scripts/ssh_change_profile.sh $HOME/.scripts/ssh_change_profile.sh
 
