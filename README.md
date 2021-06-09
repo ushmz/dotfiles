@@ -2,13 +2,13 @@
 
 Clone this
 ```sh
-git clone https://github.com/rabhareit/dotfiles.git
+git clone https://github.com/ushmz/dotfiles.git
 ```
 
 Put symbolic link, run
 ```sh
 cd dotfiles
-make link
+make put
 ```
 
 Install all tools, run
