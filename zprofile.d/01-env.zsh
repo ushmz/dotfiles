@@ -2,7 +2,7 @@
 export LS_COLORS="di=01;32;"
 export EXA_COLORS="da=36"
 
-export PATH="/Users/yusuk/.scripts:$PATH"
+export PATH="$HOME/.scripts:$PATH"
 
 if [ -e $(brew --prefix)/share/zsh-completions ]; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
