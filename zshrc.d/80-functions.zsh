@@ -34,8 +34,10 @@ function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
 # (Make tmux session if needed) and split pane
 function tmux_session() {
     if [ -n "$TMUX" ]; then
+        # alias 'mux.sh'='~/.scripts/mux.sh'
+        # alias to tmux split-pane script
         mux.sh "$@"
-	return 0
+        return 0
     fi
 
     if [ -n "$1" ]; then
@@ -54,7 +56,7 @@ function tmux_session() {
     	tmux
     fi
 }
-alias mux='tmux_session'
+alias tm='tmux_session'
 
 # `track` is online coding examination platform.
 # `track-cli` is interface that I can take exam in local machine.
