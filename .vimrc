@@ -56,6 +56,12 @@ let g:go_disable_autoinstall = 1
 let g:vim_json_syntax_conceal = 0
 let g:jsx_ext_required = 0
 let g:coc_filetype_map = 1
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors = 0                                             
+" let g:indent_guides_guide_size = 1                                              
+
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3       
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
@@ -112,7 +118,13 @@ set noswapfile
 set autoread
 
 " Complement on command line
-set wildmode=list:longest
+" set wildmode=list:longest
+
+" command! MakeTags !crags -R .
+" `^[` to jump to tag under the cursor
+" `g^]` for ambiguous tags
+" `^t` to jump back to thh tag stack
+
 
 "--------------------------------
 " Search
@@ -126,6 +138,13 @@ set smartcase
 
 " Increment search
 set incsearch
+
+" Fuzzy File Find
+" Search down into sub directory
+set path+=**
+
+" Display all matching file when tab complete
+set wildmode
 
 " Double ESC to turn off highlight
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
