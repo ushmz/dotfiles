@@ -44,3 +44,8 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
