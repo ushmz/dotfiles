@@ -9,6 +9,15 @@ let g:python_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
 "--------------------------------
 inoremap <silent> jj <ESC>
 
+" -------------------------------
+"  autocmd
+" -------------------------------
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3       
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
+autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
+
 "--------------------------------
 " Plugins
 "--------------------------------
@@ -49,6 +58,15 @@ if dein#check_install()
   call dein#install()
 endif
 
+" vim-closetag
+let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+" vim-resizer
+let g:winresizer_vert_resize = 1
+let g:winresizer_horiz_resize = 1
+
 "--------------------------------
 " Variables
 "--------------------------------
@@ -58,14 +76,7 @@ let g:jsx_ext_required = 0
 let g:coc_filetype_map = 1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 0                                             
-" let g:indent_guides_guide_size = 1                                              
-
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3       
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-
-autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
-autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
+let g:indent_guides_guide_size = 1                                              
 
 "--------------------------------
 " Appearance

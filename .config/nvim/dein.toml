@@ -49,3 +49,6 @@ repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'simeji/winresizer'
