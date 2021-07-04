@@ -35,9 +35,9 @@ alias stat='stat -x'
 alias cat='bat'
 alias find='fd'
 alias ls="exa -gh --time-style=long-iso"
-alias ll="ls -lF"
-alias la="ls -alF"
-alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first"
+alias ll="ls -lF --group-directories-first --icons"
+alias la="ls -alF --group-directories-first --icons"
+alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first --icons"
 alias ssh='~/.scripts/ssh_change_profile.sh'
 alias vi='nvim'
 alias vim='nvim'
