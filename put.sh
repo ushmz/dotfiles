@@ -27,7 +27,7 @@ ln -sf `pwd`/.config/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritt
 ln -sf `pwd`/.tmux.conf $HOME/.tmux.conf
 
 # starship.toml
-ln -sf `pwd`/starship.toml $HOME/.config/starship.toml
+ln -sf `pwd`/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
 
 # vscode setting file
 mkdir -p "$HOME/.vscode/"
