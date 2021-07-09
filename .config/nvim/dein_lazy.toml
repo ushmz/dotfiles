@@ -63,3 +63,7 @@ on_ft = ['python']
 [[plugins]]
 repo='alvan/vim-closetag'
 on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
+
+[[plugins]]
+repo='styled-components/vim-styled-components'
+on_ft = ['javascript.jsx', 'typescript.tsx', 'typescriptreact']

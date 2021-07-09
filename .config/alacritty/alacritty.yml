@@ -16,6 +16,8 @@ font:
         family: 'Hack Nerd Font'
         style: Bold Italic
 
+east_asian_fullwidth: true
+
 mouse:
     url:
         launcher: open
