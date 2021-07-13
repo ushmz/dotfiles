@@ -31,16 +31,22 @@ nnoremap <silent> [denite]<C-n> :<C-u>Denite -resume -cursor-pos=+1 -immediately
 nnoremap <silent> [denite]<C-p> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 
 " use floating
-let s:denite_win_width_percent = 0.8
-let s:denite_win_height_percent = 0.7
+" Is it possible to use floating and horizontal split?
+let s:denite_win_width_percent = 0.5
+let s:denite_win_height_percent = 0.3
 let s:denite_default_options = {
-    \ 'split': 'floating',
-    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
-    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
-    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
-    \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
-    \ 'highlight_filter_background': 'DeniteFilter',
     \ 'prompt': 'λ ',
+    \ 'match_highlight': v:true,
+    \ 'highlight_filter_background': 'DeniteFilter',
+    \ 'highlight_matched_char': 'None',
+    \ 'highlight_matched_range': 'Search',
+    \ 'auto_action': 'preview_bat',
+    \ 'auto_preview': v:true,
+    \ 'vertical_preview': v:true,
+    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+    \ 'preview_width': float2nr(&columns * s:denite_win_width_percent),
+    \ 'preview_height': float2nr(&lines * s:denite_win_height_percent),
     \ }
 
 " 'start_filter': v:true,
@@ -56,6 +62,7 @@ call denite#custom#var('file/rec', 'command',
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
     \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
 " Ag command on grep source
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
@@ -63,6 +70,7 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
+
 " grep
 command! -nargs=? Dgrep call s:Dgrep(<f-args>)
 function s:Dgrep(...)
@@ -76,18 +84,25 @@ function s:Dgrep(...)
     execute(':Denite -buffer-name=grep-buffer-denite -no-empty '.join(s:denite_option_array, ' ').' grep -path='.l:path)
   endif
 endfunction
+
 " show Denite grep results
 command! Dresume execute(':Denite -resume -buffer-name=grep-buffer-denite '.join(s:denite_option_array, ' ').'')
+
 " next Denite grep result
 command! Dnext execute(':Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately '.join(s:denite_option_array, ' ').'')
+
 " previous Denite grep result
 command! Dprev execute(':Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately '.join(s:denite_option_array, ' ').'')
+
 " keymap
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<S-j>', '<denite:enter_mode:normal>', 'noremap')
+call denite#custom#map('normal', '<S-j>', '<denite:quit>', 'noremap')
 
 nnoremap <silent> ;r :<C-u>Dgrep<CR>
 nnoremap <silent> ;f :<C-u>Denite file/rec<CR>
 nnoremap <silent> ;; :<C-u>Denite command command_history<CR>
 nnoremap <silent> ;p :<C-u>Denite -resume<CR>
  
+

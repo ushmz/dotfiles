@@ -8,6 +8,8 @@ let g:python_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
 " Key binding
 "--------------------------------
 inoremap <silent> jj <ESC>
+nnoremap ; :
+xnoremap ; :
 
 " -------------------------------
 "  autocmd
