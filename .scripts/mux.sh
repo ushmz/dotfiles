@@ -30,9 +30,9 @@ else
       tmux last-pane
       tmux split-pane -h
       tmux select-pane -D
-      tmux split-window -h
-      tmux resize-pane -R 40
-      tmux last-pane
+      # tmux split-window -h
+      # tmux resize-pane -R 40
+      # tmux last-pane
       clear
       ;;
     "simple")
