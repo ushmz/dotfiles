@@ -17,34 +17,39 @@ brew cask upgrade
 ##########################################################
 brew install coreutils
 brew install diffutils
-brew install ed
 brew install findutils
-brew install gawk
 brew install gnu-sed
 brew install gnu-tar
 brew install grep
 brew install gzip
 
 ##########################################################
-# Linux commands rewrite by Rust
+# Linux alternative commands rewrite by Rust
 ##########################################################
+# A `cat` clone with wings.
 brew install bat
+# A modern replacement for `ls`.
 brew install exa
+# A command-line hex viewer.
 brew install hexyl
+# A simple alternative to `find`.
 brew install fd
+# A line-oriented search tool.
 brew install ripgrep
+# A modern replacement for `ps`.
 brew install procs
+# A TUI system monitor.
+# Be careful. Repository is archived.
 brew tap cjbassi/ytop
 brew install ytop
 
 ##########################################################
 # Useful Commands?
 ##########################################################
+# A code-searching tool similar to ack, but faster.
+# By the way, `defx` seems to use it ;)
 brew install ag
-brew install gitmoji
-gem install colorls
 brew install jq
-brew install lv
 brew install navi
 brew install parallel
 brew install pandoc
@@ -139,6 +144,7 @@ brew install php
 ##########################################################
 # install mac desktop apps
 ##########################################################
+brew cask install alacritty
 brew cask install alfred
 brew cask install adobe-creative-cloud
 brew cask install cheatsheet
@@ -146,7 +152,6 @@ brew cask install coteditor
 brew cask install discord
 brew cask install docker
 brew cask install font-hack-nerd-font
-brew cask install gitkraken
 brew cask install google-japanese-ime
 brew cask install hyper
 brew cask install inkdrop
