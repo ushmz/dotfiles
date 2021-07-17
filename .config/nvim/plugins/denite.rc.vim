@@ -7,7 +7,7 @@ augroup denite_filter
     nnoremap <silent><buffer><expr> d
     \ denite#do_map('do_action', 'delete')
     nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'preview')
+    \ denite#do_map('do_action', 'preview_bat')
     nnoremap <silent><buffer><expr> q
     \ denite#do_map('quit')
     nnoremap <silent><buffer><expr> i
@@ -32,21 +32,29 @@ nnoremap <silent> [denite]<C-p> :<C-u>Denite -resume -cursor-pos=-1 -immediately
 
 " use floating
 " Is it possible to use floating and horizontal split?
-let s:denite_win_width_percent = 0.5
-let s:denite_win_height_percent = 0.3
+let s:denite_win_width_percent = 0.4
+let s:denite_win_height_percent = 0.7
+let s:denite_win_col = float2nr((&columns - (&columns * s:denite_win_width_percent * 2)) / 2)
+let s:denite_preview_col = float2nr(&columns * s:denite_win_width_percent) + s:denite_win_col
 let s:denite_default_options = {
+    \ 'split': 'floating',
     \ 'prompt': 'λ ',
     \ 'match_highlight': v:true,
     \ 'highlight_filter_background': 'DeniteFilter',
     \ 'highlight_matched_char': 'None',
     \ 'highlight_matched_range': 'Search',
-    \ 'auto_action': 'preview_bat',
-    \ 'auto_preview': v:true,
-    \ 'vertical_preview': v:true,
     \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
     \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent * 2)) / 2),
+    \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+    \ 'auto_action': 'preview_bat',
+    \ 'autp_preview': v:true,
+    \ 'vertical_preview': v:true,
+    \ 'floating_preview': v:true,
     \ 'preview_width': float2nr(&columns * s:denite_win_width_percent),
     \ 'preview_height': float2nr(&lines * s:denite_win_height_percent),
+    \ 'preview_col': s:denite_preview_col,
+    \ 'preview_row': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
     \ }
 
 " 'start_filter': v:true,
