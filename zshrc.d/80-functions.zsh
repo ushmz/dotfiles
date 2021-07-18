@@ -22,11 +22,21 @@ function command_not_found_handler(){
 # Google it func
 function googleit() {
     IFS="+$IFS"
-    brave "https://www.google.com/search?q=$*" 1>/dev/null 2>&1
+    brave "https://www.google.com/search?q=$*&gl=us&hl=en" 1>/dev/null 2>&1
     IFS=${IFS#?}
 }
+
+function guguru() {
+    IFS="+$IFS"
+    brave "https://www.google.com/search?q=$*&gl=ja&hl=ja" 1>/dev/null 2>&1
+    IFS=${IFS#?}
+}
+
 alias what="googleit"
 alias ggr="googleit"
+
+alias jwhat="guguru"
+alias jggr="guguru"
 
 # Change iTerm profile
 function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
