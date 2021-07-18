@@ -4,6 +4,7 @@
 let g:python3_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
 let g:python_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
 
+
 "--------------------------------
 " Key binding
 "--------------------------------
@@ -11,74 +12,7 @@ inoremap <silent> jj <ESC>
 nnoremap ; :
 xnoremap ; :
 
-" -------------------------------
-"  autocmd
-" -------------------------------
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3       
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
-autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 
-"--------------------------------
-" Plugins
-"--------------------------------
-if &compatible
-  set nocompatible
-endif
-
-let s:dein_dir = expand('~/.cache/dein')
-
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
-
-" dein configuration
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  let s:toml_dir = expand('~/.config/nvim')
-
-  call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
-
-  call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-
-" dein plugin install check
-if dein#check_install()
-  call dein#install()
-endif
-
-" vim-closetag
-let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
-let g:closetag_shortcut = '>'
-let g:closetag_close_shortcut = '<leader>>'
-
-" vim-resizer
-let g:winresizer_vert_resize = 1
-let g:winresizer_horiz_resize = 1
-
-"--------------------------------
-" Variables
-"--------------------------------
-let g:go_disable_autoinstall = 1
-let g:vim_json_syntax_conceal = 0
-let g:jsx_ext_required = 0
-let g:coc_filetype_map = 1
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_auto_colors = 0                                             
-let g:indent_guides_guide_size = 1                                              
 
 "--------------------------------
 " Appearance
@@ -109,6 +43,19 @@ hi CursorLineNr ctermbg=4 ctermfg=0
 set cursorline
 
 filetype plugin indent on
+
+
+" -------------------------------
+"  autocmd
+" -------------------------------
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=237
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
+autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
+autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.tsx set tabstop=2
+autocmd BufNewFile,BufRead *.tsx set shiftwidth=2
+
 
 "--------------------------------
 " Edit
@@ -161,6 +108,71 @@ set wildmode
 
 " Double ESC to turn off highlight
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+
+"--------------------------------
+" Plugins
+"--------------------------------
+if &compatible
+  set nocompatible
+endif
+
+let s:dein_dir = expand('~/.cache/dein')
+
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
+
+" dein configuration
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  let s:toml_dir = expand('~/.config/nvim')
+
+  call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
+
+  call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+filetype plugin indent on
+syntax enable
+
+" dein plugin install check
+if dein#check_install()
+  call dein#install()
+endif
+
+" vim-closetag
+let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+" vim-resizer
+let g:winresizer_vert_resize = 1
+let g:winresizer_horiz_resize = 1
+
+" indent-guide
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+
+
+"--------------------------------
+" Variables
+"--------------------------------
+let g:go_disable_autoinstall = 1
+let g:vim_json_syntax_conceal = 0
+let g:jsx_ext_required = 0
+let g:coc_filetype_map = 1
+
 
 "--------------------------------
 " lightline appearance(plugin)
