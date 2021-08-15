@@ -13,7 +13,6 @@ nnoremap ; :
 xnoremap ; :
 
 
-
 "--------------------------------
 " Appearance
 "--------------------------------
@@ -50,12 +49,14 @@ filetype plugin indent on
 " -------------------------------
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
-autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.tsx set tabstop=2
 autocmd BufNewFile,BufRead *.tsx set shiftwidth=2
-
+autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
+autocmd BufNewFile,BufRead *.tsx let g:indent_guides_enable_on_vim_startup=1
+autocmd BufNewFile,BufRead *.tsx let g:indent_guides_guide_size = 1
+autocmd BufNewFile,BufRead *.tsx let g:indent_guides_start_level = 2
 
 "--------------------------------
 " Edit
@@ -160,9 +161,9 @@ let g:winresizer_vert_resize = 1
 let g:winresizer_horiz_resize = 1
 
 " indent-guide
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
+" let g:indent_guides_enable_on_vim_startup=1
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_start_level = 2
 
 
 "--------------------------------

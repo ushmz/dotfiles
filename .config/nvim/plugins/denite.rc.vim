@@ -31,7 +31,6 @@ nnoremap <silent> [denite]<C-n> :<C-u>Denite -resume -cursor-pos=+1 -immediately
 nnoremap <silent> [denite]<C-p> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 
 " use floating
-" Is it possible to use floating and horizontal split?
 let s:denite_win_width_percent = 0.4
 let s:denite_win_height_percent = 0.7
 let s:denite_win_col = float2nr((&columns - (&columns * s:denite_win_width_percent * 2)) / 2)
@@ -48,7 +47,7 @@ let s:denite_default_options = {
     \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent * 2)) / 2),
     \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
     \ 'auto_action': 'preview_bat',
-    \ 'autp_preview': v:true,
+    \ 'auto_preview': v:true,
     \ 'vertical_preview': v:true,
     \ 'floating_preview': v:true,
     \ 'preview_width': float2nr(&columns * s:denite_win_width_percent),
