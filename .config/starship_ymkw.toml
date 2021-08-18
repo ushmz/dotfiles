@@ -1,0 +1,76 @@
+add_newline = true
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "🔌 "
+discharging_symbol = "⚡ "
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[character]
+success_symbol = "[❯](bold #ba55d3)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+style = "bold #dda0dd"
+truncation_length = 100
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+
+[git_branch]
+symbol = " :"
+style="#c8a0d3"
+
+[git_status]
+conflicted = "💥 "
+ahead = "🏎💨x${count} "
+behind = "😰×${count} "
+diverged = "😵×${count} "
+untracked = "🌚×${count} "
+stashed = "📦×${count} "
+modified = "📝×${count} "
+staged = "🔦×${count} "
+renamed = "🏷 ×${count} "
+deleted = "🗑 ×${count} "
+format = '([\[ $all_status$ahead_behind\]]($style) ♥ )'
+style = "#fcc7df"
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = true
+
+[package]
+disabled = true
+
+[username]
+style_user = "bold blue"
+style_root = "bold red"
+format = "[$user]($style) "
+show_always = false
+
+[golang]
+symbol = " "
+style="#ffc0cb"
+
+[nodejs]
+style="#ffc0cb"
+
+[python]
+symbol = " "
+style="#ffc0cb"
+
+[dart]
+symbol = " "
+style="#ffc0cb"
+
+[rust]
+symbol = " "
+style="#ffc0cb"
+
+[docker_context]
+symbol = " "
+style="#ffc0cb"
