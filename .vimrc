@@ -11,6 +11,15 @@ let g:python_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
 inoremap <silent> jj <ESC>
 nnoremap ; :
 xnoremap ; :
+" Emacs key bind in Insert mode
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-b> <Left>
+imap <C-f> <Right>
+" imap <C-a> <C-o>:call <SID>home()<CR>
+" imap <C-e> <End>
+imap <C-d> <Del>
+imap <C-h> <BS>
 
 
 "--------------------------------
