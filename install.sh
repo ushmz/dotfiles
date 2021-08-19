@@ -3,123 +3,121 @@
 ##########################################################
 # Install brew
 ##########################################################
-echo "install brew"
+echo "--- install brew ---"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-echo "brew updating..."
+echo "--- updating brew ---"
 brew update
 brew cleanup
 brew upgrade
 brew cask upgrade
 
 ##########################################################
-# Replace Mac commands with GNU/Linux commands
-##########################################################
-brew install coreutils
-brew install diffutils
-brew install findutils
-brew install gnu-sed
-brew install gnu-tar
-brew install grep
-brew install gzip
-
-##########################################################
-# Linux alternative commands rewrite by Rust
-##########################################################
-# A `cat` clone with wings.
-brew install bat
-# A modern replacement for `ls`.
-brew install exa
-# A command-line hex viewer.
-brew install hexyl
-# A simple alternative to `find`.
-brew install fd
-# A line-oriented search tool.
-brew install ripgrep
-# A modern replacement for `ps`.
-brew install procs
-# A TUI system monitor.
-# Be careful. Repository is archived.
-brew tap cjbassi/ytop
-brew install ytop
-
-##########################################################
-# Useful Commands?
-##########################################################
-# A code-searching tool similar to ack, but faster.
-# By the way, `defx` seems to use it ;)
-brew install ag
-brew install jq
-brew install navi
-brew install parallel
-brew install pandoc
-brew install q
-brew install sift
-brew install sl
-brew install starship
-brew install tmux
-brew install wget
-brew install wdiff --with-gettext
-brew install xmlstarlet
-
-##########################################################
 # zsh plugin
 ##########################################################
+echo "--- install zsh plugins ---"
 brew install zsh-syntax-highlighting
-echo 'source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 brew install zsh-autosuggestions
-echo 'source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
 brew install zsh-completions
 chmod 0755 /usr/local/share/zsh/site-functions
 chmod 0755 /usr/local/share
 chmod 0755 /usr/local/share/zsh
 
+
 ##########################################################
-# install developing tools
+# brew formulae
 ##########################################################
-brew install ansible
-# brew install awscli
-# brew install aws-iam-authenticator
-brew install bazel
-brew install cocoapods
-brew install docker-compose
-brew install gcc
-brew install gibo
-brew install git
-brew tap heroku/brew
-brew install heroku
-# brew install kubesec
-# brew install kubernetes-cli
-brew install make
-brew install mecab
-brew install mecab-ipadic
-brew install mysql
-brew install openssh
-brew install openssl 
-brew install peco
-brew install postgresql
-brew install redis
-brew install sqlite
-brew install tree
-brew install unrar
-brew install watch
-brew install xz
-# brew install filosottile/musl-cross/musl-cross
+echo "--- install formulae ---"
+formulae=(
+    # Replace Mac commands with GNU/Linux commands
+    coreutils
+    diffutils
+    findutils
+    gnu-sed
+    gnu-tar
+    grep
+    gzip
+
+    # Linux alternative commands rewrite by Rust
+    bat        # A `cat` clone with wings.
+    exa        # A modern replacement for `ls`.
+    hexyl      # A command-line hex viewer.
+    fd         # A simple alternative to `find`.
+    ripgrep    # A line-oriented search tool.
+    procs      # A modern replacement for `ps`.
+    # Be careful. Repository is archived.
+    ytop       # A TUI system monitor.
+
+    # Useful Commands
+    ag
+    jq
+    navi
+    parallel
+    pandoc
+    q
+    sift
+    sl
+    starship
+    tmux
+    wget
+    xmlstarlet
+
+    # install developing tools
+    ansible
+    # awscli
+    # aws-iam-authenticator
+    bazel
+    cocoapods
+    docker-compose
+    gcc
+    gibo
+    git
+    heroku
+    # kubesec
+    # kubernetes-cli
+    make
+    mecab
+    mecab-ipadic
+    mysql
+    openssh
+    openssl 
+    peco
+    postgresql
+    redis
+    sqlite
+    tig
+    tree
+    unrar
+    watch
+    xz
+    # filosottile/musl-cross/musl-cross
+)
+for formula in $formulae
+do
+    brew install $formula
+done
 
 ##########################################################
 # install programming languages
 ##########################################################
+echo "--- install languages (NEED PASSWORD) ---"
+
+brew install go
+brew install kotlin
+brew install php
+brew install nodebrew
+brew install deno
+brew install python3
+brew install pyenv
+
+# haskell(stack)
+brew install stack
+stack setup
+
 # dart lang
 brew tap dart-lang/dart
 brew install dart
 
-# js / node,js
-brew install nodebrew
-brew install deno
-
-# python
-brew install python3
-brew install pyenv
 # poetry
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
@@ -132,39 +130,36 @@ brew cask install adoptopenjdk8
 brew cask install adoptopenjdk11
 brew cask install adoptopenjdk14
 
-# haskell(stack)
-brew install stack
-stack setup
-
-# others
-brew install go
-brew install kotlin
-brew install php
-
 ##########################################################
 # install mac desktop apps
 ##########################################################
-brew cask install alacritty
-brew cask install alfred
-brew cask install adobe-creative-cloud
-brew cask install cheatsheet
-brew cask install coteditor
-brew cask install discord
-brew cask install docker
-brew cask install font-hack-nerd-font
-brew cask install google-japanese-ime
-brew cask install hyper
-brew cask install inkdrop
-brew cask install iterm2
-brew cask install mendeley
-brew cask install microsoft-teams
-brew cask install postman
-brew cask install rectangle
-brew cask install slack
-brew cask install tableplus
-brew cask install typora
-brew cask install visual-studio-code
-brew cask install zoomus
+echo "--- install casks ---"
+casks=(
+    alacritty
+    alfred
+    cheatsheet
+    coteditor
+    discord
+    docker
+    font-hack-nerd-font
+    google-japanese-ime
+    hyper
+    inkdrop
+    iterm2
+    mendeley
+    microsoft-teams
+    notion
+    postman
+    rectangle
+    slack
+    tableplus
+    visual-studio-code
+    zoomus
+)
+for cask in $casks
+do
+    brew cask install $cask
+done
 
 ##########################################################
 # Clean up
