@@ -29,6 +29,9 @@ ln -sf `pwd`/.tmux.conf $HOME/.tmux.conf
 # starship.toml
 ln -sf `pwd`/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
 
+# .tigrc
+ln -sf `pwd`/.tigrc $HOME/.tigrc
+
 # vscode setting file
 mkdir -p "$HOME/.vscode/"
 ln -sf `pwd`/vscode/settings.json $HOME/.vscode/setting.json
