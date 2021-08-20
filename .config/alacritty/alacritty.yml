@@ -30,8 +30,8 @@ window:
     decorations: full
     # startup_mode: Fullscreen
     padding:
-        x: 3
-        y: 1
+        x: 1
+        y: 0
 
 background_opacity: 0.95
 
@@ -41,7 +41,7 @@ colors:
     # Default colors
     primary:
         background: '#27292c'
-        foreground: '#d0d2d1'
+        foreground: '#c9c0cf'
 
     cursor:
         text: '0x000000'
