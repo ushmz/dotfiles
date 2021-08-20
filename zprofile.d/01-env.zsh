@@ -1,6 +1,6 @@
 
-# export LS_COLORS="di=01;32;"
-# export EXA_COLORS="da=36"
+export LS_COLORS="di=01;32;"
+export EXA_COLORS="da=36"
 
 export PATH="$HOME/.scripts:$PATH"
 
