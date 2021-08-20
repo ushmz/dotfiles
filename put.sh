@@ -39,7 +39,7 @@ ln -sf `pwd`/vscode/settings.json $HOME/.vscode/setting.json
 # nvim config files
 # dein plugin files
 mkdir -p $XDG_CONFIG_HOME/nvim/
-ln -sf `pwd`/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+ln -sf `pwd`/.config/nvim/init.vim $XDG_CONFIG_HOME/nvim/init.vim
 ln -sf `pwd`/.config/nvim/dein.toml $XDG_CONFIG_HOME/nvim/dein.toml
 ln -sf `pwd`/.config/nvim/dein_lazy.toml $XDG_CONFIG_HOME/nvim/dein_lazy.toml
 
