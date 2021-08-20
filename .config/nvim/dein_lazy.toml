@@ -1,10 +1,10 @@
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript' 'typescript.tsx', 'typescriptreact']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
-on_ft = ['typescript' 'typescript.tsx', 'typescriptreact']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
 repo = 'mattn/vim-maketable'
