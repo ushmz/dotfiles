@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Get SSID for tmux status bar (Thx to @arks22)
+echo "(#[fg=yellow]$(uptime | awk '{print $(NF-2), $(NF-1), $(NF)}')#[default]) "

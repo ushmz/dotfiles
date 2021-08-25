@@ -62,4 +62,7 @@ ln -sf `pwd`/.scripts/cmdnotif.sh $HOME/.scripts/cmdnotif.sh
 ln -sf `pwd`/.scripts/mux.sh $HOME/.scripts/mux.sh
 ln -sf `pwd`/.scripts/typo.sh $HOME/.scripts/typo.sh
 ln -sf `pwd`/.scripts/ssh_change_profile.sh $HOME/.scripts/ssh_change_profile.sh
+ln -sf `pwd`/.scripts/battery $HOME/.scripts/battery
+ln -sf `pwd`/.scripts/load_ave $HOME/.scripts/load_ave
+ln -sf `pwd`/.scripts/ssid $HOME/.scripts/ssid
 
