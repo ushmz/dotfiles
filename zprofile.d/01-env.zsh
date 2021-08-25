@@ -44,8 +44,8 @@ export PATH="$HOME/.exenv/bin:$PATH"
 # Development Tools
 ##########################################################
 # Android SDK
-export ANDROID_SDK_HOME=/Users/yusuk/Library/Android/sdk
-export ANDROID_HOME=/Users/yusuk/Library/Android/sdk
+export ANDROID_SDK_HOME=/Users/ushmz/Library/Android/sdk
+export ANDROID_HOME=/Users/ushmz/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
