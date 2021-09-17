@@ -20,6 +20,7 @@ alias ll="ls -lF --group-directories-first --icons"
 alias la="ls -alF --group-directories-first --icons"
 alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first --icons"
 alias src="cd `ghq root`"
+alias ldoc="lazydocker"
 # alias silicon="silicon --theme OneHalfDark"
 
 # clean cache
