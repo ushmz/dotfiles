@@ -59,7 +59,7 @@ function peco_ssh_host() {
   fi
 }
 zle -N peco_ssh_host
-bindkey '^h' peco_ssh_host
+bindkey '^s' peco_ssh_host
 
 # Search local repository from ghq root
 function ghq_list() {
@@ -82,6 +82,6 @@ function ghq_code() {
     fi
     zle clear-screen
 }
-zle -N ghq_code
-bindkey '^e' ghq_code
+# zle -N ghq_code
+# bindkey '^e' ghq_code
 
