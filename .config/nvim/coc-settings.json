@@ -11,14 +11,6 @@
     "dart",
     "python"
   ],
-  "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    }
-  },
   "sh.enable": true,
   "tsserver.enableJavascript": false,
   "tsserver.tsdk": "~/.nodebrew/current/lib/node_modules/typescript/lib",

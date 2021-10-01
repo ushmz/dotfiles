@@ -1,4 +1,24 @@
 "--------------------------------
+" initializeing
+"--------------------------------
+" init autocmd
+autocmd!
+" set script encoding
+scriptencoding utf-8
+" Stop loading vimrc when `tiny` or `small`
+if !1 | finish | endif
+
+
+"--------------------------------
+" auto reload .vimrc
+"--------------------------------
+augroup source_vimrc
+  autocmd!
+  autocmd BufWritePost init.vim source $MYVIMRC | set foldmethod=marker
+augroup END
+
+
+"--------------------------------
 " python path setting
 "--------------------------------
 let g:python3_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
@@ -16,8 +36,8 @@ imap <C-p> <Up>
 imap <C-n> <Down>
 imap <C-b> <Left>
 imap <C-f> <Right>
-" imap <C-a> <C-o>:call <SID>home()<CR>
-" imap <C-e> <End>
+imap <C-a> <C-o>:call <SID>home()<CR>
+imap <C-e> <End>
 imap <C-d> <Del>
 imap <C-h> <BS>
 
@@ -66,6 +86,13 @@ autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
 autocmd BufNewFile,BufRead *.tsx let g:indent_guides_enable_on_vim_startup=1
 autocmd BufNewFile,BufRead *.tsx let g:indent_guides_guide_size = 1
 autocmd BufNewFile,BufRead *.tsx let g:indent_guides_start_level = 2
+
+
+" -------------------------------
+"  templates
+" -------------------------------
+autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skeleton.sh
+
 
 "--------------------------------
 " Edit
@@ -248,4 +275,3 @@ endfunction
 function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
-
