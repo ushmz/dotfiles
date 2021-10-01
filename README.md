@@ -5,14 +5,19 @@ Clone this
 git clone https://github.com/ushmz/dotfiles.git
 ```
 
-Put symbolic link, run
+Put symbolic link of config files, run following.
 ```sh
-cd dotfiles
 make put
 ```
 
-Install all tools, run
+Install all tools with homebrew, run following.
 ```sh
-cd dotfiles
 make install
+```
+
+Do above things at once.
+
+☕ ☕ ☕
+```sh
+make apue
 ```
