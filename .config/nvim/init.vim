@@ -16,8 +16,8 @@ imap <C-p> <Up>
 imap <C-n> <Down>
 imap <C-b> <Left>
 imap <C-f> <Right>
-" imap <C-a> <C-o>:call <SID>home()<CR>
-" imap <C-e> <End>
+imap <C-a> <C-o>:call <SID>home()<CR>
+imap <C-e> <End>
 imap <C-d> <Del>
 imap <C-h> <BS>
 
