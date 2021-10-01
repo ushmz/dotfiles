@@ -67,6 +67,13 @@ autocmd BufNewFile,BufRead *.tsx let g:indent_guides_enable_on_vim_startup=1
 autocmd BufNewFile,BufRead *.tsx let g:indent_guides_guide_size = 1
 autocmd BufNewFile,BufRead *.tsx let g:indent_guides_start_level = 2
 
+
+" -------------------------------
+"  templates
+" -------------------------------
+autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skeleton.sh
+
+
 "--------------------------------
 " Edit
 "--------------------------------
