@@ -7,7 +7,12 @@ set -e
 if [ -L $HOME/.zprofile ]; then
     unlink $HOME/.zprofile
 fi
-ln -sf `pwd`/.zprofile.linux $HOME/.zprofile
+
+touch $HOME/.zprofile
+echo "export LS_COLORS=\"di=01;32;\"" >> $HOME/.zprofile
+echo "export PATH=\"\$HOME/.scripts:\$PATH\"" >> $HOME/.zprofile
+echo "# XDG_CONFIG_HOME" >> $HOME/.zprofile 
+echo "export XDG_CONFIG_HOME=\$HOME/.config" >> $HOME/.zprofile
 
 # ----------------------------------------------------
 # Remove `~/.zshrc` if exists, and write my `.zshrc`.
@@ -15,45 +20,42 @@ ln -sf `pwd`/.zprofile.linux $HOME/.zprofile
 if [ -L $HOME/.zshrc ]; then
     unlink $HOME/.zshrc
 fi
-ln -sf `pwd`/.zshrc.linux $HOME/.zshrc
+touch $HOME/.zshrc
+echo "#\!/bin/zsh" >> $HOME/.zshrc
+echo "source `pwd`/zshrc.d/10-autoload.zsh" >> $HOME/.zshrc
+echo "source `pwd`/zshrc.d/20-completion.zsh" >> $HOME/.zshrc
+echo "source `pwd`/zshrc.d/30-setopt.zsh" >> $HOME/.zshrc
+echo "source `pwd`/zshrc.d/60-alias.zsh" >> $HOME/.zshrc
+echo "source \$HOME/.scripts/cmdnotif.sh" >> $HOME/.zshrc
 
+
+# ----------------------------------------------------
 # Put symbolic links.
+# ----------------------------------------------------
 
-# ------------------------
 # .gitmessage
-# ------------------------
 ln -sf `pwd`/.gitmessage $HOME/.gitmessage
 
-# ------------------------
 # .gitignore_global
-# ------------------------
 ln -sf `pwd`/.gitignore_global $HOME/.gitignore_global
 git config --global core.excludesfile $HOME/.gitignore_global	
 
-# ------------------------
 # .tmux.conf
-# ------------------------
 ln -sf `pwd`/.tmux.conf.linux $HOME/.tmux.conf
 
-# ------------------------
 # starship.toml
-# ------------------------
 ln -sf `pwd`/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
 
-# ------------------------
-# vim config files
-# ------------------------
-# vim color file
-mkdir -p "$XDG_CONFIG_HOME/nvim/colors"
-ln -sf `pwd`/.config/nvim/colors/hybrid.vim $XDG_CONFIG_HOME/nvim/colors/hybrid.vim
-
+# vim config file
 ln -sf `pwd`/.vimrc $HOME/.vimrc
+
+# vim color file
+mkdir -p "$HOME/.vim/colors"
+ln -sf `pwd`/.config/nvim/colors/hybrid.vim $XDG_CONFIG_HOME/nvim/colors/hybrid.vim
 
 # vim skeleton files
 mkdir -p $XDG_CONFIG_HOME/nvim/templates
 ln -sf `pwd`/.config/nvim/templates/skeleton.sh $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
 
-# ------------------------
 # Utility scripts
-# ------------------------
 ln -sf `pwd`/.scripts/cmdnotif.sh $HOME/.scripts/cmdnotif.sh
