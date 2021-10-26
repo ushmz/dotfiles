@@ -17,8 +17,8 @@ alias cat='bat'
 alias find='fd'
 alias ls="exa -gh --time-style=long-iso"
 alias ll="ls -lF --group-directories-first --icons"
-alias la="ls -alF --group-directories-first --icons"
-alias gitls="exa -gl --git --git-ignore --time-style=long-iso --group-directories-first --icons"
+alias la="ll -a"
+alias gitls="ll --git --git-ignore"
 alias src="cd `ghq root`"
 alias ldoc="lazydocker"
 # alias silicon="silicon --theme OneHalfDark"
@@ -26,6 +26,9 @@ alias ldoc="lazydocker"
 # clean cache
 alias 'pipcc'='rm -rf ~/Library/Caches/pip'
 alias 'mavencc'='rm -rf ~/.m2/repository'
+
+alias vi='nvim'
+alias vim='nvim'
 
 ##########################################################
 # peco aliases
