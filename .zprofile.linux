@@ -1,0 +1,8 @@
+
+export LS_COLORS="di=01;32;"
+
+export PATH="$HOME/.scripts:$PATH"
+
+# XDG_CONFIG_HOME
+export XDG_CONFIG_HOME=$HOME/.config
+

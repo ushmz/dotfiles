@@ -52,3 +52,6 @@ repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
 repo = 'simeji/winresizer'
+
+[[plugins]]
+repo = 'wakatime/vim-wakatime'

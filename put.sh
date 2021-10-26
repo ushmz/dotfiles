@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 # ----------------------------------------------------------
 # Remove `~/.zprofile` if exists, and write my `.zprofile`.
 # ----------------------------------------------------------
