@@ -19,10 +19,13 @@ function notify_precmd {
 
     # Define blacklist
     if [ "$cmd" = 'uvicorn' ] \
+        || ( [ "$cmd" = 'air' ] ) \
         || ( [ "$cmd" = 'go' ] && [ "$subcmd" = 'run' ] ) \
+        || ( [ "$cmd" = 'cargo' ] && [ "$subcmd" = 'watch' ] ) \
         || ( [ "$cmd" = 'gatsby' ] && [ "$subcmd" = 'develop' ] ) \
         || ( [ "$cmd" = 'flutter' ] && [ "$subcmd" = 'run' ] ) \
         || ( [ "$cmd" = 'npm' ] && [ "$subcmd" = 'start' ] ) \
+        || ( [ "$cmd" = 'yarn' ] && [ "$subcmd" = 'dev' ] ) \
         || ( [ "$cmd" = 'yarn' ] && [ "$subcmd" = 'start' ] ); then
         return
     fi
