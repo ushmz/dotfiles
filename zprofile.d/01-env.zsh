@@ -64,7 +64,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # postgres
 export PGDATA="/usr/local/var/postgres"
 
-# neovim
+# XDG_CONFIG_HOME
 export XDG_CONFIG_HOME=$HOME/.config
 
 # nnn

@@ -1,6 +1,7 @@
 define _help
 	echo 'Apue!!'
-	echo "up\t: Put all config files"
+	echo "up\t: Put all config files(Works on darwin)"
+	echo "upl\t: Put all config files(Works on linux)"
 	echo "install\t: Install brew packages"
 	echo "vim\t: Put .vimrc(For vim, not for nvim)"
 endef
@@ -15,10 +16,16 @@ install: ./install.sh
 	sh `pwd`/install.sh
 
 # ---------------------
-# Put config files
+# Put config files (Works on Darwin)
 # ---------------------
 up: ./put.sh
 	sh `pwd`/put.sh
+
+# ---------------------
+# Put config files (Works on linux)
+# ---------------------
+upl: ./putl.sh
+	sh `pwd`/putl.sh
 
 # ---------------------
 # Put config files and install brew packages

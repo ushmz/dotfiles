@@ -4,6 +4,9 @@
 alias c='clear'
 alias so='source'
 
+alias ll="ls -lF --group-directories-first"
+alias la="ls -alF --group-directories-first"
+
 alias '...'='cd ../../'
 alias '....'='cd ../../../'
 alias delds='/usr/bin/find . -name ".DS_Store" | xargs rm'
