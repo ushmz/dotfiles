@@ -47,8 +47,11 @@ repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 
+# [[plugins]]
+# repo = 'nathanaelkane/vim-indent-guides'
+
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'simeji/winresizer'
