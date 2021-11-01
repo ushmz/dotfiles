@@ -10,3 +10,7 @@ HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000  # save in RAM
 SAVEHIST=1000000 # save in file
 
+# less command highlighting
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R '
