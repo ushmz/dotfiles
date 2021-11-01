@@ -76,17 +76,11 @@ filetype plugin indent on
 " -------------------------------
 "  autocmd
 " -------------------------------
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=237
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
-autocmd BufNewFile,BufRead *.tsx set tabstop=2
-autocmd BufNewFile,BufRead *.tsx set shiftwidth=2
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-autocmd BufNewFile,BufRead *.tsx let g:indent_guides_enable_on_vim_startup=1
-autocmd BufNewFile,BufRead *.tsx let g:indent_guides_guide_size = 1
-autocmd BufNewFile,BufRead *.tsx let g:indent_guides_start_level = 2
-
+autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType typescript set tabstop=2 shiftwidth=2 softtabstop=2
 
 " -------------------------------
 "  templates
@@ -196,85 +190,6 @@ let g:closetag_close_shortcut = '<leader>>'
 let g:winresizer_vert_resize = 1
 let g:winresizer_horiz_resize = 1
 
-" indent-guide
-" let g:indent_guides_enable_on_vim_startup=1
-" let g:indent_guides_guide_size = 1
-" let g:indent_guides_start_level = 2
-
 " indentLine
 " ['¦', '┆', '┊', '|']
 let g:indentLine_char_list = ['¦', '┆']
-
-"--------------------------------
-" Variables
-"--------------------------------
-let g:go_disable_autoinstall = 1
-let g:vim_json_syntax_conceal = 0
-let g:jsx_ext_required = 0
-let g:coc_filetype_map = 1
-
-
-"--------------------------------
-" lightline appearance(plugin)
-"--------------------------------
-let g:lightline = {
-      \ 'colorscheme': 'seoul256'
-      \ }
-let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-        \ },
-        \ 'component_function': {
-        \   'modified': 'LightlineModified',
-        \   'readonly': 'LightlineReadonly',
-        \   'fugitive': 'LightlineFugitive',
-        \   'filename': 'LightlineFilename',
-        \   'fileformat': 'LightlineFileformat',
-        \   'filetype': 'LightlineFiletype',
-        \   'fileencoding': 'LightlineFileencoding',
-        \   'mode': 'LightlineMode'
-        \ }
-        \ }
-
-function! LightlineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
-  else
-    return ''
-  endif
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction

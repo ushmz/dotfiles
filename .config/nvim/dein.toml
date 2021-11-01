@@ -2,7 +2,7 @@
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 on_i = 1
-merged = '0'
+merged = 0
 hook_add = """
 source ~/.config/nvim/plugins/coc.rc.vim
 """
@@ -43,12 +43,12 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = """
+source ~/.config/nvim/plugins/lightline.rc.vim
+"""
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
-
-# [[plugins]]
-# repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
