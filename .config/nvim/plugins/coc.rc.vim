@@ -1,3 +1,8 @@
+" Filetype alternate mapping
+let g:coc_filetype_map = {
+    \ 'xhtml': 'html',
+    \}
+
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
 nmap <silent> g] <Plug>(coc-diagnostic-next)

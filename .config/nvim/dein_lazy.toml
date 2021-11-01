@@ -1,23 +1,52 @@
 [[plugins]]
+repo = 'mattn/vim-maketable'
+on_ft = ['markdown']
+
+[[plugins]]
+repo='alvan/vim-closetag'
+on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
+
+[[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
+hook_source = """
+    let g:jsx_ext_required = 0
+"""
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+hook_source = """
+    let g:vim_json_syntax_conceal = 0
+"""
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
-repo = 'mattn/vim-maketable'
-on_ft = ['markdown']
+repo='styled-components/vim-styled-components'
+on_ft = ['javascript.jsx', 'typescript.tsx', 'typescriptreact']
+
+[[plugins]]
+repo = 'jmcantrell/vim-virtualenv'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = ['python']
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = ['rust']
+hook_source = '''
+  let g:rustfmt_autosave = 1
+'''
 
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
-hook_add = '''
+hook_source = """
   " Auto import on save
   let g:go_fmt_command = "goimports"
   " Make them off that leave to LSP
@@ -29,16 +58,17 @@ hook_add = '''
   let g:go_highlight_types = 1
   let g:go_highlight_operators = 1
   let g:go_highlight_build_constraints = 1
-'''
+  let g:go_disable_autoinstall = 1
+"""
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
 build = 'make'
 on_ft = ['go']
 depends = ['deoplete.nvim']
-hook_source = '''
+hook_source = """
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-'''
+"""
 
 [[plugins]]
 repo = 'dart-lang/dart-vim-plugin'
@@ -51,19 +81,3 @@ on_ft = ['dart']
 [[plugins]]
 repo = 'udalov/kotlin-vim'
 on_ft = ['kotlin']
-
-[[plugins]]
-repo = 'jmcantrell/vim-virtualenv'
-on_ft = ['python']
-
-[[plugins]]
-repo = 'Vimjas/vim-python-pep8-indent'
-on_ft = ['python']
-
-[[plugins]]
-repo='alvan/vim-closetag'
-on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
-
-[[plugins]]
-repo='styled-components/vim-styled-components'
-on_ft = ['javascript.jsx', 'typescript.tsx', 'typescriptreact']
