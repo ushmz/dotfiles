@@ -6,20 +6,20 @@ module.exports = {
   config: {
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
-    updateChannel: 'stable',
+    updateChannel: "stable",
 
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 14,
 
     // font family with optional fallbacks
     // fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace, "FiraCode Nerd Font"',
-    fontFamily: 'Hack Nerd Font',
+    fontFamily: "Hack Nerd Font",
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: 'normal',
+    fontWeight: "Regular",
 
     // font weight for bold characters: 'normal' or 'bold'
-    fontWeightBold: 'bold',
+    fontWeightBold: "Bold",
 
     // line height as a relative unit
     lineHeight: 1,
@@ -28,84 +28,85 @@ module.exports = {
     letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: '#C6C8D1',
+    cursorColor: "#C6C8D1",
 
     // terminal text color under BLOCK cursor
-    cursorAccentColor: '#000',
+    cursorAccentColor: "#000",
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: 'BLOCK',
+    cursorShape: "BLOCK",
 
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: false,
 
     // color of the text
-    foregroundColor: '#FFFFFB',
+    foregroundColor: "#a691b3",
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: 'rgb(22, 24, 33, 0.7)',
-    
+    // backgroundColor: "rgb(22, 24, 33, 0.7)",
+    backgroundColor: "rgba(166, 145, 179, 0.7)"
+
     // Configuration of `hypermaterial-vibrancy`
     // OPTIONS: From 0.1 to 1 (DEFAULT: 0.8)
     // backgroundOpacity: '0.9',
-    
+
     // terminal selection color
-    selectionColor: 'rgba(39, 44, 66, 0.4)',
+    selectionColor: "rgba(39, 44, 66, 0.4)",
 
     // border color (window, tabs)
-    borderColor: 'rgb(22, 24, 33)',
+    borderColor: "rgb(22, 24, 33)",
 
     // custom CSS to embed in the main window
-    css: '',
+    css: "",
 
     // custom CSS to embed in the terminal window
-    termCSS: '',
+    termCSS: "",
 
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
-    showHamburgerMenu: '',
+    showHamburgerMenu: "",
 
     // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
     // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
-    showWindowControls: '',
+    showWindowControls: "",
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '12px 14px',
+    padding: "12px 14px",
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: '#000000',
-      red: '#C51E14',
-      green: '#1DC121',
-      yellow: '#C7C329',
-      blue: '#0A2FC4',
-      magenta: '#C839C5',
-      cyan: '#20C5C6',
-      white: '#C7C7C7',
-      lightBlack: '#686868',
-      lightRed: '#FD6F6B',
-      lightGreen: '#67F86F',
-      lightYellow: '#FFFA72',
-      lightBlue: '#6A76FB',
-      lightMagenta: '#FD7CFC',
-      lightCyan: '#68FDFE',
-      lightWhite: '#FFFFFF',
-      iceberg: 'rgb(22, 24, 33)',
-      icebergOpacity: 'rgba(22, 24, 33, 0,6)'
+      black: "#35383b",
+      red: "#b05655",
+      green: "#769972",
+      yellow: "#e1a574",
+      blue: "#7693ac",
+      magenta: "#977ba0",
+      cyan: "#749e99",
+      white: "#848b92",
+      lightBlack: "#484c52",
+      lightRed: "#d27c7b",
+      lightGreen: "#dffebe",
+      lightYellow: "#f0d189",
+      lightBlue: "#96b1c9",
+      lightMagenta: "#bfa5c7",
+      lightCyan: "#9fc9c3",
+      lightWhite: "#fcf7e2",
+      iceberg: "rgb(22, 24, 33)",
+      icebergOpacity: "rgba(22, 24, 33, 0,6)",
     },
-    
+
     // pokemon: 'random',
     // pokecursor: 'true',
     // unibody: 'true',
     // poketab: 'true',
     // opacity: 0.8,
-    
+
     summon: {
-      hotkey: 'Ctrl+H'
+      hotkey: "Ctrl+H",
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -120,11 +121,11 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '',
+    shell: "",
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
-    shellArgs: ['--login'],
+    shellArgs: ["--login"],
 
     // for environment variables
     env: {},
@@ -133,7 +134,7 @@ module.exports = {
     // windowSize: [1000, 1000],
 
     // set to `false` for no bell
-    bell: 'SOUND',
+    bell: "SOUND",
 
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
     copyOnSelect: false,
@@ -148,7 +149,7 @@ module.exports = {
     // choose either `'vertical'`, if you want the column mode when Option key is hold during selection (Default)
     // or `'force'`, if you want to force selection regardless of whether the terminal is in mouse events mode
     // (inside tmux or vim with mouse mode enabled for example).
-    macOptionSelectionMode: 'vertical',
+    // macOptionSelectionMode: "vertical",
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
@@ -159,9 +160,9 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
     overlay: {
-      animate: true,
-      hideOnBlur: true,
-    }
+      // animate: true,
+      // hideOnBlur: true,
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -170,19 +171,20 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    'hyper-search',
-    'hyper-statusline', 
-    'hyper-tab-icons-plus',
-    'hypercwd',
-    'hyperlinks',
-    'hyperterm-summon',
-    // 'hypermaterial-vibrancy',
-    // 'hyper-pokemon',
-    // 'hyper-opacity', 
-    // 'hyper-material-theme',
-    // "hyper-hypest",
-    ],
+  //
+  // plugins: [
+  //   "hyper-search",
+  //   "hyper-statusline",
+  //   "hyper-tab-icons-plus",
+  //   "hypercwd",
+  //   "hyperlinks",
+  //   "hyperterm-summon",
+  //   // 'hypermaterial-vibrancy',
+  //   // 'hyper-pokemon',
+  //   // 'hyper-opacity',
+  //   // 'hyper-material-theme',
+  //   // "hyper-hypest",
+  // ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
