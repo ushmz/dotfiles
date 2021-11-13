@@ -1,2 +1,2 @@
-
-autoload -Uz compinit && compinit
+autoload colors
+colors
