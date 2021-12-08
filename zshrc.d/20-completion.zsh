@@ -62,6 +62,8 @@ zstyle ':completion:*:sudo:*' command-path /usr/bin
 
 # Alcaritty auto complation setting
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+# asdf complation setting
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # less command highlighting
 LESSPIPE=`which src-hilite-lesspipe.sh`
