@@ -1,6 +1,5 @@
 
 # Highlighting completion
-autoload -Uz compinit && compinit
 zstyle ':completion:*:default' menu select=2
 
 zstyle ':completion:*' verbose yes
@@ -68,3 +67,5 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R '
+
+autoload -Uz compinit && compinit

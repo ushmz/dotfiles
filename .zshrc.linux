@@ -3,6 +3,6 @@
 source ./zshrc.d/10-autoload.zsh
 source ./zshrc.d/20-completion.zsh
 source ./zshrc.d/30-setopt.zsh
-source ./zshrc.d/60-alias.zsh
+source ./zshrc.d/50-alias.zsh
 
 source ~/.scripts/cmdnotif.sh
