@@ -22,24 +22,11 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
-##########################################################
-# Virtual Environments
-##########################################################
-# jenv
-export PATH="$HOME/.jenv/bin:$PATH"
+# asdf (Language version manager)
+. /usr/local/opt/asdf/libexec/asdf.sh
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
-
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# exenv
-export PATH="$HOME/.exenv/bin:$PATH"
+# asdf jenv
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 ##########################################################
 # Development Tools
