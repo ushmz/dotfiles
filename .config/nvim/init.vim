@@ -55,6 +55,9 @@ set textwidth=0
 set expandtab
 set autoindent
 
+" East Asian Width class ambiguous
+set ambiwidth=double
+
 " disable screen bell
 set novisualbell
 

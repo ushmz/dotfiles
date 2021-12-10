@@ -3,7 +3,7 @@
 "      \ -columns=indent:mark:icon:icons:filename:git:size
 "      \ -buffer-name=tab`tabpagenr()`<CR>
 nnoremap <silent>sf :<C-u>Defx -listed -resume
-      \ -columns=indent:mark:icon:icons:filename:git:size
+      \ -columns=indent:mark:icon:icons:mark:filename:git:size
       \ -buffer-name=tab`tabpagenr()`
       \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
 nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
@@ -35,7 +35,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('new_multiple_files')
 	  nnoremap <silent><buffer><expr> C
 	  \ defx#do_action('toggle_columns',
-	  \                'mark:indent:icon:filename:type:size:time')
+	  \                'mark:indent:icon:mark:filename:type:size:time')
 	  nnoremap <silent><buffer><expr> S
 	  \ defx#do_action('toggle_sort', 'time')
 	  nnoremap <silent><buffer><expr> d
