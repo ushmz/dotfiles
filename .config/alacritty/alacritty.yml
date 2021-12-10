@@ -18,10 +18,10 @@ font:
 
 east_asian_fullwidth: true
 
-mouse:
-    url:
-        launcher: open
-        modifiers: None
+# mouse:
+#     url:
+#         launcher: open
+#         modifiers: None
 
 selection:
     save_to_clipboard: true
