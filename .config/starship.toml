@@ -26,18 +26,19 @@ renamed = "🏷 ×${count} "
 deleted = "🗑 ×${count} "
 format = '([\[ $all_status$ahead_behind\]]($style) )'
 
+[username]
+style_user = "bold blue"
+style_root = "bold red"
+format = "[$user]($style)"
+show_always = false
+
 [hostname]
-ssh_only = false
-format = "<[$hostname]($style)>"
+ssh_only = true
+format = "@[$hostname]($style) "
 trim_at = "-"
-style = "bold dimmed white"
-disabled = true
+style = "bold blue"
+disabled = false
 
 [package]
 disabled = true
 
-[username]
-style_user = "bold blue"
-style_root = "bold red"
-format = "[$user]($style) "
-show_always = false
