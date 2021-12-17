@@ -19,13 +19,6 @@ augroup END
 
 
 "--------------------------------
-" python path setting
-"--------------------------------
-let g:python3_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
-let g:python_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
-
-
-"--------------------------------
 " Key binding
 "--------------------------------
 inoremap <silent> jj <ESC>
@@ -54,9 +47,6 @@ set shiftwidth=4
 set textwidth=0
 set expandtab
 set autoindent
-
-" East Asian Width class ambiguous
-set ambiwidth=double
 
 " disable screen bell
 set novisualbell
