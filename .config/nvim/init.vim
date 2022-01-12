@@ -22,6 +22,10 @@ augroup END
 " Key binding
 "--------------------------------
 inoremap <silent> jj <ESC>
+" Switch the line with the above line
+nnoremap MM ddkkp
+" Switch the line with the below line
+nnoremap mm ddp
 nnoremap ; :
 xnoremap ; :
 " Emacs key bind in Insert mode
@@ -34,6 +38,13 @@ imap <C-e> <End>
 imap <C-d> <Del>
 imap <C-h> <BS>
 
+" Auto-close bracket(Use instead of plugin "jiangmiao/auto-pairs")
+" inoremap { {}<LEFT>
+" inoremap [ []<LEFT>
+" inoremap ( ()<LEFT>
+" inoremap < <><LEFT>
+" inoremap " ""<LEFT>
+" inoremap ' ''<LEFT>
 
 "--------------------------------
 " Appearance
