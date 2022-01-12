@@ -94,3 +94,10 @@ alias venv='sourse_pyenv'
 function pslist() {
     ps aux | peco | awk '{print $2}'
 }
+
+# Convert movie file to gif.
+# $1 : Input file name
+# $2 : Output file name
+function mov2gif() {
+    ffmpeg -i $1 -filter_complex "[0:v] fps=10,split [a][b];[a] palettegen [p];[b][p] paletteuse=dither=none" $2
+}
