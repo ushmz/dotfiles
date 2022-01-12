@@ -4,10 +4,13 @@ rev = 'release'
 on_i = 1
 merged = 0
 hook_add = """
-source ~/.config/nvim/plugins/coc.rc.vim
+    source ~/.config/nvim/plugins/coc.rc.vim
 """
 
 [[plugins]]
+hook_add = """
+    let g:dein#auto_recache = 1
+"""
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
@@ -58,3 +61,4 @@ repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
+

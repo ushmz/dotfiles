@@ -8,7 +8,6 @@ scriptencoding utf-8
 " Stop loading vimrc when `tiny` or `small`
 if !1 | finish | endif
 
-
 "--------------------------------
 " auto reload .vimrc
 "--------------------------------
@@ -22,6 +21,10 @@ augroup END
 " Key binding
 "--------------------------------
 inoremap <silent> jj <ESC>
+" Switch the line with the above line
+nnoremap MM ddkkp
+" Switch the line with the below line
+nnoremap mm ddp
 nnoremap ; :
 xnoremap ; :
 " Emacs key bind in Insert mode
@@ -34,6 +37,13 @@ imap <C-e> <End>
 imap <C-d> <Del>
 imap <C-h> <BS>
 
+" Auto-close bracket(Use instead of plugin "jiangmiao/auto-pairs")
+" inoremap { {}<LEFT>
+" inoremap [ []<LEFT>
+" inoremap ( ()<LEFT>
+" inoremap < <><LEFT>
+" inoremap " ""<LEFT>
+" inoremap ' ''<LEFT>
 
 "--------------------------------
 " Appearance
@@ -69,6 +79,7 @@ filetype plugin indent on
 " -------------------------------
 "  autocmd
 " -------------------------------
+autocmd BufReadPost *.kt setlocal filetype=kotlin
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1

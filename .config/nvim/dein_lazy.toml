@@ -3,7 +3,7 @@ repo = 'mattn/vim-maketable'
 on_ft = ['markdown']
 
 [[plugins]]
-repo='alvan/vim-closetag'
+repo = 'alvan/vim-closetag'
 on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
@@ -25,7 +25,7 @@ repo = 'prabirshrestha/async.vim'
 on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
-repo='styled-components/vim-styled-components'
+repo = 'styled-components/vim-styled-components'
 on_ft = ['javascript.jsx', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
@@ -48,7 +48,7 @@ repo = 'fatih/vim-go'
 on_ft = ['go']
 hook_source = """
   " Auto import on save
-  let g:go_fmt_command = "goimports"
+  let g:go_fmt_command = "gopls"
   " Make them off that leave to LSP
   let g:go_def_mapping_enabled = 0
   let g:go_doc_keywordprg_enabled = 0
@@ -59,25 +59,50 @@ hook_source = """
   let g:go_highlight_operators = 1
   let g:go_highlight_build_constraints = 1
   let g:go_disable_autoinstall = 1
+
+  " let g:go_metalinter_autosave=1
+  " let g:go_metalinter_autosave_enabled=['golint', 'govet']
 """
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
-build = 'make'
-on_ft = ['go']
-depends = ['deoplete.nvim']
-hook_source = """
-    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-"""
-
-[[plugins]]
+on_ft = ['dart']
 repo = 'dart-lang/dart-vim-plugin'
-on_ft = ['dart']
 
 [[plugins]]
+on_ft = ['dart']
 repo = 'thosakwe/vim-flutter'
-on_ft = ['dart']
 
 [[plugins]]
-repo = 'udalov/kotlin-vim'
 on_ft = ['kotlin']
+repo = 'udalov/kotlin-vim'
+
+[[plugins]]
+on_ft = 'toml'
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+hook_add = '''
+  let g:shfmt_extra_args = '-i 4 -ci -bn -s'
+  let g:shfmt_fmt_on_save = 1
+'''
+on_ft = ["sh", "bash", "zsh"]
+repo = "z0mbix/vim-shfmt"
+
+# [[plugins]]
+# hook_add = '''
+#     let g:OmniSharp_server_use_mono = 1
+#     nnoremap <silent> <buffer> ma :OmniSharpAddToProject<CR>
+#     nnoremap <silent> <buffer> mb :OmniSharpBuild<CR>
+#     nnoremap <silent> <buffer> mc :OmniSharpFindSyntaxErrors<CR>
+#     nnoremap <silent> <buffer> mf :OmniSharpCodeFormat<CR>
+#     nnoremap <silent> <buffer> mj :OmniSharpGotoDefinition<CR>
+#     nnoremap <silent> <buffer> <C-w>mj <C-w>s:OmniSharpGotoDefinition<CR>
+#     nnoremap <silent> <buffer> mi :OmniSharpFindImplementations<CR>
+#     nnoremap <silent> <buffer> mr :OmniSharpRename<CR>
+#     nnoremap <silent> <buffer> mt :OmniSharpTypeLookup<CR>
+#     nnoremap <silent> <buffer> mu :OmniSharpFindUsages<CR>
+#     nnoremap <silent> <buffer> mx :OmniSharpGetCodeActions<CR>
+# '''
+# on_ft = ['cs']
+# repo = 'OmniSharp/omnisharp-vim'
+# repo = 'OmniSharp/omnisharp-roslyn'
