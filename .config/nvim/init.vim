@@ -8,7 +8,6 @@ scriptencoding utf-8
 " Stop loading vimrc when `tiny` or `small`
 if !1 | finish | endif
 
-
 "--------------------------------
 " auto reload .vimrc
 "--------------------------------
@@ -80,6 +79,7 @@ filetype plugin indent on
 " -------------------------------
 "  autocmd
 " -------------------------------
+autocmd BufReadPost *.kt setlocal filetype=kotlin
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
