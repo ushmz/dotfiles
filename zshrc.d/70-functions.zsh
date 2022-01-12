@@ -11,8 +11,10 @@
 
 # typo hook
 function command_not_found_handler(){
-    if [ -e ~/.scripts/typo.sh ]; then
-        ~/.scripts/typo.sh
+    # if [ -e ~/.scripts/typo.sh ]; then
+    #     ~/.scripts/typo.sh
+    if type cowsay > /dev/null; then
+        cowsay " Command '$0' not found. "
     else
         echo "Command $0 not found."
     fi
