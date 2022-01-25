@@ -59,6 +59,3 @@ repo = 'Yggdroot/indentLine'
 [[plugins]]
 repo = 'simeji/winresizer'
 
-[[plugins]]
-repo = 'wakatime/vim-wakatime'
-
