@@ -25,19 +25,21 @@ staged = "🔦×${count} "
 renamed = "🏷 ×${count} "
 deleted = "🗑 ×${count} "
 format = '([\[ $all_status$ahead_behind\]]($style) )'
+disabled = true
+
+[username]
+style_user = "bold green"
+style_root = "bold red"
+format = "[$user]($style)"
+show_always = false
 
 [hostname]
 ssh_only = false
-format = "<[$hostname]($style)>"
+format = "@[$hostname]($style) "
 trim_at = "-"
-style = "bold dimmed white"
-disabled = true
+style = "bold green"
+disabled = false
 
 [package]
 disabled = true
 
-[username]
-style_user = "bold blue"
-style_root = "bold red"
-format = "[$user]($style) "
-show_always = false

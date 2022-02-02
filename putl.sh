@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+mkdir -p $HOME/.config
+XDG_CONFIG_HOME=$HOME/.config
+
 # ----------------------------------------------------------
 # Remove `~/.zprofile` if exists, and write my `.zprofile`.
 # ----------------------------------------------------------
@@ -51,11 +54,16 @@ ln -sf `pwd`/.vimrc $HOME/.vimrc
 
 # vim color file
 mkdir -p "$HOME/.vim/colors"
+mkdir -p "$XDG_CONFIG_HOME/nvim/colors"
+ln -sf `pwd`/.config/nvim/colors/hybrid.vim $HOME/.vim/colors/hybrid.vim
 ln -sf `pwd`/.config/nvim/colors/hybrid.vim $XDG_CONFIG_HOME/nvim/colors/hybrid.vim
 
 # vim skeleton files
+mkdir -p $HOME/.vim/templates
 mkdir -p $XDG_CONFIG_HOME/nvim/templates
+ln -sf `pwd`/.config/nvim/templates/skeleton.sh $HOME/.vim/templates/skeleton.sh
 ln -sf `pwd`/.config/nvim/templates/skeleton.sh $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
 
 # Utility scripts
+mkdir -p $HOME/.scripts
 ln -sf `pwd`/.scripts/cmdnotif.sh $HOME/.scripts/cmdnotif.sh

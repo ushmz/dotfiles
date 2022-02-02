@@ -1,11 +1,11 @@
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-on_i = 1
-merged = 0
-hook_add = """
-source ~/.config/nvim/plugins/coc.rc.vim
-"""
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# rev = 'release'
+# on_i = 1
+# merged = 0
+# hook_add = """
+# source ~/.config/nvim/plugins/coc.rc.vim
+# """
 
 [[plugins]]
 repo = 'Shougo/dein.vim'
@@ -17,11 +17,11 @@ hook_add = """
 source ~/.config/nvim/plugins/defx.rc.vim
 """
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = """
-source ~/.config/nvim/plugins/denite.rc.vim
-"""
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_add = """
+# source ~/.config/nvim/plugins/denite.rc.vim
+# """
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
@@ -55,6 +55,3 @@ repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'simeji/winresizer'
-
-[[plugins]]
-repo = 'wakatime/vim-wakatime'
