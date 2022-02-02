@@ -21,8 +21,8 @@ augroup END
 "--------------------------------
 " python path setting
 "--------------------------------
-let g:python3_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
-let g:python_host_prog = '/Users/ushmz/.config/nvim/pynvim/bin/python'
+let g:python3_host_prog = '/home/yusuk/.config/nvim/venv/bin/python'
+let g:python_host_prog = '/home/yusuk/.config/nvim/venv/bin/python'
 
 
 "--------------------------------

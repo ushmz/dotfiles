@@ -1,11 +1,18 @@
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-on_i = 1
-merged = 0
-hook_add = """
-source ~/.config/nvim/plugins/coc.rc.vim
-"""
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# rev = 'release'
+# on_i = 1
+# merged = 0
+# hook_add = """
+# source ~/.config/nvim/plugins/coc.rc.vim
+# """
+#
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_add = """
+# source ~/.config/nvim/plugins/denite.rc.vim
+# """
+
 
 [[plugins]]
 repo = 'Shougo/dein.vim'
@@ -15,12 +22,6 @@ repo = 'Shougo/defx.nvim'
 depends = ['defx-git', 'defx-icons']
 hook_add = """
 source ~/.config/nvim/plugins/defx.rc.vim
-"""
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = """
-source ~/.config/nvim/plugins/denite.rc.vim
 """
 
 [[plugins]]
