@@ -112,4 +112,3 @@ nnoremap <silent> ;f :<C-u>Denite file/rec<CR>
 nnoremap <silent> ;; :<C-u>Denite command command_history<CR>
 nnoremap <silent> ;p :<C-u>Denite -resume<CR>
  
-

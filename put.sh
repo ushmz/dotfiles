@@ -3,6 +3,7 @@ set -e
 
 # Make directory for cdr
 mkdir -p $HOME/.cache/shell
+mkdir -p $HOME/.config
 export XDG_CONFIG_HOME=$HOME/.config
 
 # ----------------------------------------------------------
@@ -11,7 +12,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 if [ -L $HOME/.zprofile ]; then
     unlink $HOME/.zprofile
 fi
-echo "#\!/bin/zsh\nfor i in \$(command ls `pwd`/zprofile.d/*.zsh | sort)\ndo\n  source \$i\ndone" > $HOME/.zprofile
+ln -sf `pwd`/.zprofile $HOME/.zprofile
 
 # ----------------------------------------------------
 # Remove `~/.zshrc` if exists, and write my `.zshrc`.
@@ -19,18 +20,11 @@ echo "#\!/bin/zsh\nfor i in \$(command ls `pwd`/zprofile.d/*.zsh | sort)\ndo\n  
 if [ -L $HOME/.zshrc ]; then
     unlink $HOME/.zshrc
 fi
-echo "#\!/bin/zsh\nfor i in \$(command ls `pwd`/zshrc.d/*.zsh | sort)\ndo\n  source \$i\ndone" > $HOME/.zshrc
+ln -sf `pwd`/.zshrc $HOME/.zshrc
 
 # ----------------------------------------------------
 # Put symbolic links.
 # ----------------------------------------------------
-
-# .gitmessage
-ln -sf `pwd`/.gitmessage $HOME/.gitmessage
-
-# .gitignore_global
-ln -sf `pwd`/.gitignore_global $HOME/.gitignore_global
-git config --global core.excludesfile $HOME/.gitignore_global	
 
 # alacritty config file
 mkdir -p $XDG_CONFIG_HOME/alacritty/
@@ -41,6 +35,13 @@ ln -sf `pwd`/.tmux.conf $HOME/.tmux.conf
 
 # starship.toml
 ln -sf `pwd`/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
+
+# .gitmessage
+ln -sf `pwd`/.gitmessage $HOME/.gitmessage
+
+# .gitignore_global
+ln -sf `pwd`/.gitignore_global $HOME/.gitignore_global
+git config --global core.excludesfile $HOME/.gitignore_global	
 
 # .tigrc
 ln -sf `pwd`/.tigrc $HOME/.tigrc

@@ -1,0 +1,33 @@
+add_newline = true
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "🔌 "
+discharging_symbol = "⚡ "
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[directory]
+truncation_length = 100
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+
+[git_status]
+disabled = true
+
+[username]
+style_root = "bold red"
+style_user = "bold green"
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "@[$hostname]($style) "
+trim_at = "-"
+style = "bold green"
+disabled = false
+
+[package]
+disabled = true

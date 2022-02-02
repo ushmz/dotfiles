@@ -1,8 +1,9 @@
 #!/bin/sh
 set -e
 
-mkdir -p $HOME/.config
 mkdir -p $HOME/.cache/shell
+mkdir -p $HOME/.config
+XDG_CONFIG_HOME=$HOME/.config
 
 # ----------------------------------------------------------
 # Remove `~/.zprofile` if exists, and write my `.zprofile`.
@@ -10,12 +11,7 @@ mkdir -p $HOME/.cache/shell
 if [ -L $HOME/.zprofile ]; then
     unlink $HOME/.zprofile
 fi
-
-touch $HOME/.zprofile
-echo "export LS_COLORS=\"di=01;32;\"" >> $HOME/.zprofile
-echo "export PATH=\"\$HOME/.scripts:\$PATH\"" >> $HOME/.zprofile
-echo "# HOME/.config" >> $HOME/.zprofile 
-echo "export HOME/.config=\$HOME/.config" >> $HOME/.zprofile
+ln -sf `pwd`/linux.zprofile $HOME/.zprofile
 
 # ----------------------------------------------------
 # Remove `~/.zshrc` if exists, and write my `.zshrc`.
@@ -23,45 +19,59 @@ echo "export HOME/.config=\$HOME/.config" >> $HOME/.zprofile
 if [ -L $HOME/.zshrc ]; then
     unlink $HOME/.zshrc
 fi
-touch $HOME/.zshrc
-echo "#\!/bin/zsh" >> $HOME/.zshrc
-echo "source `pwd`/zshrc.d/10-autoload.zsh" >> $HOME/.zshrc
-echo "source `pwd`/zshrc.d/20-completion.zsh" >> $HOME/.zshrc
-echo "source `pwd`/zshrc.d/30-setopt.zsh" >> $HOME/.zshrc
-echo "source `pwd`/zshrc.d/50-alias.zsh" >> $HOME/.zshrc
-echo "source \$HOME/.scripts/cmdnotif.sh" >> $HOME/.zshrc
-
+ln -sf `pwd`/linux.zshrc $HOME/.zshrc
 
 # ----------------------------------------------------
 # Put symbolic links.
 # ----------------------------------------------------
+
+# .tmux.conf
+ln -sf `pwd`/linux.tmux.conf $HOME/.tmux.conf
+
+# starship.toml
+ln -sf `pwd`/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
 
 # .gitmessage
 ln -sf `pwd`/.gitmessage $HOME/.gitmessage
 
 # .gitignore_global
 ln -sf `pwd`/.gitignore_global $HOME/.gitignore_global
-git config --global core.excludesfile $HOME/.gitignore_global	
-
-# .tmux.conf
-ln -sf `pwd`/.tmux.conf.linux $HOME/.tmux.conf
-
-# starship.toml
-ln -sf `pwd`/.config/starship.toml $HOME/.config/starship.toml
+git config --local core.excludesfile $HOME/.gitignore_global	
 
 # vim config file
+mkdir -p $XDG_CONFIG_HOME/nvim/
 ln -sf `pwd`/.vimrc $HOME/.vimrc
+ln -sf `pwd`/.config/nvim/init.vim $XDG_CONFIG_HOME/nvim/init.vim
+
+# dein plugin files
+ln -sf `pwd`/.config/nvim/dein.toml $XDG_CONFIG_HOME/nvim/dein.toml
+ln -sf `pwd`/.config/nvim/dein_lazy.toml $XDG_CONFIG_HOME/nvim/dein_lazy.toml
+
+# coc setting file
+ln -sf `pwd`/.config/nvim/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
 
 # vim color file
 mkdir -p "$HOME/.vim/colors"
+mkdir -p "$XDG_CONFIG_HOME/nvim/colors"
 ln -sf `pwd`/.config/nvim/colors/hybrid.vim $HOME/.vim/colors/hybrid.vim
-ln -sf `pwd`/.config/nvim/colors/hybrid.vim $HOME/.config/nvim/colors/hybrid.vim
+ln -sf `pwd`/.config/nvim/colors/hybrid.vim $XDG_CONFIG_HOME/nvim/colors/hybrid.vim
 
 # vim skeleton files
-mkdir -p $HOME/.config/nvim/templates
+mkdir -p $HOME/.vim/templates
+mkdir -p $XDG_CONFIG_HOME/nvim/templates
 ln -sf `pwd`/.config/nvim/templates/skeleton.sh $HOME/.vim/templates/skeleton.sh
-ln -sf `pwd`/.config/nvim/templates/skeleton.sh $HOME/.config/nvim/templates/skeleton.sh
+ln -sf `pwd`/.config/nvim/templates/skeleton.sh $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
+
+# vim plugin `run command` files
+mkdir -p "$XDG_CONFIG_HOME/nvim/plugins"
+for rc in $(ls -I '*.md' `pwd`/.config/nvim/plugins/* | xargs -n 1 basename); do
+    ln -sf `pwd`/.config/nvim/plugins/$rc $XDG_CONFIG_HOME/nvim/plugins/$rc
+done
 
 # Utility scripts
 mkdir -p $HOME/.scripts
 ln -sf `pwd`/.scripts/cmdnotif.sh $HOME/.scripts/cmdnotif.sh
+
+# alacritty config file
+mkdir -p $XDG_CONFIG_HOME/alacritty/
+ln -sf `pwd`/.config/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
