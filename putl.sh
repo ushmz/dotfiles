@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+mkdir -p $HOME/.cache/shell
 mkdir -p $HOME/.config
 XDG_CONFIG_HOME=$HOME/.config
 

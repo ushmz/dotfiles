@@ -1,6 +1,5 @@
 
 # Highlighting completion
-autoload -Uz compinit && compinit
 zstyle ':completion:*:default' menu select=2
 
 zstyle ':completion:*' verbose yes
@@ -46,6 +45,7 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
     zstyle ':completion:*' recent-dirs-insert both
     zstyle ':chpwd:*' recent-dirs-max 500
     zstyle ':chpwd:*' recent-dirs-default true
+    # DO NOT forget to make this directory
     zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
     zstyle ':chpwd:*' recent-dirs-pushd true
 fi
@@ -63,8 +63,12 @@ zstyle ':completion:*:sudo:*' command-path /usr/bin
 
 # Alcaritty auto complation setting
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+# asdf complation setting
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # less command highlighting
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R '
+
+autoload -Uz compinit && compinit

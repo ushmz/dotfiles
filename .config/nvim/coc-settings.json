@@ -11,19 +11,29 @@
     "dart",
     "python"
   ],
-  "sh.enable": true,
-  "tsserver.enableJavascript": false,
-  "tsserver.tsdk": "~/.nodebrew/current/lib/node_modules/typescript/lib",
-  "tslint.enable": true,
   "eslint.packageManager": "yarn",
-  "eslint.nodePath": "~/.nodebrew/node/current",
+  "eslint.nodePath": "~/.asdf/shims/node",
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
+  "java.home": "~/.asdf/installs/java/adoptopenjdk-8.0.312+7",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    "kotlin": {
+      "command": "~/.config/coc/extensions/coc-kotlin-data/langServerInstall/server/bin/kotlin-language-server",
+      "filetypes": ["kotlin"]
+    }
+  },
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
-  "java.home": "~/.jenv/versions/11",
+  "sh.enable": true,
+  "suggest.noselect": false,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
@@ -50,5 +60,6 @@
     "snippet": "\ue60b",
     "typeParameter": "\uf728",
     "default": "\uf29c"
-  }
+  },
+  "tsserver.enableJavascript": false
 }

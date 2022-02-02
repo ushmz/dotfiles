@@ -35,7 +35,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('new_multiple_files')
 	  nnoremap <silent><buffer><expr> C
 	  \ defx#do_action('toggle_columns',
-	  \                'mark:indent:icon:filename:type:size:time')
+	  \                'mark:indent:icon:mark:filename:type:size:time')
 	  nnoremap <silent><buffer><expr> S
 	  \ defx#do_action('toggle_sort', 'time')
 	  nnoremap <silent><buffer><expr> d

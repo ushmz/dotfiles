@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+# Make directory for cdr
+mkdir -p $HOME/.cache/shell
 mkdir -p $HOME/.config
 export XDG_CONFIG_HOME=$HOME/.config
 

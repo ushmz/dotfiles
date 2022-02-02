@@ -11,8 +11,10 @@
 
 # typo hook
 function command_not_found_handler(){
-    if [ -e ~/.scripts/typo.sh ]; then
-        ~/.scripts/typo.sh
+    # if [ -e ~/.scripts/typo.sh ]; then
+    #     ~/.scripts/typo.sh
+    if type cowsay > /dev/null; then
+        cowsay " Command '$0' not found. "
     else
         echo "Command $0 not found."
     fi
@@ -91,4 +93,11 @@ alias venv='sourse_pyenv'
 # Show ps with peco
 function pslist() {
     ps aux | peco | awk '{print $2}'
+}
+
+# Convert movie file to gif.
+# $1 : Input file name
+# $2 : Output file name
+function mov2gif() {
+    ffmpeg -i $1 -filter_complex "[0:v] fps=10,split [a][b];[a] palettegen [p];[b][p] paletteuse=dither=none" $2
 }
