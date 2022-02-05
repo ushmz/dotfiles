@@ -185,6 +185,9 @@ if dein#check_install()
   call dein#install()
 endif
 
+" disable auto recache
+let g:dein#auto_recache = 0
+
 " vim-closetag
 let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
 let g:closetag_shortcut = '>'

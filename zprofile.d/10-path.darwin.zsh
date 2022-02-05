@@ -24,11 +24,18 @@ export PATH=$PATH:$GOBIN
 
 # Virtual Environments
 # --------------------------------------------------
-# exenv
-export PATH="$HOME/.exenv/bin:$PATH"
+# asdf (Language version manager)
+# . $(brew --prefix asdf)/asdf.sh
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# asdf jenv
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# exenv
+export PATH="$HOME/.exenv/bin:$PATH"
 
 # Tools
 # --------------------------------------------------

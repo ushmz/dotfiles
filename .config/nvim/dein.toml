@@ -36,13 +36,29 @@ source ~/.config/nvim/plugins/silicon.rc.vim
 """
 
 [[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
+[[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -51,10 +67,41 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 """
 
 [[plugins]]
-repo = 'tomtom/tcomment_vim'
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-
-[[plugins]]
-repo = 'simeji/winresizer'
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = """
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+    ensure_installed = {
+        'bash',
+        'css',
+        'dart',
+        'dockerfile',
+        'go',
+        'gomod',
+        'html',
+        'java',
+        'javascript',
+        'json',
+        'jsonc',
+        'kotlin',
+        'make',
+        'markdown',
+        'python',
+        'regex',
+        'rust',
+        'scss',
+        'toml',
+        'tsx',
+        'typescript',
+        'vim',
+        'yaml',
+    }
+}
+EOF
+"""

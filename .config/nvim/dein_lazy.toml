@@ -7,20 +7,6 @@ repo = 'alvan/vim-closetag'
 on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
-hook_source = """
-    let g:jsx_ext_required = 0
-"""
-
-[[plugins]]
-repo = 'elzr/vim-json'
-on_ft = ['json']
-hook_source = """
-    let g:vim_json_syntax_conceal = 0
-"""
-
-[[plugins]]
 repo = 'prabirshrestha/async.vim'
 on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
@@ -52,21 +38,17 @@ hook_source = """
   " Make them off that leave to LSP
   let g:go_def_mapping_enabled = 0
   let g:go_doc_keywordprg_enabled = 0
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_functions = 0
+  let g:go_highlight_methods = 0
+  let g:go_highlight_fields = 0
+  let g:go_highlight_types = 0
+  let g:go_highlight_operators = 0
+  let g:go_highlight_build_constraints = 0
   let g:go_disable_autoinstall = 1
-
+  let g:airline#extensions#ale#enabled = 1
   " let g:go_metalinter_autosave=1
   " let g:go_metalinter_autosave_enabled=['golint', 'govet']
 """
-
-[[plugins]]
-on_ft = ['dart']
-repo = 'dart-lang/dart-vim-plugin'
 
 [[plugins]]
 on_ft = ['dart']
@@ -75,10 +57,6 @@ repo = 'thosakwe/vim-flutter'
 [[plugins]]
 on_ft = ['kotlin']
 repo = 'udalov/kotlin-vim'
-
-[[plugins]]
-on_ft = 'toml'
-repo = 'cespare/vim-toml'
 
 [[plugins]]
 hook_add = '''

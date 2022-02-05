@@ -45,28 +45,23 @@ formulae=(
     fd         # A simple alternative to `find`.
     ripgrep    # A line-oriented search tool.
     procs      # A modern replacement for `ps`.
-    # Be careful. Repository is archived.
-    ytop       # A TUI system monitor.
 
     # Useful Commands
     ag
     jq
     navi
-    parallel
-    pandoc
     q
-    sift
+    # sift
     sl
     starship
     tmux
     wget
-    xmlstarlet
 
     # install developing tools
     ansible
     # awscli
     # aws-iam-authenticator
-    bazel
+    # bazel
     cocoapods
     docker-compose
     gcc
@@ -76,8 +71,6 @@ formulae=(
     # kubesec
     # kubernetes-cli
     make
-    mecab
-    mecab-ipadic
     mysql
     openssh
     openssl 
@@ -105,10 +98,7 @@ echo "--- install languages (NEED PASSWORD) ---"
 brew install go
 brew install kotlin
 brew install php
-brew install nodebrew
 brew install deno
-brew install python3
-brew install pyenv
 
 # haskell(stack)
 brew install stack
@@ -121,14 +111,13 @@ brew install dart
 # poetry
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
-# java
-brew cask install java
-brew install jenv
-brew tap AdoptOpenJDK/openjdk
-# Require Password
-brew cask install adoptopenjdk8
-brew cask install adoptopenjdk11
-brew cask install adoptopenjdk14
+# asdf
+brew install asdf
+
+# install languages by asdf (PATH configuration is in `.zprofile`)
+asdf install nodejs 14.18.3
+asdf install nodejs 16.13.2
+asdf install python 3.10.0
 
 ##########################################################
 # install mac desktop apps
@@ -143,10 +132,7 @@ casks=(
     docker
     font-hack-nerd-font
     google-japanese-ime
-    hyper
-    inkdrop
     iterm2
-    mendeley
     microsoft-teams
     notion
     postman
