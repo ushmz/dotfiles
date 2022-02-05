@@ -42,6 +42,13 @@ repo = 'tpope/vim-surround'
 repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
@@ -60,11 +67,6 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 """
 
 [[plugins]]
-# It seems that all installed parsers deleted every time
-# dein caches are updated (this`dein.toml` edited).
-# With `ensure_installed` option, parsers installation run every time I edit this.
-# Installed (and compiled) parsers can be found in neovim's `runtimepath`
-# path : ~/.cache/dein/.cache/init.vim/.dein/parser/
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = """
 lua <<EOF
