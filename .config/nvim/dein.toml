@@ -36,19 +36,7 @@ source ~/.config/nvim/plugins/silicon.rc.vim
 """
 
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
-
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
-
-[[plugins]]
 repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = """
-source ~/.config/nvim/plugins/lightline.rc.vim
-"""
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
@@ -58,3 +46,60 @@ repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'simeji/winresizer'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = """
+source ~/.config/nvim/plugins/lightline.rc.vim
+"""
+
+[[plugins]]
+# It seems that all installed parsers deleted every time
+# dein caches are updated (this`dein.toml` edited).
+# With `ensure_installed` option, parsers installation run every time I edit this.
+# Installed (and compiled) parsers can be found in neovim's `runtimepath`
+# path : ~/.cache/dein/.cache/init.vim/.dein/parser/
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = """
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+    ensure_installed = {
+        'bash',
+        'css',
+        'dart',
+        'dockerfile',
+        'go',
+        'gomod',
+        'html',
+        'java',
+        'javascript',
+        'json',
+        'jsonc',
+        'kotlin',
+        'make',
+        'markdown',
+        'python',
+        'regex',
+        'rust',
+        'scss',
+        'toml',
+        'tsx',
+        'typescript',
+        'vim',
+        'yaml',
+    }
+}
+EOF
+"""
