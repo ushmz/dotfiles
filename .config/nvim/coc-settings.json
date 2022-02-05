@@ -17,11 +17,6 @@
   "eslint.format.enable": true,
   "java.home": "~/.asdf/installs/java/adoptopenjdk-8.0.312+7",
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    },
     "kotlin": {
       "command": "~/.config/coc/extensions/coc-kotlin-data/langServerInstall/server/bin/kotlin-language-server",
       "filetypes": ["kotlin"]
