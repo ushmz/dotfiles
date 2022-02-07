@@ -13,7 +13,6 @@
 # source ~/.config/nvim/plugins/denite.rc.vim
 # """
 
-
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -23,6 +22,9 @@ depends = ['defx-git', 'defx-icons']
 hook_add = """
 source ~/.config/nvim/plugins/defx.rc.vim
 """
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'

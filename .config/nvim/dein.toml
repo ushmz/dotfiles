@@ -27,6 +27,9 @@ source ~/.config/nvim/plugins/denite.rc.vim
 """
 
 [[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
