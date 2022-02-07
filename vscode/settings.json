@@ -1,95 +1,120 @@
 {
-    /****************************************
-     * Editor settings
-     ****************************************/
-    "editor.fontFamily": "Source Code Pro",
+    // Reflect .vimrc for vim key binding
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "~/.vimrc",
+
+    // Editor settings
+    "editor.formatOnSave": true,
+    "editor.rulers": [72,79,120],
     "editor.suggestSelection": "first",
     "editor.quickSuggestions": {
         "comments": false,
         "strings": false,
         "other": true
       },
-    
-    "[java]": {
-        "editor.tabSize": 4,
-        "editor.rulers": [72,79,100]
+    // Auto save all files several seconds after focusing out (or stopping cursor)
+    "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+
+    // Language specific settings
+    "[go]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4
     },
     "[python]": {
-        "editor.tabSize": 4,
-        "editor.rulers": [72,79]
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4
     },
     "[javascript]": {
+        "editor.insertSpaces": true,
         "editor.tabSize": 2,
-        "editor.rulers": [72,79,120]
     },
     "[typescript]": {
+        "editor.insertSpaces": true,
         "editor.tabSize": 2,
-        "editor.rulers": [72,79,120]
     },
-    "[ruby]": {
+    "[typescriptreact]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+    },
+    "[json]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+    },
+    "[dart]": {
+        "editor.insertSpaces": true,
         "editor.tabSize": 2
     },
-    "[erb]": {
-        "editor.tabSize":2
+    "[rust]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
     },
+    "[markdown]": {
+        "editor.formatOnSave": true
+    },
+    "[shell]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[java]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+
+    // Suppress confirm popup when drag-and-drop to file explorer
     "explorer.confirmDragAndDrop": false,
 
-    /****************************************
-     * Workbench settings
-     ****************************************/
-    "workbench.colorTheme": "Iceberg",
+    // VSCode appearance settings
+    "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
+    "workbench.colorTheme": "Hybrid",
     "workbench.iconTheme": "vscode-icons",
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.preferredDarkColorTheme": "Hybrid",
+    "workbench.preferredLightColorTheme": "Hybrid",
     "workbench.colorCustomizations": {
         "[Iceberg]": {
-            "editor.selectionBackground": "#666b8a",
-            "editor.selectionHighlightBackground": "#43465c"
+            // Improve selection BG color
+            "editor.selectionBackground": "#666B8A",
+            "editor.selectionHighlightBackground": "#43465C"
+        },
+        "[Hybrid]": {
+            // Improve colors
+            "statusBar.background": "#333333FF"
         }
     },
-    
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    
-    /****************************************
-     * Go lang settings    
-     ****************************************/    
+    // Suppress new version notification
+    "vsicons.dontShowNewVersionMessage": true,
+
+    // Go settings
     "go.formatTool": "goimports",
-    
-    /****************************************
-     * Java settings
-     ****************************************/
-    "java.semanticHighlighting.enabled": true,
-    "java.debug.settings.hotCodeReplace": "auto",    
-    
-    /****************************************
-     * Python settings    
-     ****************************************/
-    "python.dataScience.sendSelectionToInteractiveWindow": false,
-    "python.dataScience.textOutputLimit": 0,
-    "python.dataScience.themeMatplotlibPlots": true,
-    "python.jediEnabled": false,
-    "python.pythonPath": "/usr/local/bin/python3",
-    
-    /****************************************
-     * Ruby settings
-     ****************************************/
-    "ruby.codeCompletion": "rcodetools",
-    "ruby.format": "rubocop",
-    "ruby.intellisense": "rubyLocate",
-    "ruby.useLanguageServer": true,
-    "ruby.lint": {
-        "reek": true,
-        "rubocop": true,
-        "ruby": true, //Runs ruby -wc
-        "fasterer": true,
-        "debride": true,
-        "ruby-lint": true
-    },
-    "ruby.locate": {
-        "exclude": "{**/@(test|spec|tmp|.*),**/@(test|spec|tmp|.*)/**,**/*_spec.rb}",
-        "include": "**/*.rb"
-    },
-    "emmet.includeLanguages": {
-        "erb": "html"
+    "go.docsTool": "godoc",
+
+    // Typescript settings
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+
+    // Use local jupyter
+    "jupyter.jupyterServerType": "local",
+    // Apply theme colors to plotted figures
+    "jupyter.themeMatplotlibPlots": true,
+    // [TODO] Trust external files
+    "security.workspace.trust.untrustedFiles": "open",
+
+    "editor.accessibilitySupport": "on",
+
+    // Used if no python path specified in workspace setting
+    "python.defaultInterpreterPath": "/Users/ushmz/.asdf/shims/python",
+
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
     }
-    
 }
