@@ -37,6 +37,10 @@ imap <C-e> <End>
 imap <C-d> <Del>
 imap <C-h> <BS>
 
+nnoremap <silent><nowait> tt :<C-u>tabnew<cr>
+nnoremap g] :tabnext<CR>
+nnoremap g[ :tabprevious<CR>
+
 " Auto-close bracket(Use instead of plugin "jiangmiao/auto-pairs")
 " inoremap { {}<LEFT>
 " inoremap [ []<LEFT>
@@ -44,6 +48,7 @@ imap <C-h> <BS>
 " inoremap < <><LEFT>
 " inoremap " ""<LEFT>
 " inoremap ' ''<LEFT>
+
 
 "--------------------------------
 " Appearance
@@ -83,8 +88,8 @@ autocmd BufReadPost *.kt setlocal filetype=kotlin
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType typescript set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascriptreact set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType typescriptreact set tabstop=2 shiftwidth=2 softtabstop=2
 
 " -------------------------------
 "  templates

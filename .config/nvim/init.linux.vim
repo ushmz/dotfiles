@@ -41,6 +41,10 @@ imap <C-e> <End>
 imap <C-d> <Del>
 imap <C-h> <BS>
 
+nnoremap <silent><nowait> tt :<C-u>tabnew<cr>
+nnoremap g] :tabnext<CR>
+nnoremap g[ :tabprevious<CR>
+
 
 "--------------------------------
 " Appearance
@@ -79,8 +83,8 @@ filetype plugin indent on
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType typescript set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascriptreact set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType typescriptreact set tabstop=2 shiftwidth=2 softtabstop=2
 
 " -------------------------------
 "  templates
