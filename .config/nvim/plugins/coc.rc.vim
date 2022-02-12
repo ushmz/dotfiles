@@ -4,8 +4,8 @@ let g:coc_filetype_map = {
     \}
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
 " nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 
