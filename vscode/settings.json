@@ -3,15 +3,36 @@
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "~/.vimrc",
 
+    "debug.inlineValues": true,
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.openDebug": "openOnSessionStart",
+
     // Editor settings
+    "editor.accessibilitySupport": "off",
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.dragAndDrop": false,
+    "editor.fontSize": 14,
+    "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.rulers": [72,79,120],
+    "editor.formatOnType": true,
+    "editor.renderControlCharacters": true,
+    "editor.rulers": [
+        72,
+        79,
+        120
+    ],
     "editor.suggestSelection": "first",
     "editor.quickSuggestions": {
         "comments": false,
         "strings": false,
         "other": true
-      },
+    },
+
+    // Suppress confirm popup when drag-and-drop to file explorer
+    "explorer.confirmDragAndDrop": false,
+    // Naming rule on file named is duplicated
+    "explorer.incrementalNaming": "smart",
+
     // Auto save all files several seconds after focusing out (or stopping cursor)
     "files.autoSave": "afterDelay",
     "files.insertFinalNewline": true,
@@ -31,20 +52,24 @@
         "editor.tabSize": 4
     },
     "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.insertSpaces": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.insertSpaces": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.insertSpaces": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.insertSpaces": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[dart]": {
         "editor.insertSpaces": true,
@@ -66,12 +91,17 @@
         "editor.tabSize": 4
     },
 
+    // [TODO] Trust external files
+    "security.workspace.trust.untrustedFiles": "open",
+
+    // Suppress new version notification
+    "vsicons.dontShowNewVersionMessage": true,
+
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
-
-    // Suppress confirm popup when drag-and-drop to file explorer
-    "explorer.confirmDragAndDrop": false,
 
     // VSCode appearance settings
     "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
@@ -83,38 +113,28 @@
     "workbench.colorCustomizations": {
         "[Iceberg]": {
             // Improve selection BG color
-            "editor.selectionBackground": "#666B8A",
-            "editor.selectionHighlightBackground": "#43465C"
+            "editor.selectionBackground": "#666B8AFF",
+            "editor.selectionHighlightBackground": "#43465CFF"
         },
         "[Hybrid]": {
             // Improve colors
-            "statusBar.background": "#333333FF"
+            "statusBar.background": "#333333FF",
+            "editorCursor.background": "#333333FF",
+            "editorCursor.foreground": "#CCCCCCFF",
+            "editorLineNumber.activeForeground": "#777777FF",
+            "editorLineNumber.foreground": "#CCCCCCFF"
         }
     },
-    // Suppress new version notification
-    "vsicons.dontShowNewVersionMessage": true,
 
     // Go settings
     "go.formatTool": "goimports",
     "go.docsTool": "godoc",
 
-    // Typescript settings
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "typescript.preferences.importModuleSpecifier": "project-relative",
-
-    // Use local jupyter
-    "jupyter.jupyterServerType": "local",
-    // Apply theme colors to plotted figures
-    "jupyter.themeMatplotlibPlots": true,
-    // [TODO] Trust external files
-    "security.workspace.trust.untrustedFiles": "open",
-
-    "editor.accessibilitySupport": "on",
-
     // Used if no python path specified in workspace setting
     "python.defaultInterpreterPath": "/Users/ushmz/.asdf/shims/python",
 
-    "terminal.integrated.env.osx": {
-        "FIG_NEW_SESSION": "1"
-    }
+    // Typescript settings
+    // Auto fix import on file moved or name changed
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
 }
