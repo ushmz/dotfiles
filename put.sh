@@ -46,6 +46,9 @@ git config --global core.excludesfile $HOME/.gitignore_global
 # .tigrc
 ln -sf `pwd`/.tigrc $HOME/.tigrc
 
+# vscode
+ln -sf `pwd`/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+
 # ------------------------
 # nvim config files
 # ------------------------
