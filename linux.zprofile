@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-for i in $(command ls -I '*.darwin.zsh' `pwd`/zprofile.d/ | sort)
+for i in $(command ls $HOME/dotfiles/zprofile.d/ | grep -v '.*\.darwin\.zsh' sort)
 do
   source $i
 done

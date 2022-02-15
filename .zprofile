@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-for i in $(command ls `pwd`/zprofile.d/*.zsh | sort)
+for i in $(command ls $HOME/dotfiles/zprofile.d/*.zsh | sort)
 do
   source $i
 done
