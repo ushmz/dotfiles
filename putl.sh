@@ -42,6 +42,7 @@ git config --local core.excludesfile $HOME/.gitignore_global
 mkdir -p $XDG_CONFIG_HOME/nvim/
 ln -sf `pwd`/.vimrc $HOME/.vimrc
 ln -sf `pwd`/.config/nvim/init.vim $XDG_CONFIG_HOME/nvim/init.vim
+ln -sf `pwd`/.config/nvim/init.d $XDG_CONFIG_HOME/nvim/init.d
 
 # dein plugin files
 ln -sf `pwd`/.config/nvim/dein.toml $XDG_CONFIG_HOME/nvim/dein.toml
