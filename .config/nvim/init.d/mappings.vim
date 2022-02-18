@@ -13,7 +13,7 @@ nmap <C-d> <C-d>zz
 nmap <C-u> <C-u>zz
 
 " Switch the line with the above line
-nnoremap MM ddkkp
+" nnoremap MM ddkkp
 " Switch the line with the below line
 nnoremap mm ddp
 

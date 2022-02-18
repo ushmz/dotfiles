@@ -12,9 +12,12 @@ if !1 | finish | endif
 "--------------------------------
 " auto reload .vimrc
 "--------------------------------
+let s:init_dir = expand('$HOME/.config/nvim/init.d')
+
 augroup source_vimrc
   autocmd!
   autocmd BufWritePost init.vim source $MYVIMRC | set foldmethod=marker
+  autocmd BufWritePost init_dir/* source $MYVIMRC | set foldmethod=marker
 augroup END
 
 
@@ -25,8 +28,8 @@ let g:python3_host_prog = '/home/yusuk/.config/nvim/venv/bin/python'
 let g:python_host_prog = '/home/yusuk/.config/nvim/venv/bin/python'
 
 " source setting files
-source $HOME/.config/nvim/init.d/mappings.vim
-source $HOME/.config/nvim/init.d/settings.vim
-source $HOME/.config/nvim/init.d/autocmd.vim
-source $HOME/.config/nvim/init.d/plugins.vim
+exe ('source ' . s:init_dir . '/mappings.vim')
+exe ('source ' . s:init_dir . '/settings.vim')
+exe ('source ' . s:init_dir . '/autocmd.vim')
+exe ('source ' . s:init_dir . '/plugins.vim')
 
