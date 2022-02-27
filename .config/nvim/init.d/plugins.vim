@@ -27,23 +27,8 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-filetype plugin indent on
-syntax enable
-
 " dein plugin install check
 if dein#check_install()
   call dein#install()
 endif
 
-" vim-closetag
-let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
-let g:closetag_shortcut = '>'
-let g:closetag_close_shortcut = '<leader>>'
-
-" vim-resizer
-let g:winresizer_vert_resize = 1
-let g:winresizer_horiz_resize = 1
-
-" indentLine
-" ['¦', '┆', '┊', '|']
-let g:indentLine_char_list = ['¦', '┆']

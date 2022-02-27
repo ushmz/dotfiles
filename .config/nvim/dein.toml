@@ -1,4 +1,14 @@
 [[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add = """
+    syntax on
+    set background=dark
+    autocmd VimEnter * nested colorscheme hybrid
+    let g:hybrid_use_term_colors = 1
+    let g:hybrid_reduced_contrast = 1
+"""
+
+[[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 on_i = 1
@@ -8,22 +18,22 @@ hook_add = """
 """
 
 [[plugins]]
+repo = 'Shougo/dein.vim'
 hook_add = """
     let g:dein#auto_recache = 1
 """
-repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 depends = ['defx-git', 'defx-icons']
 hook_add = """
-source ~/.config/nvim/plugins/defx.rc.vim
+    source ~/.config/nvim/plugins/defx.rc.vim
 """
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = """
-source ~/.config/nvim/plugins/denite.rc.vim
+    source ~/.config/nvim/plugins/denite.rc.vim
 """
 
 [[plugins]]
@@ -35,7 +45,7 @@ repo = 'jiangmiao/auto-pairs'
 [[plugins]]
 repo = 'segeljakt/vim-silicon'
 hook_add = """
-source ~/.config/nvim/plugins/silicon.rc.vim
+    source ~/.config/nvim/plugins/silicon.rc.vim
 """
 
 [[plugins]]
@@ -43,19 +53,38 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
+hook_add = """
+    nnoremap <leader>c :TComment<CR>
+    vmap gci :<C-u>TCommentInline<CR>
+"""
+
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+hook_add = """
+    vmap v <Plug>(expand_region_expand)
+    vmap V <Plug>(expand_region_shrink)
+"""
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = """
+    " ['¦', '┆', '┊', '|']
+    let g:indentLine_char_list = ['¦', '┆']
+"""
 
 [[plugins]]
 repo = 'simeji/winresizer'
+hook_add = """
+    let g:winresizer_vert_resize = 1
+    let g:winresizer_horiz_resize = 1
+"""
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -66,7 +95,7 @@ repo = 'kristijanhusak/defx-icons'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = """
-source ~/.config/nvim/plugins/lightline.rc.vim
+    source ~/.config/nvim/plugins/lightline.rc.vim
 """
 
 [[plugins]]

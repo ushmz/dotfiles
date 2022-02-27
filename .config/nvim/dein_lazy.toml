@@ -5,6 +5,11 @@ on_ft = ['markdown']
 [[plugins]]
 repo = 'alvan/vim-closetag'
 on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
+hook_add = """
+    let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
+    let g:closetag_shortcut = '>'
+    let g:closetag_close_shortcut = '<leader>>'
+"""
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
@@ -33,40 +38,43 @@ hook_source = '''
 repo = 'fatih/vim-go'
 on_ft = ['go']
 hook_source = """
-  " Auto import on save
-  let g:go_fmt_command = "gopls"
-  " Make them off that leave to LSP
-  let g:go_def_mapping_enabled = 0
-  let g:go_doc_keywordprg_enabled = 0
-  let g:go_highlight_functions = 0
-  let g:go_highlight_methods = 0
-  let g:go_highlight_fields = 0
-  let g:go_highlight_types = 0
-  let g:go_highlight_operators = 0
-  let g:go_highlight_build_constraints = 0
-  let g:go_disable_autoinstall = 1
-  let g:airline#extensions#ale#enabled = 1
-  " let g:go_metalinter_autosave=1
-  " let g:go_metalinter_autosave_enabled=['golint', 'govet']
+    " Auto import on save
+    let g:go_fmt_command = "gopls"
+    " Make them off that leave to LSP
+    let g:go_def_mapping_enabled = 0
+    let g:go_doc_keywordprg_enabled = 0
+    let g:go_highlight_functions = 0
+    let g:go_highlight_methods = 0
+    let g:go_highlight_fields = 0
+    let g:go_highlight_types = 0
+    let g:go_highlight_operators = 0
+    let g:go_highlight_build_constraints = 0
+    let g:go_disable_autoinstall = 1
+    let g:airline#extensions#ale#enabled = 1
+    " let g:go_metalinter_autosave=1
+    " let g:go_metalinter_autosave_enabled=['golint', 'govet']
 """
 
 [[plugins]]
-on_ft = ['dart']
 repo = 'thosakwe/vim-flutter'
+on_ft = ['dart']
 
 [[plugins]]
-on_ft = ['kotlin']
 repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
 
 [[plugins]]
-hook_add = '''
-  let g:shfmt_extra_args = '-i 4 -ci -bn -s'
-  let g:shfmt_fmt_on_save = 1
-'''
-on_ft = ["sh", "bash", "zsh"]
 repo = "z0mbix/vim-shfmt"
+on_ft = ["sh", "bash", "zsh"]
+hook_add = '''
+    let g:shfmt_extra_args = '-i 4 -ci -bn -s'
+    let g:shfmt_fmt_on_save = 1
+'''
 
 # [[plugins]]
+# repo = 'OmniSharp/omnisharp-vim'
+# repo = 'OmniSharp/omnisharp-roslyn'
+# on_ft = ['cs']
 # hook_add = '''
 #     let g:OmniSharp_server_use_mono = 1
 #     nnoremap <silent> <buffer> ma :OmniSharpAddToProject<CR>
@@ -81,6 +89,3 @@ repo = "z0mbix/vim-shfmt"
 #     nnoremap <silent> <buffer> mu :OmniSharpFindUsages<CR>
 #     nnoremap <silent> <buffer> mx :OmniSharpGetCodeActions<CR>
 # '''
-# on_ft = ['cs']
-# repo = 'OmniSharp/omnisharp-vim'
-# repo = 'OmniSharp/omnisharp-roslyn'

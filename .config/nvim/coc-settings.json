@@ -23,9 +23,11 @@
     }
   },
   "python.formatting.provider": "black",
-  "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": true,
+  "python.analysis.extraPaths": ["/Users/ushmz/.asdf/shims/python"],
   "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": true,
   "sh.enable": true,
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": true,

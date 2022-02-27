@@ -14,13 +14,6 @@ set autoindent
 " disable screen bell
 set novisualbell
 
-" color scheme
-syntax on
-set background=dark
-colorscheme hybrid
-let g:hybrid_use_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-
 " cursor
 hi LineNr ctermbg=0 ctermfg=7
 hi CursorLineNr ctermbg=4 ctermfg=0
