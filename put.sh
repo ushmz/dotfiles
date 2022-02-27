@@ -48,6 +48,7 @@ ln -sf `pwd`/.tigrc $HOME/.tigrc
 
 # vscode
 ln -sf `pwd`/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+ln -sf `pwd`/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
 
 # ------------------------
 # nvim config files
@@ -78,10 +79,6 @@ mkdir -p "$XDG_CONFIG_HOME/nvim/plugins"
 for rc in $(ls -I '*.md' `pwd`/.config/nvim/plugins/* | xargs -n 1 basename); do
     ln -sf `pwd`/.config/nvim/plugins/$rc $XDG_CONFIG_HOME/nvim/plugins/$rc
 done
-
-# VSCode config files
-mkdir -p "$HOME/.vscode/"
-ln -sf `pwd`/vscode/settings.json $HOME/.vscode/setting.json
 
 # Utility scripts
 for script in $(ls -I '*.md' `pwd`/.scripts/* | xargs -n 1 basename); do

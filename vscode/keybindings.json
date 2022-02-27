@@ -1,22 +1,62 @@
 [
-    {
-        "key": "cmd+shift+t",   "command": "workbench.action.terminal.focus",
-                                "when": "editorTextFocus"
-    },
-    {
-        "key": "cmd+[",         "command": "workbench.action.terminal.focusPrevious",
-                                "when": "terminalFocus"
-    },
-    {
-        "key": "cmd+]",         "command": "workbench.action.terminal.focusNext",
-                                "when": "terminalFocus"
-    },
-    {
-        "key": "tab",           "command": "selectNextSuggestion",
-                                "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "shift+tab",     "command": "selectPrevSuggestion",
-                                "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    }
+  {
+    "key": "cmd+shift+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen "
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "f",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "e",
+    "command": "revealFileInOS",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  }
 ]
