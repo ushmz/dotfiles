@@ -12,14 +12,7 @@
 
     "vim.insertModeKeyBindings": [
         { "before": [ "j", "j" ], "after": [ "<Esc>" ] },
-        { "before": "<C-p>", "after": "<Up>" },
-        { "before": "<C-n>", "after": "<Down>" },
-        { "before": "<C-b>", "after": "<Left>" },
-        { "before": "<C-f>", "after": "<Right>" },
-        // { "before": "<C-a>", "after": "<C-o>:call <SID>home()<CR>" },
-        { "before": "<C-e>", "after": "<End>" },
-        // { "before": "<C-d>", "after": "<Del>" },
-        { "before": "<C-h>", "after": "<BS>" },
+        { "before": "<C-r>", "after": [ "<C-r", "<C-p>" ] }
     ],
     "vim.normalModeKeyBindings": [
         { "before": [ "G" ], "after": [ "G", "z", "z" ] },
@@ -27,33 +20,35 @@
         { "before": [ "N" ], "after": [ "N", "z", "z" ] },
         { "before": [ "}" ], "after": [ "}", "z", "z" ] },
         { "before": [ "{" ], "after": [ "{", "z", "z" ] },
-        { "before": [ "<C-d>" ], "after": [ "<C-d>", "z", "z" ] },
-        { "before": [ "<C-u>" ], "after": [ "<C-u>", "z", "z" ] },
         { "before": [ "*" ], "after": [ "*", "z", "z" ] },
-        { "before": [ "#" ], "after": [ "#", "z", "z" ] },
+        { "before": [ "#" ], "after": [ "#", "z", "z" ] }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         { "before": [ ";" ], "after": [ ":" ] },
-        { "before": [ "H" ], "after": [ "0" ] },
-        { "before": [ "L" ], "after": [ "$" ] },
+        { "before": [ "K" ], "commands": [ "editor.action.showHover" ] },
         { "before": [ ">" ], "commands": [ "editor.action.indentLines" ] },
         { "before": [ "<" ], "commands": [ "editor.action.outdentLines" ] },
         { "before": [ "g", "]" ], "after": [ "g", "t" ] },
         { "before": [ "g", "[" ], "after": [ "g", "T" ] },
+        { "before": [ "g", "r" ], "commands": [ { "command": "editor.action.goToReferences" } ] },
+        { "before": [ "g", "i" ], "commands": [ { "command": "editor.action.goToImplementation" } ] },
+        { "before": [ "g", "d" ], "commands": [ { "command": "editor.action.revealDefinition" } ] },
+        { "before": [ "g", "t" ], "commands": [ { "command": "editor.action.goToTypeDefinition" } ] },
+        { "before": [ "g", "s" ], "commands": [ { "command": "editor.action.goToSymbol" } ] },
+        { "before": [ "g", "n" ], "commands": [ {"command": "editor.action.marker.nextInFiles"} ] },
+        { "before": [ "g", "N" ], "commands": [ {"command": "editor.action.marker.prevInFiles"} ] },
         { "before": ["<Esc>", "<Esc>"], "commands": [":nohlsearch"]},
-        { "before": [ "<leader>", "q" ], "commands": [ ":q" ] },
-        { "before": [ "<leader>", "s" ], "commands": [ ":split" ] },
-        { "before": [ "<leader>", "v" ], "commands": [ ":vsplit" ] },
         { "before": [ "<leader>", "o" ], "after": [ "o", "<Esc>" ] },
         { "before": [ "<leader>", "O" ], "after": [ "O", "<Esc>" ] },
+        { "before": [ "<leader>", "q" ], "commands": [ "workbench.action.closeActiveEditor" ] },
+        { "before": [ "<leader>", "w" ], "commands": [ "workbench.action.files.save" ] },
+        { "before": [ "<leader>", "s" ], "commands": [ ":split" ] },
+        { "before": [ "<leader>", "v" ], "commands": [ ":vsplit" ] },
         { "before": [ "<leader>", "c" ], "commands": [ { "command": "editor.action.commentLine" } ] },
-        // Surround
-        // { "before": [ "s" ], "after": [ "y", "s" ] },
-        //Multi-Cursor Mode
-        //prefix Ctrl
-        { "before": [ "<C-n>", ], "after": [ "g", "b" ] },
-        { "before": [ "<C-k>", ], "commands": [ { "command": "editor.action.insertCursorAbove" } ] },
-        { "before": [ "<C-j>", ], "commands": [ { "command": "editor.action.insertCursorBelow" } ] },
+        { "before": [ "<leader>", "f" ], "commands": [ { "command": "editor.action.quickFix" } ] },
+        { "before": [ "<leader>", "r", "n" ], "commands": [ { "command": "editor.action.rename" } ] },
+        { "before": [ "<C-k>" ], "commands": [ { "command": "editor.action.insertCursorAbove" } ] },
+        { "before": [ "<C-j>" ], "commands": [ { "command": "editor.action.insertCursorBelow" } ] }
     ],
 
     "debug.inlineValues": true,
@@ -64,16 +59,12 @@
     "editor.accessibilitySupport": "off",
     "editor.copyWithSyntaxHighlighting": false,
     "editor.dragAndDrop": false,
-    "editor.fontSize": 14,
+    "editor.fontSize": 13,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.renderControlCharacters": true,
-    "editor.rulers": [
-        72,
-        79,
-        120
-    ],
+    "editor.rulers": [ 72, 79, 120 ],
     "editor.suggestSelection": "first",
     "editor.quickSuggestions": {
         "comments": false,
@@ -97,16 +88,25 @@
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-        "**/node_modules/*/**": true,
+        "**/node_modules/*/**": true
     },
 
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true,
-        "**/tmp/cache": true,
+        "**/tmp/cache": true
     },
 
     // Language specific settings
+
+    "go.docsTool": "godoc",
+    "go.formatTool": "gofmt",
+    "go.lintOnSave": "package",
+    "go.lintTool": "golangci-lint",
+    "go.useLanguageServer": true,
+    "gopls": {
+        "ui.completion.usePlaceholders": false
+    },
     "[go]": {
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
@@ -114,10 +114,21 @@
         "editor.insertSpaces": false,
         "editor.tabSize": 4
     },
+    "[go.mod]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false
+        },
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": false
+    },
+    // Used if no python path specified in workspace setting
+    "python.defaultInterpreterPath": "/Users/ushmz/.asdf/shims/python",
     "[python]": {
         "editor.insertSpaces": false,
         "editor.tabSize": 4
     },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.insertSpaces": true,
@@ -136,6 +147,10 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": false,
         "editor.tabSize": 2
     },
     "[dart]": {
@@ -203,17 +218,5 @@
     },
 
     "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-
-    // Go settings
-    "go.formatTool": "goimports",
-    "go.docsTool": "godoc",
-
-    // Used if no python path specified in workspace setting
-    "python.defaultInterpreterPath": "/Users/ushmz/.asdf/shims/python",
-
-    // Typescript settings
-    // Auto fix import on file moved or name changed
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "telemetry.enableTelemetry": false
 }
