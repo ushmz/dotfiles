@@ -2,7 +2,8 @@
 "cnoreabbrev sf Defx -listed -new
 "      \ -columns=indent:mark:icon:icons:filename:git:size
 "      \ -buffer-name=tab`tabpagenr()`<CR>
-nnoremap <silent><nowait>sf :<C-u>Defx -listed -resume
+"      use '-resume' option
+nnoremap <silent><nowait>sf :<C-u>Defx -listed -new
       \ -columns=indent:mark:icon:icons:mark:filename:git:size
       \ -buffer-name=tab`tabpagenr()`
       \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
