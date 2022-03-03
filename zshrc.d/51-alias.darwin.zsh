@@ -42,6 +42,7 @@ alias 'mavencc'='rm -rf ~/.m2/repository'
 
 alias vi='nvim'
 alias vim='nvim'
+alias neovide='neovide --multigrid -- -u ~/dotfiles/.config/nvim/init.neovide.vim'
 
 ##########################################################
 # peco aliases
