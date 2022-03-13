@@ -49,3 +49,7 @@ nmap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
 " inoremap " ""<LEFT>
 " inoremap ' ''<LEFT>
 
+" ale error navigate
+" nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+" nmap <silent> <leader>j <Plug>(ale_next_wrap)
+

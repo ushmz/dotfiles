@@ -9,15 +9,6 @@ hook_add = """
 """
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-on_i = 1
-merged = 0
-hook_add = """
-    source ~/.config/nvim/plugins/coc.rc.vim
-"""
-
-[[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = """
     let g:dein#auto_recache = 1
@@ -34,6 +25,21 @@ hook_add = """
 repo = 'Shougo/denite.nvim'
 hook_add = """
     source ~/.config/nvim/plugins/denite.rc.vim
+"""
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+on_i = 1
+merged = 0
+hook_add = """
+    source ~/.config/nvim/plugins/coc.rc.vim
+"""
+
+[[plugins]]
+repo = 'dense-analysis/ale'
+hook_add = """
+    source ~/.config/nvim/plugins/ale.rc.vim
 """
 
 [[plugins]]
