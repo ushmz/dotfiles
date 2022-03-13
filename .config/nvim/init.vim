@@ -8,8 +8,6 @@ scriptencoding utf-8
 " Stop loading vimrc when `tiny` or `small`
 if !1 | finish | endif
 
-let mapleader = "\<Space>"
-
 "--------------------------------
 " auto reload .vimrc
 "--------------------------------

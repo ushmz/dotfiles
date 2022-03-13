@@ -17,15 +17,15 @@ nmap <silent> gr <Plug>(coc-references)
 " noremap <silent> <C-f> <Plug>(coc-definition)
 
 " Symbol renaming.
-nmap <silent> <space>rn <Plug>(coc-rename)
+nmap <silent> <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-nmap <silent> <space>fmt <Plug>(coc-format)
+nmap <silent> <leader>fmt <Plug>(coc-format)
 
 " Apply AutoFix to problem on the current line.
-nmap <silent> <space>af  <Plug>(coc-fix-current)
+nmap <silent> <leader>af  <Plug>(coc-fix-current)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -119,18 +119,18 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>

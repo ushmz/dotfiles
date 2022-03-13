@@ -1,3 +1,5 @@
+nmap <space> <leader>
+
 " basic
 inoremap <silent> jj <ESC>
 nnoremap ; :
