@@ -3,6 +3,10 @@ repo = 'mattn/vim-maketable'
 on_ft = ['markdown']
 
 [[plugins]]
+repo = 'instant-markdown/vim-instant-markdown'
+on_ft = ['markdown']
+
+[[plugins]]
 repo = 'alvan/vim-closetag'
 on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
 hook_add = """
@@ -53,6 +57,10 @@ hook_source = """
     let g:airline#extensions#ale#enabled = 1
     " let g:go_metalinter_autosave=1
     " let g:go_metalinter_autosave_enabled=['golint', 'govet']
+    nnoremap <leader>b :<C-u>GoBuild<CR>
+    nnoremap <leader>r :<C-u>GoRun<CR>
+    nnoremap <leader>t :<C-u>GoTest<CR>
+    nnoremap <leader>ga :<C-u>GoAlternate<CR>
 """
 
 [[plugins]]

@@ -1,4 +1,4 @@
-# bindkey -v
+bindkey -e
 
 ##########################################################
 # peco settings
@@ -84,4 +84,3 @@ function ghq_code() {
 }
 # zle -N ghq_code
 # bindkey '^e' ghq_code
-
