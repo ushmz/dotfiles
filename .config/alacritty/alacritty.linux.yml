@@ -17,7 +17,7 @@ selection:
 window:
   decorations: full
   padding:
-    x: 1
+    x: 0
     y: 0
   opacity: 0.95
 
