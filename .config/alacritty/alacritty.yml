@@ -1,8 +1,18 @@
 env:
     TERM: alacritty
 
+window:
+    decorations: buttonless
+    padding:
+        x: 0
+        y: 0
+    dynamic_padding: false
+    opacity: 0.95
+    startup_mode: Windowed
+    dynamic_title: true
+
 font:
-    size: 14
+    size: 12
     normal:
         family: 'Hack Nerd Font'
         style: Regular
@@ -16,6 +26,7 @@ font:
         family: 'Hack Nerd Font'
         style: Bold Italic
 
+live_config_reload: true
 east_asian_fullwidth: true
 
 mouse:
@@ -25,15 +36,6 @@ mouse:
 
 selection:
     save_to_clipboard: true
-
-window:
-    decorations: full
-    # startup_mode: Fullscreen
-    padding:
-        x: 0
-        y: 0
-    opacity: 0.95
-
 
 # Colors (Hybrid)
 colors:
@@ -79,7 +81,7 @@ colors:
 #   primary:
 #     background: '#161821'
 #     foreground: '#d2d4de'
-# 
+#
 #   # Normal colors
 #   normal:
 #     black:   '#161821'
@@ -90,7 +92,7 @@ colors:
 #     magenta: '#a093c7'
 #     cyan:    '#89b8c2'
 #     white:   '#c6c8d1'
-# 
+#
 #   # Bright colors
 #   bright:
 #     black:   '#6b7089'
@@ -111,13 +113,13 @@ colors:
 #         y: 0
 #     title: 💊Alacritty💕
 #     dynamic_title: false
-# 
+#
 # colors:
 #     # Default colors
 #     primary:
 #         background: '#2b2028'
 #         foreground: '#a691b3'
-# 
+#
 #     cursor:
 #         text: '0x000000'
 #         cursor: '0xffffff'
@@ -126,7 +128,7 @@ colors:
 #     vi_mode_cursor:
 #         text: '0x000000'
 #         cursor: '0xffffff'
-# 
+#
 #     # Normal colors
 #     normal:
 #         black:   '#35383b'
@@ -137,7 +139,7 @@ colors:
 #         magenta: '#977ba0'
 #         cyan:    '#749e99'
 #         white:   '#848b92'
-# 
+#
 #     # Bright colors
 #     bright:
 #         black:   '#484c52'
@@ -148,4 +150,3 @@ colors:
 #         magenta: '#bfa5c7'
 #         cyan:    '#9fc9c3'
 #         white:   '#fcf7e2'
-
