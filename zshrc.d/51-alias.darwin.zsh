@@ -26,8 +26,6 @@ alias ssh='~/.scripts/ssh_change_profile.sh'
 ##########################################################
 # Alternative aliases
 ##########################################################
-alias cat='bat'
-alias find='fd'
 alias ls="exa -gh --time-style=long-iso"
 alias ll="ls -lF --group-directories-first --icons"
 alias la="ll -a"
