@@ -22,8 +22,8 @@ nmap <C-u> <C-u>zz
 " Switch the line with the below line
 nnoremap mm ddp
 
-nnoremap <silent> <leader>s :<C-u>split<CR>
-nnoremap <silent> <leader>v :<C-u>vsplit<CR>
+nnoremap <silent> <leader>s :<C-u>split<CR><C-w>w
+nnoremap <silent> <leader>v :<C-u>vsplit<CR><C-w>w
 nnoremap <silent> <leader>t :<C-u>tabnew<cr>
 nnoremap <silent> g] :<C-u>tabnext<CR>
 nnoremap <silent> g[ :<C-u>tabprevious<CR>
@@ -52,4 +52,3 @@ nmap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
 " ale error navigate
 " nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 " nmap <silent> <leader>j <Plug>(ale_next_wrap)
-

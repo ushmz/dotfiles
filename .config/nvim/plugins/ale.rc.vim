@@ -25,8 +25,8 @@ let g:ale_fixers = {
 
 
 " ale error navigate
-nmap <leader>k <cmd>ALEPreviousWrap<CR>
-nmap <leader>j <cmd>ALENextWrap<CR>
+nmap <leader>k <cmd>ALEPreviousWrap<CR>zz
+nmap <leader>j <cmd>ALENextWrap<CR>zz
 
 let g:ale_sign_warning = '⚠'
 autocmd VimEnter,SourcePost * :highlight ALEErrorSign ctermbg=none ctermfg=red
@@ -36,4 +36,3 @@ autocmd VimEnter,SourcePost * :highlight ALEInfoSign ctermbg=none ctermfg=green
 autocmd VimEnter,SourcePost * :highlight ALEError cterm=underline ctermfg=none ctermbg=none
 autocmd VimEnter,SourcePost * :highlight ALEWarning cterm=underline ctermfg=none ctermbg=none
 autocmd VimEnter,SourcePost * :highlight ALEInfo cterm=underline ctermfg=none ctermbg=none
-

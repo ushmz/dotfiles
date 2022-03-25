@@ -57,9 +57,9 @@ hook_source = """
     let g:airline#extensions#ale#enabled = 1
     " let g:go_metalinter_autosave=1
     " let g:go_metalinter_autosave_enabled=['golint', 'govet']
-    nnoremap <leader>b :<C-u>GoBuild<CR>
-    nnoremap <leader>r :<C-u>GoRun<CR>
-    nnoremap <leader>t :<C-u>GoTest<CR>
+    nnoremap <leader>gb :<C-u>GoBuild<CR>
+    nnoremap <leader>gr :<C-u>GoRun<CR>
+    nnoremap <leader>gt :<C-u>GoTest<CR>
     nnoremap <leader>ga :<C-u>GoAlternate<CR>
 """
 
