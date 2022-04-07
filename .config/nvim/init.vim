@@ -9,9 +9,14 @@ scriptencoding utf-8
 if !1 | finish | endif
 
 "--------------------------------
+" Excutables path
+"--------------------------------
+let g:python3_host_prog = $XDG_CONFIG_HOME . '/nvim/pynvim/bin/python'
+
+"--------------------------------
 " auto reload .vimrc
 "--------------------------------
-let s:init_dir = expand('$HOME/.config/nvim/init.d')
+let s:init_dir = $XDG_CONFIG_HOME . '/nvim/init.d'
 
 augroup source_vimrc
   autocmd!
@@ -23,6 +28,5 @@ augroup END
 " source setting files
 execute ('source '. s:init_dir . '/mappings.vim')
 execute ('source '. s:init_dir . '/settings.vim')
-execute ('source '. s:init_dir . '/autocmd.vim')
 execute ('source '. s:init_dir . '/plugins.vim')
-
+execute ('source '. s:init_dir . '/autocmd.vim')

@@ -8,4 +8,3 @@ autocmd FileType typescriptreact set tabstop=2 shiftwidth=2 softtabstop=2
 
 " templates
 autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skeleton.sh
-

@@ -69,27 +69,3 @@ set path+=**
 
 " Display all matching file when tab complete
 set wildmode=longest,full
-
-
-"--------------------------------
-" Snippets
-"--------------------------------
-
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-
-vmap <silent> <expr> p <sid>Repl()
-
-" find and replace
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-omap s :normal vs<CR>
-
