@@ -7,6 +7,11 @@ repo = 'instant-markdown/vim-instant-markdown'
 on_ft = ['markdown']
 
 [[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+on_ft = ['markdown']
+
+[[plugins]]
 repo = 'alvan/vim-closetag'
 on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
 hook_add = """
