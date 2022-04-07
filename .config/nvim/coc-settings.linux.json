@@ -1,16 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "css",
-    "scss",
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "go",
-    "dart",
-    "python"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": [],
   "sh.enable": true,
   "tsserver.enableJavascript": false,
   "tslint.enable": true,

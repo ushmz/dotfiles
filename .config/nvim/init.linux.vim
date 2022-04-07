@@ -9,9 +9,15 @@ scriptencoding utf-8
 if !1 | finish | endif
 
 "--------------------------------
+" python path setting
+"--------------------------------
+let g:python3_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
+let g:python_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
+
+"--------------------------------
 " auto reload .vimrc
 "--------------------------------
-let s:init_dir = expand('$HOME/.config/nvim/init.d')
+let s:init_dir = $XDG_CONFIG_HOME . '/nvim/init.d'
 
 augroup source_vimrc
   autocmd!
@@ -19,16 +25,8 @@ augroup source_vimrc
   autocmd BufWritePost init_dir/* source $MYVIMRC | set foldmethod=marker
 augroup END
 
-
-"--------------------------------
-" python path setting
-"--------------------------------
-let g:python3_host_prog = '/home/yusuk/.config/nvim/venv/bin/python'
-let g:python_host_prog = '/home/yusuk/.config/nvim/venv/bin/python'
-
 " source setting files
-exe ('source ' . s:init_dir . '/mappings.vim')
-exe ('source ' . s:init_dir . '/settings.vim')
-exe ('source ' . s:init_dir . '/autocmd.vim')
-exe ('source ' . s:init_dir . '/plugins.vim')
-
+execute ('source ' . s:init_dir . '/mappings.vim')
+execute ('source ' . s:init_dir . '/settings.vim')
+execute ('source ' . s:init_dir . '/autocmd.vim')
+execute ('source ' . s:init_dir . '/plugins.vim')
