@@ -1,16 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "css",
-    "scss",
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "go",
-    "dart",
-    "python"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": [],
   "diagnostic.displayByAle": true,
   "java.home": "~/.asdf/installs/java/adoptopenjdk-8.0.312+7",
   "languageserver": {
