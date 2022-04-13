@@ -4,8 +4,12 @@ if [[  $SHLVL = 1 && $TERM = "alacritty"  ]]; then
 fi
 
 # starship (cross-shell prompt)
-eval "$(starship init zsh)"
+if command -v starship > /dev/null; then
+    eval "$(starship init zsh)"
+fi
 
 # direnv
 export EDITOR=vi
-eval "$(direnv hook zsh)"
+if command -v direnv > /dev/null; then
+    eval "$(direnv hook zsh)"
+fi

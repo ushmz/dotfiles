@@ -41,21 +41,15 @@ git config --local core.excludesfile $HOME/.gitignore_global
 # vim config file
 mkdir -p $XDG_CONFIG_HOME/nvim/
 ln -sf `pwd`/.vimrc $HOME/.vimrc
-ln -sf `pwd`/.config/nvim/init.vim $XDG_CONFIG_HOME/nvim/init.vim
+ln -sf `pwd`/.config/nvim/init.linux.vim $XDG_CONFIG_HOME/nvim/init.vim
 ln -sf `pwd`/.config/nvim/init.d $XDG_CONFIG_HOME/nvim/init.d
 
 # dein plugin files
-ln -sf `pwd`/.config/nvim/dein.toml $XDG_CONFIG_HOME/nvim/dein.toml
+ln -sf `pwd`/.config/nvim/dein.linux.toml $XDG_CONFIG_HOME/nvim/dein.toml
 ln -sf `pwd`/.config/nvim/dein_lazy.toml $XDG_CONFIG_HOME/nvim/dein_lazy.toml
 
 # coc setting file
-ln -sf `pwd`/.config/nvim/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
-
-# vim color file
-mkdir -p "$HOME/.vim/colors"
-mkdir -p "$XDG_CONFIG_HOME/nvim/colors"
-ln -sf `pwd`/.config/nvim/colors/hybrid.vim $HOME/.vim/colors/hybrid.vim
-ln -sf `pwd`/.config/nvim/colors/hybrid.vim $XDG_CONFIG_HOME/nvim/colors/hybrid.vim
+ln -sf `pwd`/.config/nvim/coc-settings.linux.json $XDG_CONFIG_HOME/nvim/coc-settings.json
 
 # vim skeleton files
 mkdir -p $HOME/.vim/templates

@@ -11,8 +11,8 @@ if !1 | finish | endif
 "--------------------------------
 " python path setting
 "--------------------------------
-let g:python3_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
-let g:python_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
+" let g:python3_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
+" let g:python_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
 
 "--------------------------------
 " auto reload .vimrc
@@ -30,3 +30,11 @@ execute ('source ' . s:init_dir . '/mappings.vim')
 execute ('source ' . s:init_dir . '/settings.vim')
 execute ('source ' . s:init_dir . '/autocmd.vim')
 execute ('source ' . s:init_dir . '/plugins.vim')
+
+
+syntax on
+set background=dark
+" autocmd VimEnter * nested colorscheme hybrid
+" colorscheme hybrid
+let g:hybrid_use_term_colors = 1
+let g:hybrid_reduced_contrast = 1
