@@ -21,7 +21,7 @@ alias jn='jupyter notebook'
 ##########################################################
 alias 'mux.sh'='~/.scripts/mux.sh'
 alias bib='python ~/.scripts/biblio_poll.py'
-alias ssh='~/.scripts/ssh_change_profile.sh'
+# alias ssh='~/.scripts/ssh_change_profile.sh'
 
 ##########################################################
 # Alternative aliases

@@ -6,9 +6,6 @@ alias so='source'
 alias ll="ls -lF --group-directories-first"
 alias la="ls -alF --group-directories-first"
 
-alias '...'='cd ../../'
-alias '....'='cd ../../../'
-
 alias zshenv='vi ~/.zshenv'
 alias zprof='vi ~/dotfiles/zprofile.d'
 alias zshrc='vi ~/dotfiles/zshrc.d'
@@ -22,4 +19,5 @@ alias soprof='source ~/.zprofile'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-alias vi='vim'
+alias vi='nvim'
+alias vim='nvim'
