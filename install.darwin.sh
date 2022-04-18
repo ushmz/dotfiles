@@ -3,8 +3,10 @@
 ##########################################################
 # Install brew
 ##########################################################
-echo "--- install brew ---"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+if ! brew; then
+    echo "--- install brew ---"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
 echo "--- updating brew ---"
 brew update
@@ -19,9 +21,9 @@ echo "--- install zsh plugins ---"
 brew install zsh-syntax-highlighting
 brew install zsh-autosuggestions
 brew install zsh-completions
-chmod 0755 /usr/local/share/zsh/site-functions
 chmod 0755 /usr/local/share
 chmod 0755 /usr/local/share/zsh
+chmod 0755 /usr/local/share/zsh/site-functions
 
 
 ##########################################################
@@ -73,7 +75,7 @@ formulae=(
     make
     mysql
     openssh
-    openssl 
+    openssl
     peco
     postgresql
     redis
