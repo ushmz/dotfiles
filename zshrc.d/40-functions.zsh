@@ -1,3 +1,5 @@
+# Send command exit status to slack
+source ~/.scripts/cmdnotif.sh
 
 # save dirstack to ~/.cache/shell
 # mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/shell"

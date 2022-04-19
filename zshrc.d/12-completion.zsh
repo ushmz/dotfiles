@@ -1,4 +1,3 @@
-
 # Highlighting completion
 zstyle ':completion:*:default' menu select=2
 
@@ -61,14 +60,17 @@ zstyle ':completion:*' keep-prefix
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:sudo:*' command-path /usr/bin
 
-# Alcaritty auto complation setting
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-# asdf complation setting
-fpath=(${ASDF_DIR}/completions $fpath)
-
 # less command highlighting
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R '
 
+# zsh-completions setting
+fpath+=$HOME/.cache/zsh-completions/src
+# Alcaritty auto complation setting
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+# asdf complation setting
+fpath+=${ASDF_DIR}/completions
+
 autoload -Uz compinit && compinit
+autoload -Uz colors && colors

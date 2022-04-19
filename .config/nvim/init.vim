@@ -11,7 +11,7 @@ if !1 | finish | endif
 "--------------------------------
 " Excutables path
 "--------------------------------
-let g:python3_host_prog = $XDG_CONFIG_HOME . '/nvim/venv/bin/python'
+let g:python3_host_prog = $XDG_CONFIG_HOME . '/nvim/pynvim/bin/python'
 
 "--------------------------------
 " auto reload .vimrc

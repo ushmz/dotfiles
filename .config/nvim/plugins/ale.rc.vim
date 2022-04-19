@@ -22,7 +22,7 @@ let g:ale_fixers = {
 \   'typescript': ['eslint', 'prettier'],
 \   'javascriptreact': ['eslint', 'prettier'],
 \   'typescriptreact': ['eslint', 'prettier'],
-\   'python': ['black', 'isort'],
+\   'python': ['black'],
 \   'go': ['gofmt', 'goimports', 'golines'],
 \}
 
