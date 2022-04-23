@@ -72,5 +72,10 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 # asdf complation setting
 fpath+=${ASDF_DIR}/completions
 
+# gh completion config
+if command -v gh > /dev/null; then
+    eval "$(gh completion -s zsh)"
+fi
+
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors

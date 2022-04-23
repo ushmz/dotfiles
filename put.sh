@@ -41,7 +41,10 @@ ln -sf `pwd`/.gitmessage $HOME/.gitmessage
 
 # .gitignore_global
 ln -sf `pwd`/.gitignore_global $HOME/.gitignore_global
-git config --global core.excludesfile $HOME/.gitignore_global	
+git config --global core.excludesfile $HOME/.gitignore_global
+
+# gh config
+ln -sf `pwd`/.config/gh/config.yml $XDG_CONFIG_HOME/gh/config.yml
 
 # .tigrc
 ln -sf `pwd`/.tigrc $HOME/.tigrc
