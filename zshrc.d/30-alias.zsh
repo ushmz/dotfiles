@@ -5,6 +5,8 @@ alias c='clear'
 alias so='source'
 alias ll="ls -lF --group-directories-first"
 alias la="ls -alF --group-directories-first"
+alias ...="cd ../../"
+alias ....="cd ../../../"
 
 alias zshenv='vi ~/.zshenv'
 alias zprof='vi ~/dotfiles/zprofile.d'
