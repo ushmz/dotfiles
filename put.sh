@@ -49,6 +49,9 @@ ln -sf `pwd`/.config/gh/config.yml $XDG_CONFIG_HOME/gh/config.yml
 # .tigrc
 ln -sf `pwd`/.tigrc $HOME/.tigrc
 
+# skhd config file for yabai
+ln -sf /Users/ushmz/dotfiles/.skhdrc $HOME/.skhdrc
+
 # vscode
 ln -sf `pwd`/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 ln -sf `pwd`/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
