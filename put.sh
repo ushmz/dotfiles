@@ -52,6 +52,9 @@ ln -sf `pwd`/.tigrc $HOME/.tigrc
 # skhd config file for yabai
 ln -sf /Users/ushmz/dotfiles/.skhdrc $HOME/.skhdrc
 
+# ranger config files
+ln -sf /Users/ushmz/dotfiles/.config/ranger/* $HOME/.config/ranger/
+
 # vscode
 ln -sf `pwd`/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 ln -sf `pwd`/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"

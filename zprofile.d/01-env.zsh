@@ -5,6 +5,8 @@ export EXA_COLORS="da=36"
 # XDG_CONFIG_HOME
 export XDG_CONFIG_HOME=$HOME/.config
 
+export EDITOR=nvim
+
 # Original scripts
 export PATH="$HOME/.scripts:$PATH"
 

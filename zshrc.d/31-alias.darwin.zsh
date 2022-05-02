@@ -33,14 +33,14 @@ alias gitls="ll --git --git-ignore"
 alias src="cd `ghq root`"
 alias ldoc="lazydocker"
 # alias silicon="silicon --theme OneHalfDark"
+alias vi='nvim'
+alias vim='nvim'
+alias neovide='neovide --multigrid -- -u ~/dotfiles/.config/nvim/init.neovide.vim'
+alias rg=ranger
 
 # clean cache
 alias 'pipcc'='rm -rf ~/Library/Caches/pip'
 alias 'mavencc'='rm -rf ~/.m2/repository'
-
-alias vi='nvim'
-alias vim='nvim'
-alias neovide='neovide --multigrid -- -u ~/dotfiles/.config/nvim/init.neovide.vim'
 
 ##########################################################
 # peco aliases
