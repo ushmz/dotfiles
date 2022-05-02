@@ -17,13 +17,14 @@ let g:ale_set_highlights = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'css': ['csslint'],
+\   'dart': ['dartfmt'],
+\   'go': ['gofmt', 'goimports', 'golines'],
 \   'html': ['HTMLHint'],
 \   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
 \   'javascriptreact': ['eslint', 'prettier'],
-\   'typescriptreact': ['eslint', 'prettier'],
 \   'python': ['black'],
-\   'go': ['gofmt', 'goimports', 'golines'],
+\   'typescript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
 \}
 
 let g:ale_python_flake8_executable = g:python3_host_prog
