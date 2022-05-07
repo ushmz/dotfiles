@@ -1,3 +1,8 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+scan_timeout = 50
+command_timeout = 800
 add_newline = true
 
 [battery]
@@ -11,13 +16,13 @@ style = "bold yellow"
 
 [character]
 format = "$symbol "
-success_symbol = "[❯](bold cyan)[❯](bold yellow)[❯](bold magenta)"
+success_symbol = "[❯](bold bright-blue)[❯](bold yellow)[❯](bold magenta)"
 error_symbol = "[❯❯❯](bold red)"
-vicmd_symbol = "[❮](bold cyan)[❮](bold yellow)[❮](bold magenta)"
+vicmd_symbol = "[❮](bold bright-blue)[❮](bold yellow)[❮](bold magenta)"
 
 [directory]
 truncation_length = 100
-format = "[$path]($style)[$lock_symbol]($lock_style) "
+format = "[$path](bold bright-blue)[$read_only]($read_only_style) "
 
 [git_status]
 conflicted = "💥 "

@@ -1,14 +1,13 @@
-env:
-    TERM: alacritty
+# env:
+#     TERM: alacritty
 
 window:
-    decorations: buttonless
+    decorations: full
     padding:
         x: 0
         y: 0
     dynamic_padding: false
     opacity: 0.95
-    startup_mode: Windowed
     dynamic_title: true
 
 font:

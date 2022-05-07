@@ -1,5 +1,5 @@
-env:
-  TERM: alacritty
+# env:
+#   TERM: alacritty
 
 font:
   size: 14
@@ -133,4 +133,3 @@ colors:
 #         magenta: '#bfa5c7'
 #         cyan:    '#9fc9c3'
 #         white:   '#fcf7e2'
-

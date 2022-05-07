@@ -26,4 +26,3 @@ bind generic F ?@!git fetch %(remote)
 bind generic U ?@!git pull %(remote)
 
 color cursor black white bold
-
