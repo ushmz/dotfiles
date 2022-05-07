@@ -9,7 +9,6 @@ if command -v starship > /dev/null; then
 fi
 
 # direnv
-export EDITOR=vi
 if command -v direnv > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
