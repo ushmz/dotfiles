@@ -13,3 +13,4 @@ if [ -d $HOME/.cache/zsh-syntax-highlighting/ ]; then
 fi
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
