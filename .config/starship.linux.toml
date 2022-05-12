@@ -11,9 +11,9 @@ style = "bold yellow"
 
 [character]
 format = "$symbol "
-success_symbol = "[❯](bold bright-blue)[❯](bold yellow)[❯](bold magenta)"
+success_symbol = "[❯](bold green)[❯](bold yellow)[❯](bold magenta)"
 error_symbol = "[❯❯❯](bold red)"
-vicmd_symbol = "[❮](bold bright-blue)[❮](bold yellow)[❮](bold magenta)"
+vicmd_symbol = "[❮](bold green)[❮](bold yellow)[❮](bold magenta)"
 
 [directory]
 truncation_length = 100
