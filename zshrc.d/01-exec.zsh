@@ -3,8 +3,10 @@ if [[  $SHLVL = 1 && $TERM = "alacritty"  ]]; then
   tmux
 fi
 
+has() { type "${1:?too few arguments}" &>/dev/null }
+
 # starship (cross-shell prompt)
-if command -v starship > /dev/null
+if has "starship" > /dev/null
 then
     eval "$(starship init zsh)"
 else
@@ -17,6 +19,6 @@ else
 fi
 
 # direnv
-if command -v direnv > /dev/null; then
+if has "direnv" > /dev/null; then
     eval "$(direnv hook zsh)"
 fi

@@ -33,20 +33,7 @@ alias gitls="ll --git --git-ignore"
 alias src="cd `ghq root`"
 alias ldoc="lazydocker"
 # alias silicon="silicon --theme OneHalfDark"
-alias vi='nvim'
-alias vim='nvim'
-alias neovide='neovide --multigrid -- -u ~/dotfiles/.config/nvim/init.neovide.vim'
-alias rg=ranger
 
 # clean cache
 alias 'pipcc'='rm -rf ~/Library/Caches/pip'
 alias 'mavencc'='rm -rf ~/.m2/repository'
-
-##########################################################
-# peco aliases
-##########################################################
-# Switch branch with peco
-alias -g edas='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
-
-# Delete branch with peco
-alias -g prune='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
