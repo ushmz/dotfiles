@@ -29,14 +29,14 @@ ln -sf `pwd`/linux.zshrc $HOME/.zshrc
 ln -sf `pwd`/linux.tmux.conf $HOME/.tmux.conf
 
 # starship.toml
-ln -sf `pwd`/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
+ln -sf `pwd`/.config/starship.linux.toml $XDG_CONFIG_HOME/starship.toml
 
 # .gitmessage
 ln -sf `pwd`/.gitmessage $HOME/.gitmessage
 
 # .gitignore_global
 ln -sf `pwd`/.gitignore_global $HOME/.gitignore_global
-git config --local core.excludesfile $HOME/.gitignore_global	
+git config --local core.excludesfile $HOME/.gitignore_global
 
 # vim config file
 mkdir -p $XDG_CONFIG_HOME/nvim/
