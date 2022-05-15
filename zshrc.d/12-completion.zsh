@@ -73,7 +73,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 fpath+=${ASDF_DIR}/completions
 
 # gh completion config
-if command -v gh > /dev/null; then
+if has "gh"; then
     eval "$(gh completion -s zsh)"
 fi
 

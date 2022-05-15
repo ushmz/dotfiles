@@ -15,7 +15,8 @@ source ~/.scripts/cmdnotif.sh
 function command_not_found_handler(){
     # if [ -e ~/.scripts/typo.sh ]; then
     #     ~/.scripts/typo.sh
-    if type cowsay > /dev/null; then
+    if has "cowsay"
+    then
         cowsay " Command '$0' not found. "
     else
         echo "Command $0 not found."
@@ -71,12 +72,6 @@ function tmux_session() {
     fi
 }
 alias tm='tmux_session'
-
-# `track` is online coding examination platform.
-# `track-cli` is interface that I can take exam in local machine.
-function uninstall_track_cli() {
-	rm /usr/local/bin/track
-}
 
 # Source python venv if exists
 function sourse_pyenv() {

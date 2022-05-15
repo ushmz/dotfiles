@@ -1,10 +1,6 @@
 # postgres
 export PGDATA="/usr/local/var/postgres"
 
-# nnn
-export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='f:finder;o:fzopen;p:preview-tui-ext;d:diffs;t:nmount;v:imgview'
-
 # zsh completions
 if [ -e $(brew --prefix)/share/zsh-completions ]; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

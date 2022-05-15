@@ -3,7 +3,7 @@ bindkey -e
 ##########################################################
 # peco settings
 ##########################################################
-# Search command history
+# Ctrl-r to search command history
 function peco_select_history() {
   BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -12,14 +12,14 @@ function peco_select_history() {
 zle -N peco_select_history
 bindkey '^r' peco_select_history
 
-## Search s distination from cdr list
+## search s distination from cdr list
 function peco_get_destination_from_cdr() {
   cdr -l | \
   sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
   peco --query "$LBUFFER"
 }
 
-# Search directory from history
+# Ctrl-u to search directory from history
 function peco_cdr() {
   local destination="$(peco_get_destination_from_cdr)"
   if [ -n "$destination" ]; then
@@ -32,7 +32,7 @@ function peco_cdr() {
 zle -N peco_cdr
 bindkey '^u' peco_cdr
 
-# Search tmux session
+# Ctrl-s to search tmux session
 ## This cause freezing peco window...
 # function peco_tmux_sessions() {
 #  local res=$(tmux list-sessions | peco --query "$LBUFFER" | awk -F':' '{print $1}')
@@ -47,7 +47,7 @@ bindkey '^u' peco_cdr
 # zle -N peco_tmux_sessions
 # bindkey '^s' peco_tmux_sessions
 
-# Search hostname from .ssh/config
+# Ctrl-s to search hostname from .ssh/config
 function peco_ssh_host() {
   local res=$(grep "Host " ~/.ssh/config | grep -v '*' | cut -b 6- | peco)
   if [ -n "$res" ]; then
@@ -61,7 +61,7 @@ function peco_ssh_host() {
 zle -N peco_ssh_host
 bindkey '^s' peco_ssh_host
 
-# Search local repository from ghq root
+# Ctrl-g to search local repository from ghq root
 function ghq_list() {
     local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
@@ -73,7 +73,7 @@ function ghq_list() {
 zle -N ghq_list
 bindkey '^g' ghq_list
 
-# Open local repository with VSCode
+# Ctrl-e to open local repository with VSCode
 function ghq_code() {
     local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
