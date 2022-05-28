@@ -20,6 +20,7 @@ let g:ale_fixers = {
 \   'dart': ['dartfmt'],
 \   'go': ['gofmt', 'goimports', 'golines'],
 \   'html': ['HTMLHint'],
+\   'vue': ['eslint', 'prettier'],
 \   'javascript': ['eslint', 'prettier'],
 \   'javascriptreact': ['eslint', 'prettier'],
 \   'python': ['black'],
