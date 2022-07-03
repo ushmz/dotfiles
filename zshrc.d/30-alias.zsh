@@ -22,6 +22,8 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
+alias free='free -h --giga'
+
 if has "nvim"; then
     alias vi='nvim'
     alias vim='nvim'
@@ -35,10 +37,14 @@ if has "ranger"; then
     alias rg='ranger'
 fi
 
+if has "tig"; then
+    alias tig='TERM=xterm-256color tig'
+fi
+
 if has "peco"; then
     # Switch branch with peco
-    alias -g edas='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+    alias edas='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 
     # Delete branch with peco
-    alias -g prune='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+    alias prune='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 fi
