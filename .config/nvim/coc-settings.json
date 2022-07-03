@@ -1,10 +1,9 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [],
   "diagnostic.displayByAle": true,
-  "java.home": "~/.asdf/installs/java/adoptopenjdk-8.0.312+7",
   "languageserver": {
     "kotlin": {
-      "command": "~/.config/coc/extensions/coc-kotlin-data/langServerInstall/server/bin/kotlin-language-server",
+      "command": "/Users/ushmz/.cache/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
       "filetypes": ["kotlin"]
     }
   },
