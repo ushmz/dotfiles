@@ -3,11 +3,12 @@ let g:ale_detail_to_floating_preview = 1
 let g:ale_disable_lsp = 1
 let g:ale_echo_cursor = 1
 let g:ale_fix_on_save = 1
-let g:ale_floating_preview = 0
+let g:ale_floating_preview = 1
 let g:ale_hover_cursor = 0
 let g:ale_lint_on_enter = 0
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 1
+let g:sign_column = 'number'
 
 " let g:ale_echo_msg_error_str = g:ALEErrorSign
 " let g:ale_echo_msg_warning_str = g:ALEWarningSign
@@ -15,17 +16,16 @@ let g:ale_set_highlights = 1
 
 
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'css': ['csslint'],
-\   'dart': ['dartfmt'],
-\   'go': ['gofmt', 'goimports', 'golines'],
-\   'html': ['HTMLHint'],
-\   'vue': ['eslint', 'prettier'],
-\   'javascript': ['eslint', 'prettier'],
-\   'javascriptreact': ['eslint', 'prettier'],
-\   'python': ['black'],
-\   'typescript': ['eslint', 'prettier'],
-\   'typescriptreact': ['eslint', 'prettier'],
+    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'css': ['stylelint'],
+    \ 'dart': ['dartfmt'],
+    \ 'go': ['gofmt', 'goimports', 'golines'],
+    \ 'html': ['HTMLHint'],
+    \ 'vue': ['eslint', 'prettier'],
+    \ 'javascript': ['eslint', 'prettier'],
+    \ 'javascriptreact': ['eslint', 'prettier'],
+    \ 'typescript': ['eslint', 'prettier'],
+    \ 'typescriptreact': ['eslint', 'prettier'],
 \}
 
 let g:ale_python_flake8_executable = g:python3_host_prog
