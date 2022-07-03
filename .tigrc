@@ -15,14 +15,42 @@ set refresh-mode = auto
 
 # key bind
 # "P" to push to current branch
-bind generic P ?@!git push origin %(repo:head)
+bind    generic       P       ?@!git push origin %(repo:head)
 
 # Dでstatus viewのuntracked fileを削除できるようにする
 # https://github.com/jonas/tig/issues/31
 # https://github.com/jonas/tig/issues/393
-bind status D ?@rm %(file)
+bind    status        D       ?@rm %(file)
 
-bind generic F ?@!git fetch %(remote)
-bind generic U ?@!git pull %(remote)
+bind    generic       F       ?@!git fetch %(remote)
+bind    generic       U       ?@!git pull %(remote)
 
-color cursor black white bold
+# Color
+# synopsis: color area fgcolor bgcolor [attributes]
+# Green: 150    Red: 167    110: Blue
+# Blue-green: 116
+# =================================================
+color   cursor          default     240
+color   help-group      110         default
+color   title-focus     235         110
+color   title-blur      235         110
+# color   'Author '       default     default
+# color   'Commit: '      default     default
+# color   'Merge: '       default     default
+# color   date            default     default
+# color   default         default     234
+# color   delimiter       default     11
+# color   diff-add        default     default
+# color   diff-add2       default     default
+# color   diff-chunk      default     default
+# color   diff-del        default     default
+# color   diff-del2       default     default
+# color   diff-header     default     default     bold
+# color   diff-index      default     default
+# color   diff-stat       default     default
+# color   graph-commit    default     default
+# color   help-group      default     default
+# color   id              default     default
+# color   main-tracked    default     default     bold
+# color   status          default     default
+# color   help-action     default     default
