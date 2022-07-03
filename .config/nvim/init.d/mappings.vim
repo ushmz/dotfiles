@@ -41,18 +41,6 @@ imap <C-h> <BS>
 " Double ESC to turn off highlight
 nmap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
 
-" Auto-close bracket(Use instead of plugin "jiangmiao/auto-pairs")
-" inoremap { {}<LEFT>
-" inoremap [ []<LEFT>
-" inoremap ( ()<LEFT>
-" inoremap < <><LEFT>
-" inoremap " ""<LEFT>
-" inoremap ' ''<LEFT>
-
-" ale error navigate
-" nmap <silent> <leader>k <Plug>(ale_previous_wrap)
-" nmap <silent> <leader>j <Plug>(ale_next_wrap)
-
 "--------------------------------
 " Snippets
 "--------------------------------
