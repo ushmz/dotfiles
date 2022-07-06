@@ -34,7 +34,8 @@ if has "neovide"; then
 fi
 
 if has "ranger"; then
-    alias rg='ranger'
+    alias ranger='TERM=xterm-256color ranger'
+    alias rg='TERM=xterm-256color ranger'
 fi
 
 if has "tig"; then
