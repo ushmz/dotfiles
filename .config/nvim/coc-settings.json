@@ -1,10 +1,12 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [],
   "diagnostic.displayByAle": true,
+  "java.home": "~/.asdf/installs/java/adoptopenjdk-17.0.3+7",
   "languageserver": {
     "kotlin": {
-      "command": "/Users/ushmz/.cache/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
-      "filetypes": ["kotlin"]
+      "command": "~/.cache/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+      "filetypes": ["kotlin"],
+      "rootPatterns": [".kt", ".kts"]
     }
   },
   "sh.enable": true,
