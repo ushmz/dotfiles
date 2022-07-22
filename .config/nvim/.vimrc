@@ -24,4 +24,3 @@ augroup END
 exe ('source '. s:init_dir . '/mappings.vim')
 exe ('source '. s:init_dir . '/settings.vim')
 exe ('source '. s:init_dir . '/autocmd.vim')
-

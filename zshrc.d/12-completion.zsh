@@ -65,8 +65,6 @@ LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R '
 
-# zsh-completions setting
-fpath+=$HOME/.cache/zsh-completions/src
 # Alcaritty auto complation setting
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 # asdf complation setting

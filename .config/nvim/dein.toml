@@ -8,6 +8,13 @@ hook_add = """
     let g:hybrid_reduced_contrast = 1
 """
 
+# [[plugins]]
+# repo = "sainnhe/everforest"
+# hook_add = """
+#     syntax on
+#     autocmd VimEnter * nested colorscheme everforest
+# """
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = """
@@ -126,8 +133,7 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 hook_add = """
-    nnoremap <leader>c :TComment<CR>
-    vmap gci :<C-u>TCommentInline<CR>
+    nnoremap <leader>c :<C-u>TComment<CR>
 """
 
 [[plugins]]

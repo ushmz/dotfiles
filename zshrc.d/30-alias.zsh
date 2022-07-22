@@ -1,8 +1,12 @@
 ##########################################################
 # alias to shorten
 ##########################################################
-alias c='clear'
-alias so='source'
+# Force to check if the following arguments is alias or not
+# and avoid resetting environment variables
+alias sudo='sudo -E '
+
+alias c='clear '
+alias so='source '
 alias ll="ls -lF --group-directories-first"
 alias la="ls -alF --group-directories-first"
 alias ...="cd ../../"
@@ -49,3 +53,21 @@ if has "peco"; then
     # Delete branch with peco
     alias prune='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 fi
+
+if has "exa"; then
+    alias ls="exa -gh --time-style=long-iso"
+    alias ll="ls -lF --group-directories-first --icons"
+    alias la="ll -a"
+    alias gitls="ll --git --git-ignore"
+fi
+
+# clean cache
+alias 'pipcc'='rm -rf ~/Library/Caches/pip'
+alias 'mavencc'='rm -rf ~/.m2/repository'
+
+##########################################################
+# Shorten my script
+##########################################################
+alias 'mux.sh'='~/.scripts/mux.sh'
+alias bib='python ~/.scripts/biblio_poll.py'
+# alias ssh='~/.scripts/ssh_change_profile.sh'

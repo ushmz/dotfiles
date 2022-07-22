@@ -1,10 +1,7 @@
+export EDITOR=nvim
+
 # postgres
 export PGDATA="/usr/local/var/postgres"
-
-# zsh completions
-if [ -e $(brew --prefix)/share/zsh-completions ]; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-fi
 
 # Programming languages
 # --------------------------------------------------
@@ -19,14 +16,6 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
 # Virtual Environments
-# --------------------------------------------------
-# asdf (Language version manager)
-# . $(brew --prefix asdf)/asdf.sh
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-# asdf jenv
-. ~/.asdf/plugins/java/set-java-home.zsh
-
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 

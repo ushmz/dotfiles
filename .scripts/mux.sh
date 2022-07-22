@@ -74,8 +74,7 @@ else
       fi
       ;;
     *)
-      echo "[ERROR] ${1} は設定されていない引数です。"
+      echo "[ERROR] Unknown argument: ${1}"
       ;;
   esac
 fi
-
