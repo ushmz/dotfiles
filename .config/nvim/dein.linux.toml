@@ -1,26 +1,19 @@
 # [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# rev = 'release'
-# on_i = 1
-# merged = 0
+# repo = 'w0ng/vim-hybrid'
 # hook_add = """
-#   source ~/.config/nvim/plugins/coc.rc.vim
-# """
-#
-# [[plugins]]
-# repo = 'Shougo/denite.nvim'
-# hook_add = """
-#   source ~/.config/nvim/plugins/denite.rc.vim
+#     syntax on
+#     set background=dark
+#     autocmd VimEnter * nested colorscheme hybrid
+#     let g:hybrid_use_term_colors = 1
+#     let g:hybrid_reduced_contrast = 1
 # """
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
+repo = "sainnhe/everforest"
 hook_add = """
     syntax on
     set background=dark
-    autocmd VimEnter * nested colorscheme hybrid
-    let g:hybrid_use_term_colors = 1
-    let g:hybrid_reduced_contrast = 1
+    autocmd VimEnter * nested colorscheme everforest
 """
 
 [[plugins]]
@@ -32,6 +25,12 @@ depends = ['defx-git', 'defx-icons']
 hook_add = """
     source ~/.config/nvim/plugins/defx.rc.vim
 """
+
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_add = """
+#     source ~/.config/nvim/plugins/denite.rc.vim
+# """
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -86,4 +85,41 @@ repo = 'terryma/vim-expand-region'
 hook_source = """
     vmap v <Plug>(expand_region_expand)
     vmap V <Plug>(expand_region_shrink)
+"""
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = """
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+    ensure_installed = {
+        'bash',
+        'css',
+        'dockerfile',
+        'go',
+        'gomod',
+        'html',
+        'javascript',
+        'json',
+        'jsonc',
+        'lua',
+        'make',
+        'markdown',
+        'python',
+        'regex',
+        'rust',
+        'scss',
+        'toml',
+        'typescript',
+        'vim',
+        'yaml',
+    }
+}
+EOF
 """
