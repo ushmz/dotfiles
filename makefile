@@ -12,37 +12,31 @@ default:
 # ---------------------
 # Install brew packages
 # ---------------------
-install: ./install.sh 
-	sh `pwd`/install.sh
+install: ./install.darwin.sh
+	sh `pwd`/install.darwin.sh
 
 # ---------------------
 # Put config files (Works on Darwin)
 # ---------------------
-up: ./put.sh
-	sh `pwd`/put.sh
-
-# ---------------------
-# Put config files (Works on linux)
-# ---------------------
-upl: ./putl.sh
-	sh `pwd`/putl.sh
+up: ./put.darwin.sh
+	sh `pwd`/put.darwin.sh
 
 # ---------------------
 # Put config files and install brew packages
 # ---------------------
-apue: ./install.sh ./install.sh
-	sh `pwd`/put.sh
-	sh `pwd`/install.sh
+apue: ./put.darwin.sh ./install.darwin.sh
+	sh `pwd`/put.darwin.sh
+	sh `pwd`/install.darwin.sh
 
 # ---------------------
-#  Put hyper config file
+# Put config files (Works on linux)
 # ---------------------
-hyper: .hyper.js
-	ln -sf `pwd`/.hyper.js $(HOME)/.hyper.js
+upl: ./put.linux.sh
+	sh `pwd`/put.linux.sh
 
 # ---------------------
-#  Put .vimrc (for vim, not nvim)
+# Put config files and install plugins
 # ---------------------
-vim: .vimrc
-	ln -sf `pwd`/.vimrc $(HOME)/.vimrc
-
+apuel: ./put.linux.sh ./install.linux.sh
+	sh `pwd`/put.linux.sh
+	sh `pwd`/install.linux.sh
