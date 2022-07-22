@@ -20,6 +20,7 @@ let g:ale_fixers = {
     \ 'css': ['stylelint'],
     \ 'dart': ['dartfmt'],
     \ 'go': ['gofmt', 'goimports', 'golines'],
+    \ 'kotlin': ['ktlint'],
     \ 'html': ['HTMLHint'],
     \ 'vue': ['eslint', 'prettier'],
     \ 'javascript': ['eslint', 'prettier'],
