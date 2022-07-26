@@ -49,6 +49,6 @@
 
 CSS をいい感じにいじる．
 あるいは[Wiki](https://github.com/philc/vimium/wiki/Theme) からお好みのテーマを使う．
-おすすめは [ysjn/vimium-simply-dark: Dark theme for vimium chrome extension.](https://github.com/ysjn/vimium-simply-dark)
+おすすめは [ysjn/vimium-simply-dark](https://github.com/ysjn/vimium-simply-dark)
 
 サブフレーム内ではテーマ聞かなかったりするらしいです．
