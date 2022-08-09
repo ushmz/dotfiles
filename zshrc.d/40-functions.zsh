@@ -98,3 +98,8 @@ function pslist() {
 function mov2gif() {
     ffmpeg -i $1 -filter_complex "[0:v] fps=10,split [a][b];[a] palettegen [p];[b][p] paletteuse=dither=none" $2
 }
+
+function ghcr() {
+    gh repo create $argv
+    ghq get git@github.com:ushmz/{$argv[1]}.git
+}

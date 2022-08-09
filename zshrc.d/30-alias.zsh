@@ -20,6 +20,13 @@ alias sorc='source ~/.zshrc'
 alias soprof='source ~/.zprofile'
 
 ##########################################################
+# Shorten my script
+##########################################################
+alias 'mux.sh'='~/.scripts/mux.sh'
+alias bib='python ~/.scripts/biblio_poll.py'
+# alias ssh='~/.scripts/ssh_change_profile.sh'
+
+##########################################################
 # Alternative aliases
 ##########################################################
 alias rm='rm -i'
@@ -27,6 +34,10 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 alias free='free -h --giga'
+
+# clean cache
+alias 'pipcc'='rm -rf ~/Library/Caches/pip'
+alias 'mavencc'='rm -rf ~/.m2/repository'
 
 if has "nvim"; then
     alias vi='nvim'
@@ -61,13 +72,7 @@ if has "exa"; then
     alias gitls="ll --git --git-ignore"
 fi
 
-# clean cache
-alias 'pipcc'='rm -rf ~/Library/Caches/pip'
-alias 'mavencc'='rm -rf ~/.m2/repository'
-
-##########################################################
-# Shorten my script
-##########################################################
-alias 'mux.sh'='~/.scripts/mux.sh'
-alias bib='python ~/.scripts/biblio_poll.py'
-# alias ssh='~/.scripts/ssh_change_profile.sh'
+if has "gh"; then
+    alias gv="gh repo view --web"
+    alias gcheck="gh pr checkout "
+fi
