@@ -5,6 +5,9 @@ scan_timeout = 50
 command_timeout = 800
 add_newline = true
 
+[aws]
+disabled = true
+
 [battery]
 full_symbol = "🔋 "
 charging_symbol = "🔌 "
@@ -36,6 +39,9 @@ staged = "🔦×${count} "
 renamed = "🏷 ×${count} "
 deleted = "🗑 ×${count} "
 format = '([\[ $all_status$ahead_behind\]]($style) )'
+
+[gcloud]
+disabled = true
 
 [username]
 style_user = "bold blue"
