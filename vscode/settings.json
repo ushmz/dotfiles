@@ -126,7 +126,7 @@
       "before": [
         "g",
         "s"
-n      ],
+      ],
       "commands": [
         {
           "command": "editor.action.goToSymbol"
@@ -522,9 +522,6 @@ n      ],
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "go.toolsManagement.autoUpdate": true,
-  "Lua.telemetry.enable": false,
-  "jupyter.jupyterServerType": "remote",
   "vim.easymotion": true,
-  "window.zoomLevel": -1,
   "workbench.colorTheme": "Hybrid"
 }
