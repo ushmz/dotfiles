@@ -24,3 +24,5 @@ fi
 alias src="cd `ghq root`"
 alias ldoc="lazydocker"
 # alias silicon="silicon --theme OneHalfDark"
+
+alias term='echo -ne "\033]1337;SetProfile=$(peco ~/dotfiles/iTerm/.iterm_profiles)\a"'
