@@ -11,8 +11,6 @@ fi
 echo "--- updating brew ---"
 brew update
 brew cleanup
-brew upgrade
-brew cask upgrade
 
 ##########################################################
 # zsh plugin
@@ -53,7 +51,7 @@ formulae=(
     jq
     navi
     q
-    # sift
+    sift
     sl
     starship
     tmux
@@ -61,17 +59,12 @@ formulae=(
 
     # install developing tools
     ansible
-    # awscli
-    # aws-iam-authenticator
-    # bazel
     cocoapods
     docker-compose
     gcc
     gibo
     git
     heroku
-    # kubesec
-    # kubernetes-cli
     make
     mysql
     openssh
@@ -85,11 +78,10 @@ formulae=(
     unrar
     watch
     xz
-    # filosottile/musl-cross/musl-cross
 )
 for formula in $formulae
 do
-    brew install $formula
+    brew install $formula > /dev/null
 done
 
 ##########################################################
@@ -146,7 +138,7 @@ casks=(
 )
 for cask in $casks
 do
-    brew cask install $cask
+    brew cask install $cask > /dev/null
 done
 
 ##########################################################
