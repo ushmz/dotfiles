@@ -7,6 +7,8 @@ let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum'
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
 
+filetype plugin indent on
+
 set number
 set ruler
 
@@ -20,12 +22,13 @@ set autoindent
 " disable screen bell
 set novisualbell
 
+set wildignore+=__pycache__,__pycache__/*,*.pyc,node_modules,node_modules/*,*.DS_Store
+
 " cursor
 hi LineNr ctermbg=0 ctermfg=7
 hi CursorLineNr ctermbg=4 ctermfg=0
 set cursorline
-
-filetype plugin indent on
+set scrolloff=10
 
 
 "--------------------------------
@@ -50,7 +53,7 @@ set autoread
 
 " Persist "undo"
 set undofile
-set undodir=~/.vim/undo
+set undodir=/Users/ushmz/.vim/undo
 
 " Complement on command line
 " set wildmode=list:longest
