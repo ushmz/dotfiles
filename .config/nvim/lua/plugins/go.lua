@@ -1,0 +1,17 @@
+vim.api.nvim_set_var('go_fmt_command', 'gopls')
+vim.api.nvim_set_var('go_def_mapping_enabled', 0)
+vim.api.nvim_set_var('go_doc_keywordprg_enabled', 0)
+vim.api.nvim_set_var('go_highlight_functions', 0)
+vim.api.nvim_set_var('go_highlight_methods', 0)
+vim.api.nvim_set_var('go_highlight_fields', 0)
+vim.api.nvim_set_var('go_highlight_types', 0)
+vim.api.nvim_set_var('go_highlight_operators', 0)
+vim.api.nvim_set_var('go_highlight_build_constraints', 0)
+vim.api.nvim_set_var('go_disable_autoinstall', 1)
+vim.api.nvim_set_var('airline#extensions#ale#enabled', 1)
+-- let g:go_metalinter_autosave=1
+-- let g:go_metalinter_autosave_enabled=['golint', 'govet']
+vim.keymap.set('n', '<leader>gb', ':<C-u>GoBuild<CR>', {noremap=true})
+vim.keymap.set('n', '<leader>gr', ':<C-u>GoRun<CR>', {noremap=true})
+vim.keymap.set('n', '<leader>gt', ':<C-u>GoTest<CR>', {noremap=true})
+vim.keymap.set('n', '<leader>ga', ':<C-u>GoAlternate<CR>', {noremap=true})
