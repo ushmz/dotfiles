@@ -97,4 +97,3 @@ call defx#custom#option('_', {
   \ })
 
 set modifiable
-

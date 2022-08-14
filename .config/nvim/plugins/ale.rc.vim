@@ -1,19 +1,13 @@
 let g:ale_cursor_detail = 1
-let g:ale_detail_to_floating_preview = 1
 let g:ale_disable_lsp = 1
 let g:ale_echo_cursor = 1
 let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
-let g:ale_hover_cursor = 0
+let g:ale_hover_cursor = 1
 let g:ale_lint_on_enter = 0
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 1
-let g:sign_column = 'number'
-
-" let g:ale_echo_msg_error_str = g:ALEErrorSign
-" let g:ale_echo_msg_warning_str = g:ALEWarningSign
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
+let g:ale_sign_column_always = 1
 
 let g:ale_fixers = {
     \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -38,7 +32,6 @@ let g:ale_python_isort_options = '-m isort'
 let g:ale_python_black_executable = g:python3_host_prog
 let g:ale_python_black_options = '-m black'
 
-" \   'json': ['jsonlint'],
 
 " ale error navigate
 nmap <leader>k <cmd>ALEPreviousWrap<CR>zz
