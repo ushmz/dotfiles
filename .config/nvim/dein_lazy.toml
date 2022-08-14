@@ -1,24 +1,22 @@
 [[plugins]]
 repo = 'mattn/vim-maketable'
 on_ft = ['markdown']
+hook_add = """
+    let g:vim_markdown_conceal = 0
+"""
 
 [[plugins]]
 repo = 'instant-markdown/vim-instant-markdown'
 on_ft = ['markdown']
 
 [[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
+repo = 'context_filetype.vim'
 on_ft = ['markdown']
 
 [[plugins]]
-repo = 'alvan/vim-closetag'
-on_ft = ['html', 'javascript.jsx', 'typescript.tsx', 'typescriptreact']
-hook_add = """
-    let g:closetag_filetypes = 'html,javascriptreact,typescriptreact'
-    let g:closetag_shortcut = '>'
-    let g:closetag_close_shortcut = '<leader>>'
-"""
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+on_ft = ['markdown']
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'

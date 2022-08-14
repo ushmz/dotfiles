@@ -4,59 +4,12 @@ hook_add = """
     syntax on
     set background=dark
     autocmd VimEnter * nested colorscheme hybrid
-    let g:hybrid_use_term_colors = 1
-    let g:hybrid_reduced_contrast = 1
-"""
-
-# [[plugins]]
-# repo = "sainnhe/everforest"
-# hook_add = """
-#     syntax on
-#     autocmd VimEnter * nested colorscheme everforest
-# """
-
-[[plugins]]
-repo = 'Shougo/dein.vim'
-hook_add = """
-    let g:dein#auto_recache = 1
 """
 
 [[plugins]]
-repo = 'Shougo/defx.nvim'
-depends = ['defx-git', 'defx-icons']
+repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = """
-    source ~/.config/nvim/plugins/defx.rc.vim
-"""
-
-# [[plugins]]
-# repo = 'Shougo/denite.nvim'
-# hook_add = """
-#     source ~/.config/nvim/plugins/denite.rc.vim
-# """
-
-[[plugins]]
-repo = 'vim-denops/denops.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu-ui-ff'
-[[plugins]]
-repo = 'Shougo/ddu-kind-file'
-[[plugins]]
-repo = 'Shougo/ddu-source-file_rec'
-[[plugins]]
-repo = 'Shougo/ddu-filter-matcher_substring'
-
-[[plugins]]
-repo = 'Shougo/ddu.vim'
-depends = [
-  'vim-denops/denops.vim',
-  'Shougo/ddu-ui-ff',
-  'Shougo/ddu-kind-file',
-  'Shougo/ddu-source-file_rec',
-  'Shougo/ddu-filter-matcher_substring',
-]
-hook_add = """
-    source ~/.config/nvim/plugins/ddu.rc.vim
+    lua require('plugins/treesitter')
 """
 
 [[plugins]]
@@ -65,43 +18,53 @@ rev = 'release'
 hook_add = """
     source ~/.config/nvim/plugins/coc.rc.vim
 """
+
+# lsp
 # [[plugins]]
-# repo = 'prabirshrestha/vim-lsp'
+# repo = 'onsails/lspkind-nvim'
 # [[plugins]]
-# repo = 'mattn/vim-lsp-settings'
-# depends = ['prabirshrestha/vim-lsp']
+# repo = 'L3MON4D3/LuaSnip'
 # [[plugins]]
-# repo = 'shun/ddc-vim-lsp'
-#
+# repo = 'hrsh7th/cmp-nvim-lsp'
 # [[plugins]]
-# repo = 'LumaKernel/ddc-file'
+# repo = 'hrsh7th/cmp-buffer'
 # [[plugins]]
-# repo = 'Shougo/ddc-around'
+# repo = 'hrsh7th/nvim-cmp'
 # [[plugins]]
-# repo = 'Shougo/ddc-matcher_head'
+# repo = 'glepnir/lspsaga.nvim'
 # [[plugins]]
-# repo = 'Shougo/ddc-sorter_rank'
-# [[plugins]]
-# repo = 'Shougo/ddc-converter_remove_overlap'
-#
-# [[plugins]]
-# repo = 'Shougo/pum.vim'
-#
-# [[plugins]]
-# repo = 'Shougo/ddc.vim'
-# depends = [
-#   'vim-denops/denops.vim',
-#   'prabirshrestha/vim-lsp',
-#   'Shougo/pum.vim',
-#   'LumaKernel/ddc-file',
-#   'Shougo/ddc-around',
-#   'Shougo/ddc-matcher_head',
-#   'Shougo/ddc-sorter_rank',
-#   'Shougo/ddc-converter_remove_overlap',
-# ]
+# repo = "neovim/nvim-lspconfig"
 # hook_add = """
-#     source ~/.config/nvim/plugins/ddc.rc.vim
+#     lua require('plugins/lspconfig')
+#     lua require('plugins/lspkind')
+#     lua require('plugins/lspsaga')
+#     lua require('plugins/cmp')
 # """
+# [[plugins]]
+# repo = "williambomanm/mason.nvim"
+# [[plugins]]
+# repo = "williambomanm/mason-lspconfig.nvim"
+
+# fazzy findler (telescope)
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+[[plugins]]
+repo = 'BurntSushi/ripgrep'
+[[plugins]]
+repo = 'sharkdp/fd'
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+hook_add = """
+    lua require('plugins/devicons')
+"""
+[[plugins]]
+repo = 'nvim-telescope/telescope-file-browser.nvim'
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+rev = '0.1.0'
+hook_add = """
+    lua require('plugins/telescope')
+"""
 
 [[plugins]]
 repo = 'dense-analysis/ale'
@@ -109,22 +72,22 @@ hook_add = """
     source ~/.config/nvim/plugins/ale.rc.vim
 """
 
-# [[plugins]]
-# repo = "vim-skk/eskk.vim"
-# hook_add = """"
-#     source ~/.config/nvim/plugins/eskk.rc.vim
-# """
-
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
-[[plugins]]
-repo = 'segeljakt/vim-silicon'
+repo = 'nvim-lualine/lualine.nvim'
 hook_add = """
-    source ~/.config/nvim/plugins/silicon.rc.vim
+    lua require('plugins/lualine')
+"""
+
+[[plugins]]
+repo = 'windwp/nvim-ts-autotag'
+hook_add = """
+    lua require('plugins/autotag')
+"""
+
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+hook_add = """
+    lua require('plugins/autopairs')
 """
 
 [[plugins]]
@@ -133,94 +96,33 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 hook_add = """
-    nnoremap <leader>c :<C-u>TComment<CR>
+    lua require('plugins/tcomment')
 """
-
-[[plugins]]
-repo = 'terryma/vim-expand-region'
-hook_add = """
-    vmap v <Plug>(expand_region_expand)
-    vmap V <Plug>(expand_region_shrink)
-"""
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = """
-    " ['¦', '┆', '┊', '|']
-    let g:indentLine_char_list = ['¦', '┆']
+    lua require('plugins/indentline')
 """
 
 [[plugins]]
 repo = 'simeji/winresizer'
 hook_add = """
-    let g:winresizer_vert_resize = 1
-    let g:winresizer_horiz_resize = 1
+    lua require('plugins/winresizer')
 """
 
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
+# [[plugins]]
+# repo = 'lewis6991/gitsigns.nvim'
+# hook_add = """
+#     lua require('plugins/gitsigns')
+# """
 
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = """
-    source ~/.config/nvim/plugins/lightline.rc.vim
-"""
-
-[[plugins]]
-repo = 'azabiong/vim-highlighter'
-hook_add = """
-  let HiSet   = 'f<CR>'
-  let HiErase = 'f<BS>'
-  let HiClear = 'f<C-L>'
-  let HiFind  = 'f<Tab>'
-"""
-
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-hook_add = """
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,
-    },
-    indent = {
-        enable = true,
-    },
-    ensure_installed = {
-        'bash',
-        'css',
-        'dart',
-        'dockerfile',
-        'go',
-        'gomod',
-        'html',
-        'java',
-        'javascript',
-        'json',
-        'jsonc',
-        'kotlin',
-        'lua',
-        'make',
-        'markdown',
-        'prisma',
-        'python',
-        'regex',
-        'rust',
-        'scss',
-        'toml',
-        'tsx',
-        'typescript',
-        'vim',
-        'vue',
-        'yaml',
-    }
-}
-EOF
-"""
+# [[plugins]]
+# repo = 'segeljakt/vim-silicon'
+#
+# [[plugins]]
+# repo = 'akinsho/nvim-bufferline.nvim'
+# rev = 'v2.*'
+# hook_add = """
+#     lua require('plugins/bufferline')
+# """
