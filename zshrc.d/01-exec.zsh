@@ -1,5 +1,5 @@
 # Start tmux session
-if [[  $SHLVL = 1 && $TERM = "alacritty"  ]]; then
+if [[ $SHLVL = 1 && $TERM = "alacritty" ]]; then
   tmux
 fi
 
