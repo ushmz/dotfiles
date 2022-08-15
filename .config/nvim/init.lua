@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
 })
 
 vim.api.nvim_create_autocmd({'FileType'}, {
-    pattern = {'javascriptreact', 'typescriptreact', 'dart'},
+    pattern = {'javascriptreact', 'typescriptreact', 'dart', 'lua', 'vim'},
     command = 'set tabstop=2 shiftwidth=2 softtabstop=2'
 })
 

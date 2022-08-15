@@ -23,51 +23,51 @@ vim.opt.signcolumn = true
 -- -- inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 function check_backspace()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-        return true
-    else
-        return false
-    end
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+    return true
+  else
+    return false
+  end
 end
 
 function next_completion(callback)
-    if coc.pum.visible() then
-        coc.pum.next(1)
-    elseif check_backspace() then
-        callback()
-    else
-        coc.refresh()
-    end
+  if coc.pum.visible() then
+    coc.pum.next(1)
+  elseif check_backspace() then
+    callback()
+  else
+    coc.refresh()
+  end
 end
 
 function _G.prev_completion()
 end
 
 vim.keymap.set('i', '<TAB>', function(callback)
-    if coc.pum.visible() then
-        coc.pum.next(1)
-    elseif check_backspace() then
-        callback()
-    else
-        coc.refresh()
-    end
+  if coc.pum.visible() then
+    coc.pum.next(1)
+  elseif check_backspace() then
+    callback()
+  else
+    coc.refresh()
+  end
 end, {silent = false})
 
 vim.keymap.set('i', '<S-TAB>', function()
-    if coc.pum.visible() then
-        coc.pum.prev(1)
-    else
-        feedkey("<C-h>")
-    end
+  if coc.pum.visible() then
+    coc.pum.prev(1)
+  else
+    feedkey("<C-h>")
+  end
 end, {silent = true, expr = true})
 
 -- Make <CR> to accept selected completion item or notify coc.nvim to format
 -- <C-g>u breaks current undo, please make your own choice.
 vim.keymap.set('i', '<CR>', function()
-    if coc.pum.visible() then
-        coc.pum.confirm()
-    else
-        feedkey("<C-g>u<CR><c-r>=coc#on_enter()<CR>")
-    end
+  if coc.pum.visible() then
+    coc.pum.confirm()
+  else
+    feedkey("<C-g>u<CR><c-r>=coc#on_enter()<CR>")
+  end
 end, {silent = true, expr = true})

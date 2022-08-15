@@ -16,6 +16,13 @@ telescope.setup {
         ["q"] = actions.close
       },
     },
+    file_ignore_patterns = {
+      '*.DS_Store',
+      '.git/',
+      '*/node_modules/*',
+      '*/__pycache__/*',
+      '*.pyc',
+    }
   },
   extensions = {
     file_browser = {
@@ -47,11 +54,11 @@ telescope.load_extension("file_browser")
 
 -- keymaps
 vim.keymap.set('n', ';f', function()
-    builtin.find_files({
-      no_ignore = false,
-      hidden = true
-    })
-  end)
+  builtin.find_files({
+    no_ignore = false,
+    hidden = true
+  })
+end)
 
 vim.keymap.set('n', ';r', function()
   builtin.live_grep()

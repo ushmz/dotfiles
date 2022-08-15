@@ -16,19 +16,19 @@ vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
 vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
 
 -- local saga = require 'lspsaga'
--- 
+--
 -- -- change the lsp symbol kind
 -- local kind = require('lspsaga.lspkind')
 -- kind[type_number][2] = icon -- see lua/lspsaga/lspkind.lua
--- 
+--
 -- -- use default config
 -- saga.init_lsp_saga()
--- 
+--
 -- -- use custom config
 -- saga.init_lsp_saga({
 --     -- put modified options in there
 -- })
--- 
+--
 -- -- Options with default value
 -- -- "single" | "double" | "rounded" | "bold" | "plus"
 -- border_style = "single",
