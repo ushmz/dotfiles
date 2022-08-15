@@ -69,7 +69,8 @@ hook_add = """
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = """
-    source ~/.config/nvim/plugins/ale.rc.vim
+    " source ~/.config/nvim/plugins/ale.rc.vim
+    lua require('plugins/ale')
 """
 
 [[plugins]]
