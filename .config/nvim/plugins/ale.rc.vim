@@ -32,12 +32,6 @@ let g:ale_python_isort_options = '-m isort'
 let g:ale_python_black_executable = g:python3_host_prog
 let g:ale_python_black_options = '-m black'
 
-
-" ale error navigate
-nmap <leader>k <cmd>ALEPreviousWrap<CR>zz
-nmap <leader>j <cmd>ALENextWrap<CR>zz
-nmap <leader>x <cmd>ALEFix<CR>
-
 let g:ale_sign_warning = '⚠'
 autocmd VimEnter,SourcePost * :highlight ALEErrorSign ctermbg=none ctermfg=red
 autocmd VimEnter,SourcePost * :highlight ALEWarningSign ctermbg=none ctermfg=yellow
@@ -46,6 +40,11 @@ autocmd VimEnter,SourcePost * :highlight ALEInfoSign ctermbg=none ctermfg=green
 autocmd VimEnter,SourcePost * :highlight ALEError cterm=underline ctermfg=none ctermbg=none
 autocmd VimEnter,SourcePost * :highlight ALEWarning cterm=underline ctermfg=none ctermbg=none
 autocmd VimEnter,SourcePost * :highlight ALEInfo cterm=underline ctermfg=none ctermbg=none
+
+" ale error navigate
+nmap <leader>k <cmd>ALEPreviousWrap<CR>zz
+nmap <leader>j <cmd>ALENextWrap<CR>zz
+nmap <leader>x <cmd>ALEFix<CR>
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
