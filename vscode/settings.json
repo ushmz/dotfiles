@@ -1,6 +1,4 @@
 {
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
   "vim.autoindent": true,
   "vim.debug.silent": true,
   "vim.hlsearch": true,
@@ -26,266 +24,93 @@
     { "before": ["#"], "after": ["#", "z", "z"] }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        ";"
-      ],
-      "after": [
-        ":"
-      ]
+    { "before": [ ";" ], "after": [ ":" ] },
+    { "before": [ "K" ], "commands": [ "editor.action.showHover" ] },
+    { "before": [ ">" ], "commands": [ "editor.action.indentLines" ] },
+    { "before": [ "<" ], "commands": [ "editor.action.outdentLines" ] },
+    { "before": [ "g", "]" ], "after": [ "g", "t" ] },
+    { "before": [ "g", "[" ], "after": [ "g", "T" ] },
+    { "before": [ "g", "r" ],
+      "commands": [ "editor.action.goToReferences" ]
     },
     {
-      "before": [
-        "K"
-      ],
-      "commands": [
-        "editor.action.showHover"
-      ]
+      "before": [ "g", "i" ],
+      "commands": [ "editor.action.goToImplementation" ]
     },
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
+      "before": [ "g", "d" ],
+      "commands": [ "editor.action.revealDefinition" ]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
+      "before": [ "g", "t" ],
+      "commands": [ "editor.action.goToTypeDefinition" ]
     },
     {
-      "before": [
-        "g",
-        "]"
-      ],
-      "after": [
-        "g",
-        "t"
-      ]
+      "before": [ "g", "s" ],
+      "commands": [ "editor.action.goToSymbol" ]
     },
     {
-      "before": [
-        "g",
-        "["
-      ],
-      "after": [
-        "g",
-        "T"
-      ]
+      "before": [ "g", "n" ],
+      "commands": [ "editor.action.marker.nextInFiles" ]
     },
     {
-      "before": [
-        "g",
-        "r"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.goToReferences"
-        }
-      ]
+      "before": [ "g", "N" ],
+      "commands": [ "editor.action.marker.prevInFiles" ]
     },
     {
-      "before": [
-        "g",
-        "i"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.goToImplementation"
-        }
-      ]
+      "before": [ "<Esc>", "<Esc>" ],
+      "commands": [ ":nohlsearch" ]
     },
     {
-      "before": [
-        "g",
-        "d"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.revealDefinition"
-        }
-      ]
+      "before": [ "<leader>", "o" ],
+      "after": [ "o", "<Esc>" ]
     },
     {
-      "before": [
-        "g",
-        "t"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.goToTypeDefinition"
-        }
-      ]
+      "before": [ "<leader>", "O" ],
+      "after": [ "O", "<Esc>" ]
     },
     {
-      "before": [
-        "g",
-        "s"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.goToSymbol"
-        }
-      ]
+      "before": [ "<leader>", "q" ],
+      "commands": [ "workbench.action.closeActiveEditor" ]
     },
     {
-      "before": [
-        "g",
-        "n"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.marker.nextInFiles"
-        }
-      ]
+      "before": [ "<leader>", "w" ],
+      "commands": [ "workbench.action.files.save" ]
     },
     {
-      "before": [
-        "g",
-        "N"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.marker.prevInFiles"
-        }
-      ]
+      "before": [ "<leader>", "s" ],
+      "commands": [ ":split" ]
     },
     {
-      "before": [
-        "<Esc>",
-        "<Esc>"
-      ],
-      "commands": [
-        ":nohlsearch"
-      ]
+      "before": [ "<leader>", "v" ],
+      "commands": [ ":vsplit" ]
     },
     {
-      "before": [
-        "<leader>",
-        "o"
-      ],
-      "after": [
-        "o",
-        "<Esc>"
-      ]
+      "before": [ "<leader>", "c" ],
+      "command": [ "editor.action.commentLine" ]
     },
     {
-      "before": [
-        "<leader>",
-        "O"
-      ],
-      "after": [
-        "O",
-        "<Esc>"
-      ]
+      "before": [ "<leader>", "f" ],
+      "command": [ "editor.action.quickFix" ]
     },
     {
-      "before": [
-        "<leader>",
-        "q"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
+      "before": [ "<leader>", "r", "n" ],
+      "command": [ "editor.action.rename" ]
     },
     {
-      "before": [
-        "<leader>",
-        "w"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
+      "before": [ "<C-k>" ],
+      "command": [ "editor.action.insertCursorAbove" ]
     },
     {
-      "before": [
-        "<leader>",
-        "s"
-      ],
-      "commands": [
-        ":split"
-      ]
+      "before": [ "<C-j>" ],
+      "command": [ "editor.action.insertCursorBelow" ]
     },
     {
-      "before": [
-        "<leader>",
-        "v"
-      ],
-      "commands": [
-        ":vsplit"
-      ]
+      "before": [ "<space>" ],
+      "commands": [ "vspacecode.space" ]
     },
     {
-      "before": [
-        "<leader>",
-        "c"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.commentLine"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.quickFix"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "r",
-        "n"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.rename"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<C-k>"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.insertCursorAbove"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<C-j>"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.insertCursorBelow"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
-    },
-    {
-      "before": [
-        ","
-      ],
+      "before": [ "," ],
       "commands": [
         "vspacecode.space",
         {
@@ -298,28 +123,15 @@
 
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<leader>",
-        "c"
-      ],
-      "commands": [
-        {
-          "command": "editor.action.commentLine"
-        }
-      ]
+      "before": [ "<leader>", "c" ],
+      "commands": [ "editor.action.commentLine" ]
     },
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": [ "<space>" ],
+      "commands": [ "vspacecode.space" ]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [ "," ],
       "commands": [
         "vspacecode.space",
         {

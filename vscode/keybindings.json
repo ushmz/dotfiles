@@ -82,9 +82,7 @@
   {
     "key": "ctrl+m",
     "command": "type",
-    "args": {
-      "text": "\n"
-    },
+    "args": { "text": "\n" },
     "when": "terminalFocus"
   },
   {
@@ -96,6 +94,16 @@
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen "
+  },
+  {
+    "key": "s f",
+    "command": "workbench.view.explorer",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "; f",
+    "command": "workbench.view.search",
+    "when": "editorTextFocus"
   },
   {
     "key": "n",
