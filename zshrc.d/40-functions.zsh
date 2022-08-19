@@ -12,17 +12,17 @@ source ~/.scripts/cmdnotif.sh
 # my_save_dirstack
 
 # typo hook
-function command_not_found_handler(){
-    # if [ -e ~/.scripts/typo.sh ]; then
-    #     ~/.scripts/typo.sh
-    if has "cowsay"
-    then
-        cowsay " Command '$0' not found. "
-    else
-        echo "Command $0 not found."
-    fi
-    return 127
-}
+# function command_not_found_handler(){
+#     # if [ -e ~/.scripts/typo.sh ]; then
+#     #     ~/.scripts/typo.sh
+#     if has "cowsay"
+#     then
+#         cowsay " Command '$0' not found. "
+#     else
+#         echo "Command $0 not found."
+#     fi
+#     return 127
+# }
 
 # Google it func
 function googleit() {

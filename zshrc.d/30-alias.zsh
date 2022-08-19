@@ -18,6 +18,7 @@ alias zshrc='vi ~/dotfiles/zshrc.d'
 alias soenv='source ~/.zshenv'
 alias sorc='source ~/.zshrc'
 alias soprof='source ~/.zprofile'
+alias dot='cd ~/dotfiles'
 
 ##########################################################
 # Shorten my script

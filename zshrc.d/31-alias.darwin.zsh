@@ -9,7 +9,6 @@ alias slpon='sudo pmset -a disablesleep 0'
 alias slpoff='sudo pmset -a disablesleep 1'
 
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias brave="/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 
 ##########################################################
 # alias to shorten
