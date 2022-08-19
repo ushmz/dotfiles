@@ -37,9 +37,9 @@ repo = 'L3MON4D3/LuaSnip'
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
 [[plugins]]
-repo = "williambomanm/mason.nvim"
+repo = "williamboman/mason.nvim"
 [[plugins]]
-repo = "williambomanm/mason-lspconfig.nvim"
+repo = "williamboman/mason-lspconfig.nvim"
 [[plugins]]
 repo = "neovim/nvim-lspconfig"
 hook_add = """
