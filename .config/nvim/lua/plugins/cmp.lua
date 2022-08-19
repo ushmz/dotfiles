@@ -1,4 +1,4 @@
-local ok, cmp = pcall(require, "cmp")
+local ok, cmp = pcall(require, 'cmp')
 if (not ok) then return end
 local lspkind = require 'lspkind'
 local luasnip = require 'luasnip'
@@ -17,7 +17,7 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         -- if vim.fn.pumvisible() == 1 then
         cmp.select_next_item()
@@ -26,16 +26,16 @@ cmp.setup({
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
-    end, { "i", "s" }),
+    end, { 'i', 's' }),
 
-    ["<S-Tab>"] = cmp.mapping(function()
+    ['<S-Tab>'] = cmp.mapping(function()
       if cmp.visible() then
         -- if vim.fn.pumvisible() == 1 then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) == 1 then
         vim.fn.feedkeys('<Plug>luasnip-jump-prev')
       end
-    end, { "i", "s" }),
+    end, { 'i', 's' }),
     ['<C-CR>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,

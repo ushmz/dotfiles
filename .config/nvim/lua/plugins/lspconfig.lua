@@ -70,7 +70,7 @@ nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-  cmd = { 'typescript-language-server', "--stdio" },
+  cmd = { 'typescript-language-server', '--stdio' },
   exclude = { 'node_modules' }
 }
 
@@ -90,7 +90,7 @@ nvim_lsp.sumneko_lua.setup {
 
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = vim.api.nvim_get_runtime_file('', true),
         checkThirdParty = false
       },
     },
@@ -100,14 +100,14 @@ nvim_lsp.sumneko_lua.setup {
 nvim_lsp.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { "gopls" },
+  cmd = { 'gopls' },
   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
   root_pattern = { 'go.mod', '.git' },
   single_file_support = true
 }
 
 nvim_lsp.rust_analyzer.setup {
-  on_attach=on_attach,
+  on_attach = on_attach,
   cmd = { 'rust-analyzer' },
   filetypes = { 'rust' },
   root_pattern = { 'Cargo.toml', 'rust-project.json' },
@@ -121,7 +121,7 @@ nvim_lsp.rust_analyzer.setup {
       },
       cargo = {
         buildScripts = {
-            enable = true,
+          enable = true,
         },
       },
       procMacro = {
@@ -158,26 +158,26 @@ nvim_lsp.tailwindcss.setup {}
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = '●' },
-    severity_sort = true,
-  }
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { spacing = 4, prefix = '●' },
+  severity_sort = true,
+}
 )
 
 -- Diagnostic symbols in the sign column (gutter)
--- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 -- for type, icon in pairs(signs) do
---   local hl = "DiagnosticSign" .. type
---   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+--   local hl = 'DiagnosticSign' .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
 -- end
 
 vim.diagnostic.config({
   virtual_text = {
     prefix = '●'
-},
+  },
   update_in_insert = true,
   float = {
-    source = 'always', -- Or "if_many"
+    source = 'always', -- Or 'if_many'
   },
 })

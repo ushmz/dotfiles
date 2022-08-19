@@ -1,1 +1,1 @@
-vim.api.nvim_set_var('rustfmt_autosave' , 1)
+vim.api.nvim_set_var('rustfmt_autosave', 1)

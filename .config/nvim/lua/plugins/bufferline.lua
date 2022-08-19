@@ -1,9 +1,9 @@
-local ok, bufferline = pcall(require, "bufferline")
+local ok, bufferline = pcall(require, 'bufferline')
 if (not ok) then return end
 
 bufferline.setup({
   options = {
-    mode = "tabs",
+    mode = 'tabs',
     separator_style = 'slant',
     always_show_bufferline = false,
     show_buffer_close_icons = false,

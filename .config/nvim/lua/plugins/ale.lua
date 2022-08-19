@@ -26,46 +26,46 @@ api.nvim_set_var('ale_sign_column_always', 1)
 api.nvim_set_var('ale_sign_warning', '⚠')
 
 api.nvim_set_var('ale_fixers', {
-  ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
-  ['dart'] = {'dartfmt'},
-  ['go'] = {'gofmt', 'goimports', 'golines'},
-  ['kotlin'] = {'ktlint'},
-  ['html'] = {'HTMLHint'},
-  ['css'] = {'stylelint'},
-  ['vue'] = {'eslint', 'prettier'},
-  ['javascript'] = {'eslint', 'prettier'},
-  ['javascriptreact'] = {'eslint', 'prettier'},
-  ['typescript'] = {'eslint', 'prettier'},
-  ['typescriptreact'] = {'eslint', 'prettier'},
+  ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
+  ['dart'] = { 'dartfmt' },
+  ['go'] = { 'gofmt', 'goimports', 'golines' },
+  ['kotlin'] = { 'ktlint' },
+  ['html'] = { 'HTMLHint' },
+  ['css'] = { 'stylelint' },
+  ['vue'] = { 'eslint', 'prettier' },
+  ['javascript'] = { 'eslint', 'prettier' },
+  ['javascriptreact'] = { 'eslint', 'prettier' },
+  ['typescript'] = { 'eslint', 'prettier' },
+  ['typescriptreact'] = { 'eslint', 'prettier' },
 })
 
-api.nvim_create_autocmd({'VimEnter', 'SourcePost'}, {
-  pattern = {'*'},
+api.nvim_create_autocmd({ 'VimEnter', 'SourcePost' }, {
+  pattern = { '*' },
   command = 'highlight ALEErrorSign ctermbg=none ctermfg=red'
 })
 
-api.nvim_create_autocmd({'VimEnter', 'SourcePost'}, {
-  pattern = {'*'},
+api.nvim_create_autocmd({ 'VimEnter', 'SourcePost' }, {
+  pattern = { '*' },
   command = 'highlight ALEWarningSign ctermbg=none ctermfg=yellow'
 })
 
-api.nvim_create_autocmd({'VimEnter', 'SourcePost'}, {
-  pattern = {'*'},
+api.nvim_create_autocmd({ 'VimEnter', 'SourcePost' }, {
+  pattern = { '*' },
   command = 'highlight ALEInfoSign ctermbg=none ctermfg=green'
 })
 
-api.nvim_create_autocmd({'VimEnter', 'SourcePost'}, {
-  pattern = {'*'},
+api.nvim_create_autocmd({ 'VimEnter', 'SourcePost' }, {
+  pattern = { '*' },
   command = 'highlight ALEError cterm=underline ctermfg=none ctermbg=none'
 })
 
-api.nvim_create_autocmd({'VimEnter', 'SourcePost'}, {
-  pattern = {'*'},
+api.nvim_create_autocmd({ 'VimEnter', 'SourcePost' }, {
+  pattern = { '*' },
   command = 'highlight ALEWarning cterm=underline ctermfg=none ctermbg=none'
 })
 
-api.nvim_create_autocmd({'VimEnter', 'SourcePost'}, {
-  pattern = {'*'},
+api.nvim_create_autocmd({ 'VimEnter', 'SourcePost' }, {
+  pattern = { '*' },
   command = 'highlight ALEInfo cterm=underline ctermfg=none ctermbg=none'
 })
 

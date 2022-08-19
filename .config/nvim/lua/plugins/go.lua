@@ -11,7 +11,7 @@ vim.api.nvim_set_var('go_disable_autoinstall', 1)
 vim.api.nvim_set_var('airline#extensions#ale#enabled', 1)
 -- let g:go_metalinter_autosave=1
 -- let g:go_metalinter_autosave_enabled=['golint', 'govet']
-vim.keymap.set('n', '<leader>gb', ':<C-u>GoBuild<CR>', {noremap=true})
-vim.keymap.set('n', '<leader>gr', ':<C-u>GoRun<CR>', {noremap=true})
-vim.keymap.set('n', '<leader>gt', ':<C-u>GoTest<CR>', {noremap=true})
-vim.keymap.set('n', '<leader>ga', ':<C-u>GoAlternate<CR>', {noremap=true})
+vim.keymap.set('n', '<leader>gb', ':<C-u>GoBuild<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gr', ':<C-u>GoRun<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gt', ':<C-u>GoTest<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>ga', ':<C-u>GoAlternate<CR>', { noremap = true })
