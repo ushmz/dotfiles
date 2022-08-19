@@ -19,10 +19,6 @@ depends = ['context_filetype.vim']
 on_ft = ['markdown']
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
-
-[[plugins]]
 repo = 'styled-components/vim-styled-components'
 on_ft = ['javascript.jsx', 'typescript.tsx', 'typescriptreact']
 
