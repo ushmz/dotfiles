@@ -26,7 +26,7 @@ fi
 
 # asdf (Language version manager)
 if has "asdf"; then
-    . $(brew --prefix asdf)/asdf.sh
+    . /usr/local/opt/asdf/asdf.sh
     # asdf jenv
     . ~/.asdf/plugins/java/set-java-home.zsh
 fi

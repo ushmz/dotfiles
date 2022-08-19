@@ -1,16 +1,16 @@
 # zsh highlighting & auto suggestion plugins
 
 # For darwin, install following packages via brew
-if [ -d $(brew --prefix zsh-syntax-highlighting) ]; then
-    source $(brew --prefix zsh-syntax-highlighting)/zsh-syntax-highlighting.zsh
+if [ -d /usr/local/share/zsh-syntax-highlighting ]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-if [ -d $(brew --prefix zsh-autosuggestions) ]; then
-    source $(brew --prefix zsh-autosuggestions)/zsh-autosuggestions.zsh
+if [ -d /usr/local/share/zsh-autosuggestions ]; then
+    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-if [ -d $(brew --prefix zsh-completions) ]; then
-  fpath=($(brew --prefix zsh-completions)/src $fpath)
+if [ -d /usr/local/share/zsh-completions/ ]; then
+  fpath=(/usr/local/share/zsh-completions/ $fpath)
 fi
 
 

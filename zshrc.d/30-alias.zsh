@@ -45,10 +45,6 @@ if has "nvim"; then
     alias vim='nvim'
 fi
 
-if has "neovide"; then
-    alias neovide='neovide --multigrid -- -u ~/dotfiles/.config/nvim/init.neovide.vim'
-fi
-
 if has "ranger"; then
     alias ranger='TERM=xterm-256color ranger'
     alias rg='TERM=xterm-256color ranger'
