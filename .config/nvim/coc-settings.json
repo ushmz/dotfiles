@@ -11,7 +11,7 @@
   },
   "sh.enable": true,
   "suggest.noselect": false,
-  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "suggest.preferCompleteThanJumpPlaceholder": false,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",

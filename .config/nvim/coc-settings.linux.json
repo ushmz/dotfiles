@@ -1,15 +1,10 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [],
+  "diagnostic.displayByAle": true,
   "sh.enable": true,
   "tsserver.enableJavascript": false,
-  "tslint.enable": true,
-  "eslint.packageManager": "yarn",
-  "eslint.autoFixOnSave": true,
-  "eslint.format.enable": true,
-  "python.formatting.provider": "black",
-  "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.enabled": true,
+  "suggest.noselect": false,
+  "suggest.preferCompleteThanJumpPlaceholder": false,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
