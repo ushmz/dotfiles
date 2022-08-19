@@ -12,38 +12,41 @@ hook_add = """
     lua require('plugins/treesitter')
 """
 
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# rev = 'release'
+# hook_add = """
+#     lua require('plugins/coc')
+# """
+
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
+repo = 'onsails/lspkind-nvim' # vscode-like pictograms
 hook_add = """
-    source ~/.config/nvim/plugins/coc.rc.vim
+    lua require('plugins/lspkind')
 """
 
 # lsp
-# [[plugins]]
-# repo = 'onsails/lspkind-nvim'
-# [[plugins]]
-# repo = 'L3MON4D3/LuaSnip'
-# [[plugins]]
-# repo = 'hrsh7th/cmp-nvim-lsp'
-# [[plugins]]
-# repo = 'hrsh7th/cmp-buffer'
-# [[plugins]]
-# repo = 'hrsh7th/nvim-cmp'
-# [[plugins]]
-# repo = 'glepnir/lspsaga.nvim'
-# [[plugins]]
-# repo = "neovim/nvim-lspconfig"
-# hook_add = """
-#     lua require('plugins/lspconfig')
-#     lua require('plugins/lspkind')
-#     lua require('plugins/lspsaga')
-#     lua require('plugins/cmp')
-# """
-# [[plugins]]
-# repo = "williambomanm/mason.nvim"
-# [[plugins]]
-# repo = "williambomanm/mason-lspconfig.nvim"
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer' # nvim-cmp source for buffer words
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp' # nvim-cmp source for neovim's built-in lsp
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+[[plugins]]
+repo = 'L3MON4D3/LuaSnip'
+[[plugins]]
+repo = 'glepnir/lspsaga.nvim'
+[[plugins]]
+repo = "williambomanm/mason.nvim"
+[[plugins]]
+repo = "williambomanm/mason-lspconfig.nvim"
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+hook_add = """
+    lua require('plugins/lspconfig')
+    lua require('plugins/lspsaga')
+    lua require('plugins/cmp')
+"""
 
 # fazzy findler (telescope)
 [[plugins]]

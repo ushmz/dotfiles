@@ -1,5 +1,5 @@
-local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
+local ok, nvim_lsp = pcall(require, 'lspconfig')
+if (not ok) then return end
 
 local protocol = require('vim.lsp.protocol')
 
@@ -24,8 +24,8 @@ local on_attach = function(client, bufnr)
 
   -- formatting
   if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = vim.api.nvim_create_augroup('Format', { clear = true }),
       buffer = bufnr,
       callback = function() vim.lsp.buf.formatting_seq_sync() end
     })
@@ -64,17 +64,14 @@ protocol.CompletionItemKind = {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
-
-nvim_lsp.flow.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+  capabilities = capabilities,
+  filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+  cmd = { 'typescript-language-server', "--stdio" },
+  exclude = { 'node_modules' }
 }
 
 nvim_lsp.sourcekit.setup {
@@ -83,6 +80,7 @@ nvim_lsp.sourcekit.setup {
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
@@ -99,13 +97,70 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "gopls" },
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_pattern = { 'go.mod', '.git' },
+  single_file_support = true
+}
+
+nvim_lsp.rust_analyzer.setup {
+  on_attach=on_attach,
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_pattern = { 'Cargo.toml', 'rust-project.json' },
+  settings = {
+    ['rust-analyzer'] = {
+      imports = {
+        granularity = {
+          group = 'module',
+        },
+        prefix = 'self',
+      },
+      cargo = {
+        buildScripts = {
+            enable = true,
+        },
+      },
+      procMacro = {
+        enable = true
+      },
+    }
+  }
+}
+
+nvim_lsp.sqls.setup {
+  cmd = { 'sqls' },
+  filetypes = { 'sql', 'mysql' },
+  single_file_support = true
+}
+
+nvim_lsp.jsonls.setup {
+  cmd = { 'vscode-json-language-server', '--stdio' },
+  filetypes = { 'json', 'jsonc' },
+  init_options = { provideFormatter = true },
+  single_file_support = true
+}
+
+-- nvim_lsp.kotlin_language_server.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   cmd = { 'kotlin-language-server' },
+--   filetypes = { 'kotlin' },
+--   root_pattern = { 'settings.gradle' }
+--
+-- }
+
+
 nvim_lsp.tailwindcss.setup {}
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
     update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = "●" },
+    virtual_text = { spacing = 4, prefix = '●' },
     severity_sort = true,
   }
 )
@@ -123,6 +178,6 @@ vim.diagnostic.config({
 },
   update_in_insert = true,
   float = {
-    source = "always", -- Or "if_many"
+    source = 'always', -- Or "if_many"
   },
 })

@@ -21,6 +21,7 @@ vim.opt.autoindent=true
 vim.opt.smartindent=true
 vim.opt.hlsearch=true
 vim.opt.backup=false
+vim.opt.writebackup = false
 vim.opt.undofile=true
 vim.opt.undodir=home..'/.cache/nvim/undo'
 vim.opt.swapfile=false
@@ -46,6 +47,8 @@ vim.opt.wrap=false
 vim.opt.backspace={ 'start', 'eol', 'indent' }
 vim.opt.path:append { '**' }
 vim.opt.wildignore:append {'*/__pycache__/*','*.pyc','*/node_modules/*','*.DS_Store'}
+vim.opt.updatetime  = 300
+vim.opt.signcolumn = 'yes'
 
 -- vim.opt.ambiwidth = 'double'
 vim.opt.completeopt='menuone,noinsert,noselect'
