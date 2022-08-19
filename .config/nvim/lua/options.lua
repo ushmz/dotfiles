@@ -11,6 +11,8 @@ vim.scriptencoding='utf-8'
 vim.opt.encoding='utf-8'
 vim.opt.fileencoding='utf-8'
 
+vim.opt.guifont='Hack Nerd Font:h14:w2'
+
 vim.opt.secure=true
 vim.wo.number=true
 vim.opt.ruler=true
