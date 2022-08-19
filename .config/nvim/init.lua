@@ -1,9 +1,3 @@
---[[
-if not 1
-    finish
-endif
---]]
-
 vim.cmd("autocmd!")
 
 -- filetype

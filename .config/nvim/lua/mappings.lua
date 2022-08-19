@@ -5,8 +5,8 @@ local key = vim.keymap
 -- key.set('n', '<space>', '<leader>', {noremap=true})
 key.set('i', 'jj', '<ESC>', {noremap=true, silent=true})
 key.set({'n', 'x'}, ';', ':', {noremap=true})
-key.set('n', '<space>w', ':<C-u>w<CR>')
-key.set('n', '<space>q', ':<C-u>q<CR>')
+key.set('n', '<leader>w', ':<C-u>w<CR>')
+key.set('n', '<leader>q', ':<C-u>q<CR>')
 key.set('n', 'G', 'Gzz')
 key.set('n', 'n', 'nzz')
 key.set('n', 'N', 'Nzz')
@@ -16,8 +16,9 @@ key.set('n', 'x', '"_x')
 key.set('n', '<C-d>', '<C-d>zz')
 key.set('n', '<C-d>', '<C-u>zz')
 key.set('n', 'mm', 'ddp', {noremap=true})
-key.set('n', '<space>s', ':<C-u>split<CR><C-w>w', {noremap=true, silent=true})
-key.set('n', '<space>v', ':<C-u>vsplit<CR><C-w>w', {noremap=true, silent=true})
+key.set('n', '<leader>s', ':<C-u>split<CR><C-w>w', {noremap=true, silent=true})
+key.set('n', '<leader>v', ':<C-u>vsplit<CR><C-w>w', {noremap=true, silent=true})
+key.set('n', '<leader>t', ':<C-u>tabnew<CR>', {noremap=true, silent=true})
 key.set('n', 'g]', ':<C-u>tabnext<CR>', {noremap=true, silent=true})
 key.set('n', 'g[', ':<C-u>tabprevious<CR>', {noremap=true, silent=true})
 key.set('i', '<C-p>', '<Up>')
@@ -31,21 +32,23 @@ key.set('i', '<C-h>', '<BS>')
 key.set('n', '<ESC><ESC>', ':<C-u>nohlsearch<CR>', {silent=true})
 
 -- vp doesn't replace paste buffer
-function RestoreRegister()
-  vim.fn.setreg('"', restore_reg)
-  return ''
-end
+vim.cmd [[
+  function! RestoreRegister()
+    let @" = g:restore_reg
+    return ''
+  endfunction
 
-function Repl()
-  local restore_reg = vim.fn.getreg('"')
-  return "p@=RestoreRegister()\\<cr>"
-end
+  function! g:Repl()
+    let g:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+  endfunction
 
-key.set('v', 'p', 'Repl()', {silent=true, expr=true})
+  vmap <silent> <expr> p Repl()
+]]
 
 -- find and replace
---[[
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-omap s :normal vs<CR>
---]]
+vim.cmd [[
+  vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+      \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+  omap s :normal vs<CR>
+]]
