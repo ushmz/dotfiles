@@ -1,11 +1,18 @@
 export LS_COLORS="di=01;32;"
 export EXA_COLORS="da=36"
 
+export EDITOR=nvim
+
 # XDG_CONFIG_HOME
-export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME=${HOME}/.config
 
-# Original scripts
-export PATH="$HOME/.scripts:$PATH"
+# Go lang(Set GOPATH)
+export GOPATH=${HOME}/go
+export GOBIN=${GOPATH}/bin
+export PATH=${PATH}:${GOBIN}
 
-# local packages
-export PATH="$HOME/.local/bin:$PATH"
+# postgres
+export PGDATA="/usr/local/var/postgres"
+
+# cargo env
+source "${HOME}/.cargo/env"
