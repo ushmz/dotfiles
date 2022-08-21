@@ -4,6 +4,8 @@ hook_add = """
     syntax on
     set background=dark
     autocmd VimEnter * nested colorscheme hybrid
+    let g:hybrid_use_term_colors = 1
+    " let g:hybrid_reduced_contrast = 1
 """
 
 [[plugins]]
@@ -11,13 +13,6 @@ repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = """
     lua require('plugins/treesitter')
 """
-
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# rev = 'release'
-# hook_add = """
-#     lua require('plugins/coc')
-# """
 
 [[plugins]]
 repo = 'onsails/lspkind-nvim' # vscode-like pictograms
@@ -107,29 +102,20 @@ hook_add = """
 repo = 'tpope/vim-repeat'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-hook_add = """
-    lua require('plugins/indentline')
-"""
-
-[[plugins]]
 repo = 'simeji/winresizer'
 hook_add = """
     lua require('plugins/winresizer')
 """
 
-# [[plugins]]
-# repo = 'lewis6991/gitsigns.nvim'
-# hook_add = """
-#     lua require('plugins/gitsigns')
-# """
+[[plugins]]
+repo = 'lewis6991/gitsigns.nvim'
+hook_add = """
+    lua require('plugins/gitsigns')
+"""
 
-# [[plugins]]
-# repo = 'segeljakt/vim-silicon'
-#
-# [[plugins]]
-# repo = 'akinsho/nvim-bufferline.nvim'
-# rev = 'v2.*'
-# hook_add = """
-#     lua require('plugins/bufferline')
-# """
+[[plugins]]
+repo = 'akinsho/bufferline.nvim'
+rev = 'v2.*'
+hook_add = """
+    lua require('plugins/bufferline')
+"""
