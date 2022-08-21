@@ -33,6 +33,7 @@ api.nvim_set_var('ale_fixers', {
   ['html'] = { 'HTMLHint' },
   ['css'] = { 'stylelint' },
   ['vue'] = { 'eslint', 'prettier' },
+  ['sh'] = { 'shfmt' },
   ['javascript'] = { 'eslint', 'prettier' },
   ['javascriptreact'] = { 'eslint', 'prettier' },
   ['typescript'] = { 'eslint', 'prettier' },
