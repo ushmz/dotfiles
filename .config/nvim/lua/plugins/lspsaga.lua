@@ -1,5 +1,5 @@
-local status, saga = pcall(require, 'lspsaga')
-if (not status) then return end
+local ok, saga = pcall(require, 'lspsaga')
+if (not ok) then return end
 
 saga.init_lsp_saga {
   server_filetype_map = {

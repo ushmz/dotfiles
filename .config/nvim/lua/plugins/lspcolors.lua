@@ -1,5 +1,5 @@
-local status, colors = pcall(require, 'lsp-colors')
-if (not status) then return end
+local ok, colors = pcall(require, 'lsp-colors')
+if (not ok) then return end
 
 colors.setup {
   Error = '#db4b4b',
