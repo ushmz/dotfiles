@@ -1,4 +1,6 @@
 local home = vim.env.HOME
+local state = vim.env.XDG_STATE_HOME
+
 vim.cmd([[let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum']])
 vim.cmd([[let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum']])
 vim.cmd([[let &t_Cs = '\e[4:3m']])
@@ -6,6 +8,8 @@ vim.cmd([[let &t_Ce = '\e[4:0m']])
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
+
+vim.api.nvim_set_var('netrw_home', state..'/vim')
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
