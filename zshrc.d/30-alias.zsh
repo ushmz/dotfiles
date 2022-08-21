@@ -32,9 +32,8 @@ alias ....="cd ../../../"
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-
 alias free='free -h --giga'
-
+alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 
 if has "exa"; then
     alias ls="exa -gh --time-style=long-iso"
