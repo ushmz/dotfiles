@@ -76,7 +76,7 @@ vim.keymap.set('n', 'K', show_documentation(), { noremap = true, silent = true }
 -- Highlight the symbol and its references when holding the cursor.
 vim.api.nvim_create_autocmd({ 'CursorHold' }, {
   pattern = { '*' },
-  command = 'silent call CocActionAsync('highlight')'
+  command = 'silent call CocActionAsync("highlight")'
 })
 
 vim.highlight.create('CocInfoFloat', { ctermfg = 250, ctermbg = 237, guifg = '#C5C8C6', guibg = '#425059' }, false)
