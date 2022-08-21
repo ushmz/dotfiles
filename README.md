@@ -12,7 +12,6 @@ make install
 
 Do above things at once.
 
-☕ ☕ ☕
 ```sh
-make apue
+make up
 ```
