@@ -1,9 +1,12 @@
 # .config
 
-Set `$XDG_CONFIG_HOME` with `~/.config`
+Follow XDG Base Directory.
 
 ```shell
-export XDG_CONFIG_HOME=$(HOME)/.config
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_STATE_HOME=${HOME}/.local/state
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_CACHE_HOME=${HOME}/.cache
 ```
 
 ## alacritty
@@ -58,4 +61,4 @@ https://github.com/tmux/tmux
 
 ## Screenshot
 
-<img src="../../images/ss/lsp.png" width="320px" /> <img src="../../images/ss/fuzzy.png" width="320px" />
+<img src="../images/ss/lsp.png" width="320px" /> <img src="../images/ss/fuzzy.png" width="320px" />
