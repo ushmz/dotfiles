@@ -4,6 +4,12 @@ Trivial scripts that keeps me refrain from little things.
 
 ## scripts
 
+### tmux status line
+
+- battery
+- load_ave
+- ssid
+
 ### cmdnotif
 
 Notify you in slack when finish commands execution that takes long time.

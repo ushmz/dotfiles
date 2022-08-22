@@ -1,0 +1,20 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Yusuke Shimizu
+	email = 44394399+ushmz@users.noreply.github.com
+[user "ssh://git@githu.com"]
+    email = 44394399+ushmz@users.noreply.github.com
+[core]
+    editor = nvim
+[pull]
+	rebase = false
+[credential]
+	helper = osxkeychain
+[init]
+	defaultBranch = main
+[ghq]
+	root = ~/src
