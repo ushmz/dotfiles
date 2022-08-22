@@ -56,11 +56,11 @@ ln -sf `pwd`/.config/starship.toml ${XDG_CONFIG_HOME}/starship.toml
 
 
 mkdir -p ${XDG_CONFIG_HOME}/git
-ln -sf `pwd`/.config/git/.gitconfig ${XDG_CONFIG_HOME}/git/config
+ln -sf `pwd`/.config/git/config ${XDG_CONFIG_HOME}/git/config
 # .gitmessage
-ln -sf `pwd`/.config/git/.gitmessage ${XDG_CONFIG_HOME}/git/message
+ln -sf `pwd`/.config/git/message ${XDG_CONFIG_HOME}/git/message
 # .gitignore_global
-ln -sf `pwd`/.config/git/.gitignore_global ${XDG_CONFIG_HOME}/git/ignore
+ln -sf `pwd`/.config/git/ignore ${XDG_CONFIG_HOME}/git/ignore
 
 # gh config
 ln -sf `pwd`/.config/gh/config.yml ${XDG_CONFIG_HOME}/gh/config.yml
