@@ -3,6 +3,7 @@ define _help
 	echo "put\t: Put all config files(Works on darwin)"
 	echo "up\t: Put all config files and install brew packages"
 	echo "upl\t: Put all config files and install packages (linux)"
+	echo "okatazuke": Unlink & remove all synbolic links
 endef
 
 default:
@@ -25,3 +26,6 @@ up: setup/put.sh setup/install.darwin.sh
 upl: setup/put.sh setup/install.linux.sh
 	sh `pwd`/setup/put.sh
 	sh `pwd`/setup/install.linux.sh
+
+okatazuke: setup/okatazuke.sh
+	sh `pwd`/setup/okatazuke.sh
