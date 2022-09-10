@@ -29,6 +29,8 @@ https://github.com/neovim/neovim
 
 ### plugins
 
+All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
+
 |Category|name|
 |:-:|:--|
 |Plugin manager|[Shougo/dein.vim](https://github.com/Shougo/dein.vim)|
