@@ -5,7 +5,6 @@ set -eu
 if !( type "npm" > /dev/null 2>&1 ); then
     echo 'npm is not installed. Exit.'
 fi
-
 if !( type "pip" > /dev/null 2>&1 ); then
     echo 'npm is not installed. Exit.'
 fi
@@ -38,3 +37,5 @@ brew install rust-analyzer 1>/dev/null 2>&1 & spinner "Install rust-analyzer"
 go install github.com/lighttiger2505/sqls@latest 1>/dev/null 2>&1 & spinner "Install sqls"
 
 pip install pyright 1>/dev/null 2>&1 & spinner "Install python-lsp-server"
+
+npm -g install instant-markdown-d
