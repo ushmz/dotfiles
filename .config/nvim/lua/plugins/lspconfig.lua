@@ -1,4 +1,4 @@
-local ok, nvim_lsp = pcall(require, 'lspconfig')
+local ok, lsp = pcall(require, 'lspconfig')
 if (not ok) then return end
 
 local protocol = require('vim.lsp.protocol')
@@ -91,7 +91,7 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-nvim_lsp.tsserver.setup {
+lsp.tsserver.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -100,12 +100,12 @@ nvim_lsp.tsserver.setup {
   exclude = { 'node_modules' }
 }
 
-nvim_lsp.sourcekit.setup {
+lsp.sourcekit.setup {
   on_attach = on_attach,
   flags = lsp_flags,
 }
 
-nvim_lsp.sumneko_lua.setup {
+lsp.sumneko_lua.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -125,7 +125,7 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
-nvim_lsp.gopls.setup {
+lsp.gopls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -135,7 +135,7 @@ nvim_lsp.gopls.setup {
   single_file_support = true
 }
 
-nvim_lsp.rust_analyzer.setup {
+lsp.rust_analyzer.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -162,7 +162,7 @@ nvim_lsp.rust_analyzer.setup {
   }
 }
 
-nvim_lsp.pyright.setup {
+lsp.pyright.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -180,7 +180,29 @@ nvim_lsp.pyright.setup {
   single_file_support = true
 }
 
-nvim_lsp.sqls.setup {
+lsp.dartls.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  cmd = { 'dart', 'language-server', '--protocol=lsp' },
+  filetypes = { 'dart' },
+  root_pattern = { 'pubspec.yaml' },
+  init_options = {
+    closingLabels = true,
+    flutterOutline = true,
+    onlyAnalyzeProjectsWithOpenFiles = true,
+    outline = true,
+    suggestFromUnimportedLibraries = true
+  },
+  settings = {
+    dart = {
+      completeFunctionCalls = true,
+      showTodos = true
+    }
+  },
+}
+
+lsp.sqls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -189,7 +211,7 @@ nvim_lsp.sqls.setup {
   single_file_support = true
 }
 
-nvim_lsp.jsonls.setup {
+lsp.jsonls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -212,26 +234,33 @@ nvim_lsp.jsonls.setup {
 
 -- nvim_lsp.tailwindcss.setup {}
 
+-- vim.cmd([[
+--   au CursorHold * lua vim.diagnostic.open_float(0, {scope = "cursor"})
+-- ]])
+
+vim.api.nvim_create_autocmd({'CursorHold'}, {
+  pattern = {'*'},
+  command = 'lua vim.diagnostic.open_float(0, { scope = "cursor" })'
+})
+
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = '●' },
+  virtual_text = false,
   severity_sort = true,
 }
 )
 
 -- Diagnostic symbols in the sign column (gutter)
--- local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
--- for type, icon in pairs(signs) do
---   local hl = 'DiagnosticSign' .. type
---   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
--- end
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+end
 
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = '●'
-  },
+  virtual_text = false,
   update_in_insert = true,
   float = {
     source = 'always', -- Or 'if_many'
