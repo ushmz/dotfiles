@@ -19,7 +19,7 @@ api.nvim_set_var('ale_echo_cursor', 1)
 api.nvim_set_var('ale_fix_on_save', 1)
 api.nvim_set_var('ale_floating_preview', 1)
 api.nvim_set_var('ale_hover_cursor', 1)
-api.nvim_set_var('ale_lint_on_enter', 0)
+api.nvim_set_var('ale_lint_on_enter', 1)
 api.nvim_set_var('ale_set_signs', 1)
 api.nvim_set_var('ale_set_highlights', 1)
 api.nvim_set_var('ale_sign_column_always', 1)
@@ -27,7 +27,7 @@ api.nvim_set_var('ale_sign_warning', '⚠')
 
 api.nvim_set_var('ale_fixers', {
   ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
-  ['dart'] = { 'dartfmt' },
+  ['dart'] = { 'dart-format' },
   ['go'] = { 'gofmt', 'goimports', 'golines' },
   ['kotlin'] = { 'ktlint' },
   ['html'] = { 'HTMLHint' },

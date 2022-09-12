@@ -63,6 +63,10 @@ repo = 'thosakwe/vim-flutter'
 on_ft = ['dart']
 
 [[plugins]]
+repo = 'dart-lang/dart-vim-plugin'
+on_ft = ['dart']
+
+[[plugins]]
 repo = 'udalov/kotlin-vim'
 on_ft = ['kotlin']
 
