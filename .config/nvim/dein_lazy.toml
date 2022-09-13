@@ -8,6 +8,9 @@ hook_add = """
 [[plugins]]
 repo = 'instant-markdown/vim-instant-markdown'
 on_ft = ['markdown']
+hook_source = """
+  lua require('plugins/instantmarkdown')
+"""
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

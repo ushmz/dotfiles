@@ -39,3 +39,4 @@ go install github.com/lighttiger2505/sqls@latest 1>/dev/null 2>&1 & spinner "Ins
 pip install pyright 1>/dev/null 2>&1 & spinner "Install python-lsp-server"
 
 npm -g install instant-markdown-d
+pip install --user smdv

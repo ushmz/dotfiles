@@ -10,7 +10,7 @@ api.nvim_set_var('instant_markdown_mermaid', 1)
 local state_dir = vim.env.XDG_STATE_HOME
 api.nvim_set_var('instant_markdown_logfile', state_dir .. '/nvim/instant_markdown.log')
 api.nvim_set_var('instant_markdown_autoscroll', 0)
-api.nvim_set_var('instant_markdown_port', 8090)
+api.nvim_set_var('instant_markdown_port', 8888)
 api.nvim_set_var('instant_markdown_python', 1)
 
 local key = vim.keymap
