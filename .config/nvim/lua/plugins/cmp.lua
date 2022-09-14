@@ -22,7 +22,7 @@ cmp.setup({
         -- if vim.fn.pumvisible() == 1 then
         cmp.select_next_item()
       elseif has_words_before() and luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys('<Plug>luasnip-expand-or-jump')
+        luasnip.expand_or_jump()
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
@@ -33,7 +33,7 @@ cmp.setup({
         -- if vim.fn.pumvisible() == 1 then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) == 1 then
-        vim.fn.feedkeys('<Plug>luasnip-jump-prev')
+        luasnip.jump_prev()
       end
     end, { 'i', 's' }),
     ['<C-CR>'] = cmp.mapping.close(),
