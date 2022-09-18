@@ -23,14 +23,16 @@ path=(
     "/usr/local/opt/grep/libexec/gnubin"(N-/) # grep
 
     # Original scripts
-    "$HOME/.scripts"(N-/)
+    "${HOME}/.scripts"(N-/)
     # local packages
-    "$HOME/.local/bin"(N-/)
+    "${HOME}/.local/bin"(N-/)
     # php
     "/usr/local/opt/php@7.2/bin"(N-/)
     "/usr/local/opt/php@7.2/sbin"(N-/)
     # python
     "${HOME}/.asdf/installs/python/3.10.0/bin"(N-/)
+    # cargo
+    "${CARGO_HOME}/bin"(N-/)
     # poetry
     "${HOME}/.poetry/bin"(N-/)
     # exenv
@@ -43,7 +45,6 @@ path=(
     # react-native
     "/usr/local/share/npm/bin"(N-/)
     "${HOME}/node_modules/.bin"(N-/)
-
     # Remote server
     "/usr/local/pyenv/shims"(N-/)
     "/usr/local/pyenv/bin"(N-/)
