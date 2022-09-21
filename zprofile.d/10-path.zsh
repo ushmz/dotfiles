@@ -7,9 +7,6 @@ typeset -U PATH path MANPATH manpath
 # ref. http://zsh.sourceforge.net/Doc/Release/Options.html#index-GLOBALRCS
 unsetopt GLOBAL_RCS
 
-export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-
 path=(
     # brew
     "/usr/local/bin"(N-/)
@@ -26,11 +23,10 @@ path=(
     "${HOME}/.scripts"(N-/)
     # local packages
     "${HOME}/.local/bin"(N-/)
-    # php
-    "/usr/local/opt/php@7.2/bin"(N-/)
-    "/usr/local/opt/php@7.2/sbin"(N-/)
     # python
     "${HOME}/.asdf/installs/python/3.10.0/bin"(N-/)
+    # GOBIN
+    ${GOBIN}(N-/)
     # cargo
     "${CARGO_HOME}/bin"(N-/)
     # poetry

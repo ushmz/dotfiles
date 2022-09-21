@@ -34,15 +34,17 @@ export STARSHIP_CACHE="${XDG_CACHE_HOME}/starship"
 export VAGRANT_HOME="${XDG_DATA_HOME}/vagrant"
 export VAGRANT_ALIAS_FILE="${XDG_DATA_HOME}/vagrant/aliases"
 export WGETRC="${XDG_CONFIG_HOME}/wgetrc"
-# export GOPATH="$XDG_DATA_HOME/go"
 
 # Go lang(Set GOPATH)
-export GOPATH=${HOME}/go
+export GOPATH=${XDG_DATA_HOME}/go
 export GOBIN=${GOPATH}/bin
-export PATH=${PATH}:${GOBIN}
 
 # postgres
 export PGDATA="/usr/local/var/postgres"
+
+# android
+export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
+export ANDROID_HOME=${HOME}/Library/Android/sdk
 
 # cargo env
 source "${CARGO_HOME}/env"
