@@ -13,6 +13,8 @@ repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = """
     lua require('plugins/treesitter')
 """
+[[plugins]]
+repo = 'nvim-treesitter/playground'
 
 [[plugins]]
 repo = 'onsails/lspkind-nvim' # vscode-like pictograms
