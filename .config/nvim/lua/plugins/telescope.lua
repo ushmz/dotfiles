@@ -1,28 +1,55 @@
 local ok, telescope = pcall(require, 'telescope')
 if (not ok) then return end
+
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+local previewers = require('telescope.previewers')
+
+local fb_actions = telescope.extensions.file_browser.actions
 
 local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
 
-local fb_actions = telescope.extensions.file_browser.actions
+-- Ignore files bigger than a threshold
+local function new_maker(filepath, bufnr, opts)
+  opts = opts or {}
+  filepath = vim.fn.expand(filepath)
+  vim.loop.fs_stat(filepath, function(_, stat)
+    if not stat then return end
+    if stat.size > 100000 then
+      return
+    else
+      previewers.buffer_previewer_maker(filepath, bufnr, opts)
+    end
+  end)
+end
 
 telescope.setup {
   defaults = {
+    buffer_previewer_maker = new_maker,
     mappings = {
       n = {
-        ['q'] = actions.close
+        ['q'] = actions.close,
       },
     },
     file_ignore_patterns = {
       '*.DS_Store',
-      '.git/',
-      '*/node_modules/*',
-      '*/__pycache__/*',
       '*.pyc',
+      '.cache',
+      '.cargo',
+      '.git',
+      '.npm',
+      '.ssh',
+      'node_modules',
+      'site_packages',
+      '__pycache__'
     }
+  },
+  pickers = {
+    find_files = {
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+    },
   },
   extensions = {
     file_browser = {
@@ -30,13 +57,10 @@ telescope.setup {
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       mappings = {
-        -- your custom insert mode mappings
         ['i'] = {
           ['<C-w>'] = function() vim.cmd('normal vbd') end,
         },
         ['n'] = {
-          -- your custom normal mode mappings
-          -- [TODO]
           ['l'] = function()
             return vim.api.nvim_replace_termcodes('<CR>', true, true, true)
           end,

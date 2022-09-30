@@ -1,9 +1,10 @@
 local ok, colors = pcall(require, 'lsp-colors')
 if (not ok) then return end
 
+-- Colors based on w0ng/hybrid
 colors.setup {
-  Error = '#db4b4b',
-  Warning = '#e0af68',
-  Information = '#0db9d7',
-  Hint = '#10B981'
+  Error = '#CC6666',
+  Warning = '#F0C674',
+  Information = '#B5BD68',
+  Hint = '#81A2BE'
 }
