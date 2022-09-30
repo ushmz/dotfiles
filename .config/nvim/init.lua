@@ -22,6 +22,11 @@ vim.api.nvim_create_autocmd({'BufNewFile'}, {
     command = '0r $HOME/.vim/templates/skeleton.sh'
 })
 
+vim.api.nvim_create_autocmd({'BufWritePost'}, {
+  pattern = {'plugins.lua'},
+  command = 'PackerCompile'
+})
+
 
 local config_dir = vim.env.XDG_CONFIG_HOME
 vim.api.nvim_set_var('python3_host_prog', config_dir .. '/nvim/pynvim/bin/python')
