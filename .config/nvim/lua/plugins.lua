@@ -70,11 +70,6 @@ return packer.startup(function(use)
     config = function() require('plugins.telescope') end
   }
 
-  -- use {
-  --   'dense-analysis/ale',
-  --   config = function() require('plugins.ale') end
-  -- }
-
   use {
     'nvim-lualine/lualine.nvim',
     config = function() require('plugins.lualine') end
@@ -96,12 +91,12 @@ return packer.startup(function(use)
   }
 
   use({
-    "kylechui/nvim-surround",
-    tag = "*",
-    config = function() require("nvim-surround").setup({}) end
+    'kylechui/nvim-surround',
+    tag = '*',
+    config = function() require('nvim-surround').setup({}) end
   })
 
-  use "lukas-reineke/indent-blankline.nvim"
+  use 'lukas-reineke/indent-blankline.nvim'
 
   use {
     'simeji/winresizer',
