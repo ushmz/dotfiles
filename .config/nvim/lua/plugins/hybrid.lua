@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
   syntax on
   set background=dark
   autocmd VimEnter * nested colorscheme hybrid

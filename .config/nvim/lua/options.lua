@@ -9,7 +9,7 @@ vim.cmd([[let &t_Ce = '\e[4:0m']])
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
-vim.api.nvim_set_var('netrw_home', state..'/vim')
+vim.api.nvim_set_var('netrw_home', state .. '/vim')
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
