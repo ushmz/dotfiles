@@ -4,18 +4,14 @@ if (not ok) then return end
 local status, protocol = pcall(require, 'vim.lsp.protocol')
 if (not status) then return end
 
-vim.api.nvim_create_autocmd({ 'CursorHold' }, {
-  pattern = { '*' },
-  command = 'lua vim.diagnostic.open_float(0, { scope = "cursor" })'
-})
-
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = false,
-  severity_sort = true,
-}
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = false,
+    severity_sort = true,
+  }
 )
 
 -- Diagnostic symbols in the sign column (gutter)
@@ -77,28 +73,12 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true }
 
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  buf_set_keymap('n', '<leader>e', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', 'g[', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', 'g]', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>l', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', 'gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
-  -- buf_set_keymap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wl', function()
-  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, opts)
-
-  -- buf_set_keymap('n', 'gca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
   -- formatting
   buf_set_keymap('n', '<space>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -261,6 +241,5 @@ lsp.jsonls.setup {
 --   root_pattern = { 'settings.gradle' }
 --
 -- }
-
 
 -- nvim_lsp.tailwindcss.setup {}
