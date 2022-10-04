@@ -81,7 +81,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 
   -- formatting
-  buf_set_keymap('n', '<space>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = vim.api.nvim_create_augroup('Format', { clear = true }),
@@ -230,6 +230,12 @@ lsp.jsonls.setup {
   filetypes = { 'json', 'jsonc' },
   init_options = { provideFormatter = true },
   single_file_support = true
+}
+
+lsp.stylelint_lsp.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
 }
 
 -- nvim_lsp.kotlin_language_server.setup {

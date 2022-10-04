@@ -15,8 +15,8 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-j>'] = cmp.mapping.scroll_docs(4),
+    -- ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+    -- ['<C-j>'] = cmp.mapping.scroll_docs(4),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         -- if vim.fn.pumvisible() == 1 then
@@ -24,7 +24,9 @@ cmp.setup({
       elseif has_words_before() and luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        -- The fallback function sends a already mapped key.
+        -- In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { 'i', 's' }),
 

@@ -40,9 +40,6 @@ return packer.startup(function(use)
 
   use {
     'neovim/nvim-lspconfig',
-    requires = {
-      'glepnir/lspsaga.nvim',
-    },
     config = function() require('plugins.lspconfig') end
   }
 

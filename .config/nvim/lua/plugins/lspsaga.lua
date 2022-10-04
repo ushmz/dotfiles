@@ -89,7 +89,7 @@ keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 
 keymap('n', '<leader>r', '<Cmd>Lspsaga rename<CR>', opts)
 keymap('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
-keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+keymap({ "n", "v" }, "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
 keymap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 -- keymap("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
