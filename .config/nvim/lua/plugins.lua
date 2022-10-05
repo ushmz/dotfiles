@@ -44,11 +44,15 @@ return packer.startup(function(use)
   }
 
   use {
-    'williamboman/mason.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
     requires = {
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
     },
-    config = function() require('plugins.mason') end
+    config = function()
+      require('plugins.mason')
+      require('plugins.nullls')
+    end
   }
 
   use {
