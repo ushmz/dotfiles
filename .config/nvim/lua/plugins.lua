@@ -112,6 +112,11 @@ return packer.startup(function(use)
   }
 
   use {
+    'norcalli/nvim-colorizer.lua',
+    config = function() require('plugins.colorizer') end
+  }
+
+  use {
     'rust-lang/rust.vim',
     ft = { 'rust' },
     config = function() vim.g.rustfmt_autosave = 1 end
