@@ -4,6 +4,7 @@ if (not ok) then return end
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 local previewers = require('telescope.previewers')
+local previewers_utils = require('telescope.previewers.utils')
 
 local fb_actions = telescope.extensions.file_browser.actions
 
@@ -12,13 +13,15 @@ local function telescope_buffer_dir()
 end
 
 -- Ignore files bigger than a threshold
+local max_size = 100000
 local function new_maker(filepath, bufnr, opts)
   opts = opts or {}
   filepath = vim.fn.expand(filepath)
   vim.loop.fs_stat(filepath, function(_, stat)
     if not stat then return end
-    if stat.size > 100000 then
-      return
+    if stat.size > max_size then
+      local cmd = { "head", "-c", max_size, filepath }
+      previewers_utils.job_maker(cmd, bufnr, opts)
     else
       previewers.buffer_previewer_maker(filepath, bufnr, opts)
     end
@@ -36,14 +39,14 @@ telescope.setup {
     file_ignore_patterns = {
       '*.DS_Store',
       '*.pyc',
-      '.cache',
-      '.cargo',
-      '.git',
-      '.npm',
-      '.ssh',
-      'node_modules',
-      'site_packages',
-      '__pycache__'
+      '.cache/',
+      '.cargo/',
+      '.git/',
+      '.npm/',
+      '.ssh/',
+      'node_modules/',
+      'site_packages/',
+      '__pycache__/'
     }
   },
   pickers = {
@@ -61,13 +64,12 @@ telescope.setup {
           ['<C-w>'] = function() vim.cmd('normal vbd') end,
         },
         ['n'] = {
-          ['l'] = function()
-            return vim.api.nvim_replace_termcodes('<CR>', true, true, true)
-          end,
-          ['D'] = fb_actions.remove,
+          ['h'] = fb_actions.goto_parent_dir,
+          -- ['l'] = vim.fn.feedkeys('<CR>'),
           ['H'] = fb_actions.toggle_hidden,
           ['N'] = fb_actions.create,
-          ['h'] = fb_actions.goto_parent_dir,
+          ['r'] = fb_actions.rename,
+          ['D'] = fb_actions.remove,
           ['/'] = function()
             vim.cmd('startinsert')
           end
