@@ -4,7 +4,7 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = Yusuke Shimizu
+	name = ushmz
 	email = 44394399+ushmz@users.noreply.github.com
 [user "ssh://git@githu.com"]
     email = 44394399+ushmz@users.noreply.github.com
