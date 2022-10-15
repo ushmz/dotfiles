@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = { 'javascriptreact', 'typescriptreact', 'dart', 'lua', 'vim' },
-  command = 'set tabstop=2 shiftwidth=2 softtabstop=2'
+  command = 'set tabstop=2 shiftwidth=2 softtabstop=2',
 })
 
 -- templates
@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({ 'BufNewFile' }, {
 
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   pattern = { 'plugins.lua' },
-  command = 'PackerCompile'
+  command = 'PackerCompile',
 })
 
 
