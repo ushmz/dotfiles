@@ -8,6 +8,7 @@ vim.cmd([[let &t_Ce = '\e[4:0m']])
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
+vim.cmd('set mouse=')
 
 vim.api.nvim_set_var('netrw_home', state .. '/vim')
 
@@ -66,8 +67,8 @@ vim.opt.virtualedit = 'block'
 vim.opt.wildmode = 'longest,full'
 
 -- highlight
-vim.cmd('hi LineNr ctermbg=0 ctermfg=7')
-vim.cmd('hi CursorLineNr ctermbg=4 ctermfg=0')
+vim.api.nvim_set_hl(0, 'LineNr', {ctermbg=0, ctermfg=7})
+vim.api.nvim_set_hl(0, 'CursorLineNr', {ctermbg=4, ctermfg=0})
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.winblend = 0
