@@ -67,8 +67,6 @@ vim.opt.virtualedit = 'block'
 vim.opt.wildmode = 'longest,full'
 
 -- highlight
-vim.api.nvim_set_hl(0, 'LineNr', {ctermbg=0, ctermfg=7})
-vim.api.nvim_set_hl(0, 'CursorLineNr', {ctermbg=4, ctermfg=0})
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.winblend = 0

@@ -98,16 +98,16 @@ local on_attach = function(client, bufnr)
       callback = vim.lsp.buf.document_highlight,
       buffer = bufnr,
       group = 'lsp_document_highlight',
-      desc = 'Document Highlight',
     })
-    vim.api.nvim_create_autocmd({ 'Cursormoved' }, {
+    vim.api.nvim_create_autocmd({
       callback = vim.lsp.buf.clear_references,
       buffer = bufnr,
       group = 'lsp_document_highlight',
-      desc = 'Clear All the References',
-    })
+    }, { 'Cursormoved' })
+    vim.api.nvim_set_hl(0, 'LspReferenceText', { ctermbg = 240, bg = '#515761' })
+    vim.api.nvim_set_hl(0, 'LspReferenceRead', { ctermbg = 240, bg = '#515761' })
+    vim.api.nvim_set_hl(0, 'LspReferenceWrite', { ctermbg = 240, bg = '#515761' })
   end
-
 end
 
 -- Set up completion using nvim_cmp with LSP source
@@ -268,4 +268,3 @@ lsp.kotlin_language_server.setup {
 }
 
 lsp.tailwindcss.setup {}
-
