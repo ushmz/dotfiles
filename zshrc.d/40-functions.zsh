@@ -15,8 +15,7 @@ source ~/.scripts/cmdnotif.sh
 # function command_not_found_handler(){
 #     # if [ -e ~/.scripts/typo.sh ]; then
 #     #     ~/.scripts/typo.sh
-#     if has "cowsay"
-#     then
+#     if type cowsay &>/dev/null; then
 #         cowsay " Command '$0' not found. "
 #     else
 #         echo "Command $0 not found."

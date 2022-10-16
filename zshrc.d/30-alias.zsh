@@ -1,3 +1,6 @@
+# To make if statement simple
+has() { type "${1:?too few arguments}" &>/dev/null }
+
 # Replace BSD tools to GNU tools
 case "$OSTYPE" in
     darwin*)

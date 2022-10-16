@@ -3,12 +3,8 @@ if [[ $SHLVL = 1 && $TERM = "alacritty" ]]; then
   tmux
 fi
 
-# To make if statement simple
-has() { type "${1:?too few arguments}" &>/dev/null }
-
 # starship (cross-shell prompt)
-if has "starship"
-then
+if type starship &>/dev/null; then
     eval "$(starship init zsh)"
 else
     setopt prompt_subst
@@ -20,13 +16,11 @@ else
 fi
 
 # direnv
-if has "direnv"; then
+if type direnv &>/dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
 # asdf (Language version manager)
-if has "asdf"; then
-    . /usr/local/opt/asdf/asdf.sh
-    # asdf jenv
-    . ~/.asdf/plugins/java/set-java-home.zsh
+if type asdf &>/dev/null; then
+    source $(brew --prefix asdf)/libexec/asdf.sh
 fi
