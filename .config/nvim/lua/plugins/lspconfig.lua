@@ -99,11 +99,11 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       group = 'lsp_document_highlight',
     })
-    vim.api.nvim_create_autocmd({
+    vim.api.nvim_create_autocmd({ 'Cursormoved' }, {
       callback = vim.lsp.buf.clear_references,
       buffer = bufnr,
       group = 'lsp_document_highlight',
-    }, { 'Cursormoved' })
+    })
     vim.api.nvim_set_hl(0, 'LspReferenceText', { ctermbg = 240, bg = '#515761' })
     vim.api.nvim_set_hl(0, 'LspReferenceRead', { ctermbg = 240, bg = '#515761' })
     vim.api.nvim_set_hl(0, 'LspReferenceWrite', { ctermbg = 240, bg = '#515761' })
