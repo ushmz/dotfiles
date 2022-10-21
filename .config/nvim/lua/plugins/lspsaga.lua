@@ -99,6 +99,7 @@ keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
 vim.api.nvim_create_autocmd({ 'BufRead' }, {
   pattern = { '*' },
   callback = function()
+    -- Colors from 'hybrid.vim'
     vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#CC6666' })
     vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = '#F0C674' })
     vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = '#81A2BE' })

@@ -267,4 +267,14 @@ lsp.kotlin_language_server.setup {
 
 }
 
-lsp.tailwindcss.setup {}
+lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+lsp.solargraph.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
