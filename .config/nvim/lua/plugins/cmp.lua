@@ -54,6 +54,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
+    { name = 'hrsh7th/cmp-nvim-lsp-signature-help'},
     { name = 'buffer' },
     { name = 'path' }
   }),
