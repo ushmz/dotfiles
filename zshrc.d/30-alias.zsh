@@ -27,8 +27,8 @@ alias sudo='sudo -E '
 
 alias c='clear '
 alias so='source '
-alias ll="ls -lF --group-directories-first"
-alias la="ls -alF --group-directories-first"
+alias ll="ls -lhF --group-directories-first"
+alias la="ls -alhF --group-directories-first"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 
