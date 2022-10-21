@@ -65,32 +65,33 @@ keymap('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
 keymap('n', '<C-k>', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
 
 -- Only jump to error
-keymap("n", "[E", function()
-  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+keymap('n', '[E', function()
+  require('lspsaga.diagnostic').goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end, opts)
-keymap("n", "]E", function()
-  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+keymap('n', ']E', function()
+  require('lspsaga.diagnostic').goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, opts)
 
 -- Lsp finder find the symbol definition implement reference
 -- if there is no implement it will hide
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymap('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', opts)
 
 -- Peek Definition
 -- you can edit the definition file in this flaotwindow
 -- also support open/vsplit/etc operation check definition_action_keys
 -- support tagstack C-t jump back
-keymap("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)
+keymap('n', 'gD', '<cmd>Lspsaga peek_definition<CR>', opts)
 
 -- Outline
 keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 
 keymap('n', '<leader>r', '<Cmd>Lspsaga rename<CR>', opts)
 keymap('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
-keymap({ "n", "v" }, "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
-keymap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+keymap('n', '<leader>a', '<cmd>Lspsaga code_action<CR>', opts)
+keymap('v', '<leader>a', '<cmd>Lspsaga range_code_action<CR>', opts)
+keymap('n', '<leader>d', '<cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
 -- keymap("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
 -- vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
