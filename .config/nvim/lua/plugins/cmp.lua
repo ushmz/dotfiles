@@ -35,7 +35,6 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
-
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -52,18 +51,29 @@ cmp.setup({
     }),
   }),
   sources = cmp.config.sources({
-    { name = 'luasnip' },
     { name = 'nvim_lsp' },
-    { name = 'hrsh7th/cmp-nvim-lsp-signature-help'},
+    { name = 'luasnip' },
+    { name = 'hrsh7th/cmp-nvim-lsp-signature-help' },
     { name = 'buffer' },
-    { name = 'path' }
+    { name = 'path' },
+    { name = 'calc' }
   }),
   formatting = {
     format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
   }
 })
 
-vim.cmd [[
-    set completeopt=menuone,noinsert,noselect
-    highlight! default link CmpItemKind CmpItemMenuDefault
-]]
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+vim.api.nvim_set_var('completeopt', 'menuone,preview,noinsert,noselect')
+vim.api.nvim_set_hl(0, 'CmpItemKind', { link = 'CmpItemMenuDefault' })

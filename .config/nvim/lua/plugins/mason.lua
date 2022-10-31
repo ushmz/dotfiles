@@ -6,6 +6,7 @@ if (not status2) then return end
 
 mason.setup({
   ui = {
+    border = 'rounded',
     icons = {
       package_installed = '✓',
       package_pending = '➜',
@@ -14,36 +15,41 @@ mason.setup({
   }
 })
 
+
 lspconfig.setup({
+  automatic_installation = true,
   ensure_installed = {
     -- LSP
-    'bash-language-server',
-    'css-lsp',
-    'dockerfile-language-server',
-    'eslint-lsp',
+    'bashls',
+    'cssls',
+    'dockerls',
+    'eslint',
     'gopls',
-    'html-lsp',
-    'json-lsp',
-    'kotlin-language-server',
-    'lua-language-server',
-    'prisma-language-server',
+    'html',
+    'jsonls',
+    'kotlin_language_server',
+    'sumneko_lua',
+    'prismals',
     'pyright',
+    'rust_analyzer',
+    'solargraph',
     'sqls',
-    'stylelint-lsp',
-    'tailwindcss-language-server',
-    'typescript-language-server',
-    'yaml-language-server',
-    -- Linter
-    'flake8',
-    'golangci-lint',
-    'ktlint',
-    'markdownlint',
-    -- Formatter
-    'black',
-    'goimports',
-    'prettier',
-    'rust-analyzer',
-    'shfmt',
-    'sql-formatter',
+    'stylelint_lsp',
+    'tailwindcss',
+    'tsserver',
+    'yamlls',
   }
 })
+
+-- Following tools cannot install via `ensure_installed` option,
+-- make sure to install them manually ;)
+-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
+-- 'flake8',
+-- 'ktlint',
+-- 'markdownlint',
+-- 'rubocop',
+-- 'black',
+-- 'goimports',
+-- 'prettier',
+-- 'shfmt',
+-- 'yamlfmt',

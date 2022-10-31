@@ -14,7 +14,7 @@ saga.init_lsp_saga {
     sign = true,
     enable_in_insert = true,
     sign_priority = 20,
-    virtual_text = true,
+    virtual_text = false,
   },
   finder_icons = {
     def = '  ',

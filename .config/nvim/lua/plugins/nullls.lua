@@ -19,6 +19,9 @@ for _, package in ipairs(mr.get_installed_packages()) do
   end
 end
 
+-- Mason installer doesn't have `dart_format`
+table.insert(nls_sources, nls.builtins.formatting.dart_format)
+
 nls.setup({
   sources = nls_sources,
 })

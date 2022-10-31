@@ -1,10 +1,6 @@
 local status1, lsp = pcall(require, 'lspconfig')
 if (not status1) then return end
 
-local status2, protocol = pcall(require, 'vim.lsp.protocol')
-if (not status2) then return end
-
--- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
@@ -21,33 +17,6 @@ vim.diagnostic.config({
   },
 })
 
-protocol.CompletionItemKind = {
-  '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
-  '', -- Field
-  '', -- Variable
-  '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
-  '', -- Property
-  '', -- Unit
-  '', -- Value
-  '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
-  '', -- Color
-  '', -- File
-  '', -- Reference
-  '', -- Folder
-  '', -- EnumMember
-  '', -- Constant
-  '', -- Struct
-  '', -- Event
-  'ﬦ', -- Operator
-  '', -- TypeParameter
-}
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
@@ -63,7 +32,6 @@ local on_attach = function(client, bufnr)
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  --Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = { noremap = true, silent = true }
@@ -110,14 +78,10 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp_flags = {
-  -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
 
@@ -142,12 +106,10 @@ lsp.sumneko_lua.setup {
   settings = {
     Lua = {
       diagnostics = {
-        -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
       },
 
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file('', true),
         checkThirdParty = false
       },
