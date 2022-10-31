@@ -105,11 +105,6 @@ return packer.startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
 
   use {
-    'simeji/winresizer',
-    config = function() require('plugins.winresizer') end
-  }
-
-  use {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end
   }
