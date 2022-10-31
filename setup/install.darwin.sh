@@ -60,7 +60,6 @@ formulae=(
     # install developing tools
     ansible
     cocoapods
-    docker-compose
     gcc
     gibo
     git

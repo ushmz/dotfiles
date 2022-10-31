@@ -2,12 +2,9 @@ local ok, ts = pcall(require, 'nvim-treesitter.configs')
 if (not ok) then return end
 
 ts.setup {
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
+  highlight = { enable = true },
+  indent = { enable = true },
+  yati = { enable = true },
   ensure_installed = {
     'bash',
     'css',
@@ -28,6 +25,7 @@ ts.setup {
     'python',
     'query',
     'regex',
+    'ruby',
     'rust',
     'scss',
     'toml',
