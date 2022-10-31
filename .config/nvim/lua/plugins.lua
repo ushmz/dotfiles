@@ -4,7 +4,7 @@ local ok, packer = pcall(require, 'packer')
 if (not ok) then return end
 
 return packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use { 'wbthomason/packer.nvim', opt = true }
 
   use {
     'w0ng/vim-hybrid',
@@ -12,7 +12,8 @@ return packer.startup(function(use)
   }
 
   use {
-    'nvim-treesitter/nvim-treesitter',
+    'yioneko/nvim-yati',
+    requires = 'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end
   }
 
@@ -117,6 +118,19 @@ return packer.startup(function(use)
     'akinsho/bufferline.nvim',
     version = 'v2.*',
     config = function() require('plugins.bufferline') end
+  }
+
+  use {
+    'kevinhwang91/nvim-hlslens',
+    config = function()
+      require('plugins.hlslens')
+    end
+  }
+
+  use {
+    'akinsho/toggleterm.nvim',
+    tag = '*',
+    config = function() require('plugins.toggleterm') end
   }
 
   use {
