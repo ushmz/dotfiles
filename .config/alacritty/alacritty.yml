@@ -1,6 +1,13 @@
 # env:
 #     TERM: alacritty
 
+shell:
+  program: /usr/local/bin/zsh
+  args:
+    - -l
+    - -c
+    - "/usr/local/bin/tmux a -t 0 || /usr/local/bin/tmux -u"
+
 window:
     decorations: full
     padding:

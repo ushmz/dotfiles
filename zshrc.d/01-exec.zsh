@@ -1,8 +1,3 @@
-# Start tmux session
-if [[ $SHLVL = 1 && $TERM = "alacritty" ]]; then
-  tmux
-fi
-
 # starship (cross-shell prompt)
 if type starship &>/dev/null; then
     eval "$(starship init zsh)"
