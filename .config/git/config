@@ -1,20 +1,26 @@
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[core]
+    editor = nvim
 [user]
 	name = ushmz
 	email = 44394399+ushmz@users.noreply.github.com
 [user "ssh://git@githu.com"]
     email = 44394399+ushmz@users.noreply.github.com
-[core]
-    editor = nvim
 [pull]
 	rebase = false
 [credential]
 	helper = osxkeychain
 [init]
 	defaultBranch = main
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [ghq]
 	root = ~/src
+[commit]
+	template = /Users/ushmz/.config/git/message
