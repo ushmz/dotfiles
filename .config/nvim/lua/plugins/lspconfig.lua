@@ -1,6 +1,10 @@
 local status1, lsp = pcall(require, 'lspconfig')
 if (not status1) then return end
 
+local status2, ml = pcall(require, 'mason-lspconfig')
+if (not status2) then return end
+
+
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
@@ -85,93 +89,36 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-lsp.tsserver.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-  cmd = { 'typescript-language-server', '--stdio' },
-  exclude = { 'node_modules' }
-}
+ml.setup_handlers({
+  function(server_name)
+    lsp[server_name].setup({
+      on_attach = on_attach,
+      flags = lsp_flags,
+      capabilities = capabilities,
+    })
+  end,
+  ['sumneko_lua'] = function()
+    lsp.sumneko_lua.setup {
+      on_attach = on_attach,
+      flags = lsp_flags,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' },
+          },
 
-lsp.sourcekit.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
-lsp.sumneko_lua.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' },
-      },
-
-      workspace = {
-        library = vim.api.nvim_get_runtime_file('', true),
-        checkThirdParty = false
-      },
-    },
-  },
-}
-
-lsp.gopls.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { 'gopls' },
-  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-  root_pattern = { 'go.mod', '.git' },
-  single_file_support = true
-}
-
-lsp.rust_analyzer.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { 'rust-analyzer' },
-  filetypes = { 'rust' },
-  root_pattern = { 'Cargo.toml', 'rust-project.json' },
-  settings = {
-    ['rust-analyzer'] = {
-      imports = {
-        granularity = {
-          group = 'module',
-        },
-        prefix = 'self',
-      },
-      cargo = {
-        buildScripts = {
-          enable = true,
+          workspace = {
+            library = vim.api.nvim_get_runtime_file('', true),
+            checkThirdParty = false
+          },
         },
       },
-      procMacro = {
-        enable = true
-      },
     }
-  }
-}
+  end,
+})
 
-lsp.pyright.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true
-      }
-    }
-  },
-  single_file_support = true
-}
-
+-- mason doesn't have `dartls` install option
 lsp.dartls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
@@ -192,51 +139,4 @@ lsp.dartls.setup {
       showTodos = true
     }
   },
-}
-
-lsp.sqls.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { 'sqls' },
-  filetypes = { 'sql', 'mysql' },
-  single_file_support = true
-}
-
-lsp.jsonls.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { 'vscode-json-language-server', '--stdio' },
-  filetypes = { 'json', 'jsonc' },
-  init_options = { provideFormatter = true },
-  single_file_support = true
-}
-
-lsp.stylelint_lsp.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-}
-
-lsp.kotlin_language_server.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { 'kotlin-language-server' },
-  filetypes = { 'kotlin' },
-  root_pattern = { 'settings.gradle' }
-
-}
-
-lsp.tailwindcss.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-}
-
-lsp.solargraph.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
 }
