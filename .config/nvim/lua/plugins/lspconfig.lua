@@ -32,34 +32,30 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  local set = vim.keymap.set
   local opts = { noremap = true, silent = true }
+  set('n', 'gd', vim.lsp.buf.definition, opts)
+  set('n', 'gr', vim.lsp.buf.references, opts)
+  set('n', 'gt', vim.lsp.buf.type_definition, opts)
+  set('n', 'gi', vim.lsp.buf.implementation, opts)
 
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- filter = function(cl) return cl.name == 'null-ls' end,
+  local function buf_format()
+    vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
+  end
 
-  buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
+  set('n', '<leader>f', buf_format, opts)
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_augroup('lsp_document_formatting', { clear = true })
     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_formatting" })
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
       group = 'lsp_document_formatting',
-      callback = function()
-        vim.lsp.buf.format({
-          filter = function(cl)
-            return cl.name == 'null-ls'
-          end,
-          bufnr = bufnr,
-        })
-      end
+      callback = buf_format,
     })
   end
 
