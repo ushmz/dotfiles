@@ -54,6 +54,7 @@ vim.opt.path:append { '**' }
 vim.opt.wildignore:append { '*/__pycache__/*', '*.pyc', '*/node_modules/*', '*.DS_Store' }
 vim.opt.updatetime = 300
 vim.opt.signcolumn = 'yes'
+vim.opt.colorcolumn = { 80, 100 }
 
 -- vim.opt.ambiwidth = 'double'
 vim.opt.completeopt = 'menuone,noinsert,noselect'
@@ -76,3 +77,7 @@ vim.opt.wildoptions = 'pum'
 vim.opt.wildmode = 'list:longest,full'
 
 vim.opt.report = 0
+
+if vim.fn.executable('rg') then
+  vim.opt.grepprg = 'rg --no-heading --vimgrep'
+end
