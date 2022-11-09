@@ -12,17 +12,12 @@ return packer.startup(function(use)
   }
 
   use {
-    'yioneko/nvim-yati',
-    requires = 'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end
   }
+  -- use { 'yioneko/nvim-yati' }
 
   use 'nvim-treesitter/playground'
-
-  use {
-    'onsails/lspkind-nvim',
-    config = function() require('plugins.lspkind') end
-  }
 
   use {
     'hrsh7th/nvim-cmp',
@@ -39,16 +34,6 @@ return packer.startup(function(use)
   }
 
   use {
-    'glepnir/lspsaga.nvim',
-    config = function() require('plugins.lspsaga') end
-  }
-
-  use {
-    'neovim/nvim-lspconfig',
-    config = function() require('plugins.lspconfig') end
-  }
-
-  use {
     'jose-elias-alvarez/null-ls.nvim',
     requires = {
       'williamboman/mason.nvim',
@@ -58,6 +43,21 @@ return packer.startup(function(use)
       require('plugins.mason')
       require('plugins.nullls')
     end
+  }
+
+  use {
+    'glepnir/lspsaga.nvim',
+    config = function() require('plugins.lspsaga') end
+  }
+
+  use {
+    'onsails/lspkind-nvim',
+    config = function() require('plugins.lspkind') end
+  }
+
+  use {
+    'neovim/nvim-lspconfig',
+    config = function() require('plugins.lspconfig') end
   }
 
   use {
@@ -117,9 +117,7 @@ return packer.startup(function(use)
 
   use {
     'kevinhwang91/nvim-hlslens',
-    config = function()
-      require('plugins.hlslens')
-    end
+    config = function() require('plugins.hlslens') end
   }
 
   use {
@@ -154,4 +152,5 @@ return packer.startup(function(use)
   use { 'thosakwe/vim-flutter', ft = { 'dart' } }
   use { 'dart-lang/dart-vim-plugin', ft = { 'dart' } }
   use { 'udalov/kotlin-vim', ft = { 'kotlin' } }
+  use { 'tpope/vim-rails', ft = { 'ruby', 'eruby' } }
 end)
