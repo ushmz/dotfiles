@@ -43,32 +43,31 @@ mouse:
 selection:
     save_to_clipboard: true
 
-# Colors (Hybrid)
+# Colors - Hybrid(adjusted)
 colors:
-    # Default colors
     primary:
         background: '#27292c'
-        foreground: '#c9c0cf'
+        foreground: '#c5c8c6'
 
     cursor:
-        text: '0x000000'
-        cursor: '0xffffff'
+        text: '#000000'
+        cursor: '#ffffff'
         style: Block
         vi_mode_style: Block
     vi_mode_cursor:
-        text: '0x000000'
-        cursor: '0xffffff'
+        text: '#000000'
+        cursor: '#c5c8c6'
 
     # Normal colors
     normal:
-        black:   '#35383b'
-        red:     '#b05655'
-        green:   '#769972'
-        yellow:  '#e1a574'
-        blue:    '#7693ac'
-        magenta: '#977ba0'
-        cyan:    '#749e99'
-        white:   '#848b92'
+        black:   '#1d1f21'
+        red:     '#cc6666'
+        green:   '#95ad68'
+        yellow:  '#f0c674'
+        blue:    '#81a2be'
+        magenta: '#b294bb'
+        cyan:    '#8abeb7'
+        white:   '#c5c8c6'
 
     # Bright colors
     bright:
