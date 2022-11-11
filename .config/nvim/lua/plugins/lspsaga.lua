@@ -82,13 +82,12 @@ keymap('n', 'gf', '<cmd>Lspsaga lsp_finder<CR>', opts)
 -- you can edit the definition file in this flaotwindow
 -- also support open/vsplit/etc operation check definition_action_keys
 -- support tagstack C-t jump back
-keymap('n', 'gD', '<cmd>Lspsaga peek_definition<CR>', opts)
+keymap('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 
 -- Outline
 keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 
 keymap('n', '<leader>r', '<Cmd>Lspsaga rename<CR>', opts)
-keymap('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 keymap('n', '<leader>a', '<cmd>Lspsaga code_action<CR>', opts)
 keymap('v', '<leader>a', '<cmd>Lspsaga range_code_action<CR>', opts)
 keymap('n', '<leader>d', '<cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
