@@ -19,10 +19,31 @@ for _, package in ipairs(mr.get_installed_packages()) do
   end
 end
 
--- Mason installer doesn't have `dart_format`
-table.insert(nls_sources, nls.builtins.formatting['dart_format'])
--- Add `erb_lint` instead of `erb-lint`
--- table.insert(nls_sources, nls.builtins.diagnostics['erb_lint'])
+-- Following tools cannot install via `ensure_installed` option of mason,
+local ext_fmt = {
+  'dart_format',
+  'ktlint',
+  'markdownlint',
+  'rubocop',
+  'black',
+  'goimports',
+  'prettier',
+  'shfmt',
+  'yamlfmt',
+}
+
+local ext_diag = {
+  'flake8',
+  'rubocop',
+}
+
+for _, fmt in ipairs(ext_fmt) do
+  table.insert(nls_sources, nls.builtins.formatting[fmt])
+end
+
+for _, diag in ipairs(ext_diag) do
+  table.insert(nls_sources, nls.builtins.diagnostics[diag])
+end
 
 nls.setup({
   sources = nls_sources,
