@@ -93,7 +93,7 @@ ml.setup_handlers({
       capabilities = capabilities,
     })
   end,
-  ['sumneko_lua'] = function()
+  ['sumneko_lua'] = function(_)
     lsp.sumneko_lua.setup {
       on_attach = on_attach,
       flags = lsp_flags,
@@ -136,3 +136,4 @@ lsp.dartls.setup {
     }
   },
 }
+
