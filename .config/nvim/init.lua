@@ -32,6 +32,7 @@ local config_dir = vim.env.XDG_CONFIG_HOME
 vim.api.nvim_set_var('python3_host_prog', config_dir .. '/nvim/pynvim/bin/python')
 vim.api.nvim_set_var('loaded_node_provider', 0)
 vim.api.nvim_set_var('loaded_perl_provider', 0)
+vim.api.nvim_set_var('loaded_ruby_provider', 0)
 
 require('options')
 require('mappings')
