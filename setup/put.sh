@@ -47,7 +47,7 @@ ln -sf `pwd`/.config/tmux/battery ${XDG_CONFIG_HOME}/tmux/battery
 ln -sf `pwd`/.config/tmux/ssid ${XDG_CONFIG_HOME}/tmux/ssid
 
 # starship.toml
-ln -sf `pwd`/.config/starship.toml ${XDG_CONFIG_HOME}/starship.toml
+ln -sf `pwd`/.config/starship/starship.toml ${XDG_CONFIG_HOME}/starship.toml
 
 # git config
 mkdir -p ${XDG_CONFIG_HOME}/git/
