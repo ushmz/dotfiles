@@ -43,6 +43,8 @@ ln -sf `pwd`/.config/alacritty/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacri
 # .tmux.conf
 mkdir -p ${XDG_CONFIG_HOME}/tmux/
 ln -sf `pwd`/.config/tmux/.tmux.conf ${XDG_CONFIG_HOME}/tmux/tmux.conf
+ln -sf `pwd`/.config/tmux/battery ${XDG_CONFIG_HOME}/tmux/battery
+ln -sf `pwd`/.config/tmux/ssid ${XDG_CONFIG_HOME}/tmux/ssid
 
 # starship.toml
 ln -sf `pwd`/.config/starship.toml ${XDG_CONFIG_HOME}/starship.toml
