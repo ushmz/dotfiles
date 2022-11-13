@@ -1,4 +1,1 @@
-# For makefile test
-Dockerfile
-.config/gobang/config.toml
 .scripts/ip_up
