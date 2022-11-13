@@ -47,17 +47,6 @@ local on_attach = function(client, bufnr)
   local fmt_fnstr = '<Cmd>lua vim.lsp.buf.format({bufnr = ' .. bufnr .. ', timeout_ms = 10000})<CR>'
 
   buf_set_keymap('n', '<leader>f', fmt_fnstr, opts)
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_augroup('lsp_document_formatting', { clear = true })
-    vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_formatting" })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      buffer = bufnr,
-      group = 'lsp_document_formatting',
-      callback = function ()
-        vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 2000 })
-      end,
-    })
-  end
 
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
@@ -136,4 +125,3 @@ lsp.dartls.setup {
     }
   },
 }
-
