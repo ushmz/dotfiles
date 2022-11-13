@@ -1,7 +1,7 @@
 define _help
 	echo "install\t: Install brew packages"
-	echo "put\t: Put all config files(Works on darwin)"
-	echo "up\t: Put all config files and install brew packages"
+	echo "put\t: Put all symbolic links"
+	echo "up\t: Put all config files and install brew packages (darwin)"
 	echo "upl\t: Put all config files and install packages (linux)"
 	echo "okatazuke": Unlink & remove all synbolic links
 endef
