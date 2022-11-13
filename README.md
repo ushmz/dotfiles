@@ -1,4 +1,4 @@
-# dotfiles(and more)
+# dotfiles
 
 Put symbolic link of config files.
 
