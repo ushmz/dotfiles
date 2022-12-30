@@ -1,6 +1,3 @@
-# To make if statement simple
-has() { type "${1:?too few arguments}" &>/dev/null }
-
 # Replace BSD tools to GNU tools
 case "$OSTYPE" in
     darwin*)
@@ -38,28 +35,28 @@ alias cp='cp -i'
 alias free='free -h --giga'
 alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 
-if has "exa"; then
-    alias ls="exa -gh --time-style=long-iso"
-    alias ll="ls -lF --group-directories-first --icons"
+if type exa &>/dev/null; then
+    alias ls="exa -x --icons --group-directories-first"
+    alias ll="ls -ghlF --time-style=long-iso"
     alias la="ll -a"
     alias gitls="ll --git --git-ignore"
 fi
 
-if has "nvim"; then
+if type nvim &>/dev/null; then
     alias vi='nvim'
     alias vim='nvim'
 fi
 
-if has "ranger"; then
+if type ranger &>/dev/null; then
     alias ranger='TERM=xterm-256color ranger'
     alias rg='TERM=xterm-256color ranger'
 fi
 
-if has "tig"; then
+if type tig &>/dev/null; then
     alias tig='TERM=xterm-256color tig'
 fi
 
-if has "peco"; then
+if type peco &>/dev/null; then
     # Switch branch with peco
     alias edas='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 
@@ -70,14 +67,14 @@ if has "peco"; then
     alias term='echo -ne "\033]1337;SetProfile=$(peco ~/dotfiles/iTerm/.iterm_profiles)\a"'
 fi
 
-if has "gh"; then
+if type gh &>/dev/null; then
     alias gv="gh repo view --web"
     alias gcheck="gh pr checkout "
 fi
 
 
 alias zshenv='vi ~/.zshenv'
-alias zprof='vi ~/dotfiles/zprofile.d'
+alias zprofile='vi ~/dotfiles/zprofile.d'
 alias zshrc='vi ~/dotfiles/zshrc.d'
 alias soenv='source ~/.zshenv'
 alias sorc='source ~/.zshrc'

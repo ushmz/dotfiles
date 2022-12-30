@@ -1,4 +1,10 @@
-export LS_COLORS="di=01;32;"
+if type dircolors &>/dev/null; then
+    eval $(dircolors)
+fi
+
+if type gdircolors &>/dev/null; then
+    eval $(gdircolors)
+fi
 export EXA_COLORS="da=36"
 
 export EDITOR=nvim
