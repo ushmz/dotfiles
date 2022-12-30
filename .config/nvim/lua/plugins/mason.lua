@@ -32,7 +32,7 @@ lspconfig.setup({
     'pyright',
     'rust_analyzer',
     'solargraph',
-    'sqls',
+    'sqlls',
     'stylelint_lsp',
     'tailwindcss',
     'tsserver',
