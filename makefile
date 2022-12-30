@@ -9,6 +9,12 @@ endef
 default:
 	@$(call _help)
 
+configure:
+	mkdir -p $${HOME}/.config
+	mkdir -p $${HOME}/.local/state
+	mkdir -p $${HOME}/.local/share
+	mkdir -p $${HOME}/.cache
+
 # Install brew packages
 install: setup/install.darwin.sh
 	sh `pwd`/setup/install.darwin.sh

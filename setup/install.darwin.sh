@@ -1,8 +1,13 @@
 #! /bin/sh
 
-##########################################################
+# zsh plugins
+mkdir -p ${HOME}/.cache
+git clone https://github.com/hlissner/zsh-autopair ${HOME}/.cache/zsh-autopair
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.cache/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.cache/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions.git ${HOME}/.cache/zsh-completions
+
 # Install brew
-##########################################################
 if ! brew; then
     echo "--- install brew ---"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -12,21 +17,7 @@ echo "--- updating brew ---"
 brew update
 brew cleanup
 
-##########################################################
-# zsh plugin
-##########################################################
-echo "--- install zsh plugins ---"
-brew install zsh-syntax-highlighting
-brew install zsh-autosuggestions
-brew install zsh-completions
-chmod 0755 /usr/local/share
-chmod 0755 /usr/local/share/zsh
-chmod 0755 /usr/local/share/zsh/site-functions
-
-
-##########################################################
 # brew formulae
-##########################################################
 echo "--- install formulae ---"
 formulae=(
     # Replace Mac commands with GNU/Linux commands
@@ -85,9 +76,7 @@ do
     brew install $formula > /dev/null
 done
 
-##########################################################
 # install programming languages
-##########################################################
 echo "--- install languages (NEED PASSWORD) ---"
 
 brew install go
@@ -103,9 +92,6 @@ stack setup
 brew tap dart-lang/dart
 brew install dart
 
-# poetry
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-
 # asdf
 brew install asdf
 
@@ -114,9 +100,10 @@ asdf install nodejs 14.18.3
 asdf install nodejs 16.13.2
 asdf install python 3.10.0
 
-##########################################################
-# install mac desktop apps
-##########################################################
+# poetry
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+
+# install casks
 echo "--- install casks ---"
 casks=(
     alacritty
@@ -128,7 +115,6 @@ casks=(
     font-hack-nerd-font
     google-japanese-ime
     iterm2
-    microsoft-teams
     notion
     postman
     rectangle
@@ -142,7 +128,5 @@ do
     brew cask install $cask > /dev/null
 done
 
-##########################################################
 # Clean up
-##########################################################
 brew cleanup
