@@ -146,6 +146,21 @@ ml.setup_handlers({
       }
     })
   end,
+  ['stylelint_lsp'] = function(_)
+    lsp.stylelint_lsp.setup({
+      on_attach = on_attach,
+      flags = lsp_flags,
+      capabilities = capabilities,
+      filetypes = {
+        "css",
+        "less",
+        "scss",
+        "sugarss",
+        "vue",
+        "wxss",
+      },
+    })
+  end
 })
 
 -- mason doesn't have `dartls` install option
