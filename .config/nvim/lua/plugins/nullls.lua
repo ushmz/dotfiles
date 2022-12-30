@@ -45,11 +45,11 @@ for _, diag in ipairs(ext_diag) do
   table.insert(nls_sources, nls.builtins.diagnostics[diag])
 end
 
-local fmtag = vim.api.nvim_create_augroup('LspDocumentFormatting', {})
 nls.setup({
   sources = nls_sources,
   on_attach = function(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
+      local fmtag = vim.api.nvim_create_augroup('LspDocumentFormatting', {})
       vim.api.nvim_clear_autocmds({ buffer = bufnr, group = fmtag })
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = bufnr,
