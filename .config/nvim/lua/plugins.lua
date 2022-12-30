@@ -15,6 +15,11 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end
   }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function() require('plugins.treesitter_context') end
+  }
   -- use { 'yioneko/nvim-yati' }
 
   use 'nvim-treesitter/playground'
@@ -107,6 +112,11 @@ return packer.startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end
+  }
+
+  use {
+    'pwntester/octo.nvim',
+    config = function() require('plugins.octo') end
   }
 
   use {
