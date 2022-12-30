@@ -64,6 +64,8 @@ formulae=(
     gibo
     git
     heroku
+    lazydocker
+    lazygit
     make
     mysql
     openssh
