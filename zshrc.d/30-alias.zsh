@@ -1,5 +1,5 @@
 # Replace BSD tools to GNU tools
-case "$OSTYPE" in
+case "${OSTYPE}" in
     darwin*)
         (( ${+commands[gdate]} )) && alias date='gdate'
         (( ${+commands[gls]} )) && alias ls='gls'
