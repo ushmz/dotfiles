@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 if [ -z "${CMD_NOTIFY_SLACK_WEBHOOK_URL+x}" ]; then
-  echo "CMD_NOTIFY_SLACK_WEBHOOK_URL is empty !!!"
+  echo "[WARN] CMD_NOTIFY_SLACK_WEBHOOK_URL is empty !!!"
 fi
 
 if [ -z "${CMD_NOTIFY_SLACK_USER_NAME+x}" ]; then
-  echo "CMD_NOTIFY_SLACK_USER_NAME is empty !!!"
+  echo "[WARN] CMD_NOTIFY_SLACK_USER_NAME is empty !!!"
 fi
 
 function notify_preexec {

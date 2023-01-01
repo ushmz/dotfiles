@@ -27,6 +27,3 @@ setopt globdots
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_no_store
-HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000  # save in RAM
-SAVEHIST=1000000 # save in file

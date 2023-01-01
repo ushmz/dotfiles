@@ -1,6 +1,3 @@
-# Send command exit status to slack
-source ~/.scripts/cmdnotif.sh
-
 # save dirstack to ~/.cache/shell
 # mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/shell"
 # touch "${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack"
@@ -44,33 +41,6 @@ alias jggr="guguru"
 
 # Change iTerm profile
 function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
-
-# (Make tmux session if needed) and split pane
-function tmux_session() {
-    if [ -n "$TMUX" ]; then
-        # alias 'mux.sh'='~/.scripts/mux.sh'
-        # alias to tmux split-pane script
-        mux.sh "$@"
-        return 0
-    fi
-
-    if [ -n "$1" ]; then
-		if [ -n "$2" ]; then
-	    	itermprof "$2"
-		    tmux new -d -s "${1}-${2}"
-		    tmux send-keys -t "${1}-${2}" "mux.sh ${1} ${2}" C-m
-	    	tmux attach-session -t "${1}-${2}"
-		    itermprof kahma
-		else
-	    	tmux new -d -s "${1}-${PWD##*/}"
-	    	tmux send-keys -t "${1}-${PWD##*/}" "mux.sh $1" C-m
-	    	tmux attach-session -t "${1}-${PWD##*/}"
-		fi
-    else
-    	tmux
-    fi
-}
-alias tm='tmux_session'
 
 # Source python venv if exists
 function sourse_pyenv() {
