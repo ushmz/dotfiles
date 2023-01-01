@@ -1,25 +1,25 @@
 {
     "editor.defaultFormatter": "golang.go",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#2DA4CFFF",
-        "statusBar.foreground": "#333333FF",
-        "statusBar.noFolderBackground": "#2DA4CFFF",
-        "statusBar.debuggingBackground": "#2DA4CFFF",
-        "titleBar.inactiveBackground": "#2DA4CFDD",
-        "titleBar.inactiveForeground": "#333333FF",
-        "titleBar.activeBackground": "#2DA4CFFF",
-        "titleBar.activeForeground": "#333333FF",
-        "activityBarBadge.background": "#2DA4CFFF",
+        "statusBar.background": "#2DA4CF",
+        "statusBar.foreground": "#333333",
+        "statusBar.noFolderBackground": "#2DA4CF"
+        "statusBar.debuggingBackground": "#2DA4CF"
+        "titleBar.inactiveBackground": "#2DA4CF"
+        "titleBar.inactiveForeground": "#333333"
+        "titleBar.activeBackground": "#2DA4CF"
+        "titleBar.activeForeground": "#333333"
+        "activityBarBadge.background": "#2DA4CF"
         "[Hybrid]": {
-            "statusBar.background": "#2F677CFF",
-            "statusBar.foreground": "#C5C8C6FF",
-            "statusBar.noFolderBackground": "#2F677CFF",
-            "statusBar.debuggingBackground": "#2F677CFF",
-            "titleBar.inactiveBackground": "#2F677CDD",
-            "titleBar.inactiveForeground": "#C5C8C6FF",
-            "titleBar.activeBackground": "#2F677CFF",
-            "titleBar.activeForeground": "#C5C8C6FF",
-            "activityBarBadge.background": "#2F677CFF"
+            "statusBar.background": "#2F677C"
+            "statusBar.foreground": "#C5C8C6"
+            "statusBar.noFolderBackground": "#2F677C"
+            "statusBar.debuggingBackground": "#2F677C"
+            "titleBar.inactiveBackground": "#2F677C"
+            "titleBar.inactiveForeground": "#C5C8C6"
+            "titleBar.activeBackground": "#2F677C"
+            "titleBar.activeForeground": "#C5C8C6"
+            "activityBarBadge.background": "#2F677C"
         }
     }
 }

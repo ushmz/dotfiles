@@ -1,25 +1,25 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#2F677CFF",
-        "statusBar.foreground": "#C5C8C6FF",
-        "statusBar.noFolderBackground": "#2F677CFF",
-        "statusBar.debuggingBackground": "#2F677CFF",
-        "titleBar.inactiveBackground": "#2F677CDD",
-        "titleBar.inactiveForeground": "#C5C8C6FF",
-        "titleBar.activeBackground": "#2F677CFF",
-        "titleBar.activeForeground": "#C5C8C6FF",
-        "activityBarBadge.background": "#2F677CFF",
+        "statusBar.background": "#2F677C"
+        "statusBar.foreground": "#C5C8C6"
+        "statusBar.noFolderBackground": "#2F677C"
+        "statusBar.debuggingBackground": "#2F677C"
+        "titleBar.inactiveBackground": "#2F677C"
+        "titleBar.inactiveForeground": "#C5C8C6"
+        "titleBar.activeBackground": "#2F677C"
+        "titleBar.activeForeground": "#C5C8C6"
+        "activityBarBadge.background": "#2F677C"
         "[Hybrid]": {
-            "statusBar.background": "#2F677CFF",
-            "statusBar.foreground": "#C5C8C6FF",
-            "statusBar.noFolderBackground": "#2F677CFF",
-            "statusBar.debuggingBackground": "#2F677CFF",
-            "titleBar.inactiveBackground": "#2F677CDD",
-            "titleBar.inactiveForeground": "#C5C8C6FF",
-            "titleBar.activeBackground": "#2F677CFF",
-            "titleBar.activeForeground": "#C5C8C6FF",
-            "activityBarBadge.background": "#2F677CFF"
+            "statusBar.background": "#2F677C"
+            "statusBar.foreground": "#C5C8C6"
+            "statusBar.noFolderBackground": "#2F677C"
+            "statusBar.debuggingBackground": "#2F677C"
+            "titleBar.inactiveBackground": "#2F677C"
+            "titleBar.inactiveForeground": "#C5C8C6"
+            "titleBar.activeBackground": "#2F677C"
+            "titleBar.activeForeground": "#C5C8C6"
+            "activityBarBadge.background": "#2F677C"
         }
     }
 }

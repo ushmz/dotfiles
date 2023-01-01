@@ -1,29 +1,27 @@
 {
-    "python.analysis.extraPaths": ["/.venv/lib/python3.6/site-packages"],
-    "python.autoComplete.extraPaths": ["/.venv/lib/python3.6/site-packages"],
     "python.defaultInterpreterPath": "/.venv/bin/python",
     "python.formatting.blackPath": "/.venv/bin/black",
     "python.linting.flake8Path": "/.venv/bin/flake8",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#356798FF",
-        "statusBar.foreground": "#C5C8C6FF",
-        "statusBar.noFolderBackground": "#356798FF",
-        "statusBar.debuggingBackground": "#356798FF",
-        "titleBar.inactiveBackground": "#356798DD",
-        "titleBar.inactiveForeground": "#C5C8C6FF",
-        "titleBar.activeBackground": "#356798FF",
-        "titleBar.activeForeground": "#C5C8C6FF",
-        "activityBarBadge.background": "#356798FF",
+        "statusBar.background": "#356798"
+        "statusBar.foreground": "#C5C8C6"
+        "statusBar.noFolderBackground": "#356798"
+        "statusBar.debuggingBackground": "#356798"
+        "titleBar.inactiveBackground": "#356798"
+        "titleBar.inactiveForeground": "#C5C8C6"
+        "titleBar.activeBackground": "#356798"
+        "titleBar.activeForeground": "#C5C8C6"
+        "activityBarBadge.background": "#356798"
         "[Hybrid]": {
-            "statusBar.background": "#2F677CFF",
-            "statusBar.foreground": "#C5C8C6FF",
-            "statusBar.noFolderBackground": "#2F677CFF",
-            "statusBar.debuggingBackground": "#2F677CFF",
-            "titleBar.inactiveBackground": "#2F677CDD",
-            "titleBar.inactiveForeground": "#C5C8C6FF",
-            "titleBar.activeBackground": "#2F677CFF",
-            "titleBar.activeForeground": "#C5C8C6FF",
-            "activityBarBadge.background": "#2F677CFF"
+            "statusBar.background": "#2F677C"
+            "statusBar.foreground": "#C5C8C6"
+            "statusBar.noFolderBackground": "#2F677C"
+            "statusBar.debuggingBackground": "#2F677C"
+            "titleBar.inactiveBackground": "#2F677C"
+            "titleBar.inactiveForeground": "#C5C8C6"
+            "titleBar.activeBackground": "#2F677C"
+            "titleBar.activeForeground": "#C5C8C6"
+            "activityBarBadge.background": "#2F677C"
         }
     }
 }
