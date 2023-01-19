@@ -1,17 +1,26 @@
 local ok, saga = pcall(require, 'lspsaga')
 if (not ok) then return end
 
-saga.init_lsp_saga {
-  border_style = 'rounded',
-  saga_winblend = 10,
-  move_in_saga = { prev = '<C-p>', next = '<C-n>' },
-  diagnostic_header = { ' ', ' ', ' ', 'ﴞ ' },
-  max_preview_lines = 10,
-  code_action_icon = '💡',
-  code_action_num_shortcut = true,
-  code_action_lightbulb = {
+saga.setup {
+  code_action = {
+    num_shortcut = true,
+  },
+  definition = {
+    edit = '<CR>',
+    vsplit = 'mv',
+    split = 'ms',
+    tabe = 't',
+    quit = 'q',
+    close = '<Esc>',
+  },
+  diagnostic = {
+    show_code_action = true,
+    show_source = true,
+    jump_num_shortcut = true,
+  },
+  lightbulb = {
     enable = true,
-    sign = true,
+    sign = false,
     enable_in_insert = true,
     sign_priority = 20,
     virtual_text = false,
@@ -22,39 +31,66 @@ saga.init_lsp_saga {
     link = '  ',
   },
   finder_request_timeout = 1500,
-  finder_action_keys = {
-    open = '<CR>',
-    vsplit = 'v',
-    split = 's',
-    tabe = 't',
-    quit = 'q',
-    scroll_down = 'j',
-    scroll_up = 'k',
-  },
-  code_action_keys = {
-    quit = 'q',
+  rename = {
+    quit = '<C-c>',
     exec = '<CR>',
+    mark = 'x',
+    confirm = '<CR>',
+    in_select = true,
+    whole_project = true,
   },
-  rename_action_quit = '<C-c>',
-  rename_in_select = true,
-  -- show symbols in winbar must nightly
   symbol_in_winbar = {
-    in_custom = false,
     enable = false,
-    separator = ' ',
+    separator = '  ',
+    hide_keyword = false,
     show_file = true,
-    click_support = false,
+    respect_root = false,
+    color_mode = true,
   },
-  show_outline = {
+  outline = {
     win_position = 'right',
     win_with = '',
     win_width = 30,
-    auto_enter = true,
+    show_detail = true,
     auto_preview = true,
-    virt_text = '┃',
-    jump_key = '<CR>',
     auto_refresh = true,
+    auto_close = true,
+    custom_sort = nil,
+    keys = {
+      jump = '<CR>',
+      expand_collapse = 'u',
+      quit = 'q',
+    },
   },
+  ui = {
+    theme = 'round',
+    -- title = true,
+    border = 'rounded',
+    winblend = 0,
+    expand = '',
+    collapse = '',
+    preview = ' ',
+    code_action = '💡',
+    diagnostic = '🐞',
+    incoming = ' ',
+    outgoing = ' ',
+    colors = {
+      normal_bg = '#1D1F21',
+      --title background color
+      -- title_bg = '#B5BD68',
+      red = '#CC6666',
+      magenta = '#CC6666',
+      orange = '#DE935F',
+      yellow = '#F0C674',
+      green = '#B5BD68',
+      cyan = '#8aBEB7',
+      blue = '#81A2BE',
+      purple = '#B294BB',
+      white = '#C5C8C6',
+      black = '#1D1F21',
+    },
+    kind = {},
+  }
 }
 
 local keymap = vim.keymap.set
@@ -85,7 +121,7 @@ keymap('n', 'gf', '<cmd>Lspsaga lsp_finder<CR>', opts)
 keymap('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 
 -- Outline
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
+keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
 
 keymap('n', '<leader>r', '<Cmd>Lspsaga rename<CR>', opts)
 keymap('n', '<leader>a', '<cmd>Lspsaga code_action<CR>', opts)
