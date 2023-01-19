@@ -18,11 +18,9 @@ return packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter-context',
-    config = function() require('plugins.treesitter_context') end
+    config = function() require('plugins.treesitter-context') end
   }
-  -- use { 'yioneko/nvim-yati' }
 
-  use 'nvim-treesitter/playground'
 
   use {
     'hrsh7th/nvim-cmp',
