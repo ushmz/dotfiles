@@ -8,10 +8,6 @@ local previewers_utils = require('telescope.previewers.utils')
 
 local fb_actions = telescope.extensions.file_browser.actions
 
-local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
-end
-
 -- Ignore files bigger than a threshold
 local max_size = 100000
 local function new_maker(filepath, bufnr, opts)
@@ -49,6 +45,16 @@ telescope.setup {
       '__pycache__/'
     }
   },
+  vimgrep_arguments = {
+    "rg",
+    "-L",
+    "--color=never",
+    "--no-heading",
+    "--with-filename",
+    "--line-number",
+    "--column",
+    "--smart-case",
+  },
   pickers = {
     find_files = {
       find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
@@ -78,9 +84,7 @@ telescope.setup {
     },
   },
 }
-telescope.load_extension('file_browser')
 
--- keymaps
 vim.keymap.set('n', ';f', function()
   builtin.find_files({
     no_ignore = false,
@@ -113,10 +117,11 @@ vim.keymap.set('n', ';e', function()
   builtin.diagnostics()
 end)
 
+telescope.load_extension('file_browser')
 vim.keymap.set('n', ';d', function()
   telescope.extensions.file_browser.file_browser({
     path = '%:p:h',
-    cwd = telescope_buffer_dir(),
+    cwd = vim.fn.expand('%:p:h'),
     respect_gitignore = false,
     hidden = true,
     grouped = true,
