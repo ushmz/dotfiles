@@ -47,11 +47,6 @@ if type nvim &>/dev/null; then
     alias vim='nvim'
 fi
 
-if type ranger &>/dev/null; then
-    alias ranger='TERM=xterm-256color ranger'
-    alias rg='TERM=xterm-256color ranger'
-fi
-
 if type tig &>/dev/null; then
     alias tig='TERM=xterm-256color tig'
 fi

@@ -75,5 +75,5 @@ if type gh &>/dev/null; then
     eval "$(gh completion -s zsh)"
 fi
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -d ${XDG_STATE_HOME}/.zcompdump
 autoload -Uz colors && colors

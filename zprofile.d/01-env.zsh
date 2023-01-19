@@ -1,11 +1,5 @@
-if type dircolors &>/dev/null; then
-    eval $(dircolors)
-fi
-
-if type gdircolors &>/dev/null; then
-    eval $(gdircolors)
-fi
-export EXA_COLORS="da=36"
+export TERM=xterm-256color
+export TERMINFO=/usr/share/terminfo
 
 export EDITOR=nvim
 
@@ -19,20 +13,22 @@ export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export FFMPEG_DATADIR="${XDG_CONFIG_HOME}/ffmpeg"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/jupyter"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+export LESSKEY=${XDG_CONFIG_HOME}/less/lesskey
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
-export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc.py"
 export REDISCLI_RCFILE="${XDG_CONFIG_HOME}/redis/redisclirc"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship.toml"
 export WGETRC="${XDG_CONFIG_HOME}/wgetrc"
 
+
 export HISTSIZE=100000  # save in RAM
 export SAVEHIST=1000000 # save in file
-export HISTFILE="${XDG_STATE_HOME}/zsh_history"
-export MYSQL_HISTFILE="${XDG_STATE_HOME}/mysql_history"
-export NODE_REPL_HISTORY="${XDG_STATE_HOME}/node_history"
-export PSQL_HISTORY="${XDG_STATE_HOME}/psql_history"
-export SQLITE_HISTORY="${XDG_STATE_HOME}/sqlite_history"
+export HISTFILE="${XDG_STATE_HOME}/.zsh_history"
+export MYSQL_HISTFILE="${XDG_STATE_HOME}/.mysql_history"
+export NODE_REPL_HISTORY="${XDG_STATE_HOME}/.node_history"
+export PSQL_HISTORY="${XDG_STATE_HOME}/.psql_history"
+export SQLITE_HISTORY="${XDG_STATE_HOME}/.sqlite_history"
 
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export REDISCLI_HISTFILE="${XDG_DATA_HOME}/redis/rediscli_history"
@@ -58,3 +54,13 @@ export ANDROID_HOME=${HOME}/Library/Android/sdk
 
 # cargo env
 source "${CARGO_HOME}/env"
+
+if type dircolors &>/dev/null; then
+    eval $(dircolors)
+fi
+
+if type gdircolors &>/dev/null; then
+    eval $(gdircolors)
+fi
+
+export EXA_COLORS="da=36"
