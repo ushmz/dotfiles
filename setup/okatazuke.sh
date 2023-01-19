@@ -4,8 +4,6 @@ set -eu
 unlink ${HOME}/.zprofile
 unlink ${HOME}/.zshrc
 
-unlink ${HOME}/.zshrc
-unlink ${HOME}/.skhdrc
 unlink "${HOME}/Library/Application Support/Code/User/settings.json"
 unlink "${HOME}/Library/Application Support/Code/User/keybindings.json"
 unlink ${XDG_DATA_HOME}/tig/.tigrc

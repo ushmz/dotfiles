@@ -56,23 +56,17 @@ ln -sf $(pwd)/.config/gh/config.yml ${HOME}/.config/gh/config.yml
 # ranger config files
 ln -sf $(pwd)/.config/ranger/* ${HOME}/.config/ranger/
 
+# .tigrc
+mkdir -p ${HOME}/.config/less/
+ln -sf $(pwd)/.config/less/lesskey ${HOME}/.config/less/lesskey
+
 # nvim
 mkdir -p ${HOME}/.config/nvim/
 ln -sf $(pwd)/.config/nvim/init.lua ${HOME}/.config/nvim/init.lua
 ln -sf $(pwd)/.config/nvim/lua ${HOME}/.config/nvim/lua
 
-# vim skeleton files
-mkdir -p ${HOME}/.config/nvim/templates
-ln -sf $(pwd)/.config/nvim/templates/skeleton.sh ${HOME}/.config/nvim/templates/skeleton.sh
-
-# Utility scripts
-for script in $(ls -I '*.md' $(pwd)/.scripts/* | xargs -n 1 basename); do
-	ln -sf $(pwd)/.scripts/$script ${HOME}/.scripts/${script}
-done
-
 # Stop dirtying home directory
 echo hsts-file \= "${HOME}/.cache/wget-hsts" >"${HOME}/.config/wgetrc"
 
 mkdir -p "${HOME}/.config/python"
-touch "${HOME}/.config/python/pythonrc"
-echo "import readline\nreadline.set_auto_history(False)\n" >"${HOME}/.config/python/pythonrc"
+ln -sf $(pwd)/.config/python/pythonrc.py ${HOME}/.config/python/pythonrc.py

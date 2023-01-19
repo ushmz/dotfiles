@@ -29,4 +29,4 @@ up: setup/put.sh setup/install.sh
 	sh `pwd`/setup/install.sh
 
 okatazuke: setup/okatazuke.sh
-	sh `pwd`/setup/okatazuke.sh
+	- sh `pwd`/setup/okatazuke.sh

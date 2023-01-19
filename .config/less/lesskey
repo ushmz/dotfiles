@@ -1,0 +1,15 @@
+#command
+#line-edit
+^B    left
+^F    right
+^D    delete
+^H    backspace
+^A    home
+^E    end
+^P    up
+^N    down
+^K    kill-line
+#env
+LESS = -i -q -x2 -N -R
+LESSHISTFILE = ~/.local/state/.lesshist
+LESSOPEN     = | /usr/local/bin/src-hilite-lesspipe.sh %s
