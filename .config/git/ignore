@@ -47,3 +47,7 @@ dest
 # firebase projects
 .firebaserc
 .firebase/
+
+# others
+nohup.out
+.husky/
