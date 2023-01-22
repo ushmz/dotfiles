@@ -23,11 +23,11 @@
 
 Add following as a custom search engine.
 
-|Key|Value|
-|:-:|:-:|
-|Search engine|(any)|
-|Keyword|j|
-|URL|`javascript:`|
+|      Key      |     Value     |
+| :-----------: | :-----------: |
+| Search engine |     (any)     |
+|    Keyword    |       j       |
+|      URL      | `javascript:` |
 
 Press `j` -> `Enter` to go back to browser's contents area.
 
@@ -40,8 +40,9 @@ Press `ge` to edit.
 Press `gu`, ( `gU` to root)
 
 e.g.
-`gu` : https://github.com/ushmz/dotfiles -> https://github.com/ushmz
-`gU` : https://github.com/ushmz/dotfiles -> https://github.com
+
+- `gu` : <https://github.com/ushmz/dotfiles> -> <https://github.com/ushmz>
+- `gU` : <https://github.com/ushmz/dotfiles> -> <https://github.com>
 
 ### Appearance
 
