@@ -10,7 +10,7 @@ pager: less
 aliases:
     co: pr checkout
     ignore: api /gitignore/templates/$1 --jq .source
-    watches: api /users/chroju/subscriptions --paginate --jq .[].full_name
+    watches: api /users/ushmz/subscriptions --paginate --jq .[].full_name
     unwatch: api -X DELETE /repos/$1/subscription
     prc: pr create -w
     mypr: pr list -s all -A ushmz
