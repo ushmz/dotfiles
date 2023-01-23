@@ -29,32 +29,41 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("nvim-lua/plenary.nvim")
+	use({
+		{ "L3MON4D3/LuaSnip" },
+		"rafamadriz/friendly-snippets",
+	})
 
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			"hrsh7th/cmp-calc",
-			"hrsh7th/cmp-cmdline",
-			"L3MON4D3/LuaSnip",
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-path" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+			{ "hrsh7th/cmp-calc" },
+			{ "hrsh7th/cmp-cmdline" },
 		},
+		wants = "LuaSnip",
 		config = function()
 			require("plugins.cmp")
 		end,
 	})
 
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
+		"williamboman/mason.nvim",
 		requires = {
-			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
 			require("plugins.mason")
+		end,
+	})
+
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		wants = "mason",
+		config = function()
 			require("plugins.nullls")
 		end,
 	})
@@ -75,6 +84,7 @@ return packer.startup(function(use)
 
 	use({
 		"neovim/nvim-lspconfig",
+		-- wants = { "cmp-nvim-lsp", "mason" },
 		config = function()
 			require("plugins.lspconfig")
 		end,
