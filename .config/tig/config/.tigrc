@@ -1,23 +1,25 @@
 # tig settings
-set main-view  = id:yes date:default,local=yes author commit-title:graph=yes,refs=yes,overflow=false
-set blame-view = date:default id:yes,color line-number:yes,interval=1 text
-set pager-view = text
-set stage-view = text
-set log-view   = text
-set blob-view  = text
-set diff-view  = text:yes,commit-title-overflow=no
-set tab-size = 2
-set ignore-case = true
-set split-view-width = 80%
-set split-view-height = 80%
-set diff-options = -m --first-parent
-set refresh-mode = auto
+set main-view   = id:yes date:default,local=yes author commit-title:graph=yes,refs=yes,overflow=false
+set blame-view  = date:default id:yes,color line-number:yes,interval=1 text
+set pager-view  = line-number:yes,interval=1 text
+set stage-view  = line-number:yes,interval=1 text
+set log-view    = line-number:yes,interval=1 text
+set blob-view   = line-number:yes,interval=1 text
+set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+set tab-size        = 2
+set ignore-case     = true
+set diff-options    = -m --first-parent
+set refresh-mode    = auto
+
+set split-view-width    = 80%
+set split-view-height   = 80%
 
 # key bind
 # "P" to push to current branch
 bind    generic       P       ?@!git push origin %(repo:head)
 
-# Dでstatus viewのuntracked fileを削除できるようにする
+# "D" to delete untracked files on status view
 # https://github.com/jonas/tig/issues/31
 # https://github.com/jonas/tig/issues/393
 bind    status        D       ?@rm %(file)
