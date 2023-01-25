@@ -3,8 +3,13 @@ if not status1 then
 	return
 end
 
-local status2, ml = pcall(require, "mason-lspconfig")
+local status2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 if not status2 then
+  return
+end
+
+local status3, ml = pcall(require, "mason-lspconfig")
+if not status3 then
 	return
 end
 
@@ -130,14 +135,15 @@ local custom_servers = {
 	},
 }
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- local capabilities = vim.api.
+local capabilities = cmp_lsp.default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 ml.setup_handlers({
 	function(server_name)
 		local config = {
 			on_attach = on_attach,
-			capabilities = capabilities,
+			capabilities = capabilities or {},
 		}
 		if custom_servers[server_name] then
 			config = custom_servers[server_name]

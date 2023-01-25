@@ -4,7 +4,6 @@ if not ok then
 end
 
 local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
 local previewers = require("telescope.previewers")
 local previewers_utils = require("telescope.previewers.utils")
 
@@ -77,7 +76,6 @@ telescope.setup({
 				},
 				["n"] = {
 					["h"] = fb_actions.goto_parent_dir,
-					-- ['l'] = vim.fn.feedkeys('<CR>'),
 					["H"] = fb_actions.toggle_hidden,
 					["N"] = fb_actions.create,
 					["r"] = fb_actions.rename,
@@ -90,49 +88,3 @@ telescope.setup({
 		},
 	},
 })
-
-vim.keymap.set("n", ";f", function()
-	builtin.find_files({
-		no_ignore = false,
-		grouped = true,
-		hidden = true,
-	})
-end)
-
-vim.keymap.set("n", ";g", function()
-	builtin.live_grep({
-		no_ignore = false,
-		hidden = true,
-		grouped = true,
-	})
-end)
-
-vim.keymap.set("n", ";b", function()
-	builtin.buffers()
-end)
-
-vim.keymap.set("n", ";h", function()
-	builtin.help_tags()
-end)
-
-vim.keymap.set("n", ";;", function()
-	builtin.resume()
-end)
-
-vim.keymap.set("n", ";e", function()
-	builtin.diagnostics()
-end)
-
-telescope.load_extension("file_browser")
-vim.keymap.set("n", ";d", function()
-	telescope.extensions.file_browser.file_browser({
-		path = "%:p:h",
-		cwd = vim.fn.expand("%:p:h"),
-		respect_gitignore = false,
-		hidden = true,
-		grouped = true,
-		previewer = false,
-		initial_mode = "normal",
-		layout_config = { height = 40 },
-	})
-end)

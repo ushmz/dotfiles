@@ -22,6 +22,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	command = "set tabstop=2 shiftwidth=2 softtabstop=2",
 })
 
-require("options")
-require("mappings")
-require("plugins")
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = { "plugins.lua" },
+	command = "PackerCompile",
+})
+
+require("option")
+require("mapping")
+require("plugin")

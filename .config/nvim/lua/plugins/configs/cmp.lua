@@ -53,12 +53,12 @@ cmp.setup({
 		["<C-CR>"] = cmp.mapping.close(),
 	}),
 	sources = cmp.config.sources({
-		{ name = "calc" },
+		-- { name = "calc" },
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
-		{ name = "hrsh7th/cmp-nvim-lsp-signature-help" },
+		-- { name = "hrsh7th/cmp-nvim-lsp-signature-help" },
 	}),
 })
 

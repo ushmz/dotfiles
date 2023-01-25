@@ -6,7 +6,8 @@ end
 ts.setup({
 	highlight = { enable = true },
 	indent = { enable = true },
-	yati = { enable = true },
+	autotag = { enable = true },
+	endwise = { enable = true },
 	ensure_installed = {
 		"bash",
 		"css",
@@ -35,9 +36,6 @@ ts.setup({
 		"vim",
 		"vue",
 		"yaml",
-	},
-	autotag = {
-		enable = true,
 	},
 	textobjects = {
 		select = {
