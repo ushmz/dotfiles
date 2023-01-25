@@ -1,7 +1,9 @@
-vim.g.mapleader = " "
-
 local key = vim.keymap
 local opt = { noremap = true, silent = true }
+
+key.set("", "<Space>", "<Nop>", opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- key.set('n', '<space>', '<leader>', {noremap=true})
 key.set("i", "jj", "<ESC>", opt)
