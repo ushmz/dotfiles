@@ -4,6 +4,7 @@ define _help
 	echo "install\t: Install plugins and packages"
 	echo "up\t: Do `put` and `install` at once"
 	echo "okatazuke": Unlink & remove all synbolic links
+	echo "brewfile": Export `Brewfile` with only manually installed formulae and casks
 endef
 
 default:
@@ -30,3 +31,6 @@ up: setup/put.sh setup/install.sh
 
 okatazuke: setup/okatazuke.sh
 	- sh `pwd`/setup/okatazuke.sh
+
+dump: setup/brewfile.sh
+	- sh `pwd`/setup/brewfile.sh
