@@ -9,29 +9,34 @@ lualine.setup({
 		theme = "jellybeans",
 		section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
-		disabled_filetypes = {},
+		disabled_filetypes = { "TelescopePrompt" },
+		always_divide_middle = true,
+		globalstatus = true,
 	},
 	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch" },
+		lualine_a = { "" },
+		lualine_b = { "branch", "diff" },
 		lualine_c = {
 			{
 				"filename",
-				file_status = true, -- displays file status (readonly status, modified status)
-				path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+				file_status = true,
+				path = 0,
 			},
 		},
 		lualine_x = {
 			{
 				"diagnostics",
-				sources = { "nvim_diagnostic" },
+				-- sources = { "nvim_diagnostic" },
+				source = { "nvim-lsp", "null-ls" },
 				symbols = { error = " ", warn = " ", info = " ", hint = " " },
 			},
 			"encoding",
 			"filetype",
+      "progress",
+      "location"
 		},
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
+		lualine_y = { "" },
+		lualine_z = { "" },
 	},
 	inactive_sections = {
 		lualine_a = {},
@@ -39,8 +44,8 @@ lualine.setup({
 		lualine_c = {
 			{
 				"filename",
-				file_status = true, -- displays file status (readonly status, modified status)
-				path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+				file_status = true,
+				path = 1,
 			},
 		},
 		lualine_x = { "location" },

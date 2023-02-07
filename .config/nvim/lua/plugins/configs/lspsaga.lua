@@ -64,6 +64,9 @@ saga.setup({
 			quit = "q",
 		},
 	},
+	beacon = {
+		enable = false,
+	},
 	ui = {
 		theme = "round",
 		-- title = true,

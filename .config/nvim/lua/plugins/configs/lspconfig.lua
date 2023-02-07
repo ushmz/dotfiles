@@ -5,7 +5,7 @@ end
 
 local status2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 if not status2 then
-  return
+	return
 end
 
 local status3, ml = pcall(require, "mason-lspconfig")
@@ -57,21 +57,21 @@ local on_attach = function(client, bufnr)
 		buf_set_keymap("n", "<leader>f", "<Cmd>lua vim.lsp.buf.format({timeout_ms = 5000})<CR>", opts)
 	end
 
-	if client.server_capabilities.documentHighlightProvider then
-		vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
-		vim.api.nvim_clear_autocmds({ group = "LspDocumentHighlight" })
-		vim.api.nvim_create_autocmd({ "CursorHold" }, {
-			callback = vim.lsp.buf.document_highlight,
-			group = "LspDocumentHighlight",
-		})
-		vim.api.nvim_create_autocmd({ "Cursormoved" }, {
-			callback = vim.lsp.buf.clear_references,
-			group = "LspDocumentHighlight",
-		})
-		vim.api.nvim_set_hl(0, "LspReferenceText", { ctermbg = 240, bg = "#515761" })
-		vim.api.nvim_set_hl(0, "LspReferenceRead", { ctermbg = 240, bg = "#515761" })
-		vim.api.nvim_set_hl(0, "LspReferenceWrite", { ctermbg = 240, bg = "#515761" })
-	end
+	-- if client.server_capabilities.documentHighlightProvider then
+	-- 	vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+	-- 	vim.api.nvim_clear_autocmds({ group = "LspDocumentHighlight" })
+	-- 	vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	-- 		callback = vim.lsp.buf.document_highlight,
+	-- 		group = "LspDocumentHighlight",
+	-- 	})
+	-- 	vim.api.nvim_create_autocmd({ "Cursormoved" }, {
+	-- 		callback = vim.lsp.buf.clear_references,
+	-- 		group = "LspDocumentHighlight",
+	-- 	})
+	-- 	vim.api.nvim_set_hl(0, "LspReferenceText", { ctermbg = 240, bg = "#515761" })
+	-- 	vim.api.nvim_set_hl(0, "LspReferenceRead", { ctermbg = 240, bg = "#515761" })
+	-- 	vim.api.nvim_set_hl(0, "LspReferenceWrite", { ctermbg = 240, bg = "#515761" })
+	-- end
 end
 
 local on_attach_with_null_ls = function(client, bufnr)
