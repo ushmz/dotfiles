@@ -65,12 +65,11 @@ LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R '
 
-# Alcaritty auto complation setting
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-# asdf complation setting
+# Enable asdf tab complation
 fpath+=${ASDF_DIR}/completions
-
-# gh completion config
+# Enable poetry auto completion
+fpath+=${XDG_CONFIG_HOME}/poetry/.zfunc/_poetry
+# Enable gh completion config
 if type gh &>/dev/null; then
     eval "$(gh completion -s zsh)"
 fi

@@ -29,8 +29,6 @@ path=(
     ${GOBIN}(N-/)
     # cargo
     "${CARGO_HOME}/bin"(N-/)
-    # poetry
-    "${HOME}/.poetry/bin"(N-/)
     # exenv
     "${HOME}/.exenv/bin"(N-/)
     # Android SDK
