@@ -9,8 +9,8 @@ local previewers_utils = require("telescope.previewers.utils")
 
 local fb_actions = telescope.extensions.file_browser.actions
 
--- Ignore files bigger than a threshold
 local max_size = 100000
+--- Ignore files bigger than a threshold
 local function new_maker(filepath, bufnr, opts)
 	opts = opts or {}
 	filepath = vim.fn.expand(filepath)

@@ -8,12 +8,16 @@ if not status2 then
 	return
 end
 
+---Return there is a character just before the cursor or not
+---@return boolean
 local has_words_before = function()
 	local cursor = vim.api.nvim_win_get_cursor(0)
 	local lines = vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)
 	return cursor[2] ~= 0 and (lines[1] or ""):sub(cursor[2], cursor[2]):match("%s") == nil
 end
 
+---The handler on `Tab` key pressed
+---@param fallback any
 local function tab(fallback)
 	if cmp.visible() then
 		cmp.select_next_item()
@@ -26,6 +30,8 @@ local function tab(fallback)
 	end
 end
 
+---The handler on `Shift-Tab` key pressed
+---@param fallback any
 local function shift_tab(fallback)
 	if cmp.visible() then
 		cmp.select_prev_item()

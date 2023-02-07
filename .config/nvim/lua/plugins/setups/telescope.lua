@@ -1,3 +1,6 @@
+--- Return telescope builtin with option.
+-- @param name string
+-- @return function
 local function builtin(name)
 	return function(opt)
 		return function()
@@ -6,6 +9,10 @@ local function builtin(name)
 	end
 end
 
+--- Return load_extension with option.
+-- @param name string
+-- @param prop string
+-- @return function
 local function extensions(name, prop)
 	return function(opt)
 		return function()
