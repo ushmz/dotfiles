@@ -181,6 +181,11 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"mvllow/modes.nvim",
+		config = [[require("plugins.configs.modes")]],
+	})
+
+	use({
 		"kevinhwang91/nvim-hlslens",
 		config = [[require("plugins.configs.hlslens")]],
 	})
