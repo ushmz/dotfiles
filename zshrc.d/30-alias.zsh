@@ -51,22 +51,10 @@ if type tig &>/dev/null; then
     alias tig='TERM=xterm-256color tig'
 fi
 
-if type peco &>/dev/null; then
-    # Switch branch with peco
-    alias edas='git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
-
-    # Delete branch with peco
-    alias prune='git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
-
-    # Set iTerm profile with peco
-    alias term='echo -ne "\033]1337;SetProfile=$(peco ~/dotfiles/iTerm/.iterm_profiles)\a"'
-fi
-
 if type gh &>/dev/null; then
     alias gv="gh repo view --web"
     alias gcheck="gh pr checkout "
 fi
-
 
 alias zshenv='vi ~/.zshenv'
 alias zprofile='vi ~/dotfiles/zprofile.d'

@@ -1,3 +1,8 @@
+# Show ps with peco
+function pslist() {
+    ps aux | peco | awk '{print $2}'
+}
+
 # Search command history
 function peco_select_history() {
   BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
@@ -66,4 +71,16 @@ function ghq_code() {
       zle accept-line
     fi
     zle clear-screen
+}
+
+function edas() {
+    git checkout `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`
+}
+
+function prune() {
+    git branch -d `git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`
+}
+
+function iterm() {
+    echo -ne "\033]1337;SetProfile=$(peco ~/dotfiles/iTerm/.iterm_profiles)\a"
 }

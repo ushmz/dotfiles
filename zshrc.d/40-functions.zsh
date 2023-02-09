@@ -56,11 +56,6 @@ function sourse_pyenv() {
 }
 alias venv='sourse_pyenv'
 
-# Show ps with peco
-function pslist() {
-    ps aux | peco | awk '{print $2}'
-}
-
 # Convert movie file to gif.
 # $1 : Input file name
 # $2 : Output file name
