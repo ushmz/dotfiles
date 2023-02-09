@@ -16,17 +16,8 @@ vim.g.loaded_zipPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_netrwPlugin = 1
 
--- filetype
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "javascriptreact", "typescriptreact", "dart", "lua", "vim" },
-	command = "set tabstop=2 shiftwidth=2 softtabstop=2",
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = { "plugins.lua" },
-	command = "PackerCompile",
-})
-
+require("autocmd")
+require("filetype")
 require("option")
 require("mapping")
 require("plugin")
