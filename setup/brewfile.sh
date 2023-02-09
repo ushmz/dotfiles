@@ -16,7 +16,7 @@ for formula in $(brew list --formula); do
 	info=$(brew info ${formula} --formula --json=v2)
 	if [ $(echo ${info} | tr -d '[:cntrl:]' | jq .formulae[0].installed[0].installed_on_request) = "true" ]; then
 		tap=$(echo ${info} | tr -d '[:cntrl:]' | jq .formulae[0].tap)
-		if [ -n "${tap}" ] && [ "${tap}" != '"homebrew/core"' ]; then
+		if [ -n "${tap}" ] && [ "${tap}" != "null" ] && [ "${tap}" != '"homebrew/core"' ]; then
             echo tap $(echo ${tap} | sed -r "s/\\\"/\\'/g")
 		fi
 		echo brew \'${formula}\'
