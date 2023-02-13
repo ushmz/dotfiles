@@ -10,16 +10,14 @@ if !(type mas &>/dev/null); then
     exit 1
 fi
 
-for tap in $(brew tap-info --installed | grep ' formula' | cut -d ':' -f 1); do
-    echo tap \'${tap}\'
-done
+# brew tap
+brew tap-info --installed | grep ' formula' | cut -d ':' -f 1 | sed -r "s/(.*)/tap \'\1\'/"
 
-for formula in $(brew leaves); do
-    echo brew \'${formula}\'
-done
+# formulae
+brew leaves | sed -r "s/(.*)/brew \'\1\'/"
 
-for cask in $(brew list --cask); do
-	echo cask \'${cask}\'
-done
+# casks
+brew list --cask | sed -r "s/(.*)/cask \'\1\'/"
 
-mas list | sed 's/\ /\ \t#/' | sed 's/\ \ /\ /' | sed 's/\(.\)\s*(/\1 (/' | sed 's/^/mas /'
+# mas
+mas list | sed -r 's/\ {2,}/\t/g' | sed -r "s/(.+)\t(.+)\t.*/mas '\2', id: '\1'/"
