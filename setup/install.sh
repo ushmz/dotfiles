@@ -9,16 +9,16 @@ git clone https://github.com/zsh-users/zsh-completions.git ${HOME}/.cache/zsh-co
 
 if [[ ${OSTYPE} == *darwin* ]]; then
 	# Install brew
-    if !(type brew &>/dev/null); then
+  if !(type brew &>/dev/null); then
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	fi
 
 	brew update
 	brew cleanup
-    brew bundle
+  brew bundle
 	brew cleanup
 fi
 
 if !(type poetry &>/dev/null); then
-    curl -sSL https://install.python-poetry.org | python3 -
+  curl -sSL https://install.python-poetry.org | python3 -
 fi
