@@ -32,5 +32,5 @@ up: setup/put.sh setup/install.sh
 okatazuke: setup/okatazuke.sh
 	- sh `pwd`/setup/okatazuke.sh
 
-dump: setup/brewfile.sh
+brewfile: setup/brewfile.sh
 	- sh `pwd`/setup/brewfile.sh
