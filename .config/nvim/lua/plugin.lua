@@ -169,11 +169,6 @@ return packer.startup(function(use)
 		config = [[require("plugins.configs.gitsigns")]],
 	})
 
-	-- use({
-	-- 	"pwntester/octo.nvim",
-	-- 	config = [[require("plugins.configs.octo")]],
-	-- })
-
 	use({
 		"akinsho/bufferline.nvim",
 		version = "v2.*",
