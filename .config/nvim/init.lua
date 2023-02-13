@@ -23,6 +23,14 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	command = "PackerCompile",
 })
 
+-- Auto switch IME
+vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.fn.system({ "im-select", "com.apple.keylayout.ABC" })
+	end,
+})
+
 -- Set filetype options
 local filetype = require("filetype")
 vim.api.nvim_create_autocmd({ "FileType" }, {
