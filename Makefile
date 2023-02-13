@@ -33,4 +33,4 @@ okatazuke: setup/okatazuke.sh
 	- sh `pwd`/setup/okatazuke.sh
 
 brewfile: setup/brewfile.sh
-	- sh `pwd`/setup/brewfile.sh
+	- sh `pwd`/setup/brewfile.sh > Brewfile
