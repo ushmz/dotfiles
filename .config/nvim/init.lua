@@ -1,5 +1,6 @@
 vim.cmd("autocmd!")
 
+-- Set global options
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -16,8 +17,26 @@ vim.g.loaded_zipPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("autocmd")
-require("filetype")
+-- Setup autocmd
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = { "plugins.lua" },
+	command = "PackerCompile",
+})
+
+-- Set filetype options
+local filetype = require("filetype")
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = "*",
+	callback = function(args)
+		filetype[args.match]()
+	end,
+})
+
+-- Set options
 require("option")
+
+-- Set keymaps
 require("mapping")
+
+-- Plugin configs
 require("plugin")

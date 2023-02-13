@@ -9,6 +9,7 @@ vim.cmd([[let &t_Ce = '\e[4:0m']])
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
 vim.cmd("set mouse=")
+vim.cmd("set fo-=c fo-=o")
 
 vim.api.nvim_set_var("netrw_home", state .. "/vim")
 
@@ -38,7 +39,7 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.shell = "zsh"
 vim.opt.background = "dark"
--- vim.ot.backupskip='/tmp/*,/private/tmp/*'
+-- vim.opt.backupskip='/tmp/*,/private/tmp/*'
 -- vim.opt.inccommand='split'
 vim.opt.ignorecase = true
 vim.opt.smarttab = true
