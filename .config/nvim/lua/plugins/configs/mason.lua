@@ -31,7 +31,7 @@ lspconfig.setup({
 		"html",
 		"jsonls",
 		"kotlin_language_server",
-		"sumneko_lua",
+		"lua_ls",
 		"prismals",
 		"pyright",
 		"rust_analyzer",

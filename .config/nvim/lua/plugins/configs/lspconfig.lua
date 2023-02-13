@@ -81,7 +81,7 @@ local on_attach_with_null_ls = function(client, bufnr)
 end
 
 local custom_servers = {
-	["sumneko_lua"] = {
+	["lua_ls"] = {
 		prefer_null_ls = true,
 		settings = {
 			Lua = {
