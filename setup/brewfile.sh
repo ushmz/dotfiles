@@ -20,4 +20,4 @@ brew leaves | sed -r "s/(.*)/brew \'\1\'/"
 brew list --cask | sed -r "s/(.*)/cask \'\1\'/"
 
 # mas
-mas list | sed -r 's/\ {2,}/\t/g' | sed -r "s/(.+)\t(.+)\t.*/mas '\2', id: '\1'/"
+mas list | sed -r 's/\ {2,}/\t/g' | sed -r "s/(.+)\t(.+)\t.*/mas '\2', id: \1/"

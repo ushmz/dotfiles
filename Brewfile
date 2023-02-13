@@ -169,17 +169,17 @@ cask 'webex'
 cask 'webex-meetings'
 cask 'wezterm'
 cask 'zoom'
-mas 'HotKey', id: '975890633'
-mas 'Xcode', id: '497799835'
-mas 'Trello', id: '1278508951'
-mas 'Drafts', id: '1435957248'
-mas 'iMovie', id: '408981434'
-mas 'Developer', id: '640199958'
-mas 'Microsoft Excel', id: '462058435'
-mas 'QuickShade', id: '931571202'
-mas 'Transporter', id: '1450874784'
-mas 'Tot', id: '1491071483'
-mas 'LINE', id: '539883307'
-mas 'Microsoft Word', id: '462054704'
-mas 'Microsoft PowerPoint', id: '462062816'
-mas 'Tailscale', id: '1475387142'
+mas 'HotKey', id: 975890633
+mas 'Xcode', id: 497799835
+mas 'Trello', id: 1278508951
+mas 'Drafts', id: 1435957248
+mas 'iMovie', id: 408981434
+mas 'Developer', id: 640199958
+mas 'Microsoft Excel', id: 462058435
+mas 'QuickShade', id: 931571202
+mas 'Transporter', id: 1450874784
+mas 'Tot', id: 1491071483
+mas 'LINE', id: 539883307
+mas 'Microsoft Word', id: 462054704
+mas 'Microsoft PowerPoint', id: 462062816
+mas 'Tailscale', id: 1475387142
