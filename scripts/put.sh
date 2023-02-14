@@ -1,5 +1,4 @@
-#!/bin/sh
-set -eu
+#!/usr/bin/env sh -Cue
 
 mkdir -p ${HOME}/.config
 mkdir -p ${HOME}/.local/state

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh -Cue
 
 # zsh plugins
 mkdir -p ${HOME}/.cache

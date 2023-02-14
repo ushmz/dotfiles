@@ -1,5 +1,4 @@
-#!/bin/sh
-set -eu
+#!/usr/bin/env sh -Cue
 
 unlink ${HOME}/.zprofile
 unlink ${HOME}/.zshrc

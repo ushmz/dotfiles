@@ -1,12 +1,12 @@
-#!/bin/sh -Cue
+#!/usr/bin/env sh -Cue
 
 if !(type brew &>/dev/null); then
-	echo 'command brew not found'
+	echo 'command brew not found' >&2
     exit 1
 fi
 
 if !(type mas &>/dev/null); then
-    echo 'command mas not found'
+    echo 'command mas not found' >&2
     exit 1
 fi
 
