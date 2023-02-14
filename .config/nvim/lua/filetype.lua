@@ -64,7 +64,7 @@ end
 return setmetatable(M, {
 	__index = function()
 		return function()
-			indent(4, true)
+			indent(4, false)
 		end
 	end,
 })
