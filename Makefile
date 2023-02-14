@@ -8,29 +8,29 @@ define _help
 endef
 
 default:
-	@$(call _help)
+    @$(call _help)
 
 prepare:
-	mkdir -p $${HOME}/.config
-	mkdir -p $${HOME}/.local/state
-	mkdir -p $${HOME}/.local/share
-	mkdir -p $${HOME}/.cache
+    mkdir -p $${HOME}/.config
+    mkdir -p $${HOME}/.local/state
+    mkdir -p $${HOME}/.local/share
+    mkdir -p $${HOME}/.cache
 
 # Put config files
-put: setup/put.sh
-	sh `pwd`/setup/put.sh
+put: scripts/put.sh
+    sh `pwd`/scripts/put.sh
 
 # Install plugins and packages
-install: setup/install.sh
-	sh `pwd`/setup/install.sh
+install: scripts/install.sh
+    sh `pwd`/scripts/install.sh
 
 # Put config files and install brew packages (darwin)
-up: setup/put.sh setup/install.sh
-	sh `pwd`/setup/put.sh
-	sh `pwd`/setup/install.sh
+up: scripts/put.sh scripts/install.sh
+    sh `pwd`/scripts/put.sh
+    sh `pwd`/scripts/install.sh
 
-okatazuke: setup/okatazuke.sh
-	- sh `pwd`/setup/okatazuke.sh
+okatazuke: scripts/okatazuke.sh
+    sh `pwd`/scripts/okatazuke.sh
 
-brewfile: setup/brewfile.sh
-	- sh `pwd`/setup/brewfile.sh > Brewfile
+brewfile: scripts/brewfile.sh
+    sh `pwd`/scripts/brewfile.sh > Brewfile
