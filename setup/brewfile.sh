@@ -11,7 +11,7 @@ if !(type mas &>/dev/null); then
 fi
 
 # brew tap
-brew tap-info --installed | grep ' formula' | cut -d ':' -f 1 | sed -r "s/(.*)/tap \'\1\'/"
+brew tap | sed -r "s/(.*)/tap \'\1\'/"
 
 # formulae
 brew leaves | sed -r "s/(.*)/brew \'\1\'/"
