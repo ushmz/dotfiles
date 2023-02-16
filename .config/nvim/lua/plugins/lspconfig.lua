@@ -13,28 +13,9 @@ if not status3 then
 	return
 end
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = true,
-	float = {
-		source = "if_many",
-	},
-})
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	underline = true,
-	update_in_insert = false,
-	virtual_text = false,
-	severity_sort = true,
-})
+---Plugin configs.
+---@type { config: function, setup: function}
+local M = {}
 
 local on_attach = function(client, bufnr)
 	local function buf_set_option(...)
@@ -72,12 +53,6 @@ local on_attach = function(client, bufnr)
 	-- 	vim.api.nvim_set_hl(0, "LspReferenceRead", { ctermbg = 240, bg = "#515761" })
 	-- 	vim.api.nvim_set_hl(0, "LspReferenceWrite", { ctermbg = 240, bg = "#515761" })
 	-- end
-end
-
-local on_attach_with_null_ls = function(client, bufnr)
-	client.server_capabilities.documentHighlightProvider = false
-	client.server_capabilities.documentFormattingProvider = false
-	on_attach(client, bufnr)
 end
 
 local custom_servers = {
@@ -135,46 +110,79 @@ local custom_servers = {
 	},
 }
 
--- local capabilities = vim.api.
-local capabilities = cmp_lsp.default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.config = function()
+	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+	end
 
-ml.setup_handlers({
-	function(server_name)
-		local config = {
-			on_attach = on_attach,
-			capabilities = capabilities or {},
-		}
-		if custom_servers[server_name] then
-			config = custom_servers[server_name]
-			if custom_servers[server_name]["prefer_null_ls"] then
-				config.on_attach = on_attach_with_null_ls
-			else
-				config.on_attach = on_attach
-			end
-		end
-		lsp[server_name].setup(config)
-	end,
-})
-
--- mason doesn't have `dartls` install option
-lsp.dartls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	cmd = { "dart", "language-server", "--protocol=lsp" },
-	filetypes = { "dart" },
-	root_pattern = { "pubspec.yaml" },
-	init_options = {
-		closingLabels = true,
-		flutterOutline = true,
-		onlyAnalyzeProjectsWithOpenFiles = true,
-		outline = true,
-		suggestFromUnimportedLibraries = true,
-	},
-	settings = {
-		dart = {
-			completeFunctionCalls = true,
-			showTodos = true,
+	vim.diagnostic.config({
+		virtual_text = false,
+		signs = true,
+		underline = true,
+		update_in_insert = true,
+		float = {
+			source = "if_many",
 		},
-	},
-})
+	})
+
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		underline = true,
+		update_in_insert = false,
+		virtual_text = false,
+		severity_sort = true,
+	})
+
+	local on_attach_with_null_ls = function(client, bufnr)
+		client.server_capabilities.documentHighlightProvider = false
+		client.server_capabilities.documentFormattingProvider = false
+		on_attach(client, bufnr)
+	end
+
+	-- local capabilities = vim.api.
+	local capabilities = cmp_lsp.default_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+	ml.setup_handlers({
+		function(server_name)
+			local config = {
+				on_attach = on_attach,
+				capabilities = capabilities or {},
+			}
+			if custom_servers[server_name] then
+				config = custom_servers[server_name]
+				if custom_servers[server_name]["prefer_null_ls"] then
+					config.on_attach = on_attach_with_null_ls
+				else
+					config.on_attach = on_attach
+				end
+			end
+			lsp[server_name].setup(config)
+		end,
+	})
+
+	-- mason doesn't have `dartls` install option
+	lsp.dartls.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		cmd = { "dart", "language-server", "--protocol=lsp" },
+		filetypes = { "dart" },
+		root_pattern = { "pubspec.yaml" },
+		init_options = {
+			closingLabels = true,
+			flutterOutline = true,
+			onlyAnalyzeProjectsWithOpenFiles = true,
+			outline = true,
+			suggestFromUnimportedLibraries = true,
+		},
+		settings = {
+			dart = {
+				completeFunctionCalls = true,
+				showTodos = true,
+			},
+		},
+	})
+end
+
+return M

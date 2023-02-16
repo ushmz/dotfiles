@@ -29,19 +29,19 @@ return packer.startup(function(use)
 
 	use({
 		"w0ng/vim-hybrid",
-		config = [[require("plugins.configs.hybrid")]],
+		config = [[require("plugins.hybrid")]],
 	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		config = [[require("plugins.configs.treesitter")]],
+		config = [[require("plugins.treesitter").config()]],
 	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
 		event = { "BufReadPre" },
 		wants = { "nvim-treesitter" },
-		config = [[require("plugins.configs.treesitter-context")]],
+		config = [[require("plugins.treesitter-context").config()]],
 	})
 
 	use({
@@ -54,14 +54,14 @@ return packer.startup(function(use)
 		"windwp/nvim-ts-autotag",
 		event = { "InsertEnter" },
 		wants = { "nvim-treesitter" },
-		config = [[require("plugins.configs.autotag")]],
+		config = [[require("plugins.autotag").config()]],
 	})
 
 	use({
 		"windwp/nvim-autopairs",
 		event = { "InsertEnter" },
 		wants = { "nvim-treesitter" },
-		config = [[require("plugins.configs.autopairs")]],
+		config = [[require("plugins.autopairs").config()]],
 	})
 
 	use({
@@ -69,7 +69,7 @@ return packer.startup(function(use)
 		require = {
 			{ "rafamadriz/friendly-snippets" },
 		},
-		config = [[require("plugins.configs.luasnip")]],
+		config = [[require("plugins.luasnip").config()]],
 	})
 
 	use({
@@ -77,24 +77,24 @@ return packer.startup(function(use)
 		requires = {
 			"williamboman/mason-lspconfig.nvim",
 		},
-		config = [[require("plugins.configs.mason")]],
+		config = [[require("plugins.mason").config()]],
 	})
 
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufEnter" },
 		-- wants = { "mason" },
-		config = [[require("plugins.configs.nullls")]],
+		config = [[require("plugins.nullls").config()]],
 	})
 
 	use({
 		"glepnir/lspsaga.nvim",
-		config = [[require("plugins.configs.lspsaga")]],
+		config = [[require("plugins.lspsaga").config()]],
 	})
 
 	use({
 		"onsails/lspkind-nvim",
-		config = [[require("plugins.configs.lspkind")]],
+		config = [[require("plugins.lspkind").config()]],
 	})
 
 	use({
@@ -104,7 +104,7 @@ return packer.startup(function(use)
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
 		},
 		wants = { "cmp-nvim-lsp" },
-		config = [[require("plugins.configs.lspconfig")]],
+		config = [[require("plugins.lspconfig").config()]],
 	})
 
 	use({
@@ -119,12 +119,12 @@ return packer.startup(function(use)
 			{ "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } },
 		},
 		wants = { "luasnip" },
-		config = [[require("plugins.configs.cmp")]],
+		config = [[require("plugins.cmp").config()]],
 	})
 
 	use({
 		"kyazdani42/nvim-web-devicons",
-		config = [[require("plugins.configs.devicons")]],
+		config = [[require("plugins.devicons").config()]],
 	})
 
 	use({
@@ -142,18 +142,18 @@ return packer.startup(function(use)
 			"fd",
 			"telescope-file-browser.nvim",
 		},
-		setup = [[require("plugins.setups.telescope")]],
-		config = [[require("plugins.configs.telescope")]],
+		setup = require("plugins.telescope").setup,
+		config = [[require("plugins.telescope").config()]],
 	})
 
 	use({
 		"nvim-lualine/lualine.nvim",
-		config = [[require("plugins.configs.lualine")]],
+		config = [[require("plugins.lualine").config()]],
 	})
 
 	use({
 		"numToStr/Comment.nvim",
-		config = [[require("plugins.configs.comment")]],
+		config = [[require("plugins.comment").config()]],
 	})
 
 	use({
@@ -166,40 +166,40 @@ return packer.startup(function(use)
 
 	use({
 		"lewis6991/gitsigns.nvim",
-		config = [[require("plugins.configs.gitsigns")]],
+		config = [[require("plugins.gitsigns").config()]],
 	})
 
 	use({
 		"akinsho/bufferline.nvim",
 		version = "v2.*",
-		config = [[require("plugins.configs.bufferline")]],
+		config = [[require("plugins.bufferline").config()]],
 	})
 
 	use({
 		"mvllow/modes.nvim",
-		config = [[require("plugins.configs.modes")]],
+		config = [[require("plugins.modes").config()]],
 	})
 
 	use({
 		"kevinhwang91/nvim-hlslens",
-		config = [[require("plugins.configs.hlslens")]],
+		config = [[require("plugins.hlslens").config()]],
 	})
 
 	use({
 		"akinsho/toggleterm.nvim",
 		tag = "*",
-		config = [[require("plugins.configs.toggleterm")]],
+		config = [[require("plugins.toggleterm").config()]],
 	})
 
 	use({
 		"norcalli/nvim-colorizer.lua",
-		config = [[require("plugins.configs.colorizer")]],
+		config = [[require("plugins.colorizer").config()]],
 	})
 
 	use({
 		"instant-markdown/vim-instant-markdown",
 		ft = { "markdown" },
-		config = [[require("plugins.configs.instantmarkdown")]],
+		config = [[require("plugins.instantmarkdown").config()]],
 	})
 
 	if bootstrap then
