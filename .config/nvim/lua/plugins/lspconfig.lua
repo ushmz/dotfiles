@@ -13,46 +13,19 @@ if not status3 then
 	return
 end
 
----Plugin configs.
+--- Plugin configs.
 ---@type { config: function, setup: function}
 local M = {}
 
 local on_attach = function(client, bufnr)
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
+	local keymap = vim.api.nvim_buf_set_keymap
 	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-
-	if client.server_capabilities.documentFormattingProvider then
-		buf_set_keymap("n", "<leader>f", "<Cmd>lua vim.lsp.buf.format({timeout_ms = 5000})<CR>", opts)
-	end
-
-	-- if client.server_capabilities.documentHighlightProvider then
-	-- 	vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
-	-- 	vim.api.nvim_clear_autocmds({ group = "LspDocumentHighlight" })
-	-- 	vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	-- 		callback = vim.lsp.buf.document_highlight,
-	-- 		group = "LspDocumentHighlight",
-	-- 	})
-	-- 	vim.api.nvim_create_autocmd({ "Cursormoved" }, {
-	-- 		callback = vim.lsp.buf.clear_references,
-	-- 		group = "LspDocumentHighlight",
-	-- 	})
-	-- 	vim.api.nvim_set_hl(0, "LspReferenceText", { ctermbg = 240, bg = "#515761" })
-	-- 	vim.api.nvim_set_hl(0, "LspReferenceRead", { ctermbg = 240, bg = "#515761" })
-	-- 	vim.api.nvim_set_hl(0, "LspReferenceWrite", { ctermbg = 240, bg = "#515761" })
-	-- end
+	keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+	keymap(bufnr, "n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	keymap(bufnr, "n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 end
 
 local custom_servers = {
@@ -60,14 +33,8 @@ local custom_servers = {
 		prefer_null_ls = true,
 		settings = {
 			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-
-				workspace = {
-					library = vim.api.nvim_get_runtime_file("", true),
-					checkThirdParty = false,
-				},
+				diagnostics = { globals = { "vim" } },
+				workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = true },
 			},
 		},
 	},
@@ -122,17 +89,13 @@ M.config = function()
 		signs = true,
 		underline = true,
 		update_in_insert = true,
-		float = {
-			source = "if_many",
-		},
+		float = { source = "if_many" },
 	})
 
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		underline = true,
-		update_in_insert = false,
-		virtual_text = false,
-		severity_sort = true,
-	})
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics,
+		{ underline = true, update_in_insert = false, virtual_text = false, severity_sort = true }
+	)
 
 	local on_attach_with_null_ls = function(client, bufnr)
 		client.server_capabilities.documentHighlightProvider = false
@@ -140,7 +103,6 @@ M.config = function()
 		on_attach(client, bufnr)
 	end
 
-	-- local capabilities = vim.api.
 	local capabilities = cmp_lsp.default_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 

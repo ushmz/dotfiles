@@ -13,7 +13,7 @@ if not status3 then
 	return
 end
 
----Plugin configs.
+--- Plugin configs.
 ---@type { config: function, setup: function}
 local M = {}
 
@@ -64,18 +64,11 @@ M.config = function()
 					bufnr,
 					"n",
 					"<leader>f",
-					[[<Cmd>lua vim.lsp.buf.format({ 
-            timeout_ms = 5000, 
-            bufnr = bufnr, 
-            filter = function(clt) 
-              return clt.name == 'null-ls'
-            end 
-          })<CR>]],
+					[[<Cmd>lua vim.lsp.buf.format({ timeout_ms = 5000, bufnr = bufnr, filter = function(clt) return clt.name == 'null-ls' end })<CR>]],
 					{ noremap = true, silent = true }
 				)
 
 				local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
-				vim.api.nvim_clear_autocmds({ buffer = bufnr, group = fmtag })
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					buffer = bufnr,
 					group = fmtag,

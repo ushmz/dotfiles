@@ -8,11 +8,11 @@ if not status2 then
 	return
 end
 
----Plugin configs.
+--- Plugin configs.
 ---@type { config: function, setup: function}
 local M = {}
 
----Return there is a character just before the cursor or not
+--- Return there is a character just before the cursor or not
 ---@return boolean
 local has_words_before = function()
 	local cursor = vim.api.nvim_win_get_cursor(0)
@@ -20,7 +20,7 @@ local has_words_before = function()
 	return cursor[2] ~= 0 and (lines[1] or ""):sub(cursor[2], cursor[2]):match("%s") == nil
 end
 
----The handler on `Tab` key pressed
+--- The handler on `Tab` key pressed
 ---@param fallback any
 local function tab(fallback)
 	if cmp.visible() then
@@ -34,7 +34,7 @@ local function tab(fallback)
 	end
 end
 
----The handler on `Shift-Tab` key pressed
+--- The handler on `Shift-Tab` key pressed
 ---@param fallback any
 local function shift_tab(fallback)
 	if cmp.visible() then
@@ -53,6 +53,10 @@ M.config = function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
+		window = {
+			-- completion = cmp.config.window.bordered({ border = "single" }),
+			documentation = cmp.config.window.bordered({ border = "single" }),
+		},
 		mapping = cmp.mapping.preset.insert({
 			["<Tab>"] = cmp.mapping(tab, { "i", "s", "c" }),
 			["<S-Tab>"] = cmp.mapping(shift_tab, { "i", "s", "c" }),
@@ -69,20 +73,22 @@ M.config = function()
 			{ name = "buffer" },
 			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
-			-- { name = "hrsh7th/cmp-nvim-lsp-signature-help" },
+			{ name = "nvim_lsp_signature_help" },
 		}),
 	})
 
 	cmp.setup.cmdline(":", {
-		sources = {
-			{ name = "cmdline" },
-		},
+		sources = cmp.config.sources({
+			{ name = "nvim_lsp_document_symbol" },
+			{ name = "cmdline", keyword_length = 2 },
+		}),
 	})
 
-	cmp.setup.cmdline("/", {
-		sources = {
+	cmp.setup.cmdline({ "/", "?" }, {
+		sources = cmp.config.sources({
+			{ name = "path" },
 			{ name = "buffer" },
-		},
+		}),
 	})
 
 	vim.api.nvim_set_var("completeopt", "menuone,preview,noinsert,noselect")
