@@ -1,5 +1,8 @@
 -- Add filetype options
 vim.filetype.add({
+	extension = {
+		lock = "yaml",
+	},
 	filename = {
 		Brewfile = "ruby",
 		Tmuxfile = "tmux",
@@ -9,9 +12,10 @@ vim.filetype.add({
 	},
 	pattern = {
 		[".*%.js%.map"] = "json",
-		[".*%.postman_collection"] = "json",
 		["%.config/git/users/.*"] = "gitconfig",
 		[".*%.json%.jbuilder"] = "ruby",
+		[".*%.conf"] = "conf",
+		[".*%.env%..*"] = "env",
 	},
 })
 
