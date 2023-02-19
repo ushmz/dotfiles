@@ -15,7 +15,7 @@ if [[ ${OSTYPE} == *darwin* ]]; then
 
 	brew update
 	brew cleanup
-  brew bundle
+	brew bundle
 	brew cleanup
 fi
 

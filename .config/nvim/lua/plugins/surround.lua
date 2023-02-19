@@ -3,7 +3,7 @@ if not ok then
 	return
 end
 
----Plugin configs.
+--- Plugin configs.
 ---@type { config: function, setup: function}
 local M = {}
 

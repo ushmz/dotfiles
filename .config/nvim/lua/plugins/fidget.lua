@@ -3,9 +3,11 @@ if not ok then
 	return
 end
 
+--- Plugin configs.
+---@type { config: function, setup: function}
 local M = {}
 
-M.config = function ()
+M.config = function()
 	fidget.setup({})
 end
 

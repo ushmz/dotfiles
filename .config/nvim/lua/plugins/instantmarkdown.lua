@@ -1,4 +1,4 @@
----Plugin configs.
+--- Plugin configs.
 ---@type { config: function, setup: function}
 local M = {}
 

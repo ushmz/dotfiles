@@ -55,10 +55,6 @@ ln -sf $(pwd)/.config/gh/config.yml ${HOME}/.config/gh/config.yml
 # ranger config files
 ln -sf $(pwd)/.config/ranger/* ${HOME}/.config/ranger/
 
-# .tigrc
-mkdir -p ${HOME}/.config/less/
-ln -sf $(pwd)/.config/less/lesskey ${HOME}/.config/less/lesskey
-
 # nvim
 mkdir -p ${HOME}/.config/nvim/
 ln -sf $(pwd)/.config/nvim/init.lua ${HOME}/.config/nvim/init.lua
@@ -66,6 +62,10 @@ ln -sf $(pwd)/.config/nvim/lua ${HOME}/.config/nvim/lua
 
 # Stop dirtying home directory
 echo hsts-file \= "${HOME}/.cache/wget-hsts" >"${HOME}/.config/wgetrc"
+
+# less
+mkdir -p ${HOME}/.config/less/
+ln -sf $(pwd)/.config/less/lesskey ${HOME}/.config/less/lesskey
 
 mkdir -p "${HOME}/.config/python"
 ln -sf $(pwd)/.config/python/pythonrc.py ${HOME}/.config/python/pythonrc.py
