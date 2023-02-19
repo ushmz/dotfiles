@@ -154,19 +154,25 @@ return packer.startup(function(use)
 
 	use({
 		"numToStr/Comment.nvim",
+		event = { "BufEnter" },
 		config = [[require("plugins.comment").config()]],
 	})
 
 	use({
 		"kylechui/nvim-surround",
 		tag = "*",
+		event = { "BufEnter" },
 		config = [[require("nvim-surround").setup({})]],
 	})
 
-	use("lukas-reineke/indent-blankline.nvim")
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufEnter" },
+	})
 
 	use({
 		"lewis6991/gitsigns.nvim",
+		event = { "BufEnter" },
 		config = [[require("plugins.gitsigns").config()]],
 	})
 
@@ -178,11 +184,13 @@ return packer.startup(function(use)
 
 	use({
 		"mvllow/modes.nvim",
+		event = { "BufEnter" },
 		config = [[require("plugins.modes").config()]],
 	})
 
 	use({
 		"kevinhwang91/nvim-hlslens",
+		event = { "BufEnter" },
 		config = [[require("plugins.hlslens").config()]],
 	})
 
@@ -194,7 +202,13 @@ return packer.startup(function(use)
 
 	use({
 		"norcalli/nvim-colorizer.lua",
+		event = { "BufEnter" },
 		config = [[require("plugins.colorizer").config()]],
+	})
+
+	use({
+		"j-hui/fidget.nvim",
+		config = [[require("plugins.fidget").config()]],
 	})
 
 	use({
