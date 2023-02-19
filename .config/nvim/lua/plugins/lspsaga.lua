@@ -1,14 +1,5 @@
-local ok, saga = pcall(require, "lspsaga")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	saga.setup({
+local function config()
+	require("lspsaga").setup({
 		code_action = {
 			num_shortcut = true,
 		},
@@ -153,4 +144,7 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"glepnir/lspsaga.nvim",
+	config = config,
+}

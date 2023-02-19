@@ -1,14 +1,8 @@
-local ok, treesitter = pcall(require, "nvim-treesitter.configs")
-if not ok then
-	return
-end
+local function treesitter()
+	local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+	parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	treesitter.setup({
+	require("nvim-treesitter.configs").setup({
 		highlight = { enable = true },
 		indent = { enable = true },
 		autotag = { enable = true },
@@ -99,9 +93,58 @@ M.config = function()
 			},
 		},
 	})
-
-	local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-	parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 end
 
-return M
+local function treesitter_context()
+	require("treesitter-context").setup({
+		enable = true,
+		max_lines = 0,
+		trim_scope = "outer",
+		min_window_height = 0,
+		patterns = {
+			default = {
+				"class",
+				"function",
+				"method",
+				"for",
+				"while",
+				"if",
+				"switch",
+				"case",
+				"interface",
+				"struct",
+				"enum",
+			},
+			markdown = {
+				"section",
+			},
+			json = {
+				"pair",
+			},
+			typescript = {
+				"export_statement",
+			},
+			yaml = {
+				"block_mapping_pair",
+			},
+		},
+		exact_patterns = {},
+	})
+end
+
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = treesitter,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = treesitter_context,
+	},
+	{
+		"RRethy/nvim-treesitter-endwise",
+		event = { "InsertEnter" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+}

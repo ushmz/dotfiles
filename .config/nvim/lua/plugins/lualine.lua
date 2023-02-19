@@ -1,14 +1,5 @@
-local ok, lualine = pcall(require, "lualine")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	lualine.setup({
+local function config()
+	require("lualine").setup({
 		options = {
 			icons_enabled = true,
 			theme = "jellybeans",
@@ -62,4 +53,7 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"nvim-lualine/lualine.nvim",
+	config = config,
+}

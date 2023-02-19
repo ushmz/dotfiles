@@ -1,21 +1,14 @@
-local status1, lsp = pcall(require, "lspconfig")
-if not status1 then
-	return
+local function lsp()
+	return require("lspconfig")
 end
 
-local status2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-if not status2 then
-	return
+local function cmp_lsp()
+	return require("cmp_nvim_lsp")
 end
 
-local status3, ml = pcall(require, "mason-lspconfig")
-if not status3 then
-	return
+local function ml()
+	return require("mason-lspconfig")
 end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -77,7 +70,7 @@ local custom_servers = {
 	},
 }
 
-M.config = function()
+local function config()
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
@@ -103,29 +96,29 @@ M.config = function()
 		on_attach(client, bufnr)
 	end
 
-	local capabilities = cmp_lsp.default_capabilities()
+	local capabilities = cmp_lsp().default_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-	ml.setup_handlers({
+	ml().setup_handlers({
 		function(server_name)
-			local config = {
+			local conf = {
 				on_attach = on_attach,
 				capabilities = capabilities or {},
 			}
 			if custom_servers[server_name] then
-				config = custom_servers[server_name]
+				conf = custom_servers[server_name]
 				if custom_servers[server_name]["prefer_null_ls"] then
-					config.on_attach = on_attach_with_null_ls
+					conf.on_attach = on_attach_with_null_ls
 				else
-					config.on_attach = on_attach
+					conf.on_attach = on_attach
 				end
 			end
-			lsp[server_name].setup(config)
+			lsp()[server_name].setup(conf)
 		end,
 	})
 
 	-- mason doesn't have `dartls` install option
-	lsp.dartls.setup({
+	lsp().dartls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		cmd = { "dart", "language-server", "--protocol=lsp" },
@@ -147,4 +140,9 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"neovim/nvim-lspconfig",
+	module = { "lspconfig" },
+	dependencies = { { "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } } },
+	config = config,
+}

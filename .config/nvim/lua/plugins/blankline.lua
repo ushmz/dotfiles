@@ -1,18 +1,9 @@
-local ok, blankline = pcall(require, "indent_blankline")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
+local function config()
 	vim.opt.list = true
 	-- vim.opt.listchars:append "space:⋅"
 	vim.opt.listchars:append("eol:↴")
 
-	blankline.setup({
+	require("indent_blankline").setup({
 		show_end_of_line = true,
 		space_char_blankline = " ",
 		show_current_context = true,
@@ -20,4 +11,8 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"lukas-reineke/indent-blankline.nvim",
+	event = { "BufEnter" },
+	config = config,
+}

@@ -1,14 +1,5 @@
-local ok, lspkind = pcall(require, "lspkind")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	lspkind.init({
+local function config()
+	require("lspkind").init({
 		mode = "symbol",
 		preset = "codicons",
 		symbol_map = {
@@ -41,4 +32,7 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"onsails/lspkind-nvim",
+	config = config,
+}

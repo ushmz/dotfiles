@@ -1,14 +1,5 @@
-local ok, hlslens = pcall(require, "hlslens")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	hlslens.setup()
+local function config()
+	require("hlslens").setup()
 
 	local opts = { noremap = true, silent = true }
 
@@ -30,4 +21,8 @@ M.config = function()
 	vim.keymap.set("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 end
 
-return M
+return {
+	"kevinhwang91/nvim-hlslens",
+	event = { "BufEnter" },
+	config = config,
+}

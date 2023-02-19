@@ -1,14 +1,10 @@
-local ok, autotag = pcall(require, "nvim-ts-autotag")
-if not ok then
-	return
+local function config()
+	require("nvim-ts-autotag").setup({})
 end
 
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	autotag.setup({})
-end
-
-return M
+return {
+	"windwp/nvim-ts-autotag",
+	event = { "InsertEnter" },
+	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	config = config,
+}

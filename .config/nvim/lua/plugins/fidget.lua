@@ -1,14 +1,8 @@
-local ok, fidget = pcall(require, "fidget")
-if not ok then
-	return
+local function config()
+	require("fidget").setup({})
 end
 
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	fidget.setup({})
-end
-
-return M
+return {
+	"j-hui/fidget.nvim",
+	config = config,
+}

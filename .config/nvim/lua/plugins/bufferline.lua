@@ -1,14 +1,5 @@
-local ok, bufferline = pcall(require, "bufferline")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	bufferline.setup({
+local function config()
+	require("bufferline").setup({
 		options = {
 			mode = "tabs",
 			separator_style = "slant",
@@ -43,4 +34,8 @@ M.config = function()
 	vim.keymap.set("n", "<leader>[", "<Cmd>BufferLineCyclePrev<CR>", { silent = true })
 end
 
-return M
+return {
+	"akinsho/bufferline.nvim",
+	version = "v2.*",
+	config = config,
+}

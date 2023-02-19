@@ -8,10 +8,6 @@ if not status2 then
 	return
 end
 
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
 --- Return there is a character just before the cursor or not
 ---@return boolean
 local has_words_before = function()
@@ -46,7 +42,7 @@ local function shift_tab(fallback)
 	end
 end
 
-M.config = function()
+local function config()
 	cmp.setup({
 		snippet = {
 			expand = function(args)
@@ -95,4 +91,17 @@ M.config = function()
 	vim.api.nvim_set_hl(0, "CmpItemKind", { link = "CmpItemMenuDefault" })
 end
 
-return M
+return {
+	"hrsh7th/nvim-cmp",
+	dependencies = {
+		{ "hrsh7th/cmp-buffer", event = { "InsertEnter" } },
+		{ "hrsh7th/cmp-path", event = { "InsertEnter" } },
+		{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
+		{ "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },
+		{ "hrsh7th/cmp-nvim-lsp-document-symbol", event = { "InsertEnter" } },
+		{ "hrsh7th/cmp-calc", event = { "InsertEnter" } },
+		{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
+		{ "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } },
+	},
+	config = config,
+}

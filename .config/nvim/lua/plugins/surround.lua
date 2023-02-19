@@ -1,14 +1,9 @@
-local ok, surround = pcall(require, "nvim-surround")
-if not ok then
-	return
+local function config()
+	require("nvim-surround").setup()
 end
 
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	surround.setup()
-end
-
-return M
+return {
+	"kylechui/nvim-surround",
+	event = { "BufEnter" },
+	config = config,
+}

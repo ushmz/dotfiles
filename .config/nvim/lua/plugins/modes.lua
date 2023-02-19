@@ -1,14 +1,5 @@
-local ok, modes = pcall(require, "modes")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	modes.setup({
+local function config()
+	require("modes").setup({
 		colors = {
 			copy = "#F0C674",
 			delete = "#CC6666",
@@ -35,4 +26,8 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"mvllow/modes.nvim",
+	event = { "BufEnter" },
+	config = config,
+}

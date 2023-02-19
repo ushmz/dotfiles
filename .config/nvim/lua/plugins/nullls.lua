@@ -1,34 +1,3 @@
-local status1, nls = pcall(require, "null-ls")
-if not status1 then
-	return
-end
-
-local status2, mp = pcall(require, "mason-core.package")
-if not status2 then
-	return
-end
-
-local status3, mr = pcall(require, "mason-registry")
-if not status3 then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-local nls_sources = {}
-
-for _, package in ipairs(mr.get_installed_packages()) do
-	local categories = package.spec.categories[1]
-	if categories == mp.Cat.Formatter then
-		table.insert(nls_sources, nls.builtins.formatting[package.name])
-	end
-	if categories == mp.Cat.Linter then
-		table.insert(nls_sources, nls.builtins.diagnostics[package.name])
-	end
-end
-
 -- Following tools cannot install via `ensure_installed` option of mason,
 local ext_fmt = {
 	"dart_format",
@@ -47,16 +16,27 @@ local ext_diag = {
 	"rubocop",
 }
 
-for _, fmt in ipairs(ext_fmt) do
-	table.insert(nls_sources, nls.builtins.formatting[fmt])
-end
+local function config()
+	local nls_sources = {}
+	for _, package in ipairs(require("mason-registry").get_installed_packages()) do
+		local categories = package.spec.categories[1]
+		if categories == require("mason-core.package").Cat.Formatter then
+			table.insert(nls_sources, require("null-ls").builtins.formatting[package.name])
+		end
+		if categories == require("mason-core.package").Cat.Linter then
+			table.insert(nls_sources, require("null-ls").builtins.diagnostics[package.name])
+		end
+	end
 
-for _, diag in ipairs(ext_diag) do
-	table.insert(nls_sources, nls.builtins.diagnostics[diag])
-end
+	for _, fmt in ipairs(ext_fmt) do
+		table.insert(nls_sources, require("null-ls").builtins.formatting[fmt])
+	end
 
-M.config = function()
-	nls.setup({
+	for _, diag in ipairs(ext_diag) do
+		table.insert(nls_sources, require("null-ls").builtins.diagnostics[diag])
+	end
+
+	require("null-ls").setup({
 		sources = nls_sources,
 		on_attach = function(client, bufnr)
 			if client.server_capabilities.documentFormattingProvider then
@@ -86,4 +66,8 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"jose-elias-alvarez/null-ls.nvim",
+	event = { "BufEnter" },
+	config = config,
+}

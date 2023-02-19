@@ -1,14 +1,5 @@
-local ok, toggleterm = pcall(require, "toggleterm")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	toggleterm.setup({
+local function config()
+	require("toggleterm").setup({
 		hidden = true,
 		direction = "float",
 		float_opts = {
@@ -30,4 +21,7 @@ M.config = function()
 	end, opt)
 end
 
-return M
+return {
+	"akinsho/toggleterm.nvim",
+	config = config,
+}

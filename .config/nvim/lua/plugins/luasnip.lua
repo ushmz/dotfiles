@@ -1,14 +1,6 @@
-local ok, snip = pcall(require, "luasnip")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
+local function config()
 	-- Keymaps are defined in completion config.
+	local snip = require("luasnip")
 	require("luasnip.loaders.from_vscode").lazy_load()
 	snip.filetype_extend("typescript", { "javascript" })
 	snip.filetype_extend("bash", { "zsh" })
@@ -17,4 +9,10 @@ M.config = function()
 	require("luasnip.loaders.from_lua").lazy_load()
 end
 
-return M
+return {
+	"L3MON4D3/LuaSnip",
+	dependencies = {
+		{ "rafamadriz/friendly-snippets" },
+	},
+	config = config,
+}

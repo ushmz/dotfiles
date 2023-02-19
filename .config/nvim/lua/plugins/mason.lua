@@ -1,19 +1,5 @@
-local status1, mason = pcall(require, "mason")
-if not status1 then
-	return
-end
-
-local status2, lspconfig = pcall(require, "mason-lspconfig")
-if not status2 then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	mason.setup({
+local function mason()
+	require("mason").setup({
 		ui = {
 			border = "rounded",
 			icons = {
@@ -23,8 +9,10 @@ M.config = function()
 			},
 		},
 	})
+end
 
-	lspconfig.setup({
+local function mason_lspconfig()
+	require("mason-lspconfig").setup({
 		automatic_installation = true,
 		ensure_installed = {
 			-- LSP
@@ -48,7 +36,6 @@ M.config = function()
 			"yamlls",
 		},
 	})
-
 	-- Following tools cannot install via `ensure_installed` option,
 	-- make sure to install them manually ;)
 	-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
@@ -68,4 +55,14 @@ M.config = function()
 	-- ]]
 end
 
-return M
+return {
+	{
+		"williamboman/mason.nvim",
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		config = mason,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = mason_lspconfig,
+	},
+}

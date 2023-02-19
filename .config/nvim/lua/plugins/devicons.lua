@@ -1,14 +1,5 @@
-local ok, icons = pcall(require, "nvim-web-devicons")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	icons.setup({
+local function config()
+	require("nvim-web-devicons").setup({
 		-- your personnal icons can go here (to override)
 		-- DevIcon will be appended to `name`
 		override = {},
@@ -18,4 +9,7 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"kyazdani42/nvim-web-devicons",
+	config = config,
+}

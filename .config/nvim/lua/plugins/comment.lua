@@ -1,14 +1,5 @@
-local ok, comment = pcall(require, "Comment")
-if not ok then
-	return
-end
-
---- Plugin configs.
----@type { config: function, setup: function}
-local M = {}
-
-M.config = function()
-	comment.setup({
+local function config()
+	require("Comment").setup({
 		toggler = {
 			line = "<Leader>c",
 			block = "<Leader>b",
@@ -20,4 +11,8 @@ M.config = function()
 	})
 end
 
-return M
+return {
+	"numToStr/Comment.nvim",
+	event = { "BufEnter" },
+	config = config,
+}
