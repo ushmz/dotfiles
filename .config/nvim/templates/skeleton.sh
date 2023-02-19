@@ -1,2 +1,1 @@
-#!/bin/sh -ue
-set -e
+#!/usr/bin/env sh -Cue

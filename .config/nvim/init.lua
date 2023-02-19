@@ -31,6 +31,11 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+	pattern = { "*.sh" },
+	command = "0r ~/.config/nvim/templates/skeleton.sh",
+})
+
 -- Set filetype options
 local filetype = require("filetype")
 vim.api.nvim_create_autocmd({ "FileType" }, {
