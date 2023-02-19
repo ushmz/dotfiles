@@ -33,6 +33,10 @@ M.help = function()
 	vim.api.nvim_buf_set_keymap(0, "n", "q", "ZZ", { noremap = true })
 end
 
+M.markdown = function()
+	indent(4, true)
+end
+
 M.dart = function()
 	indent(2, true)
 end
