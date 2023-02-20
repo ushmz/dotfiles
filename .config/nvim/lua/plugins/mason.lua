@@ -58,11 +58,13 @@ end
 return {
 	{
 		"williamboman/mason.nvim",
+		cmd = { "Mason" },
 		dependencies = { "williamboman/mason-lspconfig.nvim" },
 		config = mason,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+	  event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 		config = mason_lspconfig,
 	},
 }

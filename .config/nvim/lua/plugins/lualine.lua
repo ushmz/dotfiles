@@ -55,5 +55,6 @@ end
 
 return {
 	"nvim-lualine/lualine.nvim",
+  event = {"BufRead"},
 	config = config,
 }

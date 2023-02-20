@@ -13,5 +13,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-	install = { colorscheme = { "hybrid" } },
+	-- concurrency = 6,
+	install = { missing = true, colorscheme = { "hybrid" } },
+	ui = {
+		wrap = false,
+		border = "rounded",
+	},
+	change_detection = {
+		enabled = true,
+		notify = false,
+	},
 })

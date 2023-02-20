@@ -1,5 +1,9 @@
-local function t() return require("telescope") end
-local function b() return require("telescope.builtin") end
+local function t()
+	return require("telescope")
+end
+local function b()
+	return require("telescope.builtin")
+end
 
 local function buffers()
 	b()["buffers"]({})
@@ -82,7 +86,6 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
-	module = { "telescope" },
 	cmd = { "Telescope" },
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
@@ -95,7 +98,7 @@ return {
 		{ ";c", commands, mode = "n", desc = "Search commands" },
 		{ ";e", diagnostics, mode = "n", desc = "Search diagnostics" },
 		{ ";h", help_tags, mode = "n", desc = "Search helps" },
-		{ ";h", keymaps, mode = "n", desc = "Search keymaps" },
+		{ ";k", keymaps, mode = "n", desc = "Search keymaps" },
 		{ ";l", oldfiles, mode = "n", desc = "Search oldfiles" },
 		{ ";;", resume, mode = "n", desc = "Resume latest search" },
 		{ ";f", find_files, mode = "n", desc = "Search files" },

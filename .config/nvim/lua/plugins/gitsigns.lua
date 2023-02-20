@@ -4,6 +4,6 @@ end
 
 return {
 	"lewis6991/gitsigns.nvim",
-	event = { "BufEnter" },
+	event = { "BufRead" },
 	config = config,
 }

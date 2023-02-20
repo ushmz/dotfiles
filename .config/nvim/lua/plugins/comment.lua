@@ -13,6 +13,6 @@ end
 
 return {
 	"numToStr/Comment.nvim",
-	event = { "BufEnter" },
+	event = { "BufRead" },
 	config = config,
 }

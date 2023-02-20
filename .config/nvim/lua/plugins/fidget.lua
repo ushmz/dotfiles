@@ -4,5 +4,6 @@ end
 
 return {
 	"j-hui/fidget.nvim",
+	event = { "BufRead" },
 	config = config,
 }

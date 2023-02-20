@@ -1,11 +1,9 @@
-local status1, cmp = pcall(require, "cmp")
-if not status1 then
-	return
+local function cmp()
+	return require("cmp")
 end
 
-local status2, luasnip = pcall(require, "luasnip")
-if not status2 then
-	return
+local function snip()
+	return require("luasnip")
 end
 
 --- Return there is a character just before the cursor or not
@@ -19,12 +17,12 @@ end
 --- The handler on `Tab` key pressed
 ---@param fallback any
 local function tab(fallback)
-	if cmp.visible() then
-		cmp.select_next_item()
-	elseif luasnip.expand_or_locally_jumpable() then
-		luasnip.expand_or_jump()
+	if cmp().visible() then
+		cmp().select_next_item()
+	elseif snip().expand_or_locally_jumpable() then
+		snip().expand_or_jump()
 	elseif has_words_before() then
-		cmp.complete()
+		cmp().complete()
 	else
 		fallback()
 	end
@@ -33,55 +31,66 @@ end
 --- The handler on `Shift-Tab` key pressed
 ---@param fallback any
 local function shift_tab(fallback)
-	if cmp.visible() then
-		cmp.select_prev_item()
-	elseif luasnip.jumpable(-1) then
-		luasnip.jump(-1)
+	if cmp().visible() then
+		cmp().select_prev_item()
+	elseif snip().jumpable(-1) then
+		snip().jump(-1)
 	else
 		fallback()
 	end
 end
 
-local function config()
-	cmp.setup({
+local function completion()
+	local c = cmp()
+	c.setup({
 		snippet = {
 			expand = function(args)
-				luasnip.lsp_expand(args.body)
+				snip().lsp_expand(args.body)
 			end,
 		},
 		window = {
 			-- completion = cmp.config.window.bordered({ border = "single" }),
-			documentation = cmp.config.window.bordered({ border = "single" }),
+			documentation = c.config.window.bordered({ border = "single" }),
 		},
-		mapping = cmp.mapping.preset.insert({
-			["<Tab>"] = cmp.mapping(tab, { "i", "s", "c" }),
-			["<S-Tab>"] = cmp.mapping(shift_tab, { "i", "s", "c" }),
-			["<C-n>"] = cmp.mapping(tab, { "i", "s", "c" }),
-			["<C-p>"] = cmp.mapping(shift_tab, { "i", "s", "c" }),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<C-b>"] = cmp.mapping.scroll_docs(-4),
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
-			["<C-CR>"] = cmp.mapping.close(),
+		formatting = {
+			fields = { "kind", "abbr", "menu" },
+			format = function(entry, vim_item)
+				local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+				local strings = vim.split(kind.kind, "%s", { trimempty = true })
+				kind.kind = " " .. strings[1] .. " "
+				kind.menu = "    (" .. strings[2] .. ")"
+				return kind
+			end,
+		},
+		mapping = c.mapping.preset.insert({
+			["<Tab>"] = c.mapping(tab, { "i", "s", "c" }),
+			["<S-Tab>"] = c.mapping(shift_tab, { "i", "s", "c" }),
+			["<C-n>"] = c.mapping(tab, { "i", "s", "c" }),
+			["<C-p>"] = c.mapping(shift_tab, { "i", "s", "c" }),
+			["<C-f>"] = c.mapping.scroll_docs(4),
+			["<C-b>"] = c.mapping.scroll_docs(-4),
+			["<CR>"] = c.mapping.confirm({ select = false }),
+			["<C-CR>"] = c.mapping.close(),
 		}),
-		sources = cmp.config.sources({
+		sources = c.config.sources({
 			-- { name = "calc" },
+			-- { name = "buffer" },
 			{ name = "path" },
-			{ name = "buffer" },
 			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lsp_signature_help" },
 		}),
 	})
 
-	cmp.setup.cmdline(":", {
-		sources = cmp.config.sources({
+	c.setup.cmdline(":", {
+		sources = c.config.sources({
 			{ name = "nvim_lsp_document_symbol" },
-			{ name = "cmdline", keyword_length = 2 },
+			{ name = "cmdline" },
 		}),
 	})
 
-	cmp.setup.cmdline({ "/", "?" }, {
-		sources = cmp.config.sources({
+	c.setup.cmdline({ "/", "?" }, {
+		sources = c.config.sources({
 			{ name = "path" },
 			{ name = "buffer" },
 		}),
@@ -91,17 +100,55 @@ local function config()
 	vim.api.nvim_set_hl(0, "CmpItemKind", { link = "CmpItemMenuDefault" })
 end
 
+local function lspkind()
+	require("lspkind").init({
+		mode = "symbol",
+		preset = "codicons",
+		symbol_map = {
+			Text = "",
+			Method = "",
+			Function = "",
+			Constructor = "",
+			Field = "ﰠ",
+			Variable = "",
+			Class = "ﴯ",
+			Interface = "",
+			Module = "",
+			Property = "ﰠ",
+			Unit = "塞",
+			Value = "",
+			Enum = "",
+			Keyword = "",
+			Snippet = "",
+			Color = "",
+			File = "",
+			Reference = "",
+			Folder = "",
+			EnumMember = "",
+			Constant = "",
+			Struct = "פּ",
+			Event = "",
+			Operator = "",
+			TypeParameter = "",
+		},
+	})
+end
+
 return {
-	"hrsh7th/nvim-cmp",
-	dependencies = {
-		{ "hrsh7th/cmp-buffer", event = { "InsertEnter" } },
-		{ "hrsh7th/cmp-path", event = { "InsertEnter" } },
-		{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
-		{ "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },
-		{ "hrsh7th/cmp-nvim-lsp-document-symbol", event = { "InsertEnter" } },
-		{ "hrsh7th/cmp-calc", event = { "InsertEnter" } },
-		{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
-		{ "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } },
+	{
+		"hrsh7th/nvim-cmp",
+		lazy = true,
+		dependencies = {
+			-- { "hrsh7th/cmp-calc", event = { "InsertEnter" } },
+			-- { "hrsh7th/cmp-buffer", event = { "InsertEnter" } },
+			{ "hrsh7th/cmp-path", event = { "InsertEnter" } },
+			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },
+			{ "hrsh7th/cmp-nvim-lsp-document-symbol", event = { "InsertEnter" } },
+			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
+			{ "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } },
+			{ "onsails/lspkind-nvim", config = lspkind, event = { "InsertEnter" } },
+		},
+		config = completion,
 	},
-	config = config,
 }

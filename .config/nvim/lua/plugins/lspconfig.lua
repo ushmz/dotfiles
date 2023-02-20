@@ -21,6 +21,12 @@ local on_attach = function(client, bufnr)
 	keymap(bufnr, "n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 end
 
+local on_attach_with_null_ls = function(client, bufnr)
+	client.server_capabilities.documentHighlightProvider = false
+	client.server_capabilities.documentFormattingProvider = false
+	on_attach(client, bufnr)
+end
+
 local custom_servers = {
 	["lua_ls"] = {
 		prefer_null_ls = true,
@@ -90,12 +96,6 @@ local function config()
 		{ underline = true, update_in_insert = false, virtual_text = false, severity_sort = true }
 	)
 
-	local on_attach_with_null_ls = function(client, bufnr)
-		client.server_capabilities.documentHighlightProvider = false
-		client.server_capabilities.documentFormattingProvider = false
-		on_attach(client, bufnr)
-	end
-
 	local capabilities = cmp_lsp().default_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -142,7 +142,10 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-	module = { "lspconfig" },
-	dependencies = { { "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } } },
+	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+	dependencies = {
+		{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
+		{ "williamboman/mason-lspconfig.nvim" },
+	},
 	config = config,
 }

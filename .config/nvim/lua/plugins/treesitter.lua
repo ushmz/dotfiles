@@ -23,6 +23,7 @@ local function treesitter()
 			"lua",
 			"make",
 			"markdown",
+			"markdown_inline",
 			"prisma",
 			"python",
 			"regex",
@@ -135,10 +136,12 @@ end
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = { "BufRead" },
 		config = treesitter,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufRead" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = treesitter_context,
 	},

@@ -94,57 +94,39 @@ local function config()
 		},
 	})
 
-	local keymap = vim.keymap.set
-	local opts = { noremap = true, silent = true }
-
-	-- Diagnsotic jump can use `<c-o>` to jump back
-	keymap("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-	keymap("n", "<C-k>", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-
 	-- Only jump to error
-	keymap("n", "[E", function()
-		require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-	end, opts)
-	keymap("n", "]E", function()
-		require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-	end, opts)
+	-- local function goto_next_error()
+	-- 	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+	-- end
+	-- local function goto_prev_error()
+	-- 	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+	-- end
 
-	-- Lsp finder find the symbol definition implement reference
-	-- if there is no implement it will hide
-	-- when you use action in finder like open vsplit then you can
-	-- use <C-t> to jump back
-	keymap("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts)
-
-	-- Peek Definition
-	-- you can edit the definition file in this flaotwindow
-	-- also support open/vsplit/etc operation check definition_action_keys
-	-- support tagstack C-t jump back
-	keymap("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", opts)
-
-	-- Outline
-	keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
-
-	keymap("n", "<leader>r", "<Cmd>Lspsaga rename<CR>", opts)
-	keymap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
-	keymap("v", "<leader>a", "<cmd>Lspsaga range_code_action<CR>", opts)
-	keymap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-	-- keymap("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-	keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-	-- vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
-
-	vim.api.nvim_create_autocmd({ "BufRead" }, {
-		pattern = { "*" },
-		callback = function()
-			-- Colors from 'hybrid.vim'
-			vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#CC6666" })
-			vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#F0C674" })
-			vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#81A2BE" })
-			vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#B5BD68" })
-		end,
-	})
+	vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#CC6666" })
+	vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#F0C674" })
+	vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#81A2BE" })
+	vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#B5BD68" })
 end
 
 return {
 	"glepnir/lspsaga.nvim",
+	cmd = { "Lspsaga" },
+	keys = {
+		{ "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "Jump to next diagnostic" },
+		{ "<C-k>", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "Jump to previous diagnostic" },
+		-- { "<C-k>", "<Cmd>Lspsaga signature_help<CR>", mode = "i", desc = "" },
+		{ "<leader>o", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "Toggle outline" },
+		{ "<leader>r", "<Cmd>Lspsaga rename<CR>", mode = "n", desc = "Rename symbol" },
+		{ "<leader>a", "<cmd>Lspsaga code_action<CR>", mode = "n", desc = "Execute code action" },
+		{ "<leader>a", "<cmd>Lspsaga range_code_action<CR>", mode = "v", desc = "Code action to selected code" },
+		{ "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", mode = "n", desc = "Show diagnostic message" },
+		{ "gf", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "Find definition of symbol" },
+		{ "gp", "<Cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek definition with floating window" },
+		{ "K", "<Cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "Hover document with floating window" },
+	},
+	dependencies = {
+		{ "nvim-tree/nvim-web-devicons" },
+		{ "nvim-treesitter/nvim-treesitter" },
+	},
 	config = config,
 }

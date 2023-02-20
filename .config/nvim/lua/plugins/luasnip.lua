@@ -14,5 +14,6 @@ return {
 	dependencies = {
 		{ "rafamadriz/friendly-snippets" },
 	},
+	event = { "InsertEnter" },
 	config = config,
 }

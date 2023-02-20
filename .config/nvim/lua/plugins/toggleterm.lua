@@ -1,3 +1,13 @@
+local function toggle_term()
+	local term = require("toggleterm.terminal").Terminal:new({})
+	term:toggle()
+end
+
+local function toggle_tig()
+	local tig = require("toggleterm.terminal").Terminal:new({ cmd = "tig" })
+	tig:toggle()
+end
+
 local function config()
 	require("toggleterm").setup({
 		hidden = true,
@@ -6,22 +16,14 @@ local function config()
 			border = "curved",
 		},
 	})
-
-	local Terminal = require("toggleterm.terminal").Terminal
-	local opt = { silent = true, noremap = true }
-
-	local term = Terminal:new({})
-	vim.keymap.set("n", [[<C-\>]], function()
-		term:toggle()
-	end, opt)
-
-	local tig = Terminal:new({ cmd = "tig" })
-	vim.keymap.set("n", ";t", function()
-		tig:toggle()
-	end, opt)
 end
 
 return {
 	"akinsho/toggleterm.nvim",
+	module = { "toggleterm" },
+	keys = {
+		{ [[<C-\]], toggle_term, mode = "n", desc = "Toggle default shell terminal" },
+		{ [[;t]], toggle_tig, mode = "n", desc = "Toggle default shell terminal with tig" },
+	},
 	config = config,
 }
