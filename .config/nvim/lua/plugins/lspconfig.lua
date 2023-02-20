@@ -142,7 +142,7 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+	event = { "BufRead" },
 	dependencies = {
 		{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
 		{ "williamboman/mason-lspconfig.nvim" },

@@ -139,8 +139,6 @@ return {
 		"hrsh7th/nvim-cmp",
 		lazy = true,
 		dependencies = {
-			-- { "hrsh7th/cmp-calc", event = { "InsertEnter" } },
-			-- { "hrsh7th/cmp-buffer", event = { "InsertEnter" } },
 			{ "hrsh7th/cmp-path", event = { "InsertEnter" } },
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },

@@ -4,6 +4,6 @@ end
 
 return {
 	"kylechui/nvim-surround",
-	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+	event = { "BufRead" },
 	config = config,
 }

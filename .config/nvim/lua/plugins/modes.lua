@@ -28,6 +28,6 @@ end
 
 return {
 	"mvllow/modes.nvim",
-	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+	event = { "BufRead" },
 	config = config,
 }

@@ -64,7 +64,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-	  event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+		event = { "BufRead" },
 		config = mason_lspconfig,
 	},
 }
