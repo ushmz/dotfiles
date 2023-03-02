@@ -64,7 +64,7 @@ local function file_browser()
 end
 
 local max_size = 100000
---- Ignore files bigger than a threshold
+---Ignore files bigger than a threshold
 ---@param filepath string
 ---@param bufnr number
 ---@param opts table
