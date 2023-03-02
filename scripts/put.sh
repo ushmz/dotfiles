@@ -58,7 +58,6 @@ ln -sf $(pwd)/.config/ranger/* ${HOME}/.config/ranger/
 # nvim
 mkdir -p ${HOME}/.config/nvim/
 ln -sf $(pwd)/.config/nvim/init.lua ${HOME}/.config/nvim/init.lua
-ln -sf $(pwd)/.config/nvim/ftplugin ${HOME}/.config/nvim/ftplugin
 ln -sf $(pwd)/.config/nvim/lua ${HOME}/.config/nvim/lua
 
 # Stop dirtying home directory
