@@ -324,6 +324,12 @@ defaults write com.apple.dock launchanim -bool true
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Switch to a Space with open windows for the application
+defaults delete -g AppleSpacesSwitchOnActivate
+
 # Group windows by application in Mission Control
 defaults write com.apple.dock expose-group-apps -bool true
 
@@ -331,10 +337,7 @@ defaults write com.apple.dock expose-group-apps -bool true
 defaults write com.apple.dock mcx-expose-disabled -bool true
 
 # Mission Control : display has separate spaces
-defaults write com.apple.spaces spans-displays -bool true
-
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+defaults delete com.apple.spaces spans-displays
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
