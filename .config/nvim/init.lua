@@ -25,12 +25,6 @@ vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
 vim.g.skip_loading_mswin = 1
 
--- Setup autocmd
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = { "plugins.lua" },
-	command = "PackerCompile",
-})
-
 -- Auto switch IME
 vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
 	pattern = { "*" },
