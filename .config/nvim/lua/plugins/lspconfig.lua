@@ -10,6 +10,32 @@ local function ml()
 	return require("mason-lspconfig")
 end
 
+local function set_diagnostic_options()
+	local colors = { Error = "#CC6666", Warn = "#F0C674", Hint = "#81A2BE", Info = "#B5BD68" }
+	for type, color in pairs(colors) do
+		vim.api.nvim_set_hl(0, "Diagnostic" .. type, { fg = color })
+	end
+
+	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+	end
+
+	vim.diagnostic.config({
+		virtual_text = false,
+		signs = true,
+		underline = true,
+		update_in_insert = true,
+		float = { source = "if_many" },
+	})
+
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics,
+		{ underline = true, update_in_insert = false, virtual_text = false, severity_sort = true }
+	)
+end
+
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -77,24 +103,7 @@ local custom_servers = {
 }
 
 local function config()
-	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	end
-
-	vim.diagnostic.config({
-		virtual_text = false,
-		signs = true,
-		underline = true,
-		update_in_insert = true,
-		float = { source = "if_many" },
-	})
-
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-		vim.lsp.diagnostic.on_publish_diagnostics,
-		{ underline = true, update_in_insert = false, virtual_text = false, severity_sort = true }
-	)
+	set_diagnostic_options()
 
 	local capabilities = cmp_lsp().default_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true

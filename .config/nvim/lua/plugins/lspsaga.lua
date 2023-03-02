@@ -101,11 +101,6 @@ local function config()
 	-- local function goto_prev_error()
 	-- 	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 	-- end
-
-	vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#CC6666" })
-	vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#F0C674" })
-	vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#81A2BE" })
-	vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#B5BD68" })
 end
 
 return {
