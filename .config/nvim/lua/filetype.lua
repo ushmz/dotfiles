@@ -33,24 +33,16 @@ local function indent(length, expandtab)
 	vim.bo.expandtab = expandtab
 end
 
-M.help = function()
-	vim.api.nvim_buf_set_keymap(0, "n", "q", "ZZ", { noremap = true })
-end
-
-M.markdown = function()
-	indent(4, true)
-end
-
 M.dart = function()
 	indent(2, true)
 end
 
-M.lua = function()
-	indent(2, true)
+M.go = function()
+	indent(4, false)
 end
 
-M.vim = function()
-	indent(2, true)
+M.help = function()
+	vim.api.nvim_buf_set_keymap(0, "n", "q", "ZZ", { noremap = true })
 end
 
 M.javascript = function()
@@ -58,6 +50,18 @@ M.javascript = function()
 end
 
 M.javascriptreact = function()
+	indent(2, true)
+end
+
+M.lua = function()
+	indent(2, true)
+end
+
+M.python = function()
+	indent(4, false)
+end
+
+M.ruby = function()
 	indent(2, true)
 end
 
@@ -69,10 +73,14 @@ M.typescriptreact = function()
 	indent(2, true)
 end
 
+M.vim = function()
+	indent(2, true)
+end
+
 return setmetatable(M, {
 	__index = function()
 		return function()
-			indent(4, false)
+			indent(4, true)
 		end
 	end,
 })
