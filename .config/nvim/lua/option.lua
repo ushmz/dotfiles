@@ -9,7 +9,8 @@ vim.cmd([[let &t_Ce = '\e[4:0m']])
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
 vim.cmd("set mouse=")
-vim.cmd("set fo-=c fo-=o")
+vim.cmd("set fo-=co")
+vim.cmd("set fo+=rqnM1j")
 
 vim.api.nvim_set_var("netrw_home", state .. "/vim")
 
