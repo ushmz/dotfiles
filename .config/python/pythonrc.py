@@ -2,7 +2,7 @@ import atexit
 import readline
 import os
 
-histfile = os.path.join(os.path.expanduser('~/.local/state/'), '.python_history')
+histfile = os.path.join(os.path.expanduser("~/.local/state/"), ".python_history")
 
 try:
     readline.read_history_file(histfile)
