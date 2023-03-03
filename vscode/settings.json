@@ -173,6 +173,7 @@
 
   // Auto save all files several seconds after focusing out (or stopping cursor)
   "files.autoSave": "off",
+  "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
