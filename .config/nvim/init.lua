@@ -40,7 +40,7 @@ require("option")
 require("filetypes")
 
 -- Set keymaps
-require("mapping")
+require("mappings")
 
 -- Plugin configs
 require("plugin")
