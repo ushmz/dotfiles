@@ -1,0 +1,19 @@
+winget install Discord.Discord
+winget install Docker.DockerDesktop
+winget install Git.Git
+winget install GitHub.cli
+winget install Google.Chrome
+winget install Google.JapaneseIME --force
+winget install Microsoft.VisualStudioCode
+winget install Mojang.MinecraftLauncher
+winget install Mozilla.Firefox
+winget install -e --id VivaldiTechnologies.Vivaldi
+
+winget install DenoLand.Deno
+winget install AdoptOpenJDK.OpenJDK.16
+winget install Rustlang.Rustup
+winget install Microsoft.VCRedist.2015+.x64
+winget install Neovim.Neovim
+winget install LLVM.LLVM
+winget install Microsoft.WindowsTerminal
+winget install Microsoft.VisualStudio.2022.BuildTools
