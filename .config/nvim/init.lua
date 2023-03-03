@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
 })
 
 -- Set options
-require("option")
+require("basics")
 
 -- Set filetype options
 require("filetypes")
