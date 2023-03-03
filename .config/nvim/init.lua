@@ -33,17 +33,11 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
 	end,
 })
 
--- Set filetype options
-local filetype = require("filetype")
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = "*",
-	callback = function(args)
-		filetype[args.match]()
-	end,
-})
-
 -- Set options
 require("option")
+
+-- Set filetype options
+require("filetypes")
 
 -- Set keymaps
 require("mapping")
