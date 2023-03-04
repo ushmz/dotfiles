@@ -69,6 +69,5 @@ end
 return {
 	"jose-elias-alvarez/null-ls.nvim",
 	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
-	dependencies = { "williamboman/mason.nvim" },
 	config = config,
 }
