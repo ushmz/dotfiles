@@ -43,4 +43,4 @@ require("filetypes")
 require("mappings")
 
 -- Plugin configs
-require("plugin")
+require("plugins")
