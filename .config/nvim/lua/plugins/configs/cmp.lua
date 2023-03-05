@@ -2,6 +2,10 @@ local function cmp()
 	return require("cmp")
 end
 
+local function kind()
+	return require("lspkind")
+end
+
 local function snip()
 	return require("luasnip")
 end
@@ -40,6 +44,24 @@ local function shift_tab(fallback)
 	end
 end
 
+local function format_for_tailwind_css(entry, vim_item)
+	if vim_item.kind == "Color" and entry.completion_item.documentation then
+		local _, _, r, g, b = string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
+		if r then
+			local color = string.format("%02x", r) .. string.format("%02x", g) .. string.format("%02x", b)
+			local group = "Tw_" .. color
+			if vim.fn.hlID(group) < 1 then
+				vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
+			end
+			vim_item.kind = "●"
+			vim_item.kind_hl_group = group
+			return vim_item
+		end
+	end
+	vim_item.kind = kind().symbolic(vim_item.kind) and kind().symbolic(vim_item.kind) or vim_item.kind
+	return vim_item
+end
+
 local function completion()
 	local c = cmp()
 	c.setup({
@@ -54,21 +76,22 @@ local function completion()
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
-			format = function(entry, vim_item)
-				local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-				local strings = vim.split(kind.kind, "%s", { trimempty = true })
-				kind.kind = " " .. strings[1] .. " "
-				kind.menu = "    (" .. strings[2] .. ")"
-				return kind
-			end,
+			format = kind().cmp_format({
+				mode = "symbol_text",
+				maxwidth = 50,
+				before = function(entry, vim_item)
+					vim_item = format_for_tailwind_css(entry, vim_item)
+					return vim_item
+				end,
+			}),
 		},
 		mapping = c.mapping.preset.insert({
 			["<Tab>"] = c.mapping(tab, { "i", "s", "c" }),
 			["<S-Tab>"] = c.mapping(shift_tab, { "i", "s", "c" }),
 			["<C-n>"] = c.mapping(tab, { "i", "s", "c" }),
 			["<C-p>"] = c.mapping(shift_tab, { "i", "s", "c" }),
-			["<C-f>"] = c.mapping.scroll_docs(4),
-			["<C-b>"] = c.mapping.scroll_docs(-4),
+			["<C-j>"] = c.mapping.scroll_docs(4),
+			["<C-k>"] = c.mapping.scroll_docs(-4),
 			["<CR>"] = c.mapping.confirm({ select = false }),
 			["<C-CR>"] = c.mapping.close(),
 		}),
