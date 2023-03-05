@@ -13,7 +13,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\n\nmap h goBack\nmap l goForward\nmap H scrollLeft\nmap L scrollRight\nmap [ previousTab\nmap ] nextTab",
+  "keyMappings": "map h goBack\nmap l goForward\nmap H scrollLeft\nmap L scrollRight\nmap [ previousTab\nmap ] nextTab",
   "linkHintCharacters": "sadjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
