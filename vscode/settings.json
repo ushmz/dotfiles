@@ -1,9 +1,9 @@
 {
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ushmz/.config/nvim/init.lua",
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
+  // "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  // "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ushmz/.config/nvim/init.lua",
+  // "extensions.experimental.affinity": {
+  //   "asvetliakov.vscode-neovim": 1
+  // },
   "Lua.telemetry.enable": false,
   "vim.autoindent": true,
   "vim.debug.silent": true,
@@ -315,11 +315,6 @@
     "terminal.ansiRed": "#B05655",
     "terminal.ansiWhite": "#848B92",
     "terminal.ansiYellow": "#E1A574",
-    "[Iceberg]": {
-      // Improve selection BG color
-      "editor.selectionBackground": "#666B8AFF",
-      "editor.selectionHighlightBackground": "#43465CFF"
-    },
     "[Hybrid]": {
       // Improve colors
       "statusBar.background": "#333333FF",
