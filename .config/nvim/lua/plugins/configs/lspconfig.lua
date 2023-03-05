@@ -4,12 +4,23 @@
 local function on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	local keymap = vim.api.nvim_buf_set_keymap
-	local opts = { noremap = true, silent = true }
-	keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	keymap(bufnr, "n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	---Set normal mode keymap
+	---@param key string Left-hand side {lhs} of the mapping.
+	---@param func string|function Right-hand side {rhs} of the mapping.
+	---@param desc string Keymap description.
+	local function nmap(key, func, desc)
+		vim.keymap.set("n", key, func, { buffer = bufnr, desc = "LSP: " .. desc })
+	end
+	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	nmap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition")
+	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+
+	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+	nmap("<leader>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, "[W]orkspace [L]ist Folders")
 end
 
 ---Return capabilities config table
