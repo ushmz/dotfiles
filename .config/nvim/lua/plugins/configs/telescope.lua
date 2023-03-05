@@ -6,35 +6,47 @@ local function b()
 end
 
 local function buffers()
-	b()["buffers"]({})
+	b().buffers({})
 end
 
 local function commands()
-	b()["commands"]({})
+	b().commands({})
 end
 
 local function diagnostics()
-	b()["diagnostics"]({})
+	b().diagnostics({})
 end
 
 local function help_tags()
-	b()["help_tags"]({})
+	b().help_tags({})
 end
 
 local function keymaps()
-	b()["keymaps"]({})
+	b().keymaps({})
 end
 
 local function oldfiles()
-	b()["oldfiles"]({})
+	b().oldfiles({})
 end
 
 local function resume()
-	b()["resume"]({})
+	b().resume({})
+end
+
+local function references()
+	b().lsp_reference({})
+end
+
+local function document_symbols()
+	b().lsp_document_symbol({})
+end
+
+local function workspace_symbols()
+	b().lsp_dynamic_workspace_symbols({})
 end
 
 local function find_files()
-	b()["find_files"]({
+	b().find_files({
 		no_ignore = false,
 		grouped = true,
 		hidden = true,
@@ -42,7 +54,7 @@ local function find_files()
 end
 
 local function live_grep()
-	b()["live_grep"]({
+	b().live_grep({
 		no_ignore = false,
 		grouped = true,
 		hidden = true,
@@ -94,16 +106,19 @@ return {
 		{ "nvim-telescope/telescope-file-browser.nvim" },
 	},
 	keys = {
-		{ ";b", buffers, mode = "n", desc = "Search buffers" },
-		{ ";c", commands, mode = "n", desc = "Search commands" },
-		{ ";e", diagnostics, mode = "n", desc = "Search diagnostics" },
-		{ ";h", help_tags, mode = "n", desc = "Search helps" },
-		{ ";k", keymaps, mode = "n", desc = "Search keymaps" },
-		{ ";l", oldfiles, mode = "n", desc = "Search oldfiles" },
-		{ ";;", resume, mode = "n", desc = "Resume latest search" },
-		{ ";f", find_files, mode = "n", desc = "Search files" },
-		{ ";g", live_grep, mode = "n", desc = "Search keywords" },
-		{ ";d", file_browser, mode = "n", desc = "File browser" },
+		{ ";b", buffers, mode = "n", desc = "Telescope: Search [B]uffers" },
+		{ ";c", commands, mode = "n", desc = "Telescope: Search [C]ommands" },
+		{ ";e", diagnostics, mode = "n", desc = "Telescope: Search diagnostics ([E]rrors)" },
+		{ ";h", help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
+		{ ";k", keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
+		{ ";o", oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
+		{ ";;", resume, mode = "n", desc = "Telescope: Resume latest search" },
+		{ ";f", find_files, mode = "n", desc = "Telescope: Search [F]iles" },
+		{ ";g", live_grep, mode = "n", desc = "Telescope: Live [G]rep" },
+		{ ";d", file_browser, mode = "n", desc = "Telescope: [D]irectory & File Browser" },
+		{ "<leader>ds", document_symbols, mode = "n", desc = "Telescope: [D]ocument [S]ymbols" },
+		{ "<leader>ws", workspace_symbols, mode = "n", desc = "Telescope: [W]orkspace [S]ymbols" },
+		{ "gr", references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
 	},
 	config = function()
 		local actions = require("telescope.actions")
