@@ -32,8 +32,16 @@ M.javascriptreact = function()
 	indent(2, true)
 end
 
+M.json = function ()
+  indent(2, true)
+end
+
 M.lua = function()
 	indent(2, true)
+end
+
+M.make = function()
+	indent(4, false)
 end
 
 M.python = function()
