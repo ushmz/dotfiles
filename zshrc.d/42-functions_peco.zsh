@@ -28,19 +28,6 @@ function peco_cdr() {
   fi
 }
 
-# Search tmux session
-# | This cause freezing peco window...
-# function peco_tmux_sessions() {
-#  local res=$(tmux list-sessions | peco --query "$LBUFFER" | awk -F':' '{print $1}')
-#   if [ -n "$res" ]; then
-#     BUFFER="tmux attach -t $res"
-#     CURSOR=$#BUFFER
-#     zle clear-screen
-#   else
-#     zle reset-prompt
-#   fi
-# }
-
 # Search by hostname from .ssh/config
 function peco_ssh_host() {
   local res=$(grep "Host " ~/.ssh/config | grep -v '*' | cut -b 6- | peco)
