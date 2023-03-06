@@ -34,11 +34,11 @@ local function resume()
 end
 
 local function references()
-	b().lsp_reference({})
+	b().lsp_references({})
 end
 
 local function document_symbols()
-	b().lsp_document_symbol({})
+	b().lsp_document_symbols({})
 end
 
 local function workspace_symbols()
