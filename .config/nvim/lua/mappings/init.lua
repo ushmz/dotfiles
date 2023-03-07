@@ -10,21 +10,6 @@ keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
--- vp doesn't replace paste buffer
-vim.cmd([[
-  function! RestoreRegister()
-    let @" = g:restore_reg
-    return ''
-  endfunction
-
-  function! g:Repl()
-    let g:restore_reg = @"
-    return "p@=RestoreRegister()\<cr>"
-  endfunction
-
-  vmap <silent> <expr> p Repl()
-]])
 keymap("i", "jj", "<ESC>")
 keymap("n", "<leader>w", ":<C-u>w<CR>")
 keymap("n", "<leader>q", ":<C-u>q<CR>")
@@ -40,6 +25,7 @@ keymap("n", "<Down>", "<CMD>resize -1<CR>")
 keymap("n", "<Left>", "<CMD>vertical resize +1<CR>")
 keymap("n", "<Right>", "<CMD>vertical resize -1<CR>")
 keymap("n", "<leader>l", ":cclose|lclose<CR>")
+keymap("v", "p", '"_xP')
 keymap({ "c", "i" }, "<C-p>", "<Up>")
 keymap({ "c", "i" }, "<C-n>", "<Down>")
 keymap({ "c", "i" }, "<C-b>", "<Left>")
