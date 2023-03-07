@@ -336,8 +336,8 @@ defaults write com.apple.dock expose-group-apps -bool true
 # Disable Mission Control
 defaults write com.apple.dock mcx-expose-disabled -bool true
 
-# Mission Control : display has separate spaces
-defaults delete com.apple.spaces spans-displays
+# Mission Control : display has separate spaces (not found)
+# defaults delete com.apple.spaces spans-displays
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
@@ -494,12 +494,14 @@ defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnab
 # -- Spotlight
 
 # Hide Spotlight tray-icon (and subsequent helper)
-sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+# sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+sudo mdutil -i off /Volumes/*
+# Could not write domain /.Spotlight-V100/VolumeConfiguration; exiting
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
 # Change indexing order and disable some search results
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
@@ -668,5 +670,5 @@ for app in "Activity Monitor" \
 	"SystemUIServer" \
 	"Terminal" \
 	"Calendar"; do
-	killall "${app}" >/dev/null 2>&1
+	killall -q "${app}" || true
 done
