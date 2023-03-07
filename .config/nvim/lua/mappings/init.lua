@@ -1,57 +1,49 @@
-local key = vim.keymap
-local opt = { noremap = true, silent = true }
+---Set keymap
+---@param mode string | table Mode short name or list of modes
+---@param keys string Left-hand side {lhs} of the mapping.
+---@param cmd string Right-hand side {rhs} of the mapping.
+local function keymap(mode, keys, cmd)
+	vim.keymap.set(mode, keys, cmd, { noremap = true, silent = true })
+end
 
-key.set("", "<Space>", "<Nop>", opt)
+keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- key.set('n', '<space>', '<leader>', {noremap=true})
-key.set("i", "jj", "<ESC>", opt)
-key.set("n", "<leader>w", ":<C-u>w<CR>", opt)
-key.set("n", "<leader>q", ":<C-u>q<CR>", opt)
-key.set("n", "mm", "ddp", opt)
-key.set("n", "<leader>s", ":<C-u>split<CR><C-w>w", opt)
-key.set("n", "<leader>v", ":<C-u>vsplit<CR><C-w>w", opt)
-key.set("n", "<leader><Tab>", ":<C-u>tabnew<CR>", opt)
-key.set("n", "<Tab>]", ":<C-u>tabnext<CR>", opt)
-key.set("n", "<Tab>[", ":<C-u>tabprevious<CR>", opt)
-key.set("n", "<ESC><ESC>", ":<C-u>nohlsearch<CR>", opt)
-key.set("n", "<Up>", "<CMD>resize +1<CR>", opt)
-key.set("n", "<Down>", "<CMD>resize -1<CR>", opt)
-key.set("n", "<Left>", "<CMD>vertical resize +1<CR>", opt)
-key.set("n", "<Right>", "<CMD>vertical resize -1<CR>", opt)
-key.set("n", "<leader>l", ":cclose|lclose<CR>", opt)
-key.set({ "c", "i" }, "<C-p>", "<Up>", opt)
-key.set({ "c", "i" }, "<C-n>", "<Down>", opt)
-key.set({ "c", "i" }, "<C-b>", "<Left>", opt)
-key.set({ "c", "i" }, "<C-f>", "<Right>", opt)
-key.set({ "c", "i" }, "<C-a>", "<Home>", opt)
-key.set({ "c", "i" }, "<C-e>", "<End>", opt)
-key.set({ "c", "i" }, "<C-d>", "<Del>", opt)
-key.set({ "c", "i" }, "<C-h>", "<BS>", opt)
-key.set({ "n", "x" }, ";", ":", opt)
-key.set({ "n", "x" }, "G", "Gzz", opt)
-key.set({ "n", "x" }, "n", "nzz", opt)
-key.set({ "n", "x" }, "N", "Nzz", opt)
-key.set({ "n", "x" }, "}", "}zz", opt)
-key.set({ "n", "x" }, "{", "{zz", opt)
-key.set({ "n", "x" }, "x", '"_x', opt)
-key.set({ "n", "x" }, "<C-d>", "<C-d>zz", opt)
-key.set({ "n", "x" }, "<C-d>", "<C-u>zz", opt)
-key.set({ "n", "x" }, "gh", "g^", opt)
-key.set({ "n", "x" }, "gl", "g$", opt)
-
--- vp doesn't replace paste buffer
-vim.cmd([[
-  function! RestoreRegister()
-    let @" = g:restore_reg
-    return ''
-  endfunction
-
-  function! g:Repl()
-    let g:restore_reg = @"
-    return "p@=RestoreRegister()\<cr>"
-  endfunction
-
-  vmap <silent> <expr> p Repl()
-]])
+keymap("i", "jj", "<ESC>")
+keymap("i", "<C-]>", "<ESC><Right>")
+keymap("n", "<leader>w", ":<C-u>w<CR>")
+keymap("n", "<leader>q", ":<C-u>q<CR>")
+keymap("n", "mm", "ddp")
+keymap("n", "<leader>s", ":<C-u>split<CR><C-w>w")
+keymap("n", "<leader>v", ":<C-u>vsplit<CR><C-w>w")
+keymap("n", "<leader><Tab>", ":<C-u>tabnew<CR>")
+keymap("n", "<Tab>]", ":<C-u>tabnext<CR>")
+keymap("n", "<Tab>[", ":<C-u>tabprevious<CR>")
+keymap("n", "<ESC><ESC>", ":<C-u>nohlsearch<CR>")
+keymap("n", "<Up>", "<CMD>resize +1<CR>")
+keymap("n", "<Down>", "<CMD>resize -1<CR>")
+keymap("n", "<Left>", "<CMD>vertical resize +1<CR>")
+keymap("n", "<Right>", "<CMD>vertical resize -1<CR>")
+keymap("n", "<leader>l", ":cclose|lclose<CR>")
+keymap("v", "p", '"_xP')
+keymap({ "c", "i" }, "<C-p>", "<Up>")
+keymap({ "c", "i" }, "<C-n>", "<Down>")
+keymap({ "c", "i" }, "<C-b>", "<Left>")
+keymap({ "c", "i" }, "<C-f>", "<Right>")
+keymap({ "c", "i" }, "<C-a>", "<Home>")
+keymap({ "c", "i" }, "<C-e>", "<End>")
+keymap({ "c", "i" }, "<C-d>", "<Del>")
+keymap({ "c", "i" }, "<C-h>", "<BS>")
+keymap({ "n", "x" }, ";", ":")
+keymap({ "n", "x" }, "G", "Gzz")
+keymap({ "n", "x" }, "n", "nzz")
+keymap({ "n", "x" }, "N", "Nzz")
+keymap({ "n", "x" }, "}", "}zz")
+keymap({ "n", "x" }, "{", "{zz")
+keymap({ "n", "x" }, "x", '"_x')
+keymap({ "n", "x" }, "s", '"_s')
+keymap({ "n", "x" }, "<C-d>", "<C-d>zz")
+keymap({ "n", "x" }, "<C-d>", "<C-u>zz")
+keymap({ "n", "x" }, "gh", "g^")
+keymap({ "n", "x" }, "gl", "g$")
