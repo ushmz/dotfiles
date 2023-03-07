@@ -1,10 +1,5 @@
 #!/usr/bin/env sh -Cue
 
-mkdir -p ${HOME}/.config
-mkdir -p ${HOME}/.local/state
-mkdir -p ${HOME}/.local/share
-mkdir -p ${HOME}/.cache
-
 # Make directory for cdr
 mkdir -p ${HOME}/.cache/shell
 
@@ -36,18 +31,14 @@ ln -sf $(pwd)/.config/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritt
 
 # .tmux.conf
 mkdir -p ${HOME}/.config/tmux/
-ln -sf $(pwd)/.config/tmux/.tmux.conf ${HOME}/.config/tmux/tmux.conf
-ln -sf $(pwd)/.config/tmux/battery ${HOME}/.config/tmux/battery
-ln -sf $(pwd)/.config/tmux/ssid ${HOME}/.config/tmux/ssid
+ln -sf $(pwd)/.config/tmux/* ${HOME}/.config/tmux
 
 # starship.toml
 ln -sf $(pwd)/.config/starship/starship.toml ${HOME}/.config/starship.toml
 
 # git config
 mkdir -p ${HOME}/.config/git/
-ln -sf $(pwd)/.config/git/config ${HOME}/.config/git/config
-ln -sf $(pwd)/.config/git/message ${HOME}/.config/git/message
-ln -sf $(pwd)/.config/git/ignore ${HOME}/.config/git/ignore
+ln -sf $(pwd)/.config/git/* ${HOME}/.config/git
 
 # gh config
 ln -sf $(pwd)/.config/gh/config.yml ${HOME}/.config/gh/config.yml
@@ -56,9 +47,9 @@ ln -sf $(pwd)/.config/gh/config.yml ${HOME}/.config/gh/config.yml
 ln -sf $(pwd)/.config/ranger/* ${HOME}/.config/ranger/
 
 # nvim
-mkdir -p ${HOME}/.config/nvim/
+mkdir -p ${HOME}/.config/nvim/lua/
 ln -sf $(pwd)/.config/nvim/init.lua ${HOME}/.config/nvim/init.lua
-ln -sf $(pwd)/.config/nvim/lua ${HOME}/.config/nvim/lua
+ln -sf $(pwd)/.config/nvim/lua/* ${HOME}/.config/nvim/lua
 
 # Stop dirtying home directory
 echo hsts-file \= "${HOME}/.cache/wget-hsts" >"${HOME}/.config/wgetrc"
