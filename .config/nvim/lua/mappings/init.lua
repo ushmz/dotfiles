@@ -11,6 +11,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 keymap("i", "jj", "<ESC>")
+keymap("i", "<C-]>", "<ESC><Right>")
 keymap("n", "<leader>w", ":<C-u>w<CR>")
 keymap("n", "<leader>q", ":<C-u>q<CR>")
 keymap("n", "mm", "ddp")
