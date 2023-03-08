@@ -1,3 +1,5 @@
+local theme = require("theme")
+
 ---Config on attach lsp server
 ---@param client any
 ---@param bufnr number Number of a buffer
@@ -97,7 +99,7 @@ local function custom_server_configs()
 end
 
 local function config()
-	local colors = { Error = "#CC6666", Warn = "#F0C674", Hint = "#81A2BE", Info = "#B5BD68" }
+	local colors = { Error = theme.red, Warn = theme.yellow, Hint = theme.cyan, Info = theme.green }
 	for type, color in pairs(colors) do
 		vim.api.nvim_set_hl(0, "Diagnostic" .. type, { fg = color })
 	end
