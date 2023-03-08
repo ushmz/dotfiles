@@ -1,10 +1,12 @@
+local theme = require("theme")
+
 local function config()
 	require("modes").setup({
 		colors = {
-			copy = "#F0C674",
-			delete = "#CC6666",
-			insert = "#81A2BE",
-			visual = "#B294BB",
+			copy = theme.yellow,
+			delete = theme.red,
+			insert = theme.cyan,
+			visual = theme.purple,
 		},
 
 		-- Set opacity for cursorline and number background
