@@ -1,5 +1,5 @@
-# env:
-#     TERM: alacritty
+env:
+    TERM: screen-256color 
 
 shell:
   program: /usr/local/bin/zsh

@@ -1,6 +1,3 @@
-export TERM=xterm-256color
-export TERMINFO=/usr/share/terminfo
-
 export EDITOR=nvim
 
 # XDG_CONFIG_HOME
