@@ -21,7 +21,6 @@ export REDISCLI_RCFILE="${XDG_CONFIG_HOME}/redis/redisclirc"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship.toml"
 export WGETRC="${XDG_CONFIG_HOME}/wgetrc"
 
-
 export HISTSIZE=100000  # save in RAM
 export SAVEHIST=1000000 # save in file
 export HISTFILE="${XDG_STATE_HOME}/.zsh_history"
@@ -45,9 +44,6 @@ export STARSHIP_CACHE="${XDG_CACHE_HOME}/starship"
 export GOPATH=${XDG_DATA_HOME}/go
 export GOBIN=${GOPATH}/bin
 
-# postgres
-export PGDATA="/usr/local/var/postgres"
-
 # android
 export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
 export ANDROID_HOME=${HOME}/Library/Android/sdk
@@ -55,12 +51,6 @@ export ANDROID_HOME=${HOME}/Library/Android/sdk
 # cargo env
 source "${CARGO_HOME}/env"
 
-if type dircolors &>/dev/null; then
-    eval $(dircolors)
-fi
-
 if type gdircolors &>/dev/null; then
     eval $(gdircolors)
 fi
-
-export EXA_COLORS="da=36"

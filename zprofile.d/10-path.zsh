@@ -19,8 +19,6 @@ path=(
     "/usr/local/opt/gnu-tar/libexec/gnubin"(N-/) # tar
     "/usr/local/opt/grep/libexec/gnubin"(N-/) # grep
 
-    # Original scripts
-    "${HOME}/.scripts"(N-/)
     # local packages
     "${HOME}/.local/bin"(N-/)
     # python
@@ -46,7 +44,7 @@ path=(
 )
 
 manpath=(
-    #brew
+    # brew
     "/usr/local/share/man"(N-/)
     # coreutils
     "/usr/local/opt/coreutils/libexec/gnuman"(N-/)
