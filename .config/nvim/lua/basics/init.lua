@@ -7,7 +7,6 @@ vim.cmd([[let &t_Cs = '\e[4:3m']])
 vim.cmd([[let &t_Ce = '\e[4:0m']])
 
 vim.cmd("filetype plugin indent on")
-vim.cmd("syntax on")
 vim.cmd("set mouse=")
 vim.cmd("set fo-=co")
 vim.cmd("set fo+=rqnM1j")
