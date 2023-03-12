@@ -85,51 +85,6 @@ local function cmp_format(entry, vim_item)
 	return kind
 end
 
----Set VSCode like color theme for completion menu
-local function set_vscode_menu_hl()
-	-- vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE", fg = theme.light_gray })
-	vim.api.nvim_set_hl(0, "PmenuSel", { bg = theme.black, fg = theme.white })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", fg = theme.gray, strikethrough = true })
-
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = theme.light_blue })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
-	vim.api.nvim_set_hl(0, "CmpItemMenu", { bg = "NONE", fg = theme.dark_pink, italic = false })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindField", { bg = theme.pink, fg = theme.black })
-	vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindField" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEvent", { link = "CmpItemKindField" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = theme.white })
-	vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindKeyword" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEnum", { link = "CmpItemKindKeyword" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindConstant", { bg = theme.yellow, fg = theme.black })
-	vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { link = "CmpItemKindConstant" })
-	vim.api.nvim_set_hl(0, "CmpItemKindReference", { link = "CmpItemKindConstant" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = theme.dark_pink })
-	vim.api.nvim_set_hl(0, "CmpItemKindStruct", { link = "CmpItemKindFunction" })
-	vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "CmpItemKindFunction" })
-	vim.api.nvim_set_hl(0, "CmpItemKindModule", { link = "CmpItemKindFunction" })
-	vim.api.nvim_set_hl(0, "CmpItemKindOperator", { link = "CmpItemKindFunction" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = theme.light_blue })
-	vim.api.nvim_set_hl(0, "CmpItemKindFile", { link = "CmpItemKindVariable" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindUnit", { bg = theme.dark_yellow, fg = theme.black })
-	vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { link = "CmpItemKindUnit" })
-	vim.api.nvim_set_hl(0, "CmpItemKindFolder", { link = "CmpItemKindUnit" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindMethod", { bg = theme.cobalt, fg = theme.black })
-	vim.api.nvim_set_hl(0, "CmpItemKindValue", { link = "CmpItemKindFunction" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { link = "CmpItemKindFunction" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindInterface", { bg = theme.emerald, fg = theme.black })
-	vim.api.nvim_set_hl(0, "CmpItemKindColor", { link = "CmpItemKindInterface" })
-	vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { link = "CmpItemKindInterface" })
-	vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindInterface" })
-end
-
 local function completion_config()
 	local c = cmp()
 	c.setup({
@@ -140,7 +95,7 @@ local function completion_config()
 		},
 		window = {
 			completion = {
-				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
 				side_padding = 0,
 				border = "rounded",
 			},
@@ -184,7 +139,7 @@ local function completion_config()
 		}),
 	})
 
-	set_vscode_menu_hl()
+	theme.set_vscode_menu_hl()
 end
 
 local function lspkind_config()
