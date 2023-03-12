@@ -75,6 +75,11 @@ local function file_browser()
 	})
 end
 
+local function harpoon()
+	t().load_extension("harpoon")
+	vim.cmd("Telescope harpoon marks")
+end
+
 local max_size = 100000
 ---Ignore files bigger than a threshold
 ---@param filepath string
@@ -103,6 +108,7 @@ return {
 		{ "nvim-lua/plenary.nvim" },
 		{ "BurntSushi/ripgrep" },
 		{ "sharkdp/fd" },
+		{ "ThePrimeagen/harpoon" },
 		{ "nvim-telescope/telescope-file-browser.nvim" },
 	},
 	keys = {
@@ -116,6 +122,7 @@ return {
 		{ ";f", find_files, mode = "n", desc = "Telescope: Search [F]iles" },
 		{ ";g", live_grep, mode = "n", desc = "Telescope: Live [G]rep" },
 		{ ";d", file_browser, mode = "n", desc = "Telescope: [D]irectory & File Browser" },
+		{ ";m", harpoon, mode = "n", desc = "Telescope: Search Harpoon [M]arks" },
 		{ "<leader>ds", document_symbols, mode = "n", desc = "Telescope: [D]ocument [S]ymbols" },
 		{ "<leader>ws", workspace_symbols, mode = "n", desc = "Telescope: [W]orkspace [S]ymbols" },
 		{ "gr", references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
