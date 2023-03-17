@@ -1,85 +1,74 @@
 env:
-    TERM: screen-256color 
-
+  TERM: screen-256color
 shell:
   program: /usr/local/bin/zsh
   args:
     - -l
     - -c
     - "/usr/local/bin/tmux a -t 0 || /usr/local/bin/tmux -u"
-
 window:
-    decorations: full
-    padding:
-        x: 0
-        y: 0
-    dynamic_padding: false
-    opacity: 1.0
-    dynamic_title: true
-
+  decorations: full
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: false
+  opacity: 1.0
+  dynamic_title: true
 font:
-    size: 13
-    normal:
-        family: 'Hack Nerd Font'
-        style: Regular
-    bold:
-        family: 'Hack Nerd Font'
-        style: Bold
-    italic:
-        family: 'Hack Nerd Font'
-        style: Italic
-    bold_italic:
-        family: 'Hack Nerd Font'
-        style: Bold Italic
-
+  size: 13
+  normal:
+    family: "Hack Nerd Font"
+    style: Regular
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
+  italic:
+    family: "Hack Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "Hack Nerd Font"
+    style: Bold Italic
 live_config_reload: true
 east_asian_fullwidth: true
-
 mouse:
-    hints:
-        launcher: open
-        modifiers: None
-
+  hints:
+    launcher: open
+    modifiers: None
 selection:
-    save_to_clipboard: true
-
+  save_to_clipboard: true
 # Colors - Hybrid(adjusted)
 colors:
-    primary:
-        background: '#27292c'
-        foreground: '#c5c8c6'
-
-    cursor:
-        text: '#000000'
-        cursor: '#ffffff'
-        style: Block
-        vi_mode_style: Block
-    vi_mode_cursor:
-        text: '#000000'
-        cursor: '#c5c8c6'
-
-    # Normal colors
-    normal:
-        black:   '#1d1f21'
-        red:     '#cc6666'
-        green:   '#95ad68'
-        yellow:  '#f0c674'
-        blue:    '#81a2be'
-        magenta: '#b294bb'
-        cyan:    '#8abeb7'
-        white:   '#c5c8c6'
-
-    # Bright colors
-    bright:
-        black:   '#484c52'
-        red:     '#d27c7b'
-        green:   '#dffebe'
-        yellow:  '#f0d189'
-        blue:    '#96b1c9'
-        magenta: '#bfa5c7'
-        cyan:    '#9fc9c3'
-        white:   '#fcf7e2'
-
+  primary:
+    background: "#27292c"
+    foreground: "#c5c8c6"
+  cursor:
+    text: "#000000"
+    cursor: "#ffffff"
+    style: Block
+    vi_mode_style: Block
+  vi_mode_cursor:
+    text: "#000000"
+    cursor: "#c5c8c6"
+  # Normal colors
+  normal:
+    black: "#1d1f21"
+    red: "#cc6666"
+    green: "#95ad68"
+    yellow: "#f0c674"
+    blue: "#81a2be"
+    magenta: "#b294bb"
+    cyan: "#8abeb7"
+    white: "#c5c8c6"
+  # Bright colors
+  bright:
+    black: "#484c52"
+    red: "#d27c7b"
+    green: "#dffebe"
+    yellow: "#f0d189"
+    blue: "#96b1c9"
+    magenta: "#bfa5c7"
+    cyan: "#9fc9c3"
+    white: "#fcf7e2"
 ## Colors (Iceberg Dark)
 # colors:
 #   # Default colors

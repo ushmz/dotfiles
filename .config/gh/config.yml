@@ -8,12 +8,12 @@ prompt: enabled
 pager: less
 # Aliases allow you to create nicknames for gh commands
 aliases:
-    co: pr checkout
-    ignore: api /gitignore/templates/$1 --jq .source
-    watches: api /users/ushmz/subscriptions --paginate --jq .[].full_name
-    unwatch: api -X DELETE /repos/$1/subscription
-    prc: pr create -w
-    mypr: pr list -s all -A ushmz
+  co: pr checkout
+  ignore: api /gitignore/templates/$1 --jq .source
+  watches: api /users/ushmz/subscriptions --paginate --jq .[].full_name
+  unwatch: api -X DELETE /repos/$1/subscription
+  prc: pr create -w
+  mypr: pr list -s all -A ushmz
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
