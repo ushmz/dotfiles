@@ -1,19 +1,16 @@
 local theme = require("theme")
 
 ---Load and return package `cmp`
----@return table
 local function cmp()
 	return require("cmp")
 end
 
 ---Load and return package `lspkind`
----@return table
 local function lspkind()
 	return require("lspkind")
 end
 
 ---Load and return package `luasnip`
----@return table
 local function luasnip()
 	return require("luasnip")
 end
