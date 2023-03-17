@@ -1,7 +1,9 @@
 local theme = require("theme")
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 ---Config on attach lsp server
----@param client any
+---@param client unknown
 ---@param bufnr number Number of a buffer
 local function on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -25,31 +27,29 @@ local function on_attach(client, bufnr)
 	end, "[W]orkspace [L]ist Folders")
 end
 
----Return capabilities config table
----@return table
-local function capabilities()
-	local cap = require("cmp_nvim_lsp").default_capabilities()
-	cap.textDocument.completion.completionItem.snippetSupport = true
-	return cap
-end
-
 ---Return custom lsp configs table
 ---@return table
-local function custom_server_configs()
+local function get_custom_server_configs()
 	local custom_servers = {
 		["lua_ls"] = {
 			on_attach = on_attach,
-			capabilities = capabilities(),
+			capabilities = capabilities,
 			settings = {
 				Lua = {
 					diagnostics = { globals = { "vim" } },
-					workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = true },
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false,
+					},
+					telemetry = {
+						enable = false,
+					},
 				},
 			},
 		},
 		["jsonls"] = {
 			on_attach = on_attach,
-			capabilities = capabilities(),
+			capabilities = capabilities,
 			settings = {
 				json = {
 					schemas = {
@@ -83,7 +83,7 @@ local function custom_server_configs()
 		},
 		["stylelint_lsp"] = {
 			on_attach = on_attach,
-			capabilities = capabilities(),
+			capabilities = capabilities,
 			filetypes = { "css", "less", "scss", "sugarss", "vue", "wxss" },
 		},
 	}
@@ -92,7 +92,7 @@ local function custom_server_configs()
 		__index = function()
 			return {
 				on_attach = on_attach,
-				capabilities = capabilities(),
+				capabilities = capabilities,
 			}
 		end,
 	})
@@ -125,30 +125,7 @@ local function config()
 
 	require("mason-lspconfig").setup_handlers({
 		function(server_name)
-			if server_name == "dartls" then
-				-- mason doesn't have `dartls` install option
-				require("lspconfig").dartls.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-					cmd = { "dart", "language-server", "--protocol=lsp" },
-					filetypes = { "dart" },
-					root_pattern = { "pubspec.yaml" },
-					init_options = {
-						closingLabels = true,
-						flutterOutline = true,
-						onlyAnalyzeProjectsWithOpenFiles = true,
-						outline = true,
-						suggestFromUnimportedLibraries = true,
-					},
-					settings = {
-						dart = {
-							completeFunctionCalls = true,
-							showTodos = true,
-						},
-					},
-				})
-			end
-			local conf = custom_server_configs()[server_name]
+			local conf = get_custom_server_configs()[server_name]
 			require("lspconfig")[server_name].setup(conf)
 		end,
 	})
@@ -162,5 +139,5 @@ return {
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
 		},
 		config = config,
-	},
+	}
 }
