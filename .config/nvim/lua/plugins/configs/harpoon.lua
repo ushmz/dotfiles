@@ -31,10 +31,10 @@ return {
 		{ "nvim-lua/plenary.nvim" },
 	},
 	keys = {
-		{ "<leader><C-a>", add_file, mode = "n", desc = "Harpoon: Add file to harpoon marks" },
-		{ "<leader><C-q>", toggle_quick_menu, mode = "n", desc = "Harpoon: View all harpoon marks" },
-		{ "<leader><C-n>", nav_next, mode = "n", desc = "Harpoon: Switch to the next harpoon mark index" },
-		{ "<leader><C-p>", nav_prev, mode = "n", desc = "Harpoon: Switch to the next harpoon mark index" },
+		{ "<leader><C-a>", add_file, mode = "n", desc = "Harpoon: [A]dd File to Harpoon Marks" },
+		{ "<leader><C-q>", toggle_quick_menu, mode = "n", desc = "Harpoon: Toggle Harpoon [Q]uick Menu" },
+		{ "<leader><C-n>", nav_next, mode = "n", desc = "Harpoon: Switch to the [N]ext Harpoon Mark Index" },
+		{ "<leader><C-p>", nav_prev, mode = "n", desc = "Harpoon: Switch to the [P]revious Harpoon Mark Index" },
 	},
 	config = function()
 		require("harpoon").setup({

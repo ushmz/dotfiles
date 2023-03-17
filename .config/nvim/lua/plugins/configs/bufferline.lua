@@ -36,6 +36,6 @@ end
 
 return {
 	"akinsho/bufferline.nvim",
-	event = { "BufEnter" },
+	event = { "BufRead" },
 	config = config,
 }
