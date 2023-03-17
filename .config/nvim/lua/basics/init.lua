@@ -1,5 +1,4 @@
 local home = vim.env.HOME
-local state = vim.env.XDG_STATE_HOME
 
 vim.cmd([[let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum']])
 vim.cmd([[let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum']])
@@ -11,7 +10,12 @@ vim.cmd("set mouse=")
 vim.cmd("set fo-=co")
 vim.cmd("set fo+=rqnM1j")
 
-vim.api.nvim_set_var("netrw_home", state .. "/vim")
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+vim.api.nvim_set_var("netrw_home", home .. ".local/state/vim")
 
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
@@ -39,7 +43,6 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.shell = "zsh"
 vim.opt.background = "dark"
--- vim.opt.backupskip='/tmp/*,/private/tmp/*'
 -- vim.opt.inccommand='split'
 vim.opt.ignorecase = true
 vim.opt.smarttab = true
@@ -55,7 +58,9 @@ vim.opt.path:append({ "**" })
 vim.opt.wildignore:append({ "*/__pycache__/*", "*.pyc", "*/node_modules/*", "*.DS_Store" })
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = { 80, 100 }
+vim.opt.colorcolumn = { 100 }
+vim.opt.lazyredraw = true
+-- vim.opt.ttyfast = true
 
 -- vim.opt.ambiwidth = 'double'
 vim.opt.completeopt = "menuone,noinsert,noselect"
