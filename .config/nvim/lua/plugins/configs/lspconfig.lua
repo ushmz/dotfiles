@@ -1,9 +1,7 @@
-local theme = require("theme")
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 ---Config on attach lsp server
----@param client unknown
+---@param client unknown Attached LSP client
 ---@param bufnr number Number of a buffer
 local function on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -99,11 +97,6 @@ local function get_custom_server_configs()
 end
 
 local function config()
-	local colors = { Error = theme.red, Warn = theme.yellow, Hint = theme.cyan, Info = theme.green }
-	for type, color in pairs(colors) do
-		vim.api.nvim_set_hl(0, "Diagnostic" .. type, { fg = color })
-	end
-
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
@@ -139,5 +132,5 @@ return {
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
 		},
 		config = config,
-	}
+	},
 }

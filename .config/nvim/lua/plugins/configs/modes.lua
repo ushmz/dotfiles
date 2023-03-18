@@ -1,12 +1,10 @@
-local theme = require("theme")
-
 local function config()
 	require("modes").setup({
 		colors = {
-			copy = theme.yellow,
-			delete = theme.red,
-			insert = theme.cyan,
-			visual = theme.purple,
+			copy = "#F0C674",
+			delete = "#CC6666",
+			insert = "#282A2E",
+			visual = "#B294BB",
 		},
 
 		-- Set opacity for cursorline and number background
@@ -23,7 +21,6 @@ local function config()
 		set_number = false,
 
 		-- Disable modes highlights in specified filetypes
-		-- Please PR commonly ignored filetypes
 		ignore_filetypes = { "TelescopePrompt" },
 	})
 end

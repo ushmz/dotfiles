@@ -1,5 +1,3 @@
-local theme = require("theme")
-
 ---Load and return package `cmp`
 local function cmp()
 	return require("cmp")
@@ -92,7 +90,7 @@ local function completion_config()
 		},
 		window = {
 			completion = {
-				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+				winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:None",
 				side_padding = 0,
 				border = "rounded",
 			},
@@ -135,8 +133,6 @@ local function completion_config()
 			{ name = "buffer" },
 		}),
 	})
-
-	theme.set_vscode_menu_hl()
 end
 
 local function lspkind_config()

@@ -1,5 +1,3 @@
-local theme = require("theme")
-
 local function config()
 	require("lspsaga").setup({
 		code_action = {
@@ -67,7 +65,6 @@ local function config()
 		},
 		ui = {
 			theme = "round",
-			-- title = true,
 			border = "rounded",
 			winblend = 10,
 			expand = "",
@@ -77,21 +74,19 @@ local function config()
 			diagnostic = "🐞",
 			incoming = " ",
 			outgoing = " ",
+      -- colors from hybrid.vim
 			colors = {
 				normal_bg = "#424242",
-				--title background color
-				-- title_bg = '#B5BD68',
-				red = theme.red,
-				magenta = theme.magenta,
-				orange = theme.orange,
-				yellow = theme.yellow,
-				green = theme.green,
-				cyan = theme.cyan,
-				blue = theme.blue,
-				purple = theme.purple,
-				white = theme.white,
-				-- black = theme.white,
-				black = theme.black,
+				red = "#CC6666",
+				magenta = "#CC6666",
+				orange = "#DE935F",
+				yellow = "#F0C674",
+				green = "#B5BD68",
+				cyan = "#8aBEB7",
+				blue = "#81A2BE",
+				purple = "#B294BB",
+				white = "#D4D4D4",
+				black = "#1D1F21",
 			},
 			kind = {},
 		},
