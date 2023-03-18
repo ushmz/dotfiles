@@ -63,13 +63,4 @@ alias soenv='source ~/.zshenv'
 alias sorc='source ~/.zshrc'
 alias soprof='source ~/.zprofile'
 alias dot='cd ~/dotfiles'
-
-
 alias 'mux.sh'='~/.scripts/mux.sh'
-alias bib='python ~/.scripts/biblio_poll.py'
-# alias ssh='~/.scripts/ssh_change_profile.sh'
-
-
-# clean cache
-alias 'pipcc'='rm -rf ~/Library/Caches/pip'
-alias 'mavencc'='rm -rf ~/.m2/repository'
