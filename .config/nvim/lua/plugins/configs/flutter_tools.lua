@@ -105,7 +105,7 @@ return {
 	ft = { "dart" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"stevearc/dressing.nvim",
+		-- "stevearc/dressing.nvim",
 	},
 	config = config,
 }
