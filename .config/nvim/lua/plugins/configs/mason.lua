@@ -1,14 +1,5 @@
 local function mason()
 	require("mason").setup({
-		-- .nvim/lazy/mason.nvim/lua/mason-registry/sources/init.lua:26: bad argument #1 to 'ipairs' (table expected, got nil)
-		-- # stacktrace:
-		-- - /mason.nvim/lua/mason-registry/sources/init.lua:26 _in_ **set_registries**
-		-- - /mason.nvim/lua/mason/init.lua:31 _in_ **setup**
-		-- - ~/.config/nvim/lua/plugins/configs/mason.lua:86 _in_ **config**
-		-- - ~/.config/nvim/lua/plugins/init.lua:15
-		-- registries = {
-		--     "lua:mason-registry.index",
-		-- },
 		ui = {
 			border = "rounded",
 			icons = {
@@ -43,8 +34,6 @@ local function mason_lspconfig()
 			"yamlls",
 		},
 	})
-	-- print(vim.inspect(require("mason-registry").get_installed_packages()))
-
 	-- Following tools cannot install via `ensure_installed` option,
 	-- make sure to install them manually ;)
 	-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
