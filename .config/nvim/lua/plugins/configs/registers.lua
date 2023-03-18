@@ -1,19 +1,12 @@
 local function config()
 	local registers = require("registers")
 	registers.setup({
-		-- Show these registers in the order of the string
 		show = '*+"-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:',
-		-- Show a line at the bottom with registers that aren't filled
 		show_empty = true,
-		-- Expose the :Registers user command
 		register_user_command = true,
-		-- Always transfer all selected registers to the system clipboard
 		system_clipboard = false,
-		-- Don't show whitespace at the begin and end of the register's content
 		trim_whitespace = true,
-		-- Don't show registers which are exclusively filled with whitespace
 		hide_only_whitespace = true,
-		-- Show a character next to the register name indicating how the register will be applied
 		show_register_types = true,
 
 		bind_keys = {
@@ -46,37 +39,28 @@ local function config()
 		},
 
 		events = {
-			-- When a register line is highlighted, show a preview in the main buffer with how the register will be applied, but only if the register will be inserted or pasted
+			-- When a register line is highlighted,
+      -- show a preview in the main buffer with how the register will be applied,
+      -- but only if the register will be inserted or pasted
 			on_register_highlighted = registers.preview_highlighted_register({ if_mode = { "insert", "paste" } }),
 		},
 
 		symbols = {
-			-- Show a special character for line breaks
 			newline = "⏎",
-			-- Show space characters without changes
 			space = " ",
-			-- Show a special character for tabs
 			tab = "·",
-			-- The character to show when a register will be applied in a char-wise fashion
 			register_type_charwise = "ᶜ",
-			-- The character to show when a register will be applied in a line-wise fashion
 			register_type_linewise = "ˡ",
-			-- The character to show when a register will be applied in a block-wise fashion
 			register_type_blockwise = "ᵇ",
 		},
 
 		window = {
-			-- The window can't be wider than 100 characters
 			max_width = 100,
-			-- Show a small highlight in the sign column for the line the cursor is on
 			highlight_cursorline = true,
-			-- Don't draw a border around the registers window
-			border = "none",
-			-- Apply a tiny bit of transparency to the the window, letting some characters behind it bleed through
-			transparency = 10,
+			border = "rounded",
+			transparency = 0,
 		},
 
-		-- Highlight the sign registers as regular Neovim highlights
 		sign_highlights = {
 			cursorline = "Visual",
 			selection = "Constant",
