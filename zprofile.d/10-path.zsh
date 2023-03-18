@@ -21,8 +21,6 @@ path=(
 
     # local packages
     "${HOME}/.local/bin"(N-/)
-    # python
-    "${HOME}/.asdf/installs/python/3.10.0/bin"(N-/)
     # GOBIN
     ${GOBIN}(N-/)
     # cargo
@@ -37,9 +35,7 @@ path=(
     # react-native
     "/usr/local/share/npm/bin"(N-/)
     "${HOME}/node_modules/.bin"(N-/)
-    # Remote server
-    "/usr/local/pyenv/shims"(N-/)
-    "/usr/local/pyenv/bin"(N-/)
+
     ${path}
 )
 

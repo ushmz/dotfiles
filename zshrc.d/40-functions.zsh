@@ -1,25 +1,3 @@
-# save dirstack to ~/.cache/shell
-# mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/shell"
-# touch "${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack"
-# my_save_dirstack () {
-#     dirstack=(${(@u)$(<"${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack")})
-#     dirs -lp >! "${XDG_CACHE_HOME:-$HOME/.cache}/shell/$HOST.dirstack"
-# }
-# chpwd_functions+=my_save_dirstack
-# my_save_dirstack
-
-# typo hook
-# function command_not_found_handler(){
-#     # if [ -e ~/.scripts/typo.sh ]; then
-#     #     ~/.scripts/typo.sh
-#     if type cowsay &>/dev/null; then
-#         cowsay " Command '$0' not found. "
-#     else
-#         echo "Command $0 not found."
-#     fi
-#     return 127
-# }
-
 # Google it func
 function googleit() {
     IFS="+$IFS"
