@@ -42,7 +42,7 @@ export GOPATH=${XDG_DATA_HOME}/go
 export GOBIN=${GOPATH}/bin
 
 # android
-export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
+# export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 
 # cargo env
