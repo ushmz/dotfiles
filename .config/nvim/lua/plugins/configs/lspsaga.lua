@@ -74,7 +74,7 @@ local function config()
 			diagnostic = "🐞",
 			incoming = " ",
 			outgoing = " ",
-      -- colors from hybrid.vim
+			-- colors from hybrid.vim
 			colors = {
 				normal_bg = "#424242",
 				red = "#CC6666",
@@ -88,6 +88,10 @@ local function config()
 				white = "#D4D4D4",
 				black = "#1D1F21",
 			},
+			---If you'd like to integrate with colorscheme `catppuccin`, set following
+			---```
+			---kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
+			---```
 			kind = {},
 		},
 	})

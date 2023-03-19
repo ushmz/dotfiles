@@ -8,6 +8,10 @@ local function config()
 			show_close_icon = false,
 			color_icons = true,
 		},
+		---If you'd like to integrate with colorscheme `catppuccin`, add following
+		---```
+		---highlights = require("catppuccin.groups.integrations.bufferline").get()
+		---```
 		highlights = {
 			separator = {
 				fg = "#4E4E4E",

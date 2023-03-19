@@ -26,6 +26,7 @@ local function treesitter()
 			"markdown_inline",
 			"prisma",
 			"python",
+			"query",
 			"regex",
 			"ruby",
 			"rust",
@@ -93,6 +94,18 @@ local function treesitter()
 				show_help = "?",
 			},
 		},
+		rainbow = {
+			enable = true,
+			---@type string[]
+			disable = { "cpp" },
+			---Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+			---@type boolean|table<string, boolean>
+			extended_mode = false,
+			-- Do not enable for files with more than n lines, int
+			max_file_lines = nil,
+			-- colors = {}, -- table of hex strings
+			-- termcolors = {} -- table of colour name strings
+		},
 	})
 end
 
@@ -149,5 +162,9 @@ return {
 		"RRethy/nvim-treesitter-endwise",
 		event = { "InsertEnter" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+	{
+		"nvim-treesitter/playground",
+		event = { "BufRead" },
 	},
 }

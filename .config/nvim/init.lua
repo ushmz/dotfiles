@@ -18,4 +18,6 @@ require("filetypes")
 require("mappings")
 
 -- Plugin configs
-require("plugins")
+if not vim.g.vscode then
+	require("plugins")
+end

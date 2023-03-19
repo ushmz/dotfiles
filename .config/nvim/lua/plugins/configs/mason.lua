@@ -31,7 +31,6 @@ local function mason_lspconfig()
 			"stylelint_lsp",
 			"tailwindcss",
 			"tsserver",
-			"yamlls",
 		},
 	})
 	-- Following tools cannot install via `ensure_installed` option,

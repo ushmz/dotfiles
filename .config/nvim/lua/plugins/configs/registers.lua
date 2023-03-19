@@ -40,8 +40,8 @@ local function config()
 
 		events = {
 			-- When a register line is highlighted,
-      -- show a preview in the main buffer with how the register will be applied,
-      -- but only if the register will be inserted or pasted
+			-- show a preview in the main buffer with how the register will be applied,
+			-- but only if the register will be inserted or pasted
 			on_register_highlighted = registers.preview_highlighted_register({ if_mode = { "insert", "paste" } }),
 		},
 
