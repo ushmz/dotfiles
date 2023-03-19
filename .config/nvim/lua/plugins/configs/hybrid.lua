@@ -93,11 +93,8 @@ return {
 
 		vim.api.nvim_create_autocmd({ "VimEnter" }, {
 			nested = true,
-			command = "colorscheme hybrid",
-		})
-
-		vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 			callback = function()
+				vim.cmd.colorscheme("hybrid")
 				set_diagnostic_colors()
 				set_completion_menu_hl()
 			end,
