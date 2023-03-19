@@ -1,6 +1,7 @@
 local function t()
 	return require("telescope")
 end
+
 local function b()
 	return require("telescope.builtin")
 end
