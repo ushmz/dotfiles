@@ -2,7 +2,7 @@ local function config()
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
-			theme = "jellybeans",
+			theme = "jellybeans", ---`catppuccin`
 			section_separators = { left = "", right = "" },
 			component_separators = { left = "", right = "" },
 			disabled_filetypes = { "TelescopePrompt" },

@@ -17,6 +17,8 @@ local function config()
 		},
 		window = {
 			relative = "win",
+			---If you'd like to integrate with colorscheme `catppuccin`,
+			---you have to set `0`
 			blend = 0,
 			zindex = nil,
 			border = "none",
