@@ -11,6 +11,7 @@ vim.filetype.add({
 		[".jscsrc"] = "json",
 	},
 	pattern = {
+		[".*/vscode/.*%.json"] = "jsonc",
 		[".*%.js%.map"] = "json",
 		["%.config/git/users/.*"] = "gitconfig",
 		[".*%.json%.jbuilder"] = "ruby",
