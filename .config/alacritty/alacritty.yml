@@ -15,7 +15,7 @@ window:
   opacity: 1.0
   dynamic_title: true
 font:
-  size: 13
+  size: 14
   normal:
     family: "Hack Nerd Font"
     style: Regular
