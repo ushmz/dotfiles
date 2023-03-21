@@ -1,154 +1,16 @@
 {
-  // "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  // "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ushmz/.config/nvim/init.lua",
-  // "extensions.experimental.affinity": {
-  //   "asvetliakov.vscode-neovim": 1
-  // },
-  "Lua.telemetry.enable": false,
-  "vim.autoindent": true,
-  "vim.debug.silent": true,
-  "vim.hlsearch": true,
-  "vim.leader": "<space>",
-  "vim.statusBarColorControl": false,
-  "vim.surround": true,
-  "vim.timeout": 1200,
-  "vim.useCtrlKeys": true,
-  "vim.useSystemClipboard": true,
-  "vim.visualstar": true,
-
-  "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] },
-    { "before": "<C-r>", "after": ["<C-r", "<C-p>"] }
-  ],
-  "vim.normalModeKeyBindings": [
-    { "before": ["G"], "after": ["G", "z", "z"] },
-    { "before": ["n"], "after": ["n", "z", "z"] },
-    { "before": ["N"], "after": ["N", "z", "z"] },
-    { "before": ["}"], "after": ["}", "z", "z"] },
-    { "before": ["{"], "after": ["{", "z", "z"] },
-    { "before": ["*"], "after": ["*", "z", "z"] },
-    { "before": ["#"], "after": ["#", "z", "z"] }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    { "before": [";"], "after": [":"] },
-    { "before": ["K"], "commands": ["editor.action.showHover"] },
-    { "before": [">"], "commands": ["editor.action.indentLines"] },
-    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
-    { "before": ["<leader>", "]"], "after": ["g", "t"] },
-    { "before": ["<leader>", "["], "after": ["g", "T"] },
-    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
-    {
-      "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"]
-    },
-    {
-      "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"]
-    },
-    {
-      "before": ["g", "t"],
-      "commands": ["editor.action.goToTypeDefinition"]
-    },
-    {
-      "before": ["g", "s"],
-      "commands": ["editor.action.goToSymbol"]
-    },
-    {
-      "before": ["g", "n"],
-      "commands": ["editor.action.marker.nextInFiles"]
-    },
-    {
-      "before": ["g", "N"],
-      "commands": ["editor.action.marker.prevInFiles"]
-    },
-    {
-      "before": ["<Esc>", "<Esc>"],
-      "commands": [":nohlsearch"]
-    },
-    {
-      "before": ["<leader>", "o"],
-      "after": ["o", "<Esc>"]
-    },
-    {
-      "before": ["<leader>", "O"],
-      "after": ["O", "<Esc>"]
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
-    {
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      "before": ["<leader>", "s"],
-      "commands": [":split"]
-    },
-    {
-      "before": ["<leader>", "v"],
-      "commands": [":vsplit"]
-    },
-    {
-      "before": ["<leader>", "c"],
-      "command": ["editor.action.commentLine"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "command": ["editor.action.quickFix"]
-    },
-    {
-      "before": ["<leader>", "r", "n"],
-      "command": ["editor.action.rename"]
-    },
-    {
-      "before": ["<C-k>"],
-      "command": ["editor.action.insertCursorAbove"]
-    },
-    {
-      "before": ["<C-j>"],
-      "command": ["editor.action.insertCursorBelow"]
-    },
-    {
-      "before": [","],
-      "commands": [
-        "vspacecode.space",
-        {
-          "command": "whichkey.triggerKey",
-          "args": "m"
-        }
-      ]
-    }
-  ],
-
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "c"],
-      "commands": ["editor.action.commentLine"]
-    },
-    {
-      "before": ["<space>"],
-      "commands": ["vspacecode.space"]
-    },
-    {
-      "before": [","],
-      "commands": [
-        "vspacecode.space",
-        {
-          "command": "whichkey.triggerKey",
-          "args": "m"
-        }
-      ]
-    }
-  ],
-
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ushmz/.config/nvim/init.lua",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.openDebug": "openOnSessionStart",
-
   // Editor settings
   "editor.accessibilitySupport": "off",
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
+  "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
   "editor.fontSize": 13,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": false,
@@ -156,21 +18,22 @@
   "editor.hideCursorInOverviewRuler": true,
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
-  "editor.rulers": [72, 79, 120],
+  "editor.rulers": [
+    79,
+    120
+  ],
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
+  "editor.scrollBeyondLastLine": false,
   "editor.suggestSelection": "first",
   "editor.quickSuggestions": {
     "comments": true,
     "strings": true,
     "other": true
   },
-
   // Suppress confirm popup when drag-and-drop to file explorer
   "explorer.confirmDragAndDrop": false,
-  // Naming rule on file named is duplicated
-  "explorer.incrementalNaming": "smart",
-
+  "explorer.openEditors.visible": 0,
   // Auto save all files several seconds after focusing out (or stopping cursor)
   "files.autoSave": "off",
   "files.eol": "\n",
@@ -185,15 +48,16 @@
     "**/.git/subtree-cache/**": true,
     "**/node_modules/*/**": true
   },
-
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/tmp/cache": true
   },
-
   // Language specific settings
-
+  "Lua.telemetry.enable": false,
+  "Lua.diagnostics.globals": [
+    "vim"
+  ],
   "go.docsTool": "godoc",
   "go.formatTool": "gofmt",
   "go.lintOnSave": "package",
@@ -269,21 +133,13 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 4
   },
-
   "markdown.preview.breaks": true,
-
   // [TODO] Trust external files
   "security.workspace.trust.untrustedFiles": "open",
-
   // Suppress new version notification
   "vsicons.dontShowNewVersionMessage": true,
-
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
-
-  // VSCode appearance settings
-  "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
-  "explorer.openEditors.visible": 0,
   "workbench.editor.labelFormat": "short",
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.showIcons": true,
@@ -315,14 +171,6 @@
     "terminal.ansiMagenta": "#977BA0",
     "terminal.ansiRed": "#B05655",
     "terminal.ansiWhite": "#848B92",
-    "terminal.ansiYellow": "#E1A574",
-    "[Hybrid]": {
-      // Improve colors
-      "statusBar.background": "#333333FF",
-      "editorCursor.background": "#333333FF",
-      "editorCursor.foreground": "#CCCCCCFF",
-      "editorLineNumber.activeForeground": "#777777FF",
-      "editorLineNumber.foreground": "#CCCCCCFF"
-    }
+    "terminal.ansiYellow": "#E1A574"
   }
 }
