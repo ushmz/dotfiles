@@ -11,6 +11,11 @@
     "when": "neovim.mode == normal && editorFocus"
   },
   {
+    "key": "space q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
     "key": "space f",
     "command": "editor.action.formatDocument",
     "when": "neovim.mode == normal && editorFocus"
@@ -134,6 +139,11 @@
     "when": "searchInputBoxFocus"
   },
   {
+    "key": "Escape",
+    "command": "workbench.action.navigateBack",
+    "when": "explorerViewletVisible || searchInputBoxFocus",
+  },
+  {
     "key": "n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
@@ -213,5 +223,45 @@
     "key": "ctrl+l",
     "command": "file-browser.stepIn",
     "when": "inFileBrowser"
-  }
+  },
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
+    "key": "g r",
+    "command": "editor.action.goToReferences",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  {
+    "key": "g i",
+    "command": "editor.action.goToImplementation",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinition",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  {
+    "key": "g t",
+    "command": "editor.action.goToTypeDefinition",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  {
+    "key": "g s",
+    "command": "editor.action.goToSymbol",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  {
+    "key": "g n",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  {
+    "key": "g N",
+    "command": "editor.action.marker.prevInFiles",
+    "when": "neovim.mode == normal && editorFocus",
+  },
 ]
