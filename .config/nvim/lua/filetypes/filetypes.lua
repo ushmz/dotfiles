@@ -32,8 +32,12 @@ M.javascriptreact = function()
 	indent(2, true)
 end
 
-M.json = function ()
-  indent(2, true)
+M.json = function()
+	indent(2, true)
+end
+
+M.jsonc = function()
+	indent(2, true)
 end
 
 M.lua = function()
@@ -64,8 +68,8 @@ M.vim = function()
 	indent(2, true)
 end
 
-M.yaml = function ()
-  indent(2, true)
+M.yaml = function()
+	indent(2, true)
 end
 
 return setmetatable(M, {
