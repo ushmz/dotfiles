@@ -264,4 +264,15 @@
     "command": "editor.action.marker.prevInFiles",
     "when": "neovim.mode == normal && editorFocus",
   },
+  {
+    "key": "g p",
+    "command": "editor.action.peekDefinition",
+    "when": "neovim.mode == normal && editorFocus",
+  },
+  // I don't know why, but the default `gg` command does not take effect
+  {
+    "key": "g g",
+    "command": "cursorTop",
+    "when": "textInputFocus && neovim.mode == 'normal'"
+  }
 ]
