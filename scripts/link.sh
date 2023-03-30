@@ -7,13 +7,13 @@ mkdir -p ${HOME}/.cache/shell
 if [ -L ${HOME}/.zprofile ]; then
 	unlink ${HOME}/.zprofile
 fi
-ln -sf $(pwd)/.zprofile ${HOME}/.zprofile
+ln -sf $(pwd)/zprofile.d/.zprofile ${HOME}/.zprofile
 
 # Remove `~/.zshrc` if exists, and write my `.zshrc`.
 if [ -L ${HOME}/.zshrc ]; then
 	unlink ${HOME}/.zshrc
 fi
-ln -sf $(pwd)/.zshrc ${HOME}/.zshrc
+ln -sf $(pwd)/zshrc.d/.zshrc ${HOME}/.zshrc
 
 # vscode
 if [[ ${OSTYPE} == *darwin* ]]; then
