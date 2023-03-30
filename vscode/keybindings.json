@@ -139,9 +139,31 @@
     "when": "searchInputBoxFocus"
   },
   {
-    "key": "Escape",
+    "key": "[Escape]",
     "command": "workbench.action.navigateBack",
-    "when": "explorerViewletVisible || searchInputBoxFocus",
+    "when": "explorerViewletVisible || searchInputBoxFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusNextSearchResult",
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    "when": "explorerViewletVisible || searchInputBoxFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusNextSearchResult",
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    "when": "explorerViewletVisible || searchInputBoxFocus"
   },
   {
     "key": "n",
@@ -178,12 +200,6 @@
     "command": "vspacecode.space",
     "when": "sideBarFocus && !inputFocus && !whichkeyActive"
   },
-  {
-    "key": "tab",
-    "command": "-extension.vim_tab",
-    "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-  },
-  {
   {
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
@@ -227,52 +243,72 @@
   {
     "key": "shift+k",
     "command": "editor.action.showHover",
-    "when": "neovim.mode == normal && editorFocus"
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g r",
     "command": "editor.action.goToReferences",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g i",
     "command": "editor.action.goToImplementation",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g d",
     "command": "editor.action.revealDefinition",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g t",
     "command": "editor.action.goToTypeDefinition",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g s",
     "command": "editor.action.goToSymbol",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g n",
     "command": "editor.action.marker.nextInFiles",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g N",
     "command": "editor.action.marker.prevInFiles",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
   {
     "key": "g p",
     "command": "editor.action.peekDefinition",
-    "when": "neovim.mode == normal && editorFocus",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
   },
-  // I don't know why, but the default `gg` command does not take effect
   {
+    // I don't know why, but the default `gg` command does not take effect
     "key": "g g",
     "command": "cursorTop",
-    "when": "textInputFocus && neovim.mode == 'normal'"
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+j",
+    "command": "workbench.action.navigateDown",
+    "when": "neovim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+k",
+    "command": "workbench.action.navigateUp",
+    "when": "vim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "vim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+l",
+    "command": "workbench.action.navigateRight",
+    "when": "vim.mode != 'Insert'"
   }
 ]

@@ -11,7 +11,7 @@
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
   "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
-  "editor.fontSize": 13,
+  "editor.fontSize": 16,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": false,
   "editor.formatOnType": true,
@@ -48,6 +48,7 @@
     "**/.git/subtree-cache/**": true,
     "**/node_modules/*/**": true
   },
+  "keyboard.dispatch": "keyCode",
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -172,5 +173,5 @@
     "terminal.ansiRed": "#B05655",
     "terminal.ansiWhite": "#848B92",
     "terminal.ansiYellow": "#E1A574"
-  }
+  },
 }
