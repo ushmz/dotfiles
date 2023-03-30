@@ -11,6 +11,11 @@
     "when": "neovim.mode == normal && editorFocus"
   },
   {
+    "key": "space q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
     "key": "space f",
     "command": "editor.action.formatDocument",
     "when": "neovim.mode == normal && editorFocus"
@@ -134,6 +139,33 @@
     "when": "searchInputBoxFocus"
   },
   {
+    "key": "[Escape]",
+    "command": "workbench.action.navigateBack",
+    "when": "explorerViewletVisible || searchInputBoxFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusNextSearchResult",
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    "when": "explorerViewletVisible || searchInputBoxFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusNextSearchResult",
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    "when": "explorerViewletVisible || searchInputBoxFocus"
+  },
+  {
     "key": "n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
@@ -167,69 +199,6 @@
     "key": "space",
     "command": "vspacecode.space",
     "when": "sideBarFocus && !inputFocus && !whichkeyActive"
-  },
-  {
-    "key": "tab",
-    "command": "extension.vim_tab",
-    "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'"
-  },
-  {
-    "key": "tab",
-    "command": "-extension.vim_tab",
-    "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-  },
-  {
-    "key": "x",
-    "command": "magit.discard-at-point",
-    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
-  },
-  {
-    "key": "k",
-    "command": "-magit.discard-at-point"
-  },
-  {
-    "key": "-",
-    "command": "magit.reverse-at-point",
-    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
-  },
-  {
-    "key": "v",
-    "command": "-magit.reverse-at-point"
-  },
-  {
-    "key": "shift+-",
-    "command": "magit.reverting",
-    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
-  },
-  {
-    "key": "shift+v",
-    "command": "-magit.reverting"
-  },
-  {
-    "key": "shift+o",
-    "command": "magit.resetting",
-    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
-  },
-  {
-    "key": "shift+x",
-    "command": "-magit.resetting"
-  },
-  {
-    "key": "x",
-    "command": "-magit.reset-mixed"
-  },
-  {
-    "key": "ctrl+u x",
-    "command": "-magit.reset-hard"
-  },
-  {
-    "key": "y",
-    "command": "-magit.show-refs"
-  },
-  {
-    "key": "y",
-    "command": "vspacecode.showMagitRefMenu",
-    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode == 'Normal'"
   },
   {
     "key": "ctrl+k",
@@ -270,5 +239,76 @@
     "key": "ctrl+l",
     "command": "file-browser.stepIn",
     "when": "inFileBrowser"
+  },
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g r",
+    "command": "editor.action.goToReferences",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g i",
+    "command": "editor.action.goToImplementation",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinition",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g t",
+    "command": "editor.action.goToTypeDefinition",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g s",
+    "command": "editor.action.goToSymbol",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g n",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g N",
+    "command": "editor.action.marker.prevInFiles",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "g p",
+    "command": "editor.action.peekDefinition",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    // I don't know why, but the default `gg` command does not take effect
+    "key": "g g",
+    "command": "cursorTop",
+    "when": "textInputFocus && neovim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+j",
+    "command": "workbench.action.navigateDown",
+    "when": "neovim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+k",
+    "command": "workbench.action.navigateUp",
+    "when": "vim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "vim.mode != 'Insert'"
+  },
+  {
+    "key": "<C-w>+l",
+    "command": "workbench.action.navigateRight",
+    "when": "vim.mode != 'Insert'"
   }
 ]
