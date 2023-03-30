@@ -41,9 +41,11 @@ mkdir -p ${HOME}/.config/git/
 ln -sf $(pwd)/.config/git/* ${HOME}/.config/git
 
 # gh config
+mkdir ${HOME}/.config/gh/
 ln -sf $(pwd)/.config/gh/config.yml ${HOME}/.config/gh/config.yml
 
 # ranger config files
+mkdir ${HOME}/.config/ranger/
 ln -sf $(pwd)/.config/ranger/* ${HOME}/.config/ranger/
 
 # nvim
