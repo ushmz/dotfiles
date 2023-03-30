@@ -35,7 +35,18 @@ local function resume()
 end
 
 local function references()
-	b().lsp_references({})
+	b().lsp_references({
+		include_declaration = false,
+		include_current_line = false,
+	})
+end
+
+local function implementations()
+	b().lsp_implementations({})
+end
+
+local function type_definitions()
+	b().lsp_type_definitions({})
 end
 
 local function document_symbols()
@@ -49,17 +60,12 @@ end
 local function find_files()
 	b().find_files({
 		no_ignore = false,
-		grouped = true,
 		hidden = true,
 	})
 end
 
 local function live_grep()
-	b().live_grep({
-		no_ignore = false,
-		grouped = true,
-		hidden = true,
-	})
+	b().live_grep({})
 end
 
 local function file_browser()
@@ -81,25 +87,26 @@ local function harpoon()
 	vim.cmd("Telescope harpoon marks")
 end
 
-local max_size = 100000
----Ignore files bigger than a threshold
----@param filepath string
----@param bufnr number
----@param opts table
-local function new_maker(filepath, bufnr, opts)
-	opts = opts or {}
-	filepath = vim.fn.expand(filepath)
-	vim.loop.fs_stat(filepath, function(_, stat)
-		if not stat then
-			return
-		end
-		if stat.size > max_size then
-			local cmd = { "head", "-c", max_size, filepath }
-			require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
-		else
-			require("telescope.previewers").buffer_previewer_maker(filepath, bufnr, opts)
-		end
-	end)
+---If the result file is bigger than a `max_size`,
+---stop reading after `max_size` bytes from the head.
+---@param max_size number Max file size
+---@return fun(filepath: string, bufnr: number, opts: table): nil
+local function new_preview_maker(max_size)
+	return function(filepath, bufnr, opts)
+		opts = opts or {}
+		filepath = vim.fn.expand(filepath)
+		vim.loop.fs_stat(filepath, function(_, stat)
+			if not stat then
+				return
+			end
+			if stat.size > max_size then
+				local cmd = { "head", "-c", max_size, filepath }
+				require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
+			else
+				require("telescope.previewers").buffer_previewer_maker(filepath, bufnr, opts)
+			end
+		end)
+	end
 end
 
 return {
@@ -127,6 +134,8 @@ return {
 		{ "<leader>ds", document_symbols, mode = "n", desc = "Telescope: [D]ocument [S]ymbols" },
 		{ "<leader>ws", workspace_symbols, mode = "n", desc = "Telescope: [W]orkspace [S]ymbols" },
 		{ "gr", references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
+		{ "gi", implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
+		{ "gt", type_definitions, mode = "n", desc = "LSP: [G]oto [T]ype definitions" },
 	},
 	config = function()
 		local actions = require("telescope.actions")
@@ -134,7 +143,7 @@ return {
 
 		t().setup({
 			defaults = {
-				buffer_previewer_maker = new_maker,
+				buffer_previewer_maker = new_preview_maker(100000),
 				mappings = {
 					n = {
 						["q"] = actions.close,

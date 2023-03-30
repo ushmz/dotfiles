@@ -15,9 +15,6 @@ local function on_attach(client, bufnr)
 	end
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	nmap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition")
-	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-
 	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
 	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
 	nmap("<leader>wl", function()
