@@ -127,6 +127,8 @@ return {
 		{ "<leader>ds", document_symbols, mode = "n", desc = "Telescope: [D]ocument [S]ymbols" },
 		{ "<leader>ws", workspace_symbols, mode = "n", desc = "Telescope: [W]orkspace [S]ymbols" },
 		{ "gr", references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
+		{ "gi", implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
+		{ "gt", type_definitions, mode = "n", desc = "LSP: [G]oto [T]ype definitions" },
 	},
 	config = function()
 		local actions = require("telescope.actions")
