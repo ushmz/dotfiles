@@ -87,25 +87,26 @@ local function harpoon()
 	vim.cmd("Telescope harpoon marks")
 end
 
-local max_size = 100000
----Ignore files bigger than a threshold
----@param filepath string
----@param bufnr number
----@param opts table
-local function new_maker(filepath, bufnr, opts)
-	opts = opts or {}
-	filepath = vim.fn.expand(filepath)
-	vim.loop.fs_stat(filepath, function(_, stat)
-		if not stat then
-			return
-		end
-		if stat.size > max_size then
-			local cmd = { "head", "-c", max_size, filepath }
-			require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
-		else
-			require("telescope.previewers").buffer_previewer_maker(filepath, bufnr, opts)
-		end
-	end)
+---If the result file is bigger than a `max_size`,
+---stop reading after `max_size` bytes from the head.
+---@param max_size number Max file size
+---@return fun(filepath: string, bufnr: number, opts: table): nil
+local function new_preview_maker(max_size)
+	return function(filepath, bufnr, opts)
+		opts = opts or {}
+		filepath = vim.fn.expand(filepath)
+		vim.loop.fs_stat(filepath, function(_, stat)
+			if not stat then
+				return
+			end
+			if stat.size > max_size then
+				local cmd = { "head", "-c", max_size, filepath }
+				require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
+			else
+				require("telescope.previewers").buffer_previewer_maker(filepath, bufnr, opts)
+			end
+		end)
+	end
 end
 
 return {
@@ -142,7 +143,7 @@ return {
 
 		t().setup({
 			defaults = {
-				buffer_previewer_maker = new_maker,
+				buffer_previewer_maker = new_preview_maker(100000),
 				mappings = {
 					n = {
 						["q"] = actions.close,
