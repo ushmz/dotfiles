@@ -8,6 +8,9 @@ shell:
     - "/usr/local/bin/tmux a -t 0 || /usr/local/bin/tmux -u"
 window:
   decorations: full
+  dimensions:
+    columns: 140
+    lines: 60
   padding:
     x: 0
     y: 0
