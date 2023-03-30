@@ -50,7 +50,7 @@ end
 ---Set completion menu format
 ---@param entry table
 ---@param vim_item table
----@return table
+---@return unknown
 local function cmp_format(entry, vim_item)
 	local kind = lspkind().cmp_format({
 		mode = "symbol_text",
