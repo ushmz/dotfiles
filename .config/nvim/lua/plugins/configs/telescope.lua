@@ -35,7 +35,18 @@ local function resume()
 end
 
 local function references()
-	b().lsp_references({})
+	b().lsp_references({
+		include_declaration = false,
+		include_current_line = false,
+	})
+end
+
+local function implementations()
+	b().lsp_implementations({})
+end
+
+local function type_definitions()
+	b().lsp_type_definitions({})
 end
 
 local function document_symbols()
@@ -49,17 +60,12 @@ end
 local function find_files()
 	b().find_files({
 		no_ignore = false,
-		grouped = true,
 		hidden = true,
 	})
 end
 
 local function live_grep()
-	b().live_grep({
-		no_ignore = false,
-		grouped = true,
-		hidden = true,
-	})
+	b().live_grep({})
 end
 
 local function file_browser()
