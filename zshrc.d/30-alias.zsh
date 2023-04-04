@@ -3,6 +3,8 @@ case "${OSTYPE}" in
     darwin*)
         (( ${+commands[gdate]} )) && alias date='gdate'
         (( ${+commands[gls]} )) && alias ls='gls'
+        (( ${+commands[gls]} )) && alias ll="gls -lhF --group-directories-first"
+        (( ${+commands[gls]} )) && alias la="gls -alhF --group-directories-first"
         (( ${+commands[gmkdir]} )) && alias mkdir='gmkdir'
         (( ${+commands[gcp]} )) && alias cp='gcp'
         (( ${+commands[gmv]} )) && alias mv='gmv'
@@ -24,8 +26,8 @@ alias sudo='sudo -E '
 
 alias c='clear '
 alias so='source '
-alias ll="ls -lhF --group-directories-first"
-alias la="ls -alhF --group-directories-first"
+alias ll="ls -lhF"
+alias la="ls -alhF"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 

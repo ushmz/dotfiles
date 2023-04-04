@@ -22,8 +22,7 @@ xcode-select --install
 # Install brew
 if !(type brew &>/dev/null); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
-
-if [ "$(uname -m)" = "arm64" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)" > /dev/null
 fi
+
+brew analytics off
