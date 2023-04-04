@@ -44,10 +44,3 @@ export GOBIN=${GOPATH}/bin
 # android
 # export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
 export ANDROID_HOME=${HOME}/Library/Android/sdk
-
-# cargo env
-source "${CARGO_HOME}/env"
-
-if type gdircolors &>/dev/null; then
-    eval $(gdircolors)
-fi
