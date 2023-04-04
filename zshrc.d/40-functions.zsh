@@ -50,3 +50,9 @@ function zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir)($| )" ]]
 }
+
+function branch_gen() {
+    git checkout -b feature/$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10)
+}
+alias gcr="branch_gen"
+
