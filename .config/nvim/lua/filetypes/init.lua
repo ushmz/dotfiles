@@ -12,6 +12,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		[".*/vscode/.*%.json"] = "jsonc",
+		["tsconfig.*%.json"] = "jsonc",
 		[".*%.js%.map"] = "json",
 		["%.config/git/users/.*"] = "gitconfig",
 		[".*%.json%.jbuilder"] = "ruby",
