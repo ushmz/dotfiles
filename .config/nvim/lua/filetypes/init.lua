@@ -2,6 +2,7 @@
 vim.filetype.add({
 	extension = {
 		lock = "yaml",
+		zsh = "sh",
 	},
 	filename = {
 		Brewfile = "ruby",
