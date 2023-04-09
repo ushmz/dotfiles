@@ -22,11 +22,14 @@ function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
 
 # Source python venv if exists
 function sourse_pyenv() {
-    if [[ -n $1 ]]; then
-        source ./$1/bin/activate
+    if [[ -n ${1} ]]; then
+        # shellcheck source=/dev/null
+        source ./${1}/bin/activate
     elif [[ -d './.venv' ]]; then
+        # shellcheck source=/dev/null
         source ./.venv/bin/activate
     elif [[ -d './venv' ]]; then
+        # shellcheck source=/dev/null
         source ./venv/bin/activate
     else
         echo 'Connot find pyenv environment.'

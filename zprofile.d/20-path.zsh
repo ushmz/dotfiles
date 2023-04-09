@@ -8,9 +8,6 @@ typeset -U PATH path MANPATH manpath
 unsetopt GLOBAL_RCS
 
 path=(
-    # brew
-    "/usr/local/bin"(N-/)
-    "/usr/local/sbin"(N-/)
     # GNU/Linux commands
     "/usr/local/opt/coreutils/libexec/gnubin"(N-/) # coreutils
     "/usr/local/opt/ed/libexec/gnubin"(N-/) # ed
@@ -40,8 +37,6 @@ path=(
 )
 
 manpath=(
-    # brew
-    "/usr/local/share/man"(N-/)
     # coreutils
     "/usr/local/opt/coreutils/libexec/gnuman"(N-/)
     # ed
