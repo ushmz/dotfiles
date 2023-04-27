@@ -13,4 +13,5 @@ end
 return {
 	"github/copilot.vim",
 	config = config,
+	event = { "InsertEnter" },
 }
