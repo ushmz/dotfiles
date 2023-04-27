@@ -89,7 +89,7 @@ end
 
 ---If the result file is bigger than a `max_size`,
 ---stop reading after `max_size` bytes from the head.
----@param max_size number Max file size
+---@param max_size number Max file size (bytes)
 ---@return fun(filepath: string, bufnr: number, opts: table): nil
 local function new_preview_maker(max_size)
 	return function(filepath, bufnr, opts)
@@ -162,16 +162,7 @@ return {
 					"__pycache__/",
 				},
 			},
-			vimgrep_arguments = {
-				"rg",
-				"-L",
-				"--color=never",
-				"--no-heading",
-				"--with-filename",
-				"--line-number",
-				"--column",
-				"--smart-case",
-			},
+			vimgrep_arguments = { "rg", "-L", "--vimgrep" },
 			pickers = {
 				find_files = {
 					find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
