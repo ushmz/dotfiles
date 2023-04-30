@@ -6,7 +6,7 @@ vim.filetype.add({
 	},
 	filename = {
 		Brewfile = "ruby",
-		Tmuxfile = "tmux",
+		-- Tmuxfile = "tmux",
 		["go.sum"] = "go",
 		["yarn.lock"] = "yaml",
 		[".jscsrc"] = "json",
@@ -19,6 +19,7 @@ vim.filetype.add({
 		[".*%.json%.jbuilder"] = "ruby",
 		[".*%.conf"] = "conf",
 		[".*%.env%..*"] = "env",
+		[".*%tmux.conf"] = "tmux",
 	},
 })
 
