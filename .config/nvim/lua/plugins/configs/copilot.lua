@@ -12,6 +12,9 @@ end
 
 return {
 	"github/copilot.vim",
+	cond = function()
+		return vim.env.USER ~= "ushmz"
+	end,
 	config = config,
 	event = { "InsertEnter" },
 }
