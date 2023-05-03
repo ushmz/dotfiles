@@ -16,6 +16,19 @@ local ext_diag = {
 	"rubocop",
 }
 
+---Format documents with only clients by null-ls
+---@param bufnr number|nil Format with the clients attached to the given buffer, (defaults: current buffer (0))
+---@param timeout_ms number|nil Request timeout (defaults: 5000)
+local function format_with_null_ls(bufnr, timeout_ms)
+	vim.lsp.buf.format({
+		bufnr = bufnr or 0,
+		timeout_ms = timeout_ms or 5000,
+		filter = function(clt)
+			return clt.name == "null-ls"
+		end,
+	})
+end
+
 local function config()
 	local nls_sources = {}
 	for _, package in ipairs(require("mason-registry").get_installed_packages()) do
@@ -38,27 +51,19 @@ local function config()
 
 	require("null-ls").setup({
 		sources = nls_sources,
+		diagnostics_format = "#{m} (#{s})",
 		on_attach = function(client, bufnr)
 			if client.server_capabilities.documentFormattingProvider then
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"<leader>f",
-					[[<Cmd>lua vim.lsp.buf.format({ timeout_ms = 5000, bufnr = bufnr, filter = function(clt) return clt.name == 'null-ls' end })<CR>]],
-					{ noremap = true, silent = true }
-				)
+				vim.keymap.set("n", "<leader>f", function()
+					format_with_null_ls(bufnr)
+				end, { buffer = true })
 
 				local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					buffer = bufnr,
 					group = fmtag,
 					callback = function()
-						vim.lsp.buf.format({
-							bufnr = bufnr,
-							filter = function(clt)
-								return clt.name == "null-ls"
-							end,
-						})
+            format_with_null_ls(bufnr)
 					end,
 				})
 			end
