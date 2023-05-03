@@ -21,6 +21,26 @@ local function has_words_before()
 	return cursor[2] ~= 0 and (lines[1] or ""):sub(cursor[2], cursor[2]):match("%s") == nil
 end
 
+---The handler on `Ctrl-n` key pressed
+---@param fallback any
+local function ctrl_n(fallback)
+	if cmp().visible() then
+		cmp().select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Insert })
+	else
+		fallback()
+	end
+end
+
+---The handler on `Ctrl-p` key pressed
+---@param fallback any
+local function ctrl_p(fallback)
+	if cmp().visible() then
+		cmp().select_prev_item({ behavior = require("cmp.types").cmp.SelectBehavior.Insert })
+	else
+		fallback()
+	end
+end
+
 ---The handler on `Tab` key pressed
 ---@param fallback any
 local function tab(fallback)
@@ -103,8 +123,8 @@ local function completion_config()
 		mapping = c.mapping.preset.insert({
 			["<Tab>"] = c.mapping(tab, { "i", "s", "c" }),
 			["<S-Tab>"] = c.mapping(shift_tab, { "i", "s", "c" }),
-			["<C-n>"] = c.mapping(tab, { "i", "s", "c" }),
-			["<C-p>"] = c.mapping(shift_tab, { "i", "s", "c" }),
+			["<C-n>"] = c.mapping(ctrl_n, { "i", "s", "c" }),
+			["<C-p>"] = c.mapping(ctrl_p, { "i", "s", "c" }),
 			["<C-j>"] = c.mapping.scroll_docs(4),
 			["<C-k>"] = c.mapping.scroll_docs(-4),
 			["<CR>"] = c.mapping.confirm({ select = false }),
