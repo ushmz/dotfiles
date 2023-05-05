@@ -1,5 +1,3 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 ---Config on attach lsp server
 ---@param client unknown Attached LSP client
 ---@param bufnr number Number of a buffer
@@ -25,6 +23,7 @@ end
 ---Return custom lsp configs table
 ---@return table
 local function get_custom_server_configs()
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local custom_servers = {
 		["lua_ls"] = {
 			on_attach = on_attach,

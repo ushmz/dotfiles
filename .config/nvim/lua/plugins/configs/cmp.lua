@@ -25,7 +25,7 @@ end
 ---@param fallback any
 local function ctrl_n(fallback)
 	if cmp().visible() then
-		cmp().select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Insert })
+		cmp().select_next_item({ behavior = "insert" })
 	else
 		fallback()
 	end
@@ -35,7 +35,7 @@ end
 ---@param fallback any
 local function ctrl_p(fallback)
 	if cmp().visible() then
-		cmp().select_prev_item({ behavior = require("cmp.types").cmp.SelectBehavior.Insert })
+		cmp().select_prev_item({ behavior = "insert" })
 	else
 		fallback()
 	end
