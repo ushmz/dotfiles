@@ -18,6 +18,9 @@ require("lazy").setup("plugins/configs", {
 	ui = {
 		wrap = false,
 		border = "rounded",
+		-- icons = {
+		-- 	lazy = "󰒲",
+		-- },
 	},
 	change_detection = {
 		enabled = true,

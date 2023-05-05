@@ -1,5 +1,3 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 ---Config on attach lsp server
 ---@param client unknown Attached LSP client
 ---@param bufnr number Number of a buffer
@@ -25,6 +23,7 @@ end
 ---Return custom lsp configs table
 ---@return table
 local function get_custom_server_configs()
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local custom_servers = {
 		["lua_ls"] = {
 			on_attach = on_attach,
@@ -94,7 +93,7 @@ local function get_custom_server_configs()
 end
 
 local function config()
-	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	local signs = { Error = "", Warn = " ", Hint = "", Info = "" }
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })

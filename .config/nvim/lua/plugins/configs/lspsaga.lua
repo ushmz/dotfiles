@@ -23,11 +23,11 @@ local function config()
 			sign_priority = 20,
 			virtual_text = false,
 		},
-		finder_icons = {
-			def = "  ",
-			ref = "諭 ",
-			link = "  ",
-		},
+		-- finder_icons = {
+		-- 	def = "  ",
+		-- 	ref = "  ",
+		-- 	link = "  ",
+		-- },
 		finder_request_timeout = 1500,
 		rename = {
 			quit = "<C-c>",
@@ -69,11 +69,11 @@ local function config()
 			winblend = 10,
 			expand = "",
 			collapse = "",
-			preview = " ",
+			preview = " ",
 			code_action = "💡",
 			diagnostic = "🐞",
-			incoming = " ",
-			outgoing = " ",
+			incoming = "󰏷 ",
+			outgoing = "󰏻 ",
 			-- colors from hybrid.vim
 			colors = {
 				normal_bg = "#424242",

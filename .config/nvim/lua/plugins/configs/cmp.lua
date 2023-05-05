@@ -25,7 +25,7 @@ end
 ---@param fallback any
 local function ctrl_n(fallback)
 	if cmp().visible() then
-		cmp().select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Insert })
+		cmp().select_next_item({ behavior = "insert" })
 	else
 		fallback()
 	end
@@ -35,7 +35,7 @@ end
 ---@param fallback any
 local function ctrl_p(fallback)
 	if cmp().visible() then
-		cmp().select_prev_item({ behavior = require("cmp.types").cmp.SelectBehavior.Insert })
+		cmp().select_prev_item({ behavior = "insert" })
 	else
 		fallback()
 	end
@@ -160,30 +160,30 @@ local function lspkind_config()
 		mode = "symbol",
 		preset = "codicons",
 		symbol_map = {
-			Text = "",
-			Method = "",
-			Function = "",
+			Text = "",
+			Method = "",
+			Function = "󰊕",
 			Constructor = "",
-			Field = "ﰠ",
-			Variable = "",
-			Class = "ﴯ",
-			Interface = "",
-			Module = "",
-			Property = "ﰠ",
-			Unit = "塞",
-			Value = "",
-			Enum = "",
-			Keyword = "",
-			Snippet = "",
-			Color = "",
-			File = "",
-			Reference = "",
-			Folder = "",
+			Field = "",
+			Variable = "󰫧",
+			Class = "",
+			Interface = "", -- "",
+			Module = "",
+			Property = "",
+			Unit = "",
+			Value = "",
+			Enum = "󰷐",
+			Keyword = "", -- ""
+			Snippet = "",
+			Color = "",
+			File = "󰈙",
+			Reference = "",
+			Folder = "",
 			EnumMember = "",
-			Constant = "",
-			Struct = "פּ",
+			Constant = "", -- "󰏿",
+			Struct = "",
 			Event = "",
-			Operator = "",
+			Operator = "",
 			TypeParameter = "",
 		},
 	})
