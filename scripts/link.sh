@@ -28,12 +28,6 @@ if [ -L ${HOME}/.zshrc ]; then
 fi
 ln -sf $(pwd)/zshrc.d/.zshrc ${HOME}/.zshrc
 
-# vscode
-if [[ ${OSTYPE} == *darwin* ]]; then
-	ln -sf $(pwd)/vscode/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
-	ln -sf $(pwd)/vscode/keybindings.json "${HOME}/Library/Application Support/Code/User/keybindings.json"
-fi
-
 # .tigrc
 mkdir -p ${HOME}/.config/tig/
 ln -sf $(pwd)/.config/tig/config/.tigrc ${HOME}/.config/tig/config
@@ -54,11 +48,11 @@ mkdir -p ${HOME}/.config/git/
 ln -sf $(pwd)/.config/git/* ${HOME}/.config/git
 
 # gh config
-mkdir ${HOME}/.config/gh/
+mkdir -p ${HOME}/.config/gh/
 ln -sf $(pwd)/.config/gh/config.yml ${HOME}/.config/gh/config.yml
 
 # ranger config files
-mkdir ${HOME}/.config/ranger/
+mkdir -p ${HOME}/.config/ranger/
 ln -sf $(pwd)/.config/ranger/* ${HOME}/.config/ranger/
 
 # nvim
@@ -75,3 +69,17 @@ ln -sf $(pwd)/.config/less/lesskey ${HOME}/.config/less/lesskey
 
 mkdir -p "${HOME}/.config/python"
 ln -sf $(pwd)/.config/python/pythonrc.py ${HOME}/.config/python/pythonrc.py
+
+# Mac OS specific files
+if [ "$(uname)" = "Darwin" ]; then
+	# vscode
+	if (type code >/dev/null); then
+		ln -sf $(pwd)/vscode/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
+		ln -sf $(pwd)/vscode/keybindings.json "${HOME}/Library/Application Support/Code/User/keybindings.json"
+	fi
+
+    # Override for M1 Mac
+	if [ "$(uname -m)" = "arm64" ]; then
+		ln -sf $(pwd)/.config/alacritty/alacritty.arm.yml ${HOME}/.config/alacritty/alacritty.yml
+	fi
+fi
