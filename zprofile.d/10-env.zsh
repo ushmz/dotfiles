@@ -1,5 +1,7 @@
 export EDITOR=nvim
 
+export TMUX_SHELL=$(which zsh)
+
 # XDG_CONFIG_HOME
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_STATE_HOME=${HOME}/.local/state
