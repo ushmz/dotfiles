@@ -23,36 +23,22 @@ local function mason_lspconfig()
 			"jsonls",
 			"kotlin_language_server",
 			"lua_ls",
-			"prismals",
 			"pyright",
 			"rust_analyzer",
-			"solargraph",
 			"sqlls",
 			"stylelint_lsp",
 			"tailwindcss",
 			"tsserver",
 		},
 	})
-	-- Following tools cannot install via `ensure_installed` option,
-	-- make sure to install them manually ;)
+
+	-- Manually install like this
 	-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
-	-- 'flake8',
-	-- 'ktlint',
-	-- 'markdownlint',
-	-- 'rubocop',
-	-- 'black',
-	-- 'goimports',
-	-- 'prettier',
-	-- 'shfmt',
-	-- 'stylua',
-	-- 'yamlfmt',
-	--
-	-- Install like this.
-	-- vim.cmd[[
-	--   MasonInstall flake8 ktlint markdownlint rubocop black goimports prettier shfmt stylua yamlfmt
-	--   MasonInstall bashls cssls dockerls eslint gopls html jsonls kotlin_language_server lua_ls
-	--   MasonInstall prismals pyright rust_analyzer solargraph sqlls stylelint_lsp tailwindcss tsserver yamlls
-	-- ]]
+	-- vim.cmd([[
+	--   MasonInstall black dockerfile-language-server flake8 goimports html-lsp ktlint markdownlint
+	--    \ prettier prisma-language-server rubocop rustfmt shfmt solargraph stylua
+	--    \ yaml-language-server yamlfmt yamllint
+	--   ]])
 end
 
 return {
