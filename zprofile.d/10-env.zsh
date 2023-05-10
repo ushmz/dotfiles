@@ -46,3 +46,5 @@ export GOBIN=${GOPATH}/bin
 # android
 # export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
 export ANDROID_HOME=${HOME}/Library/Android/sdk
+
+export ZLE_REMOVE_SUFFIX_CHARS=$''
