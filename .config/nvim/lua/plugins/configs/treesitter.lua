@@ -44,7 +44,6 @@ local function treesitter()
 			"tsx",
 			"typescript",
 			"vim",
-			"vue",
 			"yaml",
 		},
 		textobjects = {
@@ -121,7 +120,7 @@ end
 local function treesitter_context()
 	require("treesitter-context").setup({
 		enable = true,
-		max_lines = 0,
+		max_lines = 10,
 		trim_scope = "outer",
 		min_window_height = 0,
 		patterns = {
@@ -153,6 +152,15 @@ local function treesitter_context()
 		},
 		exact_patterns = {},
 	})
+	-- Set keymap to go to the outer context
+	vim.keymap.set("n", "[c", function()
+		require("treesitter-context").go_to_context()
+	end, { silent = true })
+
+	-- Set highlights
+	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#282A2E" })
+	vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#282A2E" })
+	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { fg = "#808080", underline = true })
 end
 
 return {
