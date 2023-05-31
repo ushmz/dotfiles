@@ -50,11 +50,11 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 #### Completion and sources
 
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [hrsh7th/cmp-cmdline](<https://github.com/hrsh7th/cmp-path>)  
-- [hrsh7th/cmp-path](<https://github.com/hrsh7th/cmp-nvim-lsp>)  
-- [hrsh7th/cmp-nvim-lsp](<https://github.com/hrsh7th/cmp-nvim-lsp-signature-help>)
-- [hrsh7th/cmp-nvim-lsp-signature-help](<https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol>)
-- [hrsh7th/cmp-nvim-lsp-document-symbol](<https://github.com/hrsh7th/cmp-cmdline>)
+- [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
+- [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
+- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [hrsh7th/cmp-nvim-lsp-signature-help](https://github.com/hrsh7th/cmp-nvim-lsp-signature-help)
+- [hrsh7th/cmp-nvim-lsp-document-symbol](https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol)
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 #### LSP & formatter
@@ -68,8 +68,8 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 
 #### Fuzzy finder
 
-- [nvim-telescope/telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim)
 - [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [nvim-telescope/telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim)
 
 #### UI
 
