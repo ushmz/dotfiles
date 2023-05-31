@@ -1,6 +1,7 @@
 {
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ushmz/.config/nvim/init.lua",
+  "vscode-neovim.mouseSelectionStartVisualMode": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
@@ -173,5 +174,5 @@
     "terminal.ansiRed": "#B05655",
     "terminal.ansiWhite": "#848B92",
     "terminal.ansiYellow": "#E1A574"
-  },
+  }
 }
