@@ -44,7 +44,6 @@ local function treesitter()
 			"tsx",
 			"typescript",
 			"vim",
-			"vue",
 			"yaml",
 		},
 		textobjects = {
