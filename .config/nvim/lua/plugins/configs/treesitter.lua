@@ -153,6 +153,10 @@ local function treesitter_context()
 		},
 		exact_patterns = {},
 	})
+	-- Set keymap to go to the outer context
+	vim.keymap.set("n", "[c", function()
+		require("treesitter-context").go_to_context()
+	end, { silent = true })
 end
 
 return {
