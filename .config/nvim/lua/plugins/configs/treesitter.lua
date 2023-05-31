@@ -157,6 +157,11 @@ local function treesitter_context()
 	vim.keymap.set("n", "[c", function()
 		require("treesitter-context").go_to_context()
 	end, { silent = true })
+
+	-- Set highlights
+	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#282A2E" })
+	vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#282A2E" })
+	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { fg = "#808080", underline = true })
 end
 
 return {
