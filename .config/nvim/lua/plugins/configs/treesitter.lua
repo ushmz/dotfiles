@@ -121,7 +121,7 @@ end
 local function treesitter_context()
 	require("treesitter-context").setup({
 		enable = true,
-		max_lines = 0,
+		max_lines = 10,
 		trim_scope = "outer",
 		min_window_height = 0,
 		patterns = {
