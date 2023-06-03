@@ -138,11 +138,11 @@
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "searchInputBoxFocus"
   },
-  {
-    "key": "[Escape]",
-    "command": "workbench.action.navigateBack",
-    "when": "explorerViewletVisible || searchInputBoxFocus"
-  },
+  // {
+  //   "key": "[Escape]",
+  //   "command": "workbench.action.navigateBack",
+  //   "when": "explorerViewletVisible || searchInputBoxFocus"
+  // },
   {
     "key": "ctrl+n",
     "command": "runCommands",
@@ -190,16 +190,16 @@
     "command": "deleteFile",
     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
   },
-  {
-    "key": "space",
-    "command": "vspacecode.space",
-    "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
-  },
-  {
-    "key": "space",
-    "command": "vspacecode.space",
-    "when": "sideBarFocus && !inputFocus && !whichkeyActive"
-  },
+  // {
+  //   "key": "space",
+  //   "command": "vspacecode.space",
+  //   "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
+  // },
+  // {
+  //   "key": "space",
+  //   "command": "vspacecode.space",
+  //   "when": "sideBarFocus && !inputFocus && !whichkeyActive"
+  // },
   {
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
