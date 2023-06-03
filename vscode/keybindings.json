@@ -21,6 +21,16 @@
     "when": "neovim.mode == normal && editorFocus"
   },
   {
+    "key": "space v",
+    "command": "workbench.action.splitEditor",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
+    "key": "space s",
+    "command": "workbench.action.splitEditorDown",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
     "key": "cmd+shift+t",
     "command": "workbench.action.terminal.focus",
     "when": "editorTextFocus"
