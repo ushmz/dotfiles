@@ -21,6 +21,26 @@
     "when": "neovim.mode == normal && editorFocus"
   },
   {
+    "key": "u",
+    "command": "undo",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "redo",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "space v",
+    "command": "workbench.action.splitEditor",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
+    "key": "space s",
+    "command": "workbench.action.splitEditorDown",
+    "when": "neovim.mode == normal && editorFocus"
+  },
+  {
     "key": "cmd+shift+t",
     "command": "workbench.action.terminal.focus",
     "when": "editorTextFocus"
@@ -121,7 +141,7 @@
   {
     "key": "; d",
     "command": "workbench.view.explorer",
-    "when": "editorFocus && !explorerViewletVisible"
+    "when": "neovim.mode != 'insert' && editorFocus && !explorerViewletVisible"
   },
   {
     "key": "; d",
@@ -130,19 +150,24 @@
   },
   {
     "key": "; f",
-    "command": "workbench.view.search",
-    "when": "editorTextFocus && !searchInputBoxFocus"
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "; f",
+    "key": "; g",
+    "command": "workbench.view.search",
+    "when": "neovim.mode != 'insert' && editorTextFocus && !searchInputBoxFocus"
+  },
+  {
+    "key": "; g",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "searchInputBoxFocus"
   },
-  {
-    "key": "[Escape]",
-    "command": "workbench.action.navigateBack",
-    "when": "explorerViewletVisible || searchInputBoxFocus"
-  },
+  // {
+  //   "key": "[Escape]",
+  //   "command": "workbench.action.navigateBack",
+  //   "when": "explorerViewletVisible || searchInputBoxFocus"
+  // },
   {
     "key": "ctrl+n",
     "command": "runCommands",
@@ -190,16 +215,16 @@
     "command": "deleteFile",
     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
   },
-  {
-    "key": "space",
-    "command": "vspacecode.space",
-    "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
-  },
-  {
-    "key": "space",
-    "command": "vspacecode.space",
-    "when": "sideBarFocus && !inputFocus && !whichkeyActive"
-  },
+  // {
+  //   "key": "space",
+  //   "command": "vspacecode.space",
+  //   "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
+  // },
+  // {
+  //   "key": "space",
+  //   "command": "vspacecode.space",
+  //   "when": "sideBarFocus && !inputFocus && !whichkeyActive"
+  // },
   {
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
@@ -292,23 +317,38 @@
     "when": "textInputFocus && neovim.mode != 'insert'"
   },
   {
-    "key": "<C-w>+j",
+    "key": "ctrl+w w",
+    "command": "workbench.action.navigateEditorGroups",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+w j",
     "command": "workbench.action.navigateDown",
-    "when": "neovim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "<C-w>+k",
+    "key": "ctrl+w k",
     "command": "workbench.action.navigateUp",
-    "when": "vim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "<C-w>+h",
+    "key": "ctrl+w h",
     "command": "workbench.action.navigateLeft",
-    "when": "vim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "<C-w>+l",
+    "key": "ctrl+w l",
     "command": "workbench.action.navigateRight",
-    "when": "vim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "tab [",
+    "command": "workbench.action.previousEditor",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "tab ]",
+    "command": "workbench.action.nextEditor",
+    "when": "neovim.mode != 'insert' && editorFocus"
   }
 ]
