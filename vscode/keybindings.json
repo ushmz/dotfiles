@@ -343,12 +343,12 @@
   },
   {
     "key": "tab [",
-    "command": "workbench.action.moveEditorLeftInGroup",
+    "command": "workbench.action.previousEditor",
     "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
     "key": "tab ]",
-    "command": "workbench.action.moveEditorRightInGroup",
+    "command": "workbench.action.nextEditor",
     "when": "neovim.mode != 'insert' && editorFocus"
   }
 ]
