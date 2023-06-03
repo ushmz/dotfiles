@@ -325,5 +325,15 @@
     "key": "ctrl+w l",
     "command": "workbench.action.navigateRight",
     "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "tab [",
+    "command": "workbench.action.moveEditorLeftInGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "tab ]",
+    "command": "workbench.action.moveEditorRightInGroup",
+    "when": "editorTextFocus"
   }
 ]
