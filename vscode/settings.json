@@ -1,6 +1,4 @@
 {
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ushmz/.config/nvim/init.lua",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
@@ -8,11 +6,13 @@
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.openDebug": "openOnSessionStart",
   // Editor settings
+  "terminal.integrated.fontSize": 15,
+  "bookmarks.treeview.visible": true,
   "editor.accessibilitySupport": "off",
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
   "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": false,
   "editor.formatOnType": true,
@@ -38,7 +38,7 @@
   // Auto save all files several seconds after focusing out (or stopping cursor)
   "files.autoSave": "off",
   "files.eol": "\n",
-  "files.insertFinalNewline": true,
+  "files.insertFinalNewline": false,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
