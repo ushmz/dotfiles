@@ -21,6 +21,16 @@
     "when": "neovim.mode == normal && editorFocus"
   },
   {
+    "key": "u",
+    "command": "undo",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "redo",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
     "key": "space v",
     "command": "workbench.action.splitEditor",
     "when": "neovim.mode == normal && editorFocus"
