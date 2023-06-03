@@ -329,11 +329,11 @@
   {
     "key": "tab [",
     "command": "workbench.action.moveEditorLeftInGroup",
-    "when": "editorTextFocus"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
     "key": "tab ]",
     "command": "workbench.action.moveEditorRightInGroup",
-    "when": "editorTextFocus"
+    "when": "neovim.mode != 'insert' && editorFocus"
   }
 ]
