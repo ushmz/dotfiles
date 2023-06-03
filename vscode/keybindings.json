@@ -141,7 +141,7 @@
   {
     "key": "; d",
     "command": "workbench.view.explorer",
-    "when": "editorFocus && !explorerViewletVisible"
+    "when": "neovim.mode != 'insert' && editorFocus && !explorerViewletVisible"
   },
   {
     "key": "; d",
@@ -150,11 +150,16 @@
   },
   {
     "key": "; f",
-    "command": "workbench.view.search",
-    "when": "editorTextFocus && !searchInputBoxFocus"
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "; f",
+    "key": "; g",
+    "command": "workbench.view.search",
+    "when": "neovim.mode != 'insert' && editorTextFocus && !searchInputBoxFocus"
+  },
+  {
+    "key": "; g",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "searchInputBoxFocus"
   },
