@@ -58,10 +58,12 @@ local function workspace_symbols()
 end
 
 local function find_files()
-	b().find_files({
-		no_ignore = false,
-		hidden = true,
-	})
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	if vim.v.shell_error == 0 then
+		b().git_files({ no_ignore = false, hidden = true })
+	else
+		b().find_files({ no_ignore = false, hidden = true })
+	end
 end
 
 local function live_grep()
