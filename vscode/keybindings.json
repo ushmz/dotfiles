@@ -302,23 +302,28 @@
     "when": "textInputFocus && neovim.mode != 'insert'"
   },
   {
-    "key": "<C-w>+j",
+    "key": "ctrl+w w",
+    "command": "workbench.action.navigateEditorGroups",
+    "when": "neovim.mode != 'insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+w j",
     "command": "workbench.action.navigateDown",
-    "when": "neovim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "<C-w>+k",
+    "key": "ctrl+w k",
     "command": "workbench.action.navigateUp",
-    "when": "vim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "<C-w>+h",
+    "key": "ctrl+w h",
     "command": "workbench.action.navigateLeft",
-    "when": "vim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   },
   {
-    "key": "<C-w>+l",
+    "key": "ctrl+w l",
     "command": "workbench.action.navigateRight",
-    "when": "vim.mode != 'insert'"
+    "when": "neovim.mode != 'insert' && editorFocus"
   }
 ]
