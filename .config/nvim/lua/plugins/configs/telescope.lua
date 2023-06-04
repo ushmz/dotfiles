@@ -6,6 +6,20 @@ local function b()
 	return require("telescope.builtin")
 end
 
+---Check if it's inside git work tree
+---@return boolean
+local function is_git_repo()
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	return vim.v.shell_error == 0
+end
+
+---Get the root directory of the Git repository.
+---@return string
+local function get_git_root()
+	local git_path = vim.fn.finddir(".git", ".;")
+	return vim.fn.fnamemodify(git_path, ":h")
+end
+
 local function buffers()
 	b().buffers({})
 end
@@ -58,20 +72,25 @@ local function workspace_symbols()
 end
 
 local function find_files()
-	b().find_files({
-		no_ignore = false,
-		hidden = true,
-	})
+	local opts = { no_ignore = false, hidden = true }
+	if is_git_repo() then
+		b().git_files(opts)
+	else
+		b().find_files(opts)
+	end
 end
 
 local function live_grep()
-	b().live_grep({})
+	local opts = {}
+	if is_git_repo() then
+		table.insert(opts, { cwd = get_git_root() })
+	end
+	b().live_grep(opts)
 end
 
 local function file_browser()
 	t().load_extension("file_browser")
 	t().extensions["file_browser"]["file_browser"]({
-		path = "%:p:h",
 		cwd = vim.fn.expand("%:p:h"),
 		respect_gitignore = false,
 		hidden = true,
@@ -120,21 +139,21 @@ return {
 		{ "nvim-telescope/telescope-file-browser.nvim" },
 	},
 	keys = {
+		{ ";;", resume, mode = "n", desc = "Telescope: Resume latest search" },
 		{ ";b", buffers, mode = "n", desc = "Telescope: Search [B]uffers" },
 		{ ";c", commands, mode = "n", desc = "Telescope: Search [C]ommands" },
+		{ ";d", file_browser, mode = "n", desc = "Telescope: [D]irectory & File Browser" },
 		{ ";e", diagnostics, mode = "n", desc = "Telescope: Search diagnostics ([E]rrors)" },
-		{ ";h", help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
-		{ ";k", keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
-		{ ";o", oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
-		{ ";;", resume, mode = "n", desc = "Telescope: Resume latest search" },
 		{ ";f", find_files, mode = "n", desc = "Telescope: Search [F]iles" },
 		{ ";g", live_grep, mode = "n", desc = "Telescope: Live [G]rep" },
-		{ ";d", file_browser, mode = "n", desc = "Telescope: [D]irectory & File Browser" },
+		{ ";h", help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
+		{ ";k", keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
 		{ ";m", harpoon, mode = "n", desc = "Telescope: Search Harpoon [M]arks" },
-		{ "<leader>ds", document_symbols, mode = "n", desc = "Telescope: [D]ocument [S]ymbols" },
-		{ "<leader>ws", workspace_symbols, mode = "n", desc = "Telescope: [W]orkspace [S]ymbols" },
-		{ "gr", references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
+		{ ";o", oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
+		{ ";sd", document_symbols, mode = "n", desc = "Telescope: [S]ymbols in [D]ocument" },
+		{ ";sw", workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in  [W]orkspace" },
 		{ "gi", implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
+		{ "gr", references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
 		{ "gt", type_definitions, mode = "n", desc = "LSP: [G]oto [T]ype definitions" },
 	},
 	config = function()
