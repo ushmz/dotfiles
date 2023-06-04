@@ -11,13 +11,13 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
 -- Set options
 require("basics")
 
--- Set filetype options
-require("filetypes")
-
--- Set keymaps
-require("mappings")
-
--- Plugin configs
 if not vim.g.vscode then
+	-- Set filetype options
+	require("filetypes")
+
+	-- Set keymaps
+	require("mappings")
+
+	-- Plugin configs
 	require("plugins")
 end
