@@ -268,53 +268,53 @@
   {
     "key": "shift+k",
     "command": "editor.action.showHover",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g r",
     "command": "editor.action.goToReferences",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g i",
     "command": "editor.action.goToImplementation",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g d",
     "command": "editor.action.revealDefinition",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g t",
     "command": "editor.action.goToTypeDefinition",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g s",
     "command": "editor.action.goToSymbol",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g n",
     "command": "editor.action.marker.nextInFiles",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g N",
     "command": "editor.action.marker.prevInFiles",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "g p",
     "command": "editor.action.peekDefinition",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     // I don't know why, but the default `gg` command does not take effect
     "key": "g g",
     "command": "cursorTop",
-    "when": "textInputFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode != 'insert'"
   },
   {
     "key": "ctrl+w w",
