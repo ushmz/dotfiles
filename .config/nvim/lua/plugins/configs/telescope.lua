@@ -6,6 +6,20 @@ local function b()
 	return require("telescope.builtin")
 end
 
+---Check if it's inside git work tree
+---@return boolean
+local function is_git_repo()
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	return vim.v.shell_error == 0
+end
+
+---Get the root directory of the Git repository.
+---@return string
+local function get_git_root()
+	local git_path = vim.fn.finddir(".git", ".;")
+	return vim.fn.fnamemodify(git_path, ":h")
+end
+
 local function buffers()
 	b().buffers({})
 end
@@ -58,22 +72,25 @@ local function workspace_symbols()
 end
 
 local function find_files()
-	vim.fn.system("git rev-parse --is-inside-work-tree")
-	if vim.v.shell_error == 0 then
-		b().git_files({ no_ignore = false, hidden = true })
+	local opts = { no_ignore = false, hidden = true }
+	if is_git_repo() then
+		b().git_files(opts)
 	else
-		b().find_files({ no_ignore = false, hidden = true })
+		b().find_files(opts)
 	end
 end
 
 local function live_grep()
-	b().live_grep({})
+	local opts = {}
+	if is_git_repo() then
+		table.insert(opts, { cwd = get_git_root() })
+	end
+	b().live_grep(opts)
 end
 
 local function file_browser()
 	t().load_extension("file_browser")
 	t().extensions["file_browser"]["file_browser"]({
-		path = "%:p:h",
 		cwd = vim.fn.expand("%:p:h"),
 		respect_gitignore = false,
 		hidden = true,
