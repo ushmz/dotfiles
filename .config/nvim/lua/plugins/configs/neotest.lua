@@ -96,12 +96,20 @@ local function playwright_adapter()
 	})
 end
 
+local function rust_adapter()
+	return require("noetest-rust")
+end
+
+local function dart_adapter()
+	return require("neotest-dart")
+end
+
 local function config()
 	-- require("neodev").setup({
 	-- 	library = { plugins = { "neotest" }, types = true },
 	-- })
 	require("neotest").setup({
-    -- [TODO] Can load depends on current filetype?
+		-- [TODO] Can load depends on current filetype?
 		adapters = {
 			plenary_adapter(),
 			go_adapter(),
@@ -135,6 +143,9 @@ return {
 			{
 				"thenbe/neotest-playwright",
 				-- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+			},
+			{
+				"rouge8/neotest-rust",
 			},
 		},
 		keys = {
