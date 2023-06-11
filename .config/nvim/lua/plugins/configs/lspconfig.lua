@@ -125,6 +125,8 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "InsertEnter" },
 		dependencies = {
+			-- make sure to setup neodev BEFORE lspconfig
+			{ "folke/neodev.nvim", ft = { "lua" } },
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
 		},
 		config = config,
