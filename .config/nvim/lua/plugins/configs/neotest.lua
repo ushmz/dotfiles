@@ -119,7 +119,7 @@ local function config()
 	-- 	library = { plugins = { "neotest" }, types = true },
 	-- })
 	require("neotest").setup({
-    -- [TODO] Can load depends on current filetype?
+		-- [TODO] Can load depends on current filetype?
 		adapters = {
 			plenary_adapter(),
 			go_adapter(),
