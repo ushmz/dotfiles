@@ -78,8 +78,8 @@ end
 
 local function jest_adapter()
 	return require("neotest-jest")({
-		jestCommand = "npm test --",
 		jestConfigFile = "custom.jest.config.ts",
+		jestCommand = "yarn test --",
 		env = { CI = true },
 		cwd = function(path)
 			return vim.fn.getcwd()
