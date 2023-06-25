@@ -22,5 +22,3 @@
 	required = true
 [ghq]
 	root = ~/src
-[commit]
-	template = /Users/ushmz/.config/git/message
