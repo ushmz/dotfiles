@@ -1,0 +1,151 @@
+shell:
+  program: wsl.exe
+  args:
+    - -d
+    - Ubuntu-22.04
+    - --cd ~
+    - "/home/linuxbrew/.linuxbrew/bin/tmux a -t 0 || /home/linuxbrew/.linuxbrew/bin/tmux -u"
+window:
+  decorations: full
+  dimensions:
+    columns: 140
+    lines: 60
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: false
+  opacity: 1.0
+  dynamic_title: true
+font:
+  size: 16
+  normal:
+    family: "Hack Nerd Font"
+    style: Regular
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
+  italic:
+    family: "Hack Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "Hack Nerd Font"
+    style: Bold Italic
+live_config_reload: true
+east_asian_fullwidth: true
+mouse:
+  hints:
+    launcher: open
+    modifiers: None
+mouse_bindings:
+  - {mouse: Left, mods: Shift, action: Copy}
+  - {mouse: Right, mods: Shift, action: Paste}
+selection:
+  save_to_clipboard: true
+# Colors - Hybrid(adjusted)
+colors:
+  primary:
+    background: "#27292c"
+    foreground: "#c5c8c6"
+  cursor:
+    text: "#000000"
+    cursor: "#ffffff"
+    style: Block
+    vi_mode_style: Block
+  vi_mode_cursor:
+    text: "#000000"
+    cursor: "#c5c8c6"
+  # Normal colors
+  normal:
+    black: "#1d1f21"
+    red: "#cc6666"
+    green: "#95ad68"
+    yellow: "#f0c674"
+    blue: "#81a2be"
+    magenta: "#b294bb"
+    cyan: "#8abeb7"
+    white: "#c5c8c6"
+  # Bright colors
+  bright:
+    black: "#484c52"
+    red: "#d27c7b"
+    green: "#dffebe"
+    yellow: "#f0d189"
+    blue: "#96b1c9"
+    magenta: "#bfa5c7"
+    cyan: "#9fc9c3"
+    white: "#fcf7e2"
+## Colors (Iceberg Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#161821'
+#     foreground: '#d2d4de'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#161821'
+#     red:     '#e27878'
+#     green:   '#b4be82'
+#     yellow:  '#e2a478'
+#     blue:    '#84a0c6'
+#     magenta: '#a093c7'
+#     cyan:    '#89b8c2'
+#     white:   '#c6c8d1'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#6b7089'
+#     red:     '#e98989'
+#     green:   '#c0ca8e'
+#     yellow:  '#e9b189'
+#     blue:    '#91acd1'
+#     magenta: '#ada0d3'
+#     cyan:    '#95c4ce'
+#     white:   '#d2d4de'
+#
+# Theme (Yamikawa)
+# window:
+#     decorations: full
+#     # startup_mode: Fullscreen
+#     padding:
+#         x: 1
+#         y: 0
+#     title: 💊Alacritty💕
+#     dynamic_title: false
+#
+# colors:
+#     # Default colors
+#     primary:
+#         background: '#2b2028'
+#         foreground: '#a691b3'
+#
+#     cursor:
+#         text: '0x000000'
+#         cursor: '0xffffff'
+#         style: Block
+#         vi_mode_style: Block
+#     vi_mode_cursor:
+#         text: '0x000000'
+#         cursor: '0xffffff'
+#
+#     # Normal colors
+#     normal:
+#         black:   '#35383b'
+#         red:     '#b05655'
+#         green:   '#769972'
+#         yellow:  '#e1a574'
+#         blue:    '#7693ac'
+#         magenta: '#977ba0'
+#         cyan:    '#749e99'
+#         white:   '#848b92'
+#
+#     # Bright colors
+#     bright:
+#         black:   '#484c52'
+#         red:     '#d27c7b'
+#         green:   '#dffebe'
+#         yellow:  '#f0d189'
+#         blue:    '#96b1c9'
+#         magenta: '#bfa5c7'
+#         cyan:    '#9fc9c3'
+#         white:   '#fcf7e2'
