@@ -7,37 +7,39 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.cach
 git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.cache/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions.git ${HOME}/.cache/zsh-completions
 
-if [ "$(uname)" != "Darwin" ]; then
-    exit 1
-fi
-
-function open_appstore() {
-    echo "Make sure you're logged in with your Apple ID"
-    sleep 1; open -a "App Store"
-}
-
-function confirm_login() {
-    while true; do
-        echo "$* [Y/n]: (default: n) "
-        read ANS
-        case ${ANS} in
-            [Yy]*)
-                return 0
-                ;;
-            *)
-                open_appstore
-                ;;
-        esac
-    done
-}
-
+# brew fomulae
 brew update
+if [ "$(uname)" == "Darwin" ]; then
+    function open_appstore() {
+        echo "Make sure you're logged in with your Apple ID"
+        sleep 1; open -a "App Store"
+    }
 
-open_appstore
-if confirm_login "Are you logged in with your Apple ID?"; then
-    brew bundle
-    brew cleanup
+    function confirm_login() {
+        while true; do
+            echo "$* [Y/n]: (default: n) "
+            read ANS
+            case ${ANS} in
+                [Yy]*)
+                    return 0
+                    ;;
+                *)
+                    open_appstore
+                    ;;
+            esac
+        done
+    }
+
+    open_appstore
+    if confirm_login "Are you logged in with your Apple ID?"; then
+        brew bundle
+    fi
+else
+    brew bundle --file LinuxBrewfile
 fi
+
+brew cleanup
+
 
 # Install poetry
 if !(type poetry &>/dev/null); then

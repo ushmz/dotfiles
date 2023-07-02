@@ -46,6 +46,7 @@ ln -sf $(pwd)/.config/starship/starship.toml ${HOME}/.config/starship.toml
 # git config
 mkdir -p ${HOME}/.config/git/
 ln -sf $(pwd)/.config/git/* ${HOME}/.config/git
+git config --global commit.template ${HOME}/.config/git/message
 
 # gh config
 mkdir -p ${HOME}/.config/gh/
@@ -78,7 +79,7 @@ if [ "$(uname)" = "Darwin" ]; then
 		ln -sf $(pwd)/vscode/keybindings.json "${HOME}/Library/Application Support/Code/User/keybindings.json"
 	fi
 
-    # Override for M1 Mac
+	# Override for M1 Mac
 	if [ "$(uname -m)" = "arm64" ]; then
 		ln -sf $(pwd)/.config/alacritty/alacritty.arm.yml ${HOME}/.config/alacritty/alacritty.yml
 	fi

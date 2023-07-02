@@ -6,23 +6,30 @@ mkdir -p ${HOME}/.local/state
 mkdir -p ${HOME}/.local/share
 mkdir -p ${HOME}/.cache
 
-if [ "$(uname)" != "Darwin" ]; then
-    exit 1
-fi
-
-# If you use Apple Silicon, install Rosetta2
-if [ "$(uname -m)" = "arm64" ]; then
-    /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-fi
-
 # Install xcode command line tools
-xcode-select --install
+if [ "$(uname)" == "Darwin" ]; then
+    xcode-select --install
 
+    # If you use Apple Silicon, install Rosetta2
+    if [ "$(uname -m)" = "arm64" ]; then
+        /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+    fi
+fi
 
 # Install brew
 if !(type brew &>/dev/null); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv)" > /dev/null
-fi
 
-brew analytics off
+    if [ $(uname) == "Darwin" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)" > /dev/null
+    else
+        # Install dependency
+        sudo apt-get install build-essectial
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" > /dev/null
+    fi
+
+    brew analytics off
+
+    # Reccomended tool
+    brew install gcc
+fi

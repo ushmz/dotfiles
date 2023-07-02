@@ -2,6 +2,10 @@
 
 # Thanks for a great resource of `.macos` - https://mths.be/macos
 
+if [ $(uname) != "Darwin" ]; then
+	exit 0
+fi
+
 # Close System Preferences panes
 osascript -e 'tell application "System Preferences" to quit'
 
