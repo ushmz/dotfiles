@@ -45,6 +45,7 @@ brew 'docker'
 brew 'exa'
 brew 'exiftool'
 brew 'fd'
+brew 'ffmpeg'
 brew 'figlet'
 brew 'findutils'
 brew 'fumiyas/echo-sd/echo-sd'
@@ -53,6 +54,7 @@ brew 'gh'
 brew 'ghq'
 brew 'gibo'
 brew 'git'
+brew 'git-delta'
 brew 'gnu-sed'
 brew 'gnu-tar'
 brew 'gnupg'
@@ -99,6 +101,7 @@ brew 'ranger'
 brew 'redis'
 brew 'ripgrep'
 brew 'rust-analyzer'
+brew 'rustup-init'
 brew 'sift'
 brew 'silicon'
 brew 'sl'
@@ -163,6 +166,7 @@ cask 'pdf-expert'
 cask 'phantomjs'
 cask 'postman'
 cask 'qlmarkdown'
+cask 'rancher'
 cask 'raycast'
 cask 'rectangle'
 cask 'rubymine'
@@ -197,3 +201,10 @@ mas 'Microsoft Word',         id: 462054704
 mas 'Microsoft PowerPoint',   id: 462062816
 mas 'HotKey',                 id: 975890633
 # rubocop:enable Style/NumericLiterals
+vscode "asvetliakov.vscode-neovim"
+vscode "firsttris.vscode-jest-runner"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "sa2taka.js-teleporter"
+vscode "shanejarvie.hybrid-theme"
+vscode "vscodevim.vim"
+vscode "yoavbls.pretty-ts-errors"
