@@ -58,6 +58,11 @@ if type gh &>/dev/null; then
     alias gcheck="gh pr checkout "
 fi
 
+# You can switch theme depending on MacOS dark mode
+# if type bat &>/dev/null; then
+#     alias cat="bat --theme=\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo ansi || echo GitHub)"
+# fi
+
 alias zshenv='vi ~/.zshenv'
 alias zprofile='vi ~/dotfiles/zprofile.d'
 alias zshrc='vi ~/dotfiles/zshrc.d'
