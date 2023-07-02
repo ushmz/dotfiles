@@ -1,12 +1,11 @@
 [core]
     editor = nvim
+    pager = delta
 [user]
 	name = ushmz
 	email = 44394399+ushmz@users.noreply.github.com
 [user "ssh://git@githu.com"]
     email = 44394399+ushmz@users.noreply.github.com
-[pull]
-	rebase = false
 [init]
 	defaultBranch = main
 [color]
@@ -24,12 +23,29 @@
 	current = green
 	local = white
 	remote = cyan
+[interactive]
+    diffFilter = delta --color-only --features=interactive
 [filter "lfs"]
 	clean = git-lfs clean -- %F
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[ghq]
-	root = ~/src
 [commit]
 	template = ~/.config/git/message
+[pull]
+	rebase = false
+[merge]
+    conflictStyle = diff3
+[diff]
+    colorMoved = dimmed-zebra
+[ghq]
+	root = ~/src
+[delta]
+    navigate = true
+    light = false
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = ansi
+    true-color = always
+    hyperlinks = true
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
