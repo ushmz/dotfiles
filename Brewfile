@@ -201,3 +201,10 @@ mas 'Microsoft Word',         id: 462054704
 mas 'Microsoft PowerPoint',   id: 462062816
 mas 'HotKey',                 id: 975890633
 # rubocop:enable Style/NumericLiterals
+vscode "asvetliakov.vscode-neovim"
+vscode "firsttris.vscode-jest-runner"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "sa2taka.js-teleporter"
+vscode "shanejarvie.hybrid-theme"
+vscode "vscodevim.vim"
+vscode "yoavbls.pretty-ts-errors"
