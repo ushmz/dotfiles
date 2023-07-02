@@ -33,6 +33,9 @@ path=(
     "/usr/local/share/npm/bin"(N-/)
     "${HOME}/node_modules/.bin"(N-/)
 
+    # Rancher Desktop
+    "${HOME}/.rd/bin"(N-/)
+
     ${path}
 )
 
