@@ -7,18 +7,29 @@
     email = 44394399+ushmz@users.noreply.github.com
 [pull]
 	rebase = false
-[credential]
-	helper = osxkeychain
 [init]
 	defaultBranch = main
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+	ui = true
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	old = red bold
+	new = green bold
+[color "branch"]
+	current = green
+	local = white
+	remote = cyan
 [filter "lfs"]
-	clean = git-lfs clean -- %f
+	clean = git-lfs clean -- %F
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 [ghq]
 	root = ~/src
+[commit]
+	template = ~/.config/git/message
