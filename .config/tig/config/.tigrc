@@ -37,6 +37,7 @@ bind generic F !git fetch
 
 bind branch C !git checkout -b %(prompt) %(branch)
 bind branch P ?@!git push origin %(repo:head)
+bind status P ?@!git push origin %(repo:head)
 bind branch L ?@!git pull origin %(branch)
 bind branch H !git-browse-remote %(branch)
 
