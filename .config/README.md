@@ -92,6 +92,7 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 - [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
 - [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 - [tversteeg/registers.nvim](https://github.com/tversteeg/registers.nvim)
+- [nvim-neotest/neotest](https://github.com/nvim-neotest/neotest)
 
 ## starship
 

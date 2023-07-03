@@ -12,7 +12,7 @@
 ### Avoid conflicting with webpage's own shortcut keys
 
 - Press `i` to disable vimium key-binds temporary.
-- Press `Esc` to anable vimium again.
+- Press `Esc` to enable vimium again.
 
 ### Escape from iframe
 
