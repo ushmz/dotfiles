@@ -17,15 +17,43 @@ set split-view-height   = 80%
 
 # key bind
 # "P" to push to current branch
-bind    generic       P       ?@!git push origin %(repo:head)
+bind generic <C-f> move-page-down
+bind generic <C-b> move-page-up
+
+bind generic g move-first-line
+bind generic G move-last-line
+
+bind main G none
+bind main G move-last-line
+
+# revertを定義
+bind main v !?git revert %(commit)
+bind diff v !?git revert %(commit)
+bind main V !?git revert %(prompt) %(commit)
+bind diff V !?git revert %(prompt) %(commit)
+
+bind generic F none
+bind generic F !git fetch
+
+bind branch C !git checkout -b %(prompt) %(branch)
+bind branch P ?@!git push origin %(repo:head)
+bind status P ?@!git push origin %(repo:head)
+bind branch L ?@!git pull origin %(branch)
+bind branch H !git-browse-remote %(branch)
+
+bind generic M none
+bind branch M none
+bind branch M !git merge %(branch)
+
+bind status C !git commit -v
 
 # "D" to delete untracked files on status view
 # https://github.com/jonas/tig/issues/31
 # https://github.com/jonas/tig/issues/393
-bind    status        D       ?@rm %(file)
+bind status D ?@rm %(file)
 
-bind    generic       F       ?@!git fetch %(remote)
-bind    generic       U       ?@!git pull %(remote)
+bind generic F ?@!git fetch %(remote)
+bind generic U ?@!git pull %(remote)
 
 # Color
 # synopsis: color area fgcolor bgcolor [attributes]
