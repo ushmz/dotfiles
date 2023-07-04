@@ -1,5 +1,7 @@
 # dotfiles
 
+🚧 Always WIP 🚧
+
 ## Setup
 
 1\. Clone this repository.
@@ -51,7 +53,7 @@ make brewfile
 
 ### Windows
 
-[WIP] Install tools with winget
+Install tools with winget
 
 ```sh
 make winget
