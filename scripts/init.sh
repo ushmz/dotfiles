@@ -1,13 +1,14 @@
-#!/usr/bin/env sh -Cue
+#!/usr/bin/env sh
+set -Cue
 
 # Make direcories for dotfiles
-mkdir -p ${HOME}/.config
-mkdir -p ${HOME}/.local/state
-mkdir -p ${HOME}/.local/share
-mkdir -p ${HOME}/.cache
+mkdir -p "${HOME}/.config"
+mkdir -p "${HOME}/.local/state"
+mkdir -p "${HOME}/.local/share"
+mkdir -p "${HOME}/.cache"
 
 # Install xcode command line tools
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     xcode-select --install
 
     # If you use Apple Silicon, install Rosetta2
@@ -17,15 +18,15 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # Install brew
-if !(type brew &>/dev/null); then
+if ! (type brew 1>/dev/null); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-    if [ $(uname) == "Darwin" ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)" > /dev/null
+    if [ "$(uname)" = "Darwin" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)" >/dev/null
     else
         # Install dependency
         sudo apt-get install build-essectial
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" > /dev/null
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >/dev/null
     fi
 
     brew analytics off
