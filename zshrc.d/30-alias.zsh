@@ -1,64 +1,56 @@
-function map() {
-    if type abbr > /dev/null 2>&1; then
-        abbr -S --force $1="${2}" > /dev/null
-    else
-        alias $1="${2}"
-    fi
-}
-
 # Replace BSD tools to GNU tools
 case "${OSTYPE}" in
     darwin*)
-        (( ${+commands[gdate]} )) && map date 'gdate'
-        (( ${+commands[gls]} )) && map ls 'gls'
-        (( ${+commands[gls]} )) && map ll 'gls -lhF --group-directories-first'
-        (( ${+commands[gls]} )) && map la 'gls -alhF --group-directories-first'
-        (( ${+commands[gmkdir]} )) && map mkdir 'gmkdir'
-        (( ${+commands[gcp]} )) && map cp 'gcp'
-        (( ${+commands[gmv]} )) && map mv 'gmv'
-        (( ${+commands[grm]} )) && map rm 'grm'
-        (( ${+commands[gdu]} )) && map du 'gdu'
-        (( ${+commands[ghead]} )) && map head 'ghead'
-        (( ${+commands[gtail]} )) && map tail 'gtail'
-        (( ${+commands[gsed]} )) && map sed 'gsed'
-        (( ${+commands[ggrep]} )) && map grep 'ggrep'
-        (( ${+commands[gfind]} )) && map find 'gfind'
-        (( ${+commands[gdirname]} )) && map dirname 'gdirname'
-        (( ${+commands[gxargs]} )) && map xargs 'gxargs'
+        (( ${+commands[gdate]} )) && alias date 'gdate'
+        (( ${+commands[gls]} )) && alias ls 'gls'
+        (( ${+commands[gls]} )) && alias ll 'gls -lhF --group-directories-first'
+        (( ${+commands[gls]} )) && alias la 'gls -alhF --group-directories-first'
+        (( ${+commands[gmkdir]} )) && alias mkdir 'gmkdir'
+        (( ${+commands[gcp]} )) && alias cp 'gcp'
+        (( ${+commands[gmv]} )) && alias mv 'gmv'
+        (( ${+commands[grm]} )) && alias rm 'grm'
+        (( ${+commands[gdu]} )) && alias du 'gdu'
+        (( ${+commands[ghead]} )) && alias head 'ghead'
+        (( ${+commands[gtail]} )) && alias tail 'gtail'
+        (( ${+commands[gsed]} )) && alias sed 'gsed'
+        (( ${+commands[ggrep]} )) && alias grep 'ggrep'
+        (( ${+commands[gfind]} )) && alias find 'gfind'
+        (( ${+commands[gdirname]} )) && alias dirname 'gdirname'
+        (( ${+commands[gxargs]} )) && alias xargs 'gxargs'
         ;;
 esac
 
 # Force to check if the following arguments is alias or not
 # and avoid resetting environment variables
-map sudo 'sudo -E '
+alias sudo 'sudo -E '
 
-map c 'clear '
-map so 'source '
-map ll 'ls -lhF'
-map la 'ls -alhF'
-map ... 'cd ../../'
-map .... 'cd ../../../'
+alias c 'clear '
+alias so 'source '
+alias ll 'ls -lhF'
+alias la 'ls -alhF'
+alias ... 'cd ../../'
+alias .... 'cd ../../../'
 
-map rm 'rm -i'
-map mv 'mv -i'
-map cp 'cp -i'
-map wget 'wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
+alias rm 'rm -i'
+alias mv 'mv -i'
+alias cp 'cp -i'
+alias wget 'wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 
 if type exa &>/dev/null; then
-    map ls 'exa -x --icons --group-directories-first'
-    map ll 'ls -ghlF --time-style=long-iso'
-    map la 'll -a'
-    map gitls 'll --git --git-ignore'
+    alias ls 'exa -x --icons --group-directories-first'
+    alias ll 'ls -ghlF --time-style=long-iso'
+    alias la 'll -a'
+    alias gitls 'll --git --git-ignore'
 fi
 
 if type nvim &>/dev/null; then
-    map vi 'nvim'
-    map vim 'nvim'
+    alias vi 'nvim'
+    alias vim 'nvim'
 fi
 
 if type gh &>/dev/null; then
-    map gv 'gh repo view --web'
-    map gcheck 'gh pr checkout '
+    alias gv 'gh repo view --web'
+    alias gcheck 'gh pr checkout '
 fi
 
 # You can switch theme depending on MacOS dark mode
@@ -66,13 +58,11 @@ fi
 #     alias cat="bat --theme=\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo ansi || echo GitHub)"
 # fi
 
-map zshenv 'vi ~/.zshenv'
-map zprofile 'vi ~/dotfiles/zprofile.d'
-map zshrc 'vi ~/dotfiles/zshrc.d'
-map soenv 'source ~/.zshenv'
-map sorc 'source ~/.zshrc'
-map soprof 'source ~/.zprofile'
-map dot 'cd ~/dotfiles'
-map 'mux.sh' '~/.scripts/mux.sh'
-
-unset -f map
+alias zshenv 'vi ~/.zshenv'
+alias zprofile 'vi ~/dotfiles/zprofile.d'
+alias zshrc 'vi ~/dotfiles/zshrc.d'
+alias soenv 'source ~/.zshenv'
+alias sorc 'source ~/.zshrc'
+alias soprof 'source ~/.zprofile'
+alias dot 'cd ~/dotfiles'
+alias 'mux.sh' '~/.scripts/mux.sh'

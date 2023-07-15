@@ -26,9 +26,3 @@ fi
 if [ -d ${XDG_CACHE_HOME}/zsh-completions ]; then
     FPATH=${XDG_CACHE_HOME}/zsh-completions/src:$FPATH
 fi
-
-# zsh abbr
-if [ -d ${XDG_CACHE_HOME}/zsh-abbr ]; then
-    # shellcheck source=/dev/null
-    source ${XDG_CACHE_HOME}/zsh-abbr/zsh-abbr.zsh
-fi
