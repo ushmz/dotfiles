@@ -1,24 +1,22 @@
 # Replace BSD tools to GNU tools
-case "${OSTYPE}" in
-    darwin*)
-        (( ${+commands[gdate]} )) && alias date='gdate'
-        (( ${+commands[gls]} )) && alias ls='gls'
-        (( ${+commands[gls]} )) && alias ll='gls -lhF --group-directories-first'
-        (( ${+commands[gls]} )) && alias la='gls -alhF --group-directories-first'
-        (( ${+commands[gmkdir]} )) && alias mkdir='gmkdir'
-        (( ${+commands[gcp]} )) && alias cp='gcp'
-        (( ${+commands[gmv]} )) && alias mv='gmv'
-        (( ${+commands[grm]} )) && alias rm='grm'
-        (( ${+commands[gdu]} )) && alias du='gdu'
-        (( ${+commands[ghead]} )) && alias head='ghead'
-        (( ${+commands[gtail]} )) && alias tail='gtail'
-        (( ${+commands[gsed]} )) && alias sed='gsed'
-        (( ${+commands[ggrep]} )) && alias grep='ggrep'
-        (( ${+commands[gfind]} )) && alias find='gfind'
-        (( ${+commands[gdirname]} )) && alias dirname='gdirname'
-        (( ${+commands[gxargs]} )) && alias xargs='gxargs'
-        ;;
-esac
+if [ "$(uname)" = "Darwin" ]; then
+    (( ${+commands[gdate]} )) && alias date='gdate'
+    (( ${+commands[gls]} )) && alias ls='gls'
+    (( ${+commands[gls]} )) && alias ll='gls -lhF --group-directories-first'
+    (( ${+commands[gls]} )) && alias la='gls -alhF --group-directories-first'
+    (( ${+commands[gmkdir]} )) && alias mkdir='gmkdir'
+    (( ${+commands[gcp]} )) && alias cp='gcp'
+    (( ${+commands[gmv]} )) && alias mv='gmv'
+    (( ${+commands[grm]} )) && alias rm='grm'
+    (( ${+commands[gdu]} )) && alias du='gdu'
+    (( ${+commands[ghead]} )) && alias head='ghead'
+    (( ${+commands[gtail]} )) && alias tail='gtail'
+    (( ${+commands[gsed]} )) && alias sed='gsed'
+    (( ${+commands[ggrep]} )) && alias grep='ggrep'
+    (( ${+commands[gfind]} )) && alias find='gfind'
+    (( ${+commands[gdirname]} )) && alias dirname='gdirname'
+    (( ${+commands[gxargs]} )) && alias xargs='gxargs'
+fi
 
 # Force to check if the following arguments is alias or not
 # and avoid resetting environment variables
@@ -30,6 +28,7 @@ alias ll='ls -lhF'
 alias la='ls -alhF'
 alias ...='cd ../../'
 alias ....='cd ../../../'
+alias exe='chmod +x'
 
 alias rm='rm -i'
 alias mv='mv -i'
@@ -65,4 +64,4 @@ alias soenv='source ~/.zshenv'
 alias sorc='source ~/.zshrc'
 alias soprof='source ~/.zprofile'
 alias dot='cd ~/dotfiles'
-alias='mux.sh'='~/.scripts/mux.sh'
+alias 'mux.sh'='~/.scripts/mux.sh'
