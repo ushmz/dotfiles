@@ -20,7 +20,7 @@ fi
 
 # Force to check if the following arguments is alias or not
 # and avoid resetting environment variables
-alias sudo='sudo -E='
+alias sudo='sudo -E'
 
 alias c='clear='
 alias so='source='
