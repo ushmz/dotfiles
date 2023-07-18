@@ -1,13 +1,13 @@
 # Google it func
 function googleit() {
     IFS="+$IFS"
-    brave "https://www.google.com/search?q=$*&gl=us&hl=en" 1>/dev/null 2>&1
+    open "https://www.google.com/search?q=$*&gl=us&hl=en" 1>/dev/null 2>&1
     IFS=${IFS#?}
 }
 
 function guguru() {
     IFS="+$IFS"
-    brave "https://www.google.com/search?q=$*&gl=ja&hl=ja" 1>/dev/null 2>&1
+    open "https://www.google.com/search?q=$*&gl=ja&hl=ja" 1>/dev/null 2>&1
     IFS=${IFS#?}
 }
 
