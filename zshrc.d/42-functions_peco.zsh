@@ -84,6 +84,20 @@ if type peco &>/dev/null; then
 		function prune() {
 			git branch -d $(git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g")
 		}
+
+        function gwt() {
+            local dir=$(git worktree list | awk '{ print $1}' | peco --query "$LBUFFER")
+            if [ -n "${dir}" ]; then
+                cd ${dir}
+            fi
+        }
+
+        function gwt-rm() {
+            local dir=$(git worktree list | awk '{ print $1}' | peco --query "$LBUFFER")
+            if [ -n "${dir}" ]; then
+                git worktree remove ${dir}
+            fi
+        }
 	fi
 
 	function iterm() {

@@ -51,3 +51,6 @@ dest
 # others
 nohup.out
 .husky/
+
+# git worktree
+.worktrees
