@@ -30,5 +30,4 @@ fi
 if [ -d "${XDG_CACHE_HOME}/zsh-abbr" ]; then
     # shellcheck source=/dev/null
     source "${XDG_CACHE_HOME}/zsh-abbr/zsh-abbr.zsh"
-    abbr load
 fi
