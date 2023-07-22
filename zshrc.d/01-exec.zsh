@@ -1,3 +1,5 @@
+bindkey -e
+
 # starship (cross-shell prompt)
 if type starship &>/dev/null; then
 	eval "$(starship init zsh)"

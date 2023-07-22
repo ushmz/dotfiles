@@ -60,10 +60,8 @@ function split_tmux_pane() {
 }
 
 # (Make tmux session if needed) and split pane
-function make_tmux_workspace() {
+function split_pane() {
     if [ -n "$TMUX" ]; then
-        # alias 'mux.sh'='~/.scripts/mux.sh'
-        # alias to tmux split-pane script
         split_tmux_pane "$@"
         return 0
     fi
@@ -74,7 +72,6 @@ function make_tmux_workspace() {
             tmux new -d -s "${1}-${2}"
             tmux send-keys -t "${1}-${2}" "split_tmux_pane ${1} ${2}" C-m
             tmux attach-session -t "${1}-${2}"
-            itermprof kahma
         else
             tmux new -d -s "${1}-${PWD##*/}"
             tmux send-keys -t "${1}-${PWD##*/}" "split_tmux_pane $1" C-m
@@ -84,4 +81,4 @@ function make_tmux_workspace() {
         tmux
     fi
 }
-alias tm='make_tmux_workspace'
+alias tm='split_pane'

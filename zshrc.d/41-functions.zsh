@@ -1,3 +1,11 @@
+local function map() {
+    if type abbr &>/dev/null; then
+        abbr -g -S -q --force "$@" &>/dev/null
+    else
+        alias "$@"
+    fi
+}
+
 # Google it func
 function googleit() {
     IFS="+$IFS"
@@ -17,9 +25,6 @@ alias ggr="googleit"
 alias jwhat="guguru"
 alias jggr="guguru"
 
-# Change iTerm profile
-function itermprof() { echo -ne "\033]1337;SetProfile=$@\a" }
-
 # Source python venv if exists
 function sourse_pyenv() {
     if [[ -n ${1} ]]; then
@@ -35,7 +40,7 @@ function sourse_pyenv() {
         echo 'Connot find pyenv environment.'
     fi
 }
-alias venv='sourse_pyenv'
+map venv='sourse_pyenv'
 
 # Convert movie file to gif.
 # $1 : Input file name
@@ -53,8 +58,3 @@ function zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir)($| )" ]]
 }
-
-function branch_gen() {
-    git checkout -b feature/$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10)
-}
-alias gcr="branch_gen"
