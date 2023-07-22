@@ -46,3 +46,6 @@ export GOBIN=${GOPATH}/bin
 # android
 # export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
 export ANDROID_HOME=${HOME}/Library/Android/sdk
+
+# fzf default options
+export FZF_DEFAULT_OPTS='--layout=reverse --tabstop=4 --info=right --no-mouse'

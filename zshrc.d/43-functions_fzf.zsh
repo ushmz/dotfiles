@@ -34,35 +34,70 @@ if type fzf &>/dev/null; then
 
     if type ghq &>/dev/null; then
         function ghqcd() {
-            BUFFER="cd $(ghq list -p | fzf +m)"
-            zle accept-line
+            local destination="$(ghq list -p | fzf +m)"
+            if [ -n "${destination}" ]; then
+                BUFFER="cd ${destination}"
+                zle accept-line
+            fi
         }
         zle -N ghqcd
         bindkey '^g' ghqcd
 
-        function ghq-code() {
+        function ghqcode() {
             ghq list -p | fzf +m | xargs -I % code %
         }
 
-        function ghqcd-kill() {
+        function ghqrm() {
             ghq list -p | fzf -m | xargs -I -P2 % sh -c 'rm -rf %'
         }
     fi
 
 	if type git &>/dev/null; then
-        function fbr() {
+        function branch() {
             git checkout $(git branch -vv | fzf +m | awk '{print $1}' | sed "s/^\*\s*//g")
         }
 
-        function fbrd() {
+        function branchd() {
             git branch -vv | fzf -m | awk '{print $1}' | sed "s/^\*\s*//g" | xargs git branch -d
         }
 
-        function fbrdd() {
+        function branchdd() {
             git branch -vv | fzf -m | awk '{print $1}' | sed "s/^\*\s*//g" | xargs git branch -D
         }
 
-        function fshow() {
+        function stash() {
+            git stash list | fzf -m | awk '{print $1}' | xargs -I % git stash pop %
+        }
+
+        function stashd() {
+            git stash list | fzf -m | awk '{print $1}' | xargs -I % git stash drop %
+        }
+
+        function worktree() {
+            local target=$(git worktree list | awk '{print $1}' | fzf +m)
+            if [ -n "${target}" ]; then
+                cd "${target}"
+            fi
+        }
+
+        function worktree-add() {
+            local target=$(git worktree add $(git rev-parse --show-cdup).worktrees/${1} -b ${1})
+            if [ -n "${target}" ]; then
+                cd "$(git rev-parse --show-cdup).worktrees/${1}"
+            fi
+        }
+
+        function worktree-clone() {
+            local target=$(git branch -vv | fzf +m | awk '{print $1}' | sed "s/^\*\s*//g")
+            git worktree add $(git rev-parse --show-cdup).worktrees/${target} ${target}
+            cd $(git rev-parse --show-cdup).worktrees/${target}
+        }
+
+        function worktree-rm() {
+            git worktree list | awk '{ print $1}' | fzf -m | xargs -I % git worktree remove -f %
+        }
+
+        function show() {
             git log --graph --color=always \
                 --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
             fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -71,14 +106,6 @@ if type fzf &>/dev/null; then
                             xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                             {}
             FZF-EOF"
-        }
-
-        function fwt() {
-            cd $(git worktree list | awk '{print $1}' | fzf +m)
-        }
-
-        function fwt-rm() {
-            git worktree list | awk '{ print $1}' | fzf -m | xargs -I % git worktree remove -f %
         }
 	fi
 fi
