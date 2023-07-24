@@ -57,3 +57,6 @@ nohup.out
 
 # git worktree
 .worktrees
+
+# storybook
+storybook-static
