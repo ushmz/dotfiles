@@ -16,7 +16,7 @@ local function on_attach(client, bufnr)
 	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
 	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
 	nmap("<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)
 	end, "[W]orkspace [L]ist Folders")
 end
 
@@ -31,12 +31,10 @@ local function get_custom_server_configs()
 			settings = {
 				Lua = {
 					diagnostics = { globals = { "vim" } },
+					telemetry = { enable = false },
 					workspace = {
 						library = vim.api.nvim_get_runtime_file("", true),
 						checkThirdParty = false,
-					},
-					telemetry = {
-						enable = false,
 					},
 				},
 			},
