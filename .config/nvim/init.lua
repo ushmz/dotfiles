@@ -1,3 +1,7 @@
+if vim.loader then
+	vim.loader.enable()
+end
+
 vim.cmd("autocmd!")
 
 -- Auto switch IME
