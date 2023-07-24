@@ -52,5 +52,11 @@ dest
 nohup.out
 .husky/
 
+# asdf
+.tool-versions
+
 # git worktree
 .worktrees
+
+# storybook
+storybook-static
