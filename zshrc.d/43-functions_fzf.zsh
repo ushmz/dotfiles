@@ -48,7 +48,7 @@ if type fzf &>/dev/null; then
         }
 
         function ghqrm() {
-            ghq list -p | fzf -m | xargs -I -P2 % sh -c 'rm -rf %'
+            ghq list -p | fzf -m | xargs -P2 -I % sh -c 'rm -rf %'
         }
     fi
 
