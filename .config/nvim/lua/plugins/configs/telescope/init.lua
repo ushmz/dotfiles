@@ -58,6 +58,8 @@ local function config()
 			},
 		},
 	})
+
+	require("plugins.configs.telescope.hl").set()
 end
 
 return {

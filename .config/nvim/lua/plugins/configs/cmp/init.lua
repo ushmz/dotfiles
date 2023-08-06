@@ -153,6 +153,8 @@ local function completion_config()
 			{ name = "buffer" },
 		}),
 	})
+
+	require("plugins.configs.cmp.hl").set()
 end
 
 local function lspkind_config()

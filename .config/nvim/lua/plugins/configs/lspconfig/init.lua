@@ -24,6 +24,8 @@ local function config()
 			require("lspconfig")[server_name].setup(conf)
 		end,
 	})
+
+	require("plugins.configs.lspconfig.hl").set()
 end
 
 return {
@@ -43,7 +45,7 @@ return {
 						handler_opts = {
 							border = "rounded",
 						},
-            hint_prefix = "",
+						hint_prefix = "",
 					})
 				end,
 			},
