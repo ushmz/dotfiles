@@ -9,5 +9,5 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 	},
-	cofnig = config,
+	config = config,
 }
