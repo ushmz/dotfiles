@@ -12,7 +12,7 @@ local get_path_and_pos = function(str, sep)
 	end
 	local filepath, row, col = unpack(result, 1, 3)
 	local text = table.concat(result, ":", 4, #result)
-	return filepath, row, col, text
+	return filepath, row, col, string.match(text, "^%s*(.-)%s*$")
 end
 
 ---Get the tail of the path and the path to display.
@@ -88,11 +88,11 @@ M.create_for_live_grep = function(opts)
 				{ width = nil }, -- Space
 				{ width = nil }, -- Parent directory path
 				{ width = nil }, -- File name
-        { width = nil }, -- Separator (Colon)
+				{ width = nil }, -- Separator (Colon)
 				{ width = nil }, -- Matched char position (line number)
 				{ width = nil }, -- Separator (Colon)
 				{ width = nil }, -- Matched char position (column)
-        { width = nil }, -- Space
+				{ width = nil }, -- Space
 				{ remaining = true }, -- Matched line text
 			},
 		})
@@ -107,11 +107,11 @@ M.create_for_live_grep = function(opts)
 				{ " ", nil },
 				{ directory_path .. "/", "TelescopeResultsIdentifier" },
 				{ filename, nil },
-        { ":", "TelescopeResultsComment" },
+				{ ":", "TelescopeResultsComment" },
 				{ row, "TelescopeResultsNumber" },
 				{ ":", "TelescopeResultsComment" },
 				{ col, "TelescopeResultsNumber" },
-				{ "\t", nil },
+				{ " ", nil },
 				{ text, "TelescopeResultsComment" },
 			})
 		end
