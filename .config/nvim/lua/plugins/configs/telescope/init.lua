@@ -17,7 +17,6 @@ local function config()
 			file_ignore_patterns = {
 				"*.DS_Store",
 				"*.pyc",
-				".cache/",
 				".cargo/",
 				".git/",
 				".npm/",
@@ -27,7 +26,7 @@ local function config()
 				"__pycache__/",
 			},
 		},
-		vimgrep_arguments = { "rg", "-L", "--vimgrep" },
+		vimgrep_arguments = { "rg", "-L", "--vimgrep", "--smart-case" },
 		pickers = {
 			find_files = {
 				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
@@ -83,6 +82,7 @@ return {
 		{ ";k", pickers.keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
 		{ ";m", pickers.harpoon, mode = "n", desc = "Telescope: Search Harpoon [M]arks" },
 		{ ";o", pickers.oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
+		{ ";ss", pickers.grep_string, mode = "n", desc = "Telescope: [S]earch [S]tring" },
 		{ ";sd", pickers.document_symbols, mode = "n", desc = "Telescope: [S]ymbols in [D]ocument" },
 		{ ";sw", pickers.workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in  [W]orkspace" },
 		{ "gi", pickers.implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
