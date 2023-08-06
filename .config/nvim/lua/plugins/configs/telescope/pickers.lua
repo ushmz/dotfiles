@@ -75,7 +75,7 @@ end
 
 M.find_files = function()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
-	local opts = { no_ignore = false, hidden = true, entry_maker = entry_maker.create() }
+	local opts = { no_ignore = false, hidden = true, entry_maker = entry_maker.create_for_find_files() }
 	if is_git_repo() then
 		b().git_files(opts)
 	else
@@ -83,8 +83,18 @@ M.find_files = function()
 	end
 end
 
+M.grep_string = function()
+	local entry_maker = require("plugins.configs.telescope.entry_maker")
+	local opts = { entry_maker = entry_maker.create_for_live_grep() }
+	if is_git_repo() then
+		table.insert(opts, { cwd = get_git_root() })
+	end
+	b().grep_string(opts)
+end
+
 M.live_grep = function()
-	local opts = {}
+	local entries = require("plugins.configs.telescope.entry_maker")
+	local opts = { entry_maker = entries.create_for_live_grep() }
 	if is_git_repo() then
 		table.insert(opts, { cwd = get_git_root() })
 	end
