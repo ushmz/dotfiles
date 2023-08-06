@@ -70,7 +70,7 @@ if type fzf &>/dev/null; then
         }
 
         function stashd() {
-            git stash list | fzf -m | awk '{print $1}' | xargs -I % git stash drop %
+            git stash list | fzf -m | awk '{print $1}' | sed 's/:$//' | xargs -I % git stash drop '%'
         }
 
         function worktree() {
