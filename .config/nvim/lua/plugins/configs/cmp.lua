@@ -136,7 +136,7 @@ local function completion_config()
 			{ name = "path" },
 			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
-			{ name = "nvim_lsp_signature_help" },
+			-- { name = "nvim_lsp_signature_help" },
 		}),
 	})
 
@@ -196,7 +196,7 @@ return {
 		dependencies = {
 			{ "hrsh7th/cmp-path", event = { "InsertEnter" } },
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
-			{ "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },
+			-- { "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },
 			-- { "hrsh7th/cmp-nvim-lsp-document-symbol", event = { "InsertEnter" } },
 			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
 			{ "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } },
