@@ -8,8 +8,8 @@ local function config()
 			css = { require("formatter.filetypes.css").stylefmt },
 			dart = { require("formatter.filetypes.dart").dartfmt },
 			go = {
-				require("formatter.filetypes.go").gofmt,
 				require("formatter.filetypes.go").goimports,
+				require("formatter.filetypes.go").gofmt,
 			},
 			html = { require("formatter.filetypes.html").prettier },
 			javascript = {
@@ -44,11 +44,11 @@ local function config()
 	})
 
 	vim.keymap.set("n", "<leader>f", "<cmd>Format<CR>", { noremap = true, silent = true })
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		callback = function()
-			vim.cmd("Format")
-		end,
-	})
+	-- vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 	callback = function()
+	-- 		vim.cmd("Format")
+	-- 	end,
+	-- })
 end
 
 return {
