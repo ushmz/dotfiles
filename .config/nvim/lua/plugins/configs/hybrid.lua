@@ -86,6 +86,13 @@ local function set_completion_menu_hl()
 	set_hl("CmpItemKindText", { link = "CmpItemKindInterface" })
 end
 
+local function set_diff_hl()
+	set_hl("DiffAdd", { bg = green, fg = nil, blend = 30 })
+	set_hl("DiffChange", { bg = "#333333", fg = "#ffffff", blend = 30 })
+	set_hl("DiffDelete", { bg = red, fg = nil, blend = 30 })
+	set_hl("DiffText", { bg = nil, fg = nil })
+end
+
 return {
 	"w0ng/vim-hybrid",
 	config = function()
@@ -103,6 +110,7 @@ return {
 				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#4a4c4d" })
 				set_diagnostic_colors()
 				set_completion_menu_hl()
+				set_diff_hl()
 			end,
 		})
 	end,
