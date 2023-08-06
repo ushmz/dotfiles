@@ -21,7 +21,7 @@ vim.filetype.add({
 		[".*%.env%..*"] = "env",
 		[".*%tmux.conf"] = "tmux",
 		[".*%.zsh"] = "zsh",
-    [".*%.mdx"] = "jsx",
+		[".*%.mdx"] = "jsx",
 	},
 })
 

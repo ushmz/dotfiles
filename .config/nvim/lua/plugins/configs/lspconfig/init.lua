@@ -43,7 +43,7 @@ return {
 						handler_opts = {
 							border = "rounded",
 						},
-            hint_prefix = "",
+						hint_prefix = "",
 					})
 				end,
 			},
