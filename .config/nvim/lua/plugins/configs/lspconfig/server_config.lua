@@ -30,35 +30,6 @@ local function default_server_config()
 end
 
 local config = {
-	---@see https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
-	["tsserver"] = vim.tbl_deep_extend("force", default_server_config(), {
-		settings = {
-			["typescript"] = {
-				inlayHints = {
-					includeInlayParameterNameHints = "all",
-					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = true,
-					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = true,
-				},
-			},
-			["javascript"] = {
-				inlayHints = {
-					includeInlayParameterNameHints = "all",
-					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = true,
-					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = true,
-				},
-			},
-		},
-	}),
 	---@see https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
 	["gopls"] = vim.tbl_deep_extend("force", default_server_config(), {
 		hints = {
