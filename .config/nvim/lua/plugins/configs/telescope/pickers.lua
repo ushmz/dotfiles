@@ -51,9 +51,11 @@ M.resume = function()
 end
 
 M.references = function()
+	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().lsp_references({
 		include_declaration = false,
 		include_current_line = false,
+    entry_maker = entry_maker.create_for_lsp_references()
 	})
 end
 
