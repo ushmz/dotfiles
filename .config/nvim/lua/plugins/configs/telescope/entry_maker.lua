@@ -8,9 +8,12 @@ local strip = function(str)
 end
 
 ---Get the path and position from a string.
----@param str string The string to parse.
----@param sep string The separator to use.
----@return string, string, string, string
+---@param str string # The string to parse.
+---@param sep string # The separator to use.
+---@return string filepath # The file path.
+---@return string row # Line(row) number.
+---@return string col # Column number.
+---@return string text # The text.
 local get_path_and_pos = function(str, sep)
 	local result = {}
 	local regex = ("([^%s]+)"):format(sep)
@@ -19,22 +22,21 @@ local get_path_and_pos = function(str, sep)
 	end
 	local filepath, row, col = unpack(result, 1, 3)
 	local text = table.concat(result, ":", 4, #result)
-	return filepath, row, col, string.match(text, "^%s*(.-)%s*$")
+	return filepath, row, col, strip(text)
 end
 
 ---Get the tail of the path and the path to display.
----@param filename string
----@return string
----@return string
-M.get_path_and_tail = function(filename)
+---e.g. .config/nvim/init.lua -> init.lua, .config/nvim
+---@param file_path string
+---@return string tail # The tail of the path (file name in most case).
+---@return string directory_path # Directory path to display
+M.get_path_and_tail = function(file_path)
 	local utils = require("telescope.utils")
-	local bufname_tail = utils.path_tail(filename)
-	local path_without_tail = require("plenary.strings").truncate(filename, #filename - #bufname_tail, "")
-	local path_to_display = utils.transform_path({
-		path_display = { "truncate" },
-	}, path_without_tail)
+	local tail = utils.path_tail(file_path)
+	local path_without_tail = require("plenary.strings").truncate(file_path, #file_path - #tail, "")
+	local directory_path = utils.transform_path({ path_display = { "truncate" } }, path_without_tail)
 
-	return bufname_tail, path_to_display
+	return tail, directory_path
 end
 
 ---Create a new entry maker for the file picker.
@@ -63,9 +65,8 @@ M.create_for_find_files = function(opts)
 		})
 
 		entry.display = function(et)
-			local tail_raw, path_to_display = M.get_path_and_tail(et.value)
-			local tail = tail_raw .. " "
-			local icon, iconhl = utils.get_devicons(tail_raw)
+			local tail, path_to_display = M.get_path_and_tail(et.value)
+			local icon, iconhl = utils.get_devicons(tail)
 
 			return displayer({
 				{ icon, iconhl },
@@ -77,6 +78,10 @@ M.create_for_find_files = function(opts)
 	end
 end
 
+---Create a new entry maker for the grep picker.
+---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
+---@param opts table
+---@return function
 M.create_for_live_grep = function(opts)
 	local make_entry = require("telescope.make_entry")
 	local strings = require("plenary.strings")
@@ -86,8 +91,8 @@ M.create_for_live_grep = function(opts)
 	local def_icon = devicons.get_icon("fname", { default = true })
 
 	return function(line)
-		local entry_make = make_entry.gen_from_vimgrep(opts or {})
-		local entry = entry_make(line)
+		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
+		local entry = entry_maker(line)
 		local displayer = entry_display.create({
 			separator = "",
 			items = {

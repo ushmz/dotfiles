@@ -86,7 +86,7 @@ return {
 		{ ";o", pickers.oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
 		{ ";ss", pickers.grep_string, mode = "n", desc = "Telescope: [S]earch [S]tring" },
 		{ ";sd", pickers.document_symbols, mode = "n", desc = "Telescope: [S]ymbols in [D]ocument" },
-		{ ";sw", pickers.workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in  [W]orkspace" },
+		{ ";sw", pickers.workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in [W]orkspace" },
 		{ "gi", pickers.implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
 		{ "gr", pickers.references, mode = "n", desc = "LSP: [G]oto [R]eferences" },
 		{ "gt", pickers.type_definitions, mode = "n", desc = "LSP: [G]oto [T]ype definitions" },
