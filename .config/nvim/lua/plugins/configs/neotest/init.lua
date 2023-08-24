@@ -46,7 +46,6 @@ local function test_suite(project_root, strategy)
 	if strategy then
 		opt[strategy] = "dap"
 	end
-	-- vim.inspect(require("neotest").run)
 	require("neotest").run.run(opt)
 end
 
