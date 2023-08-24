@@ -16,7 +16,7 @@ local function config()
 				{
 					"filename",
 					file_status = true,
-					path = 0,
+					path = 1,
 				},
 			},
 			lualine_x = {
