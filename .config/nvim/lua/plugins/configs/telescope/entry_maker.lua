@@ -30,7 +30,7 @@ end
 ---@param file_path string
 ---@return string tail # The tail of the path (file name in most case).
 ---@return string directory_path # Directory path to display
-M.get_path_and_tail = function(file_path)
+local get_path_and_tail = function(file_path)
 	local utils = require("telescope.utils")
 	local tail = utils.path_tail(file_path)
 	local path_without_tail = require("plenary.strings").truncate(file_path, #file_path - #tail, "")
@@ -39,18 +39,17 @@ M.get_path_and_tail = function(file_path)
 	return tail, directory_path
 end
 
----Create a new entry maker for the file picker.
----@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
----@param opts any
+---Get the highlighted entry maker for the file picker.
+---Put the file name first and the dimmed parent directory path in the second.
+---@param opts? table
 ---@return function
-M.create_for_find_files = function(opts)
+local get_highlighted_entry_maker_from_file = function(opts)
 	local make_entry = require("telescope.make_entry")
 	local strings = require("plenary.strings")
 	local utils = require("telescope.utils")
 	local entry_display = require("telescope.pickers.entry_display")
 	local devicons = require("nvim-web-devicons")
 	local def_icon = devicons.get_icon("fname", { default = true })
-	-- local level_up = vim.v.count
 
 	return function(line)
 		local entry_make = make_entry.gen_from_file(opts or {})
@@ -65,24 +64,25 @@ M.create_for_find_files = function(opts)
 		})
 
 		entry.display = function(et)
-			local tail, path_to_display = M.get_path_and_tail(et.value)
+			local tail, directory_path = get_path_and_tail(et.value)
 			local icon, iconhl = utils.get_devicons(tail)
 
 			return displayer({
 				{ icon, iconhl },
 				tail,
-				{ path_to_display, "TelescopeResultsComment" },
+				{ directory_path, "TelescopeResultsComment" },
 			})
 		end
 		return entry
 	end
 end
 
----Create a new entry maker for the grep picker.
----@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
----@param opts table
+---Get the highlighted entry maker for the grep picker.
+---Applied a different highlight to the parent directory path,
+---added row(line) and column number, and dimmed the matched line text.
+---@param opts? table
 ---@return function
-M.create_for_live_grep = function(opts)
+local get_highlighted_entry_maker_from_vimgrep = function(opts)
 	local make_entry = require("telescope.make_entry")
 	local strings = require("plenary.strings")
 	local utils = require("telescope.utils")
@@ -111,7 +111,7 @@ M.create_for_live_grep = function(opts)
 
 		entry.display = function(et)
 			local filepath, row, col, text = get_path_and_pos(et.value, ":")
-			local filename, directory_path = M.get_path_and_tail(filepath)
+			local filename, directory_path = get_path_and_tail(filepath)
 			local icon, iconhl = utils.get_devicons(filename)
 
 			return displayer({
@@ -131,10 +131,12 @@ M.create_for_live_grep = function(opts)
 	end
 end
 
----Create a new entry maker for the lsp_references picker.
----@param opts table
+---Get the highlighted entry maker for the quickfix.
+---Applied a different highlight to the parent directory path,
+---added row(line) and column number, and dimmed the matched line text.
+---@param opts? table
 ---@return function
-M.create_for_lsp_references = function(opts)
+local get_highlighted_entry_maker_from_quickfix = function(opts)
 	local make_entry = require("telescope.make_entry")
 	local strings = require("plenary.strings")
 	local utils = require("telescope.utils")
@@ -163,7 +165,7 @@ M.create_for_lsp_references = function(opts)
 
 		entry.display = function(et)
 			local filepath = vim.F.if_nil(et.filename, et.bufname)
-			local filename, directory_path = M.get_path_and_tail(filepath)
+			local filename, directory_path = get_path_and_tail(filepath)
 			local icon, iconhl = utils.get_devicons(filename)
 
 			return displayer({
@@ -181,6 +183,35 @@ M.create_for_lsp_references = function(opts)
 		end
 		return entry
 	end
+end
+
+---Create a new entry maker for the file picker.
+---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
+---@param opts? any
+---@return function
+M.create_for_find_files = function(opts)
+	return get_highlighted_entry_maker_from_file(opts)
+end
+
+---Create a new entry maker for the grep picker.
+---@param opts? table
+---@return function
+M.create_for_live_grep = function(opts)
+	return get_highlighted_entry_maker_from_vimgrep(opts)
+end
+
+---Create a new entry maker for the lsp_references picker.
+---@param opts? table
+---@return function
+M.create_for_lsp_references = function(opts)
+	return get_highlighted_entry_maker_from_quickfix(opts)
+end
+
+---Create a new entry maker for the lsp_implementations picker.
+---@param opts? table
+---@return function
+M.create_for_lsp_implementations = function(opts)
+	return get_highlighted_entry_maker_from_quickfix(opts)
 end
 
 return M

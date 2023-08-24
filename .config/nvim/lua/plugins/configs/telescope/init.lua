@@ -15,7 +15,7 @@ local function config()
 				},
 			},
 			file_ignore_patterns = {
-				"*.DS_Store",
+				".DS_Store",
 				"*.pyc",
 				".cargo/",
 				".git/",
@@ -26,10 +26,13 @@ local function config()
 				"__pycache__/",
 			},
 		},
-		vimgrep_arguments = { "rg", "-L", "--vimgrep", "--smart-case" },
+		vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--trim" },
 		pickers = {
 			find_files = {
 				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+			},
+			git_files = {
+				git_command = { "git", "ls-files", "--exclude-standard", "--cached", "--others" },
 			},
 		},
 		extensions = {

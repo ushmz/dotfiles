@@ -55,16 +55,31 @@ M.references = function()
 	b().lsp_references({
 		include_declaration = false,
 		include_current_line = false,
-    entry_maker = entry_maker.create_for_lsp_references()
+		entry_maker = entry_maker.create_for_lsp_references(),
+		layout_config = {
+			preview_width = 0.4,
+		},
 	})
 end
 
 M.implementations = function()
-	b().lsp_implementations({})
+	local entry_maker = require("plugins.configs.telescope.entry_maker")
+	b().lsp_implementations({
+		entry_maker = entry_maker.create_for_lsp_implementations(),
+		layout_config = {
+			preview_width = 0.4,
+		},
+	})
 end
 
 M.type_definitions = function()
-	b().lsp_type_definitions({})
+	b().lsp_type_definitions({
+		include_declaration = false,
+		include_current_line = false,
+		layout_config = {
+			preview_width = 0.4,
+		},
+	})
 end
 
 M.document_symbols = function()
@@ -77,7 +92,14 @@ end
 
 M.find_files = function()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
-	local opts = { no_ignore = false, hidden = true, entry_maker = entry_maker.create_for_find_files() }
+	local opts = {
+		no_ignore = false,
+		hidden = true,
+		entry_maker = entry_maker.create_for_find_files(),
+		layout_config = {
+			preview_width = 0.4,
+		},
+	}
 	if is_git_repo() then
 		b().git_files(opts)
 	else
@@ -96,7 +118,12 @@ end
 
 M.live_grep = function()
 	local entries = require("plugins.configs.telescope.entry_maker")
-	local opts = { entry_maker = entries.create_for_live_grep() }
+	local opts = {
+		entry_maker = entries.create_for_live_grep(),
+		layout_config = {
+			preview_width = 0.4,
+		},
+	}
 	if is_git_repo() then
 		table.insert(opts, { cwd = get_git_root() })
 	end
