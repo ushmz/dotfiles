@@ -17,8 +17,8 @@ local function config()
 				require("formatter.filetypes.javascript").eslint_d,
 			},
 			javascriptreact = {
-				require("formatter.filetypes.javascript").prettier,
-				require("formatter.filetypes.javascript").eslint_d,
+				require("formatter.filetypes.javascriptreact").prettier,
+				require("formatter.filetypes.javascriptreact").eslint_d,
 			},
 			json = { require("formatter.filetypes.json").prettier },
 			lua = { require("formatter.filetypes.lua").stylua },
@@ -29,12 +29,12 @@ local function config()
 			sql = { require("formatter.filetypes.sql").pgformat },
 			-- toml = { require("formatter.filetypes.toml").taplo },
 			typescript = {
-				require("formatter.filetypes.javascript").prettier,
-				require("formatter.filetypes.javascript").eslint_d,
+				require("formatter.filetypes.typescript").prettier,
+				require("formatter.filetypes.typescript").eslint_d,
 			},
 			typescriptreact = {
-				require("formatter.filetypes.javascript").prettier,
-				require("formatter.filetypes.javascript").eslint_d,
+				require("formatter.filetypes.typescriptreact").prettier,
+				require("formatter.filetypes.typescriptreact").eslint_d,
 			},
 			yaml = { require("formatter.filetypes.yaml").yamlfmt },
 			["*"] = {
