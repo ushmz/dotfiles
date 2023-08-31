@@ -36,19 +36,6 @@ return {
 			-- make sure to setup neodev BEFORE lspconfig
 			{ "folke/neodev.nvim", ft = { "lua" } },
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
-			{
-				"ray-x/lsp_signature.nvim",
-				event = { "InsertEnter" },
-				config = function()
-					require("lsp_signature").setup({
-						bind = true,
-						handler_opts = {
-							border = "rounded",
-						},
-						hint_prefix = "",
-					})
-				end,
-			},
 		},
 		config = config,
 	},
