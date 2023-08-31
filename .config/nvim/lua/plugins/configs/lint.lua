@@ -1,4 +1,13 @@
 local function config()
+	local cspell = require("lint").linters.cspell
+	cspell.args = {
+		"lint",
+		"--no-color",
+		"--no-progress",
+		"--no-summary",
+		"--show-suggestions",
+	}
+
 	require("lint").linters_by_ft = {
 		css = { "stylelint" },
 		go = { "golangcilint" },
@@ -15,6 +24,15 @@ local function config()
 		vue = { "eslint" },
 		yaml = { "yamllint" },
 	}
+
+	vim.api.nvim_create_autocmd({ "InsertLeave", "BufReadPost", "TextChanged", "BufWritePost" }, {
+		callback = function()
+			local linters = require("lint").linters_by_ft[vim.bo.filetype]
+			if linters then
+				require("lint").try_lint("cspell")
+			end
+		end,
+	})
 end
 
 return {
