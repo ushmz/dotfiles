@@ -11,16 +11,16 @@ local function config()
 	require("lint").linters_by_ft = {
 		css = { "stylelint" },
 		go = { "golangcilint" },
-		javascript = { "eslint" },
-		javascriptreact = { "eslint" },
+		javascript = { "eslint_d" },
+		javascriptreact = { "eslint_d" },
 		json = { "jsonlint" },
 		lua = { "luacheck" },
 		markdown = { "markdownlint" }, -- "vale"
 		python = { "flake8" },
 		rust = { "cargo" },
 		sh = { "shellcheck" },
-		typescript = { "eslint" },
-		typescriptreact = { "eslint" },
+		typescript = { "eslint_d" },
+		typescriptreact = { "eslint_d" },
 		vue = { "eslint" },
 		yaml = { "yamllint" },
 	}
