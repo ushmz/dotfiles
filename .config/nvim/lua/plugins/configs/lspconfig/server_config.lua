@@ -30,7 +30,7 @@ local function default_server_config()
 end
 
 local config = {
-	---@see https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
+	---@source https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
 	["gopls"] = vim.tbl_deep_extend("force", default_server_config(), {
 		hints = {
 			assignVariableTypes = true,
