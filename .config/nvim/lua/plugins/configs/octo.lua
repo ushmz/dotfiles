@@ -33,10 +33,10 @@ local function config()
 				size = 10, -- changed files panel rows
 				use_icons = true,
 			},
-      ---See the all available mappings in document below
-      ---@source https://github.com/pwntester/octo.nvim#%EF%B8%8F-configuration
+			---See the all available mappings in document below
+			---@source https://github.com/pwntester/octo.nvim#%EF%B8%8F-configuration
 			mappings = {
-        -- cSpell:disable
+				-- cSpell:disable
 				issue = {
 					close_issue = { lhs = "<space>ic", desc = "close issue" },
 					reopen_issue = { lhs = "<space>io", desc = "reopen issue" },
@@ -148,7 +148,7 @@ local function config()
 					close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
 					toggle_viewed = { lhs = "<leader><space>", desc = "toggle viewer viewed state" },
 				},
-        -- cSpell:enable
+				-- cSpell:enable
 			},
 		}),
 	})
@@ -156,6 +156,7 @@ end
 
 return {
 	"pwntester/octo.nvim",
+	cmd = { "Octo" },
 	requires = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
