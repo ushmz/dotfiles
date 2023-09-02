@@ -20,6 +20,16 @@ M.theme = {
 	gray = "#808080",
 	white = "#D4D4D4",
 	black = "#1D1F21",
+	dim = {
+		red = "#B87A7A",
+		yellow = "#D2BD93",
+		green = "#A3A77B",
+		cyan = "#91B6B1",
+		blue = "#92A2B0",
+		purple = "#ADA0B1",
+		gray = "#4D4D4D",
+		white = "#666666",
+	},
 	---If you'd like to use mode rich colors,
 	---please refer following palette.
 	-- magenta = "#B5585F",

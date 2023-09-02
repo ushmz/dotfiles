@@ -106,7 +106,7 @@ o.virtualedit = "block"
 o.wildmode = "longest,full"
 
 -- highlight
-o.cursorline = true
+o.cursorline = false
 o.winblend = 0
 o.pumblend = 10
 o.wildmenu = true
@@ -118,3 +118,18 @@ o.report = 0
 if vim.fn.executable("rg") then
 	o.grepprg = "rg --no-heading --vimgrep"
 end
+
+-- Create missing directories when saving a file
+vim.api.nvim_create_autocmd({"BufWritePre" }, {
+  callback = function()
+    local dir = vim.fn.expand("<afile>:p:h")
+
+    if dir:find('%l+://') == 1 then
+      return
+    end
+
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end
+})
