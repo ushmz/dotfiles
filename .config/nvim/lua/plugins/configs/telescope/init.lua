@@ -6,17 +6,23 @@ local function config()
 	local fb_actions = require("telescope").extensions.file_browser.actions
 	local preview_maker = require("plugins.configs.telescope.preview_maker")
 
+	local trouble = require("trouble.providers.telescope")
+
 	telescope.setup({
 		defaults = {
 			buffer_previewer_maker = preview_maker.create(100000),
-      -- FIXME: It's not working with `telescope-file-browser`.
-      -- Now I put this config in each picker.
-      -- layout_config = {
-      --   preview_width = 0.4,
-      -- },
+			-- FIXME: It's not working with `telescope-file-browser`.
+			-- Now I put this config in each picker.
+			-- layout_config = {
+			--   preview_width = 0.4,
+			-- },
 			mappings = {
+				i = {
+					["<C-o>"] = trouble.open_with_trouble,
+				},
 				n = {
 					["q"] = actions.close,
+					["<C-o>"] = trouble.open_with_trouble,
 				},
 			},
 			file_ignore_patterns = {
