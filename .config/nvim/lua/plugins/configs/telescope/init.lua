@@ -9,6 +9,11 @@ local function config()
 	telescope.setup({
 		defaults = {
 			buffer_previewer_maker = preview_maker.create(100000),
+      -- FIXME: It's not working with `telescope-file-browser`.
+      -- Now I put this config in each picker.
+      -- layout_config = {
+      --   preview_width = 0.4,
+      -- },
 			mappings = {
 				n = {
 					["q"] = actions.close,
