@@ -29,35 +29,19 @@ local function default_server_config()
 	}
 end
 
----Filter array
----@generic T: any
----@param arr table<number, T>
----@param fn fun(value: T, index?: number, arr?: table<number, T>): boolean
----@return table<number, T>
-local function filter(arr, fn)
-  if type(arr) ~= "table" then
-    return arr
-  end
-
-  local res = {}
-  for k, v in pairs(arr) do
-    if fn(v, k, arr) then
-      table.insert(res, v)
-    end
-  end
-
-  return res
-end
-
 local config = {
   ---@source https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
   ["tsserver"] = vim.tbl_deep_extend("force", default_server_config(), {
     handlers = {
       ["textDocument/definition"] = function (err, result, method, ...)
         if vim.tbl_islist(result) and #result > 1 then
-          local filtered_results = filter(result, function (v)
-            return string.match(v.targetUri, "react/index.d.ts") == nil
-          end)
+          local filtered_results = {}
+          for _, v in ipairs(result) do
+            if not string.match(v.targetUri, "react/index.d.ts") then
+              table.insert(filtered_results, v)
+            end
+          end
+
           return vim.lsp.handlers["textDocument/definition"](err, filtered_results, method, ...)
         end
         vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
