@@ -1,22 +1,14 @@
 local function config()
-	local signs = { Error = "", Warn = " ", Hint = "", Info = "" }
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	end
-
+  -- To apply the default configurations for the server doesn't configure by lspconfig
+  -- e.g. formatter, linter, etc.
 	vim.diagnostic.config({
-		virtual_text = false,
-		signs = true,
 		underline = true,
-		update_in_insert = true,
 		float = { source = "if_many" },
+		severity_sort = true,
+		signs = true,
+		virtual_text = false,
+		update_in_insert = true,
 	})
-
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-		vim.lsp.diagnostic.on_publish_diagnostics,
-		{ underline = true, update_in_insert = false, virtual_text = false, severity_sort = true }
-	)
 
 	require("mason-lspconfig").setup_handlers({
 		function(server_name)
@@ -36,6 +28,7 @@ return {
 			-- make sure to setup neodev BEFORE lspconfig
 			{ "folke/neodev.nvim", ft = { "lua" } },
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
+			{ "williamboman/mason-lspconfig.nvim" },
 		},
 		config = config,
 	},
