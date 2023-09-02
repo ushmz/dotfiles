@@ -106,7 +106,7 @@ o.virtualedit = "block"
 o.wildmode = "longest,full"
 
 -- highlight
-o.cursorline = true
+o.cursorline = false
 o.winblend = 0
 o.pumblend = 10
 o.wildmenu = true
