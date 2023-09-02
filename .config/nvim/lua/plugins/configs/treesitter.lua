@@ -46,6 +46,9 @@ local function treesitter()
 			"vim",
 			"yaml",
 		},
+		context_commentstring = {
+			enable = true,
+		},
 		textobjects = {
 			select = {
 				enable = true,
@@ -191,5 +194,9 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = { "BufRead" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = { "BufRead" },
 	},
 }
