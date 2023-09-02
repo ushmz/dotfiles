@@ -43,7 +43,13 @@ M.keymaps = function()
 end
 
 M.oldfiles = function()
-	b().oldfiles({})
+	local entry_maker = require("plugins.configs.telescope.entry_maker")
+	b().oldfiles({
+		entry_maker = entry_maker.create_for_old_files(),
+		layout_config = {
+			preview_width = 0.4,
+		},
+	})
 end
 
 M.resume = function()
