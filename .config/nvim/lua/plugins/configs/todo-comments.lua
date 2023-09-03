@@ -1,6 +1,7 @@
 return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	event = { "BufRead" },
 	config = function()
 		local theme = require("plugins.utils").theme
 		require("todo-comments").setup({
@@ -12,9 +13,9 @@ return {
 				NOTE = { icon = "󰏫", color = theme.dim.blue, alt = { "INFO" } },
 				TEST = { icon = " ", color = theme.dim.purple, alt = { "TESTING", "PASSED", "FAILED" } },
 			},
-      gui_style = {
-        fg = "BOLD"
-      },
+			gui_style = {
+				fg = "BOLD",
+			},
 			highlight = {
 				before = "",
 				keyword = "fg",
