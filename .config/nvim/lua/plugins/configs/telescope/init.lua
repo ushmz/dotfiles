@@ -37,6 +37,8 @@ local function config()
 				"__pycache__/",
 			},
 		},
+		-- NOTE: To add `--hidden` option to this is not working.
+		--       So, I use `additional_args` option of live_grep picker instead.
 		vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--trim" },
 		pickers = {
 			find_files = {
