@@ -117,7 +117,7 @@ M.grep_string = function()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	local opts = { entry_maker = entry_maker.create_for_live_grep() }
 	if is_git_repo() then
-		table.insert(opts, { cwd = get_git_root() })
+    opts["cwd"] = get_git_root()
 	end
 	b().grep_string(opts)
 end
@@ -134,7 +134,7 @@ M.live_grep = function()
 		},
 	}
 	if is_git_repo() then
-		table.insert(opts, { cwd = get_git_root() })
+    opts["cwd"] = get_git_root()
 	end
 	b().live_grep(opts)
 end
