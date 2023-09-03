@@ -125,6 +125,9 @@ end
 M.live_grep = function()
 	local entries = require("plugins.configs.telescope.entry_maker")
 	local opts = {
+    -- NOTE: To add `--hidden` option to `telescope.defaults.vimgrep_arguments` is not working.
+    --       So, I use `additional_args` option instead.
+    additional_args = { "--hidden", "--glob", "!.git" },
 		entry_maker = entries.create_for_live_grep(),
 		layout_config = {
 			preview_width = 0.4,
