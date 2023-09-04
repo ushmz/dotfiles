@@ -39,64 +39,57 @@ local get_path_and_tail = function(file_path)
 	return tail, directory_path
 end
 
----Get the highlighted entry maker for the file picker.
----Put the file name first and the dimmed parent directory path in the second.
----@param opts? table
+---Generate a new entry maker for the result has the tail of the path.
+---Show the tail of the path in the first, and the (dimmed) parent directory in the second.
+---@param base_entry_maker any
+---@param splitter function
 ---@return function
-local get_highlighted_entry_maker_from_file = function(opts)
-	local make_entry = require("telescope.make_entry")
+local function entry_maker_stand_out_tail(base_entry_maker, splitter)
 	local strings = require("plenary.strings")
-	local utils = require("telescope.utils")
 	local entry_display = require("telescope.pickers.entry_display")
 	local devicons = require("nvim-web-devicons")
-	local def_icon = devicons.get_icon("fname", { default = true })
+	local default_icon = devicons.get_icon("fname", { default = true })
 
 	return function(line)
-		local entry_make = make_entry.gen_from_file(opts or {})
-		local entry = entry_make(line)
+		local entry = base_entry_maker(line)
 		local displayer = entry_display.create({
 			separator = " ",
 			items = {
-				{ width = strings.strdisplaywidth(def_icon) },
+				{ width = strings.strdisplaywidth(default_icon) },
 				{ width = nil },
 				{ remaining = true },
 			},
 		})
 
 		entry.display = function(et)
-			local tail, directory_path = get_path_and_tail(et.value)
-			local icon, iconhl = utils.get_devicons(tail)
-
+			local icon, iconhl, parent_dir, tail = splitter(et)
 			return displayer({
 				{ icon, iconhl },
 				tail,
-				{ directory_path, "TelescopeResultsComment" },
+				{ parent_dir, "TelescopeResultsComment" },
 			})
 		end
 		return entry
 	end
 end
 
----Get the highlighted entry maker for the grep picker.
----Applied a different highlight to the parent directory path,
----added row(line) and column number, and dimmed the matched line text.
----@param opts? table
+---Generate a new entry maker for the result has the row and column position.
+---Highlight the parent directory, and dimmed matched text.
+---@param base_entry_maker any
+---@param splitter any
 ---@return function
-local get_highlighted_entry_maker_from_vimgrep = function(opts)
-	local make_entry = require("telescope.make_entry")
+local function entry_maker_highlight_parent_dir(base_entry_maker, splitter)
 	local strings = require("plenary.strings")
-	local utils = require("telescope.utils")
 	local entry_display = require("telescope.pickers.entry_display")
 	local devicons = require("nvim-web-devicons")
-	local def_icon = devicons.get_icon("fname", { default = true })
+	local default_icon = devicons.get_icon("fname", { default = true })
 
 	return function(line)
-		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
-		local entry = entry_maker(line)
+		local entry = base_entry_maker(line)
 		local displayer = entry_display.create({
 			separator = "",
 			items = {
-				{ width = strings.strdisplaywidth(def_icon) }, -- Icon
+				{ width = strings.strdisplaywidth(default_icon) }, -- Icon
 				{ width = nil }, -- Space
 				{ width = nil }, -- Parent directory path
 				{ width = nil }, -- File name
@@ -110,14 +103,12 @@ local get_highlighted_entry_maker_from_vimgrep = function(opts)
 		})
 
 		entry.display = function(et)
-			local filepath, row, col, text = get_path_and_pos(et.value, ":")
-			local filename, directory_path = get_path_and_tail(filepath)
-			local icon, iconhl = utils.get_devicons(filename)
+			local icon, iconhl, parent_dir, filename, row, col, text = splitter(et)
 
 			return displayer({
 				{ icon, iconhl },
 				{ " ", nil },
-				{ directory_path .. "/", "TelescopeResultsIdentifier" },
+				{ parent_dir .. "/", "TelescopeResultsIdentifier" },
 				{ filename, nil },
 				{ ":", "TelescopeResultsComment" },
 				{ row, "TelescopeResultsNumber" },
@@ -131,94 +122,73 @@ local get_highlighted_entry_maker_from_vimgrep = function(opts)
 	end
 end
 
----Get the highlighted entry maker for the quickfix.
----Applied a different highlight to the parent directory path,
----added row(line) and column number, and dimmed the matched line text.
----@param opts? table
----@return function
-local get_highlighted_entry_maker_from_quickfix = function(opts)
-	local make_entry = require("telescope.make_entry")
-	local strings = require("plenary.strings")
-	local utils = require("telescope.utils")
-	local entry_display = require("telescope.pickers.entry_display")
-	local devicons = require("nvim-web-devicons")
-	local def_icon = devicons.get_icon("fname", { default = true })
-
-	return function(input)
-		local entry_maker = make_entry.gen_from_quickfix(opts or {})
-		local entry = entry_maker(input)
-		local displayer = entry_display.create({
-			separator = "",
-			items = {
-				{ width = strings.strdisplaywidth(def_icon) }, -- Icon
-				{ width = nil }, -- Space
-				{ width = nil }, -- Parent directory path
-				{ width = nil }, -- File name
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (line number)
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (column)
-				{ width = nil }, -- Space
-				{ remaining = true }, -- Matched line text
-			},
-		})
-
-		entry.display = function(et)
-			local filepath = vim.F.if_nil(et.filename, et.bufname)
-			local filename, directory_path = get_path_and_tail(filepath)
-			local icon, iconhl = utils.get_devicons(filename)
-
-			return displayer({
-				{ icon, iconhl },
-				{ " ", nil },
-				{ directory_path .. "/", "TelescopeResultsIdentifier" },
-				{ filename, nil },
-				{ ":", "TelescopeResultsComment" },
-				{ tostring(et.lnum), "TelescopeResultsNumber" },
-				{ ":", "TelescopeResultsComment" },
-				{ tostring(et.col), "TelescopeResultsNumber" },
-				{ " ", nil },
-				{ strip(et.text), "TelescopeResultsComment" },
-			})
-		end
-		return entry
-	end
-end
-
 ---Create a new entry maker for the file picker.
 ---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
 ---@param opts? any
 ---@return function
 M.create_for_find_files = function(opts)
-	return get_highlighted_entry_maker_from_file(opts)
+	local base_entry_maker = require("telescope.make_entry").gen_from_file(opts or {})
+	local splitter = function(et)
+		local tail, parent_dir = get_path_and_tail(et.value)
+		local icon, iconhl = require("telescope.utils").get_devicons(tail)
+		return icon, iconhl, parent_dir, tail
+	end
+	return entry_maker_stand_out_tail(base_entry_maker, splitter)
 end
 
 ---Create a new entry maker for the old file picker.
 ---@param opts? any
 ---@return function
-M.create_for_old_files = function (opts)
-  return get_highlighted_entry_maker_from_file(opts)
+M.create_for_old_files = function(opts)
+	local base_entry_maker = require("telescope.make_entry").gen_from_file(opts or {})
+	local splitter = function(et)
+		local tail, parent_dir = get_path_and_tail(et.value)
+		local icon, iconhl = require("telescope.utils").get_devicons(tail)
+		return icon, iconhl, parent_dir, tail
+	end
+	return entry_maker_stand_out_tail(base_entry_maker, splitter)
 end
 
 ---Create a new entry maker for the grep picker.
 ---@param opts? table
 ---@return function
 M.create_for_live_grep = function(opts)
-	return get_highlighted_entry_maker_from_vimgrep(opts)
+	local base_entry_maker = require("telescope.make_entry").gen_from_vimgrep(opts or {})
+	local splitter = function(et)
+		local filepath, row, col, text = get_path_and_pos(et.value, ":")
+		local filename, parent_dir = get_path_and_tail(filepath)
+		local icon, iconhl = require("telescope.utils").get_devicons(filename)
+		return icon, iconhl, parent_dir, filename, row, col, text
+	end
+	return entry_maker_highlight_parent_dir(base_entry_maker, splitter)
 end
 
 ---Create a new entry maker for the lsp_references picker.
 ---@param opts? table
 ---@return function
 M.create_for_lsp_references = function(opts)
-	return get_highlighted_entry_maker_from_quickfix(opts)
+	local base_entry_maker = require("telescope.make_entry").gen_from_quickfix(opts or {})
+	local splitter = function(et)
+		local filepath = vim.F.if_nil(et.filename, et.bufname)
+		local filename, parent_dir = get_path_and_tail(filepath)
+		local icon, iconhl = require("telescope.utils").get_devicons(filename)
+		return icon, iconhl, parent_dir, filename, tostring(et.lnum), tostring(et.col), et.text
+	end
+	return entry_maker_highlight_parent_dir(base_entry_maker, splitter)
 end
 
 ---Create a new entry maker for the lsp_implementations picker.
 ---@param opts? table
 ---@return function
 M.create_for_lsp_implementations = function(opts)
-	return get_highlighted_entry_maker_from_quickfix(opts)
+	local base_entry_maker = require("telescope.make_entry").gen_from_quickfix(opts or {})
+	local splitter = function(et)
+		local filepath = vim.F.if_nil(et.filename, et.bufname)
+		local filename, parent_dir = get_path_and_tail(filepath)
+		local icon, iconhl = require("telescope.utils").get_devicons(filename)
+		return icon, iconhl, parent_dir, filename, tostring(et.lnum), tostring(et.col), et.text
+	end
+	return entry_maker_highlight_parent_dir(base_entry_maker, splitter)
 end
 
 return M
