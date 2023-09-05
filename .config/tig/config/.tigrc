@@ -26,6 +26,11 @@ bind generic G move-last-line
 bind main G none
 bind main G move-last-line
 
+# Show diff of commit under the cursor and its previous commit
+bind main D !sh -c "git difftool %(commit)~ %(commit)"
+
+bind main R !git rebase -i %(commit)
+
 # revertを定義
 bind main v !?git revert %(commit)
 bind diff v !?git revert %(commit)
