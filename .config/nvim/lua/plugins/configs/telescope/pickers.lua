@@ -117,7 +117,7 @@ M.grep_string = function()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	local opts = { entry_maker = entry_maker.create_for_live_grep() }
 	if is_git_repo() then
-    opts["cwd"] = get_git_root()
+		opts["cwd"] = get_git_root()
 	end
 	b().grep_string(opts)
 end
@@ -125,16 +125,16 @@ end
 M.live_grep = function()
 	local entries = require("plugins.configs.telescope.entry_maker")
 	local opts = {
-    -- NOTE: To add `--hidden` option to `telescope.defaults.vimgrep_arguments` is not working.
-    --       So, I use `additional_args` option instead.
-    additional_args = { "--hidden", "--glob", "!.git" },
+		-- NOTE: To add `--hidden` option to `telescope.defaults.vimgrep_arguments` is not working.
+		--       So, I use `additional_args` option instead.
+		additional_args = { "--hidden", "--glob", "!.git" },
 		entry_maker = entries.create_for_live_grep(),
 		layout_config = {
 			preview_width = 0.4,
 		},
 	}
 	if is_git_repo() then
-    opts["cwd"] = get_git_root()
+		opts["cwd"] = get_git_root()
 	end
 	b().live_grep(opts)
 end

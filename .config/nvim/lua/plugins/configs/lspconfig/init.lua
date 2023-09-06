@@ -1,6 +1,6 @@
 local function config()
-  -- To apply the default configurations for the server doesn't configure by lspconfig
-  -- e.g. formatter, linter, etc.
+	-- To apply the default configurations for the server doesn't configure by lspconfig
+	-- e.g. formatter, linter, etc.
 	vim.diagnostic.config({
 		underline = true,
 		float = { source = "if_many" },

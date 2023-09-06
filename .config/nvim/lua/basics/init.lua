@@ -120,16 +120,16 @@ if vim.fn.executable("rg") then
 end
 
 -- Create missing directories when saving a file
-vim.api.nvim_create_autocmd({"BufWritePre" }, {
-  callback = function()
-    local dir = vim.fn.expand("<afile>:p:h")
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	callback = function()
+		local dir = vim.fn.expand("<afile>:p:h")
 
-    if dir:find('%l+://') == 1 then
-      return
-    end
+		if dir:find("%l+://") == 1 then
+			return
+		end
 
-    if vim.fn.isdirectory(dir) == 0 then
-      vim.fn.mkdir(dir, "p")
-    end
-  end
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+	end,
 })
