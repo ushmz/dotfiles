@@ -31,7 +31,7 @@ local function default_server_config()
 				underline = true,
 				float = { source = "if_many" },
 				severity_sort = true,
-		    signs = true,
+				signs = true,
 				virtual_text = false,
 				update_in_insert = true,
 			}),

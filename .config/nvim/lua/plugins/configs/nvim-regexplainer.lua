@@ -11,8 +11,8 @@ local config = function()
 		},
 		mappings = {
 			toggle = "gR",
-			show_split = 'gP',
-			show_popup = 'gU',
+			show_split = "gP",
+			show_popup = "gU",
 		},
 		narrative = {
 			separator = "\n",

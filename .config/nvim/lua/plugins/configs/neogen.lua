@@ -5,7 +5,7 @@ return {
 		"go",
 		"javascript",
 		"javascriptreact",
-    "lua",
+		"lua",
 		"python",
 		"rust",
 		"typescript",

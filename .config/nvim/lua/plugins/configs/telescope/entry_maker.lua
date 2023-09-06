@@ -196,8 +196,8 @@ end
 ---Create a new entry maker for the old file picker.
 ---@param opts? any
 ---@return function
-M.create_for_old_files = function (opts)
-  return get_highlighted_entry_maker_from_file(opts)
+M.create_for_old_files = function(opts)
+	return get_highlighted_entry_maker_from_file(opts)
 end
 
 ---Create a new entry maker for the grep picker.
