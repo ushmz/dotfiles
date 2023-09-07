@@ -1,0 +1,4 @@
+Alacritty
+peco
+pbcopy
+vimium

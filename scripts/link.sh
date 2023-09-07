@@ -62,6 +62,10 @@ mkdir -p "${HOME}/.config/nvim/lua/"
 ln -sf "$(pwd)/.config/nvim/init.lua" "${HOME}/.config/nvim/init.lua"
 ln -sf "$(pwd)/.config/nvim/lua/*" "${HOME}/.config/nvim/lua"
 
+# cspell
+mkdir -p "${HOME}/.config/cspell/"
+ln -sf "$(pwd)/.config/cspell/*" "${HOME}/.config/cspell"
+
 # Stop dirtying home directory
 echo hsts-file = "${HOME}/.cache/wget-hsts" >"${HOME}/.config/wgetrc"
 
