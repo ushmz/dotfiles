@@ -6,6 +6,8 @@ local function config()
 		"--no-progress",
 		"--no-summary",
 		"--show-suggestions",
+		"--config",
+		"~/.config/cspell/cspell.json",
 	}
 
 	require("lint").linters_by_ft = {

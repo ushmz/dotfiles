@@ -1,0 +1,53 @@
+{
+  "allowCompoundWords": true,
+  "dictionaries": [
+    "en_US",
+    "aws",
+    "bash",
+    "css",
+    "docker",
+    "en-common-misspellings",
+    "filetypes",
+    "fonts",
+    "git",
+    "golang",
+    "html",
+    "lua",
+    "markdown",
+    "node",
+    "python",
+    "rust",
+    "softwareTerms",
+    "sql",
+    "typescript",
+    "html-symbol-entities",
+    "dotfiles",
+    "user",
+    "vim"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "dotfiles",
+      "path": "~/.config/cspell/dotfiles.txt",
+      "description": "A list of words that are not in the dictionary but are commonly used in dotfiles."
+    },
+    {
+      "name": "user",
+      "path": "~/.config/cspell/user.txt",
+      "description": "A list of words that are not in the dictionary but should not staged for git"
+    },
+    {
+      "name": "vim",
+      "path": "~/.config/cspell/vim.txt",
+      "description": "A list of words that are not in the dictionary but are commonly used in vim."
+    }
+  ],
+  "languageSettings": [
+    {
+      "languageId": "lua",
+      "locale": "*",
+      "ignoreRegExpList": ["/require.*/"],
+      "dictionaries": ["lua"]
+    }
+  ]
+}
