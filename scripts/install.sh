@@ -9,7 +9,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions "${HOME}/.cache/zsh-a
 git clone https://github.com/zsh-users/zsh-completions.git "${HOME}/.cache/zsh-completions"
 git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 "${HOME}/.cache/zsh-abbr"
 
-# brew fomulae
+# brew formulae
 brew update
 if [ "$(uname)" = "Darwin" ]; then
     open_appstore() {

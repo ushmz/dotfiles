@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -Cue
 
-# Make direcories for dotfiles
+# Make directories for dotfiles
 mkdir -p "${HOME}/.config"
 mkdir -p "${HOME}/.local/state"
 mkdir -p "${HOME}/.local/share"
@@ -25,7 +25,7 @@ if ! (type brew 1>/dev/null); then
         eval "$(/opt/homebrew/bin/brew shellenv)" >/dev/null
     else
         # Install dependency
-        sudo apt-get install build-essectial
+        sudo apt-get install build-essential
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >/dev/null
     fi
 
