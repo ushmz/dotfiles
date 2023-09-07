@@ -3,7 +3,7 @@ local M = {}
 ---Return `true` if the plugin should be loaded, otherwise `false`
 ---@param for_vscode boolean The plugin is needed for VSCode or not
 ---@return boolean
-M.should_loaded = function(for_vscode)
+function M.should_loaded(for_vscode)
 	if not vim.g.vscode then
 		return true
 	end
@@ -46,7 +46,7 @@ M.theme = {
 ---Sets a highlight with `vim.api.nvim_set_hl()`
 ---@param name string Highlight group name
 ---@param val table Highlight definition map
-M.set_hl = function(name, val)
+function M.set_hl(name, val)
 	vim.api.nvim_set_hl(0, name, val)
 end
 

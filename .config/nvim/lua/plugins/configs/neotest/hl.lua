@@ -1,6 +1,6 @@
 local M = {}
 
-M.set = function()
+function M.set()
 	vim.api.nvim_set_hl(0, "NeotestPassed", { fg = "#B5BD68" })
 	vim.api.nvim_set_hl(0, "NeotestFailed", { fg = "#CC6666" })
 	vim.api.nvim_set_hl(0, "NeotestRunning", { fg = "#F0C674" })

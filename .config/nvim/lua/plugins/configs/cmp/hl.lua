@@ -5,7 +5,7 @@ local M = {}
 ---| Normal:Pmenu,
 ---| CursorLine:PmenuSel,
 ---| Search:None,
-M.set = function()
+function M.set()
 	local theme = require("plugins.utils").theme
 	local set_hl = require("plugins.utils").set_hl
 

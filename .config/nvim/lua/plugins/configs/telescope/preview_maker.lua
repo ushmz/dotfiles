@@ -4,7 +4,7 @@ local M = {}
 ---stop reading after `max_size` bytes from the head.
 ---@param max_size number Max file size (bytes)
 ---@return fun(filepath: string, bufnr: number, opts: table): nil
-M.create = function(max_size)
+function M.create(max_size)
 	return function(filepath, bufnr, opts)
 		opts = opts or {}
 		filepath = vim.fn.expand(filepath)

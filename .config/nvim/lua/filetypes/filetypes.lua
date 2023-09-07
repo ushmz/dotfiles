@@ -12,63 +12,63 @@ local function indent(length, expandtab)
 	vim.bo.expandtab = expandtab
 end
 
-M.dart = function()
+function M.dart()
 	indent(2, true)
 end
 
-M.go = function()
+function M.go()
 	indent(4, false)
 end
 
-M.help = function()
+function M.help()
 	vim.api.nvim_buf_set_keymap(0, "n", "q", "ZZ", { noremap = true })
 end
 
-M.javascript = function()
+function M.javascript()
 	indent(2, true)
 end
 
-M.javascriptreact = function()
+function M.javascriptreact()
 	indent(2, true)
 end
 
-M.json = function()
+function M.json()
 	indent(2, true)
 end
 
-M.jsonc = function()
+function M.jsonc()
 	indent(2, true)
 end
 
-M.lua = function()
+function M.lua()
 	indent(2, true)
 end
 
-M.make = function()
+function M.make()
 	indent(4, false)
 end
 
-M.python = function()
+function M.python()
 	indent(4, false)
 end
 
-M.ruby = function()
+function M.ruby()
 	indent(2, true)
 end
 
-M.typescript = function()
+function M.typescript()
 	indent(2, true)
 end
 
-M.typescriptreact = function()
+function M.typescriptreact()
 	indent(2, true)
 end
 
-M.vim = function()
+function M.vim()
 	indent(2, true)
 end
 
-M.yaml = function()
+function M.yaml()
 	indent(2, true)
 end
 

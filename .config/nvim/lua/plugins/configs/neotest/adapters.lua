@@ -1,6 +1,6 @@
 local M = {}
 
-M.python_adapter = function()
+function M.python_adapter()
 	return require("neotest-python")({
 		-- 	---Extra arguments for nvim-dap configuration
 		-- 	---See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
@@ -22,7 +22,7 @@ M.python_adapter = function()
 	})
 end
 
-M.plenary_adapter = function()
+function M.plenary_adapter()
 	return require("neotest-plenary").setup({
 		---By default, it will glob for:
 		---{ "*/testrc*", "*/minimal_init*", "test*/init.vim" }
@@ -30,14 +30,14 @@ M.plenary_adapter = function()
 	})
 end
 
-M.go_adapter = function()
+function M.go_adapter()
 	return require("neotest-go")({
 		experimental = { test_table = true },
 		args = { "-count=1", "-timeout=60s" },
 	})
 end
 
-M.jest_adapter = function()
+function M.jest_adapter()
 	return require("neotest-jest")({
 		jestCommand = "npm test --",
 		jestConfigFile = "custom.jest.config.ts",
@@ -48,7 +48,7 @@ M.jest_adapter = function()
 	})
 end
 
-M.playwright_adapter = function()
+function M.playwright_adapter()
 	return require("neotest-playwright").adapter({
 		options = {
 			persist_project_selection = true,
