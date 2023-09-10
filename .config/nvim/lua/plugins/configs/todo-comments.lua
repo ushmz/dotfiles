@@ -7,8 +7,8 @@ return {
 		require("todo-comments").setup({
 			keywords = {
 				FIX = { icon = " ", color = theme.dim.red, alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
-				TODO = { icon = " ", color = theme.dim.green, alt = { "[TODO]" } },
-				HACK = { icon = " ", color = theme.dim.yellow },
+				TODO = { icon = " ", color = theme.dim.green, alt = { "TODO" } },
+				HACK = { icon = " ", color = theme.dim.yellow, alt = { "HELPME" } },
 				WARN = { icon = " ", color = theme.dim.yellow, alt = { "WARNING" } },
 				NOTE = { icon = "󰏫", color = theme.dim.blue, alt = { "INFO" } },
 				TEST = { icon = " ", color = theme.dim.purple, alt = { "TESTING", "PASSED", "FAILED" } },
