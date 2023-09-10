@@ -9,7 +9,7 @@ M.set = function()
 	local theme = require("plugins.utils").theme
 	local set_hl = require("plugins.utils").set_hl
 
-	set_hl("Normal", { bg = theme.black, fg = theme.white })
+	-- set_hl("Normal", { bg = theme.black, fg = theme.white })
 	set_hl("Pmenu", { bg = theme.black, fg = theme.white })
 	set_hl("PmenuSel", { bg = theme.blue, fg = theme.black })
 	set_hl("FloatBorder", { fg = theme.white })

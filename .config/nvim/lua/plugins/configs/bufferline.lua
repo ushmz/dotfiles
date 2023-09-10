@@ -1,4 +1,5 @@
 local function config()
+	local theme = require("plugins.utils").theme
 	require("bufferline").setup({
 		options = {
 			mode = "tabs",
@@ -14,22 +15,29 @@ local function config()
 		---```
 		highlights = {
 			separator = {
-				fg = "#4E4E4E",
-				bg = "#2D2F31",
+				fg = theme.dim.white,
+				bg = theme.dim.gray,
 			},
 			separator_selected = {
-				fg = "#4E4E4E",
+				fg = theme.dim.white,
 			},
 			background = {
 				fg = "#657B83",
-				bg = "#2D2F31",
+				bg = theme.dim.gray,
+			},
+			buffer_visible = {
+				bg = theme.dim.white,
 			},
 			buffer_selected = {
 				fg = "#FDF6E3",
+				bg = theme.black,
 				italic = false,
 			},
+			duplicate = {
+				bg = theme.dim.gray,
+			},
 			fill = {
-				bg = "#4E4E4E",
+				bg = theme.dim.white,
 			},
 		},
 	})
@@ -40,6 +48,6 @@ end
 
 return {
 	"akinsho/bufferline.nvim",
-	event = { "BufRead" },
+	event = { "WinNew" },
 	config = config,
 }
