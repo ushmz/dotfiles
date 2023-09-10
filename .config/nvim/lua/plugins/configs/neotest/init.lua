@@ -61,27 +61,20 @@ return {
 	{
 		"nvim-neotest/neotest",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
 			---@see https://github.com/antoinemadec/FixCursorHold.nvim/issues/13
-			"antoinemadec/FixCursorHold.nvim",
-			{
-				"nvim-neotest/neotest-python", --[[ ft = { "python" } ]]
-			},
-			{
-				"nvim-neotest/neotest-plenary", -- [[ ft = { "lua" } ]]
-			},
-			{
-				"nvim-neotest/neotest-go", -- [[ ft = { "go" } ]]
-			},
-			{
-				"nvim-neotest/neotest-jest",
-				-- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-			},
-			{
-				"thenbe/neotest-playwright",
-				-- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-			},
+			{ "antoinemadec/FixCursorHold.nvim" },
+			--[[ ft = { "python" } ]]
+			{ "nvim-neotest/neotest-python" },
+			-- [[ ft = { "lua" } ]]
+			{ "nvim-neotest/neotest-plenary" },
+			-- [[ ft = { "go" } ]]
+			{ "nvim-neotest/neotest-go" },
+			-- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+			{ "nvim-neotest/neotest-jest" },
+			-- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+			{ "thenbe/neotest-playwright" },
 		},
 		keys = {
 			{ "tn", test_nearest, mode = "n", desc = "Neotest: Run the [N]earest test" },
