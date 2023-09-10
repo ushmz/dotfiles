@@ -24,8 +24,8 @@ return {
 	event = { "BufRead" },
 	ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	config = config,
-	requires = {
-		"nvim-treesitter/nvim-treesitter",
-		"MunifTanjim/nui.nvim",
+	dependencies = {
+		{ "nvim-treesitter/nvim-treesitter" },
+		{ "MunifTanjim/nui.nvim" },
 	},
 }
