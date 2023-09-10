@@ -157,10 +157,10 @@ end
 return {
 	"pwntester/octo.nvim",
 	cmd = { "Octo" },
-	requires = {
-		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope.nvim",
-		"nvim-tree/nvim-web-devicons",
+	dependencies = {
+		{ "nvim-lua/plenary.nvim" },
+		{ "nvim-telescope/telescope.nvim" },
+		{ "nvim-tree/nvim-web-devicons" },
 	},
 	config = config,
 }
