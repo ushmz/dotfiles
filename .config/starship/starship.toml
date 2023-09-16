@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 scan_timeout = 50
-command_timeout = 800
+command_timeout = 300
 add_newline = true
 
 [aws]
@@ -28,6 +28,7 @@ truncation_length = 100
 format = "[$path](bold bright-blue)[$read_only]($read_only_style) "
 
 [git_status]
+disabled = true
 conflicted = "💥 "
 ahead = "🏎💨x${count} "
 behind = "😰×${count} "

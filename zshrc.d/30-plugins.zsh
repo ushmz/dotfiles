@@ -31,3 +31,14 @@ if [ -d "${XDG_CACHE_HOME}/zsh-abbr" ]; then
     # shellcheck source=/dev/null
     source "${XDG_CACHE_HOME}/zsh-abbr/zsh-abbr.zsh"
 fi
+
+# direnv
+if type direnv &>/dev/null; then
+	eval "$(direnv hook zsh)"
+fi
+
+# asdf (Language version manager)
+if type asdf &>/dev/null; then
+	# shellcheck source=/dev/null
+	source $(brew --prefix asdf)/libexec/asdf.sh
+fi
