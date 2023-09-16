@@ -8,7 +8,7 @@ end
 
 return {
 	"rcarriga/nvim-dap-ui",
-	event = { "BufRead" },
+	event = { "VeryLazy" },
 	dependencies = {
 		{ "mfussenegger/nvim-dap", config = dap_config },
 	},

@@ -14,6 +14,6 @@ end
 
 return {
 	"numToStr/Comment.nvim",
-	event = { "BufRead" },
+	event = { "BufNewFile", "BufRead" },
 	config = config,
 }

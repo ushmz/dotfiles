@@ -16,6 +16,6 @@ end
 
 return {
 	"mvllow/modes.nvim",
-	event = { "BufRead" },
+	event = { "ModeChanged" },
 	config = config,
 }

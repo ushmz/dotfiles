@@ -29,6 +29,6 @@ end
 
 return {
 	"kevinhwang91/nvim-hlslens",
-	event = { "BufRead" },
+	event = { "BufNewFile", "BufRead" },
 	config = config,
 }

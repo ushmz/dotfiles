@@ -48,6 +48,6 @@ end
 
 return {
 	"akinsho/bufferline.nvim",
-	event = { "WinNew" },
+	event = { "VeryLazy" },
 	config = config,
 }

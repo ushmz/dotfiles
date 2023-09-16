@@ -50,6 +50,6 @@ end
 
 return {
 	"j-hui/fidget.nvim",
-	event = { "BufRead" },
+	event = { "VeryLazy" },
 	config = config,
 }

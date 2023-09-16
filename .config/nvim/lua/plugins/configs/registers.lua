@@ -81,7 +81,6 @@ end
 
 return {
 	"tversteeg/registers.nvim",
-	name = "registers",
 	cmd = "Registers",
 	keys = {
 		{ '"', mode = { "n", "v" } },

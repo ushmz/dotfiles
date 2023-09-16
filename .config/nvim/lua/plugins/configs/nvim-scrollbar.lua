@@ -1,6 +1,6 @@
 return {
 	"petertriho/nvim-scrollbar",
-	event = { "BufRead" },
+	event = { "BufNewFile", "BufRead" },
 	dependencies = {
 		{ "lewis6991/gitsigns.nvim" },
 		{ "kevinhwang91/nvim-hlslens" },

@@ -53,6 +53,6 @@ end
 
 return {
 	"mhartington/formatter.nvim",
-	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+	event = { "BufNewFile", "BufRead" },
 	config = config,
 }
