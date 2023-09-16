@@ -16,5 +16,5 @@ return {
 		return vim.env.USER ~= "ushmz"
 	end,
 	config = config,
-	event = { "BufRead" },
+	event = { "InsertEnter" },
 }

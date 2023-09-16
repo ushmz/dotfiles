@@ -52,6 +52,6 @@ end
 
 return {
 	"lewis6991/gitsigns.nvim",
-	event = { "BufReadPre" },
+	event = { "BufNewFile", "BufRead" },
 	config = config,
 }

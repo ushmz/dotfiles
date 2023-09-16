@@ -28,5 +28,5 @@ end
 return {
 	"dinhhuy258/git.nvim",
 	config = config,
-	event = { "BufRead" },
+	event = { "VeryLazy" },
 }

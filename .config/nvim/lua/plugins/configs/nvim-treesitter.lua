@@ -170,12 +170,12 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufRead" },
+		event = { "BufNewFile", "BufRead" },
 		config = treesitter,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = { "BufRead" },
+		event = { "BufNewFile", "BufRead" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = treesitter_context,
 	},
@@ -186,17 +186,17 @@ return {
 	},
 	{
 		"nvim-treesitter/playground",
-		event = { "BufRead" },
+		event = { "BufNewFile", "BufRead" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = { "BufRead" },
+		event = { "BufNewFile", "BufRead" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = { "BufRead" },
+		event = { "BufNewFile", "BufRead" },
 	},
 }

@@ -1,6 +1,6 @@
 return {
 	"levouh/tint.nvim",
-	event = "BufReadPost",
+	event = { "VeryLazy" },
 	config = function()
 		require("tint").setup({})
 	end,

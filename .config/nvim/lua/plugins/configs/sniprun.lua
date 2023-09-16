@@ -74,5 +74,6 @@ end
 return {
 	"michaelb/sniprun",
 	cond = false,
+	event = { "VeryLazy" },
 	build = "sh ./install.sh",
 }

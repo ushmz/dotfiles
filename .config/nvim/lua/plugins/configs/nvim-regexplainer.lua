@@ -21,7 +21,7 @@ local config = function()
 end
 return {
 	"bennypowers/nvim-regexplainer",
-	event = { "BufRead" },
+	event = { "VeryLazy" },
 	ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	config = config,
 	dependencies = {

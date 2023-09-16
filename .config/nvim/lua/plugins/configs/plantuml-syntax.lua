@@ -1,4 +1,4 @@
 return {
 	"aklt/plantuml-syntax",
-	event = { "BufReadPre" },
+	event = { "BufNewFile", "BufRead" },
 }

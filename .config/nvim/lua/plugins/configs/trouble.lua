@@ -6,5 +6,5 @@ return {
 	opts = {
 		position = "left",
 	},
-	event = { "BufRead" },
+	event = { "VeryLazy" },
 }

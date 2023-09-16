@@ -8,6 +8,6 @@ end
 
 return {
 	"norcalli/nvim-colorizer.lua",
-	event = { "BufReadPre" },
+	event = { "BufNewFile", "BufRead" },
 	config = config,
 }
