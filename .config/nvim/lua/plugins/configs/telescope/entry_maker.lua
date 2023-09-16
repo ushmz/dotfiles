@@ -1,3 +1,9 @@
+local entry_display = require("telescope.pickers.entry_display")
+local make_entry = require("telescope.make_entry")
+local utils = require("telescope.utils")
+local default_icon = require("nvim-web-devicons").get_icon("fname", { default = true })
+local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
+
 local M = {}
 
 ---Strip the leading and trailing whitespace from a string.
@@ -31,7 +37,6 @@ end
 ---@return string tail # The tail of the path (file name in most case).
 ---@return string directory_path # Directory path to display
 local get_path_and_tail = function(file_path)
-	local utils = require("telescope.utils")
 	local tail = utils.path_tail(file_path)
 	local path_without_tail = require("plenary.strings").truncate(file_path, #file_path - #tail, "")
 	local directory_path = utils.transform_path({ path_display = { "truncate" } }, path_without_tail)
@@ -44,20 +49,13 @@ end
 ---@param opts? table
 ---@return function
 local get_highlighted_entry_maker_from_file = function(opts)
-	local make_entry = require("telescope.make_entry")
-	local strings = require("plenary.strings")
-	local utils = require("telescope.utils")
-	local entry_display = require("telescope.pickers.entry_display")
-	local devicons = require("nvim-web-devicons")
-	local def_icon = devicons.get_icon("fname", { default = true })
-
 	return function(line)
 		local entry_make = make_entry.gen_from_file(opts or {})
 		local entry = entry_make(line)
 		local displayer = entry_display.create({
 			separator = " ",
 			items = {
-				{ width = strings.strdisplaywidth(def_icon) },
+				{ width = icon_width },
 				{ width = nil },
 				{ remaining = true },
 			},
@@ -70,7 +68,7 @@ local get_highlighted_entry_maker_from_file = function(opts)
 			return displayer({
 				{ icon, iconhl },
 				tail,
-				{ directory_path, "TelescopeResultsComment" },
+				{ directory_path, "Comment" },
 			})
 		end
 		return entry
@@ -83,20 +81,13 @@ end
 ---@param opts? table
 ---@return function
 local get_highlighted_entry_maker_from_vimgrep = function(opts)
-	local make_entry = require("telescope.make_entry")
-	local strings = require("plenary.strings")
-	local utils = require("telescope.utils")
-	local entry_display = require("telescope.pickers.entry_display")
-	local devicons = require("nvim-web-devicons")
-	local def_icon = devicons.get_icon("fname", { default = true })
-
 	return function(line)
 		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
 		local entry = entry_maker(line)
 		local displayer = entry_display.create({
 			separator = "",
 			items = {
-				{ width = strings.strdisplaywidth(def_icon) }, -- Icon
+				{ width = icon_width },
 				{ width = nil }, -- Space
 				{ width = nil }, -- Parent directory path
 				{ width = nil }, -- File name
@@ -117,14 +108,14 @@ local get_highlighted_entry_maker_from_vimgrep = function(opts)
 			return displayer({
 				{ icon, iconhl },
 				{ " ", nil },
-				{ directory_path .. "/", "TelescopeResultsIdentifier" },
+				{ directory_path .. "/", "Directory" },
 				{ filename, nil },
-				{ ":", "TelescopeResultsComment" },
-				{ row, "TelescopeResultsNumber" },
-				{ ":", "TelescopeResultsComment" },
-				{ col, "TelescopeResultsNumber" },
+				{ ":", "Comment" },
+				{ row, "Number" },
+				{ ":", "Comment" },
+				{ col, "Number" },
 				{ " ", nil },
-				{ text, "TelescopeResultsComment" },
+				{ text, "Comment" },
 			})
 		end
 		return entry
@@ -137,20 +128,13 @@ end
 ---@param opts? table
 ---@return function
 local get_highlighted_entry_maker_from_quickfix = function(opts)
-	local make_entry = require("telescope.make_entry")
-	local strings = require("plenary.strings")
-	local utils = require("telescope.utils")
-	local entry_display = require("telescope.pickers.entry_display")
-	local devicons = require("nvim-web-devicons")
-	local def_icon = devicons.get_icon("fname", { default = true })
-
 	return function(input)
 		local entry_maker = make_entry.gen_from_quickfix(opts or {})
 		local entry = entry_maker(input)
 		local displayer = entry_display.create({
 			separator = "",
 			items = {
-				{ width = strings.strdisplaywidth(def_icon) }, -- Icon
+				{ width = icon_width },
 				{ width = nil }, -- Space
 				{ width = nil }, -- Parent directory path
 				{ width = nil }, -- File name
@@ -171,14 +155,14 @@ local get_highlighted_entry_maker_from_quickfix = function(opts)
 			return displayer({
 				{ icon, iconhl },
 				{ " ", nil },
-				{ directory_path .. "/", "TelescopeResultsIdentifier" },
+				{ directory_path .. "/", "Directory" },
 				{ filename, nil },
-				{ ":", "TelescopeResultsComment" },
-				{ tostring(et.lnum), "TelescopeResultsNumber" },
-				{ ":", "TelescopeResultsComment" },
-				{ tostring(et.col), "TelescopeResultsNumber" },
+				{ ":", "Comment" },
+				{ tostring(et.lnum), "Number" },
+				{ ":", "Comment" },
+				{ tostring(et.col), "Number" },
 				{ " ", nil },
-				{ strip(et.text), "TelescopeResultsComment" },
+				{ strip(et.text), "Comment" },
 			})
 		end
 		return entry
