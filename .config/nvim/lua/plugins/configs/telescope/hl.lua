@@ -78,6 +78,7 @@ M.entry_maker_highlight_parent_dir = function(base_entry_maker, splitter)
 end
 
 M.set = function()
+	vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalNC" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#B5BD68", bold = true })
 end
 

@@ -110,7 +110,6 @@ local function completion_config()
 		},
 		window = {
 			completion = {
-				winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:None",
 				side_padding = 0,
 				border = "rounded",
 			},
