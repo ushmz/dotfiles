@@ -9,14 +9,11 @@ return {
 			nested = true,
 			callback = function()
 				vim.cmd.colorscheme("hybrid")
-				-- Going with "mvllow/modes.nvim", I'd like to set this with
-				-- 100% of `Normal background` + `line_opacity`% of `Cursor background`
-				-- but actually 32% of `Cursor background`
-				-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#4a4c4d" })
-				vim.api.nvim_set_hl(0, "Normal", { bg = "#26292B" })
-				vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1D1F21" })
+				vim.api.nvim_set_hl(0, "Normal", { bg = "#1D1F21" })
+				vim.api.nvim_set_hl(0, "NormalNC", { bg = "#26292B" })
 				vim.api.nvim_set_hl(0, "SignColumn", { bg = nil })
 				vim.api.nvim_set_hl(0, "LineNR", { fg = "#666666", bg = nil })
+				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#4A4C4D" })
 			end,
 		})
 	end,
