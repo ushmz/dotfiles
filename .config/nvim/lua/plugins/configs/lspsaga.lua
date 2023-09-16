@@ -106,7 +106,7 @@ local function config()
 end
 
 return {
-	"glepnir/lspsaga.nvim",
+	"nvimdev/lspsaga.nvim",
 	cmd = { "Lspsaga" },
 	keys = {
 		{ "K", "<Cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "LSP: Hover document with floating window" },
