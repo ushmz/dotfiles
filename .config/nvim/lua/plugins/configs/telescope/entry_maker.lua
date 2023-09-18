@@ -1,8 +1,8 @@
+local default_icon = require("nvim-web-devicons").get_icon("fname", { default = true })
 local entry_display = require("telescope.pickers.entry_display")
+local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
 local make_entry = require("telescope.make_entry")
 local utils = require("telescope.utils")
-local default_icon = require("nvim-web-devicons").get_icon("fname", { default = true })
-local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
 
 local M = {}
 
