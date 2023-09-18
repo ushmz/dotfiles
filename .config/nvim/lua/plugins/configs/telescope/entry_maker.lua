@@ -3,8 +3,11 @@ local entry_display = require("telescope.pickers.entry_display")
 local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
 local make_entry = require("telescope.make_entry")
 local utils = require("telescope.utils")
+---Spacer item for the picker.
+local spacer = " "
 
-local M = {}
+---Separator item with highlight for the picker.
+local separator = { ":", "Comment" }
 
 ---Strip the leading and trailing whitespace from a string.
 ---@param str string
@@ -109,14 +112,14 @@ local function get_highlighted_entry_maker_from_vimgrep(opts)
 
 			return displayer({
 				{ icon, iconhl },
-				{ " ", nil },
+				spacer,
 				{ directory_path .. "/", "Directory" },
 				{ filename, nil },
-				{ ":", "Comment" },
+				separator,
 				{ row, "Number" },
-				{ ":", "Comment" },
+				separator,
 				{ col, "Number" },
-				{ " ", nil },
+				spacer,
 				{ text, "Comment" },
 			})
 		end
@@ -157,20 +160,22 @@ local function get_highlighted_entry_maker_from_quickfix(opts)
 
 			return displayer({
 				{ icon, iconhl },
-				{ " ", nil },
+				spacer,
 				{ directory_path .. "/", "Directory" },
 				{ filename, nil },
-				{ ":", "Comment" },
+				separator,
 				{ tostring(et.lnum), "Number" },
-				{ ":", "Comment" },
+				separator,
 				{ tostring(et.col), "Number" },
-				{ " ", nil },
+				spacer,
 				{ strip(et.text), "Comment" },
 			})
 		end
 		return entry
 	end
 end
+
+local M = {}
 
 ---Create a new entry maker for the file picker.
 ---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
