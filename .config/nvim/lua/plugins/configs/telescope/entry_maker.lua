@@ -9,7 +9,7 @@ local M = {}
 ---Strip the leading and trailing whitespace from a string.
 ---@param str string
 ---@return string # The stripped string.
-local strip = function(str)
+local function strip(str)
 	return string.match(str, "^%s*(.-)%s*$")
 end
 
@@ -20,7 +20,7 @@ end
 ---@return string row # Line(row) number.
 ---@return string col # Column number.
 ---@return string text # The text.
-local get_path_and_pos = function(str, sep)
+local function get_path_and_pos(str, sep)
 	local result = {}
 	local regex = ("([^%s]+)"):format(sep)
 	for token in str:gmatch(regex) do
@@ -36,7 +36,7 @@ end
 ---@param file_path string
 ---@return string tail # The tail of the path (file name in most case).
 ---@return string directory_path # Directory path to display
-local get_path_and_tail = function(file_path)
+local function get_path_and_tail(file_path)
 	local tail = utils.path_tail(file_path)
 	local path_without_tail = require("plenary.strings").truncate(file_path, #file_path - #tail, "")
 	local directory_path = utils.transform_path({ path_display = { "truncate" } }, path_without_tail)
@@ -48,7 +48,7 @@ end
 ---Put the file name first and the dimmed parent directory path in the second.
 ---@param opts? table
 ---@return function
-local get_highlighted_entry_maker_from_file = function(opts)
+local function get_highlighted_entry_maker_from_file(opts)
 	return function(line)
 		local entry_make = make_entry.gen_from_file(opts or {})
 		local entry = entry_make(line)
@@ -80,7 +80,7 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local get_highlighted_entry_maker_from_vimgrep = function(opts)
+local function get_highlighted_entry_maker_from_vimgrep(opts)
 	return function(line)
 		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
 		local entry = entry_maker(line)
@@ -127,7 +127,7 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local get_highlighted_entry_maker_from_quickfix = function(opts)
+local function get_highlighted_entry_maker_from_quickfix(opts)
 	return function(input)
 		local entry_maker = make_entry.gen_from_quickfix(opts or {})
 		local entry = entry_maker(input)
@@ -173,35 +173,35 @@ end
 ---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
 ---@param opts? any
 ---@return function
-M.create_for_find_files = function(opts)
+function M.create_for_find_files(opts)
 	return get_highlighted_entry_maker_from_file(opts)
 end
 
 ---Create a new entry maker for the old file picker.
 ---@param opts? any
 ---@return function
-M.create_for_old_files = function(opts)
+function M.create_for_old_files(opts)
 	return get_highlighted_entry_maker_from_file(opts)
 end
 
 ---Create a new entry maker for the grep picker.
 ---@param opts? table
 ---@return function
-M.create_for_live_grep = function(opts)
+function M.create_for_live_grep(opts)
 	return get_highlighted_entry_maker_from_vimgrep(opts)
 end
 
 ---Create a new entry maker for the lsp_references picker.
 ---@param opts? table
 ---@return function
-M.create_for_lsp_references = function(opts)
+function M.create_for_lsp_references(opts)
 	return get_highlighted_entry_maker_from_quickfix(opts)
 end
 
 ---Create a new entry maker for the lsp_implementations picker.
 ---@param opts? table
 ---@return function
-M.create_for_lsp_implementations = function(opts)
+function M.create_for_lsp_implementations(opts)
 	return get_highlighted_entry_maker_from_quickfix(opts)
 end
 
