@@ -49,17 +49,18 @@ end
 ---@param opts? table
 ---@return function
 local function get_highlighted_entry_maker_from_file(opts)
+	local displayer = entry_display.create({
+		separator = " ",
+		items = {
+			{ width = icon_width },
+			{ width = nil },
+			{ remaining = true },
+		},
+	})
+
 	return function(line)
 		local entry_make = make_entry.gen_from_file(opts or {})
 		local entry = entry_make(line)
-		local displayer = entry_display.create({
-			separator = " ",
-			items = {
-				{ width = icon_width },
-				{ width = nil },
-				{ remaining = true },
-			},
-		})
 
 		entry.display = function(et)
 			local tail, directory_path = get_path_and_tail(et.value)
@@ -81,24 +82,25 @@ end
 ---@param opts? table
 ---@return function
 local function get_highlighted_entry_maker_from_vimgrep(opts)
+	local displayer = entry_display.create({
+		separator = "",
+		items = {
+			{ width = icon_width },
+			{ width = nil }, -- Space
+			{ width = nil }, -- Parent directory path
+			{ width = nil }, -- File name
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (line number)
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (column)
+			{ width = nil }, -- Space
+			{ remaining = true }, -- Matched line text
+		},
+	})
+
 	return function(line)
 		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
 		local entry = entry_maker(line)
-		local displayer = entry_display.create({
-			separator = "",
-			items = {
-				{ width = icon_width },
-				{ width = nil }, -- Space
-				{ width = nil }, -- Parent directory path
-				{ width = nil }, -- File name
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (line number)
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (column)
-				{ width = nil }, -- Space
-				{ remaining = true }, -- Matched line text
-			},
-		})
 
 		entry.display = function(et)
 			local filepath, row, col, text = get_path_and_pos(et.value, ":")
@@ -128,24 +130,25 @@ end
 ---@param opts? table
 ---@return function
 local function get_highlighted_entry_maker_from_quickfix(opts)
+	local displayer = entry_display.create({
+		separator = "",
+		items = {
+			{ width = icon_width },
+			{ width = nil }, -- Space
+			{ width = nil }, -- Parent directory path
+			{ width = nil }, -- File name
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (line number)
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (column)
+			{ width = nil }, -- Space
+			{ remaining = true }, -- Matched line text
+		},
+	})
+
 	return function(input)
 		local entry_maker = make_entry.gen_from_quickfix(opts or {})
 		local entry = entry_maker(input)
-		local displayer = entry_display.create({
-			separator = "",
-			items = {
-				{ width = icon_width },
-				{ width = nil }, -- Space
-				{ width = nil }, -- Parent directory path
-				{ width = nil }, -- File name
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (line number)
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (column)
-				{ width = nil }, -- Space
-				{ remaining = true }, -- Matched line text
-			},
-		})
 
 		entry.display = function(et)
 			local filepath = vim.F.if_nil(et.filename, et.bufname)
