@@ -1,15 +1,18 @@
+local default_icon = require("nvim-web-devicons").get_icon("fname", { default = true })
 local entry_display = require("telescope.pickers.entry_display")
+local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
 local make_entry = require("telescope.make_entry")
 local utils = require("telescope.utils")
-local default_icon = require("nvim-web-devicons").get_icon("fname", { default = true })
-local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
+---Spacer item for the picker.
+local spacer = " "
 
-local M = {}
+---Separator item with highlight for the picker.
+local separator = { ":", "Comment" }
 
 ---Strip the leading and trailing whitespace from a string.
 ---@param str string
 ---@return string # The stripped string.
-local strip = function(str)
+local function strip(str)
 	return string.match(str, "^%s*(.-)%s*$")
 end
 
@@ -20,7 +23,7 @@ end
 ---@return string row # Line(row) number.
 ---@return string col # Column number.
 ---@return string text # The text.
-local get_path_and_pos = function(str, sep)
+local function get_path_and_pos(str, sep)
 	local result = {}
 	local regex = ("([^%s]+)"):format(sep)
 	for token in str:gmatch(regex) do
@@ -36,7 +39,7 @@ end
 ---@param file_path string
 ---@return string tail # The tail of the path (file name in most case).
 ---@return string directory_path # Directory path to display
-local get_path_and_tail = function(file_path)
+local function get_path_and_tail(file_path)
 	local tail = utils.path_tail(file_path)
 	local path_without_tail = require("plenary.strings").truncate(file_path, #file_path - #tail, "")
 	local directory_path = utils.transform_path({ path_display = { "truncate" } }, path_without_tail)
@@ -48,18 +51,19 @@ end
 ---Put the file name first and the dimmed parent directory path in the second.
 ---@param opts? table
 ---@return function
-local get_highlighted_entry_maker_from_file = function(opts)
+local function get_highlighted_entry_maker_from_file(opts)
+	local displayer = entry_display.create({
+		separator = " ",
+		items = {
+			{ width = icon_width },
+			{ width = nil },
+			{ remaining = true },
+		},
+	})
+
 	return function(line)
 		local entry_make = make_entry.gen_from_file(opts or {})
 		local entry = entry_make(line)
-		local displayer = entry_display.create({
-			separator = " ",
-			items = {
-				{ width = icon_width },
-				{ width = nil },
-				{ remaining = true },
-			},
-		})
 
 		entry.display = function(et)
 			local tail, directory_path = get_path_and_tail(et.value)
@@ -80,25 +84,26 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local get_highlighted_entry_maker_from_vimgrep = function(opts)
+local function get_highlighted_entry_maker_from_vimgrep(opts)
+	local displayer = entry_display.create({
+		separator = "",
+		items = {
+			{ width = icon_width },
+			{ width = nil }, -- Space
+			{ width = nil }, -- Parent directory path
+			{ width = nil }, -- File name
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (line number)
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (column)
+			{ width = nil }, -- Space
+			{ remaining = true }, -- Matched line text
+		},
+	})
+
 	return function(line)
 		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
 		local entry = entry_maker(line)
-		local displayer = entry_display.create({
-			separator = "",
-			items = {
-				{ width = icon_width },
-				{ width = nil }, -- Space
-				{ width = nil }, -- Parent directory path
-				{ width = nil }, -- File name
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (line number)
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (column)
-				{ width = nil }, -- Space
-				{ remaining = true }, -- Matched line text
-			},
-		})
 
 		entry.display = function(et)
 			local filepath, row, col, text = get_path_and_pos(et.value, ":")
@@ -107,14 +112,14 @@ local get_highlighted_entry_maker_from_vimgrep = function(opts)
 
 			return displayer({
 				{ icon, iconhl },
-				{ " ", nil },
+				spacer,
 				{ directory_path .. "/", "Directory" },
 				{ filename, nil },
-				{ ":", "Comment" },
+				separator,
 				{ row, "Number" },
-				{ ":", "Comment" },
+				separator,
 				{ col, "Number" },
-				{ " ", nil },
+				spacer,
 				{ text, "Comment" },
 			})
 		end
@@ -127,25 +132,26 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local get_highlighted_entry_maker_from_quickfix = function(opts)
+local function get_highlighted_entry_maker_from_quickfix(opts)
+	local displayer = entry_display.create({
+		separator = "",
+		items = {
+			{ width = icon_width },
+			{ width = nil }, -- Space
+			{ width = nil }, -- Parent directory path
+			{ width = nil }, -- File name
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (line number)
+			{ width = nil }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (column)
+			{ width = nil }, -- Space
+			{ remaining = true }, -- Matched line text
+		},
+	})
+
 	return function(input)
 		local entry_maker = make_entry.gen_from_quickfix(opts or {})
 		local entry = entry_maker(input)
-		local displayer = entry_display.create({
-			separator = "",
-			items = {
-				{ width = icon_width },
-				{ width = nil }, -- Space
-				{ width = nil }, -- Parent directory path
-				{ width = nil }, -- File name
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (line number)
-				{ width = nil }, -- Separator (Colon)
-				{ width = nil }, -- Matched char position (column)
-				{ width = nil }, -- Space
-				{ remaining = true }, -- Matched line text
-			},
-		})
 
 		entry.display = function(et)
 			local filepath = vim.F.if_nil(et.filename, et.bufname)
@@ -154,14 +160,14 @@ local get_highlighted_entry_maker_from_quickfix = function(opts)
 
 			return displayer({
 				{ icon, iconhl },
-				{ " ", nil },
+				spacer,
 				{ directory_path .. "/", "Directory" },
 				{ filename, nil },
-				{ ":", "Comment" },
+				separator,
 				{ tostring(et.lnum), "Number" },
-				{ ":", "Comment" },
+				separator,
 				{ tostring(et.col), "Number" },
-				{ " ", nil },
+				spacer,
 				{ strip(et.text), "Comment" },
 			})
 		end
@@ -169,39 +175,41 @@ local get_highlighted_entry_maker_from_quickfix = function(opts)
 	end
 end
 
+local M = {}
+
 ---Create a new entry maker for the file picker.
 ---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
 ---@param opts? any
 ---@return function
-M.create_for_find_files = function(opts)
+function M.create_for_find_files(opts)
 	return get_highlighted_entry_maker_from_file(opts)
 end
 
 ---Create a new entry maker for the old file picker.
 ---@param opts? any
 ---@return function
-M.create_for_old_files = function(opts)
+function M.create_for_old_files(opts)
 	return get_highlighted_entry_maker_from_file(opts)
 end
 
 ---Create a new entry maker for the grep picker.
 ---@param opts? table
 ---@return function
-M.create_for_live_grep = function(opts)
+function M.create_for_live_grep(opts)
 	return get_highlighted_entry_maker_from_vimgrep(opts)
 end
 
 ---Create a new entry maker for the lsp_references picker.
 ---@param opts? table
 ---@return function
-M.create_for_lsp_references = function(opts)
+function M.create_for_lsp_references(opts)
 	return get_highlighted_entry_maker_from_quickfix(opts)
 end
 
 ---Create a new entry maker for the lsp_implementations picker.
 ---@param opts? table
 ---@return function
-M.create_for_lsp_implementations = function(opts)
+function M.create_for_lsp_implementations(opts)
 	return get_highlighted_entry_maker_from_quickfix(opts)
 end
 
