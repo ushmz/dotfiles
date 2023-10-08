@@ -22,6 +22,11 @@ return {
 				Hint = { color = theme.blue },
 				Misc = { color = theme.cyan },
 			},
+			excluded_buftypes = {
+				"terminal",
+				"popup",
+				"nofile",
+			},
 			handlers = {
 				search = true,
 			},
