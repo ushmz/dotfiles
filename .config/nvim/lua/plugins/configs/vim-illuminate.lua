@@ -9,6 +9,7 @@ return {
 				"dirvish",
 				"fugitive",
 				"lazy",
+				"markdown",
 				"noice",
 				"prompt",
 				"TelescopePrompt",
