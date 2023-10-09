@@ -39,7 +39,7 @@ M.help_tags = function()
 end
 
 M.keymaps = function()
-	b().keymaps({})
+	b().keymaps({ show_plug = false })
 end
 
 M.oldfiles = function()
