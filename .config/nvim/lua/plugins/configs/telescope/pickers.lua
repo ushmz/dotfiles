@@ -122,21 +122,84 @@ M.grep_string = function()
 	b().grep_string(opts)
 end
 
+local function pretty_live_grep(opts)
+	local configs = require("telescope.config").values
+	return require("telescope.pickers").new(opts, {
+		prompt_title = "Live Grep",
+		finder = require("telescope.finders").new_job(function(prompt)
+			if not prompt or prompt == "" then
+				return nil
+			end
+			return vim.tbl_flatten({ opts.vimgrep_arguments, "--", prompt })
+		end, opts.entry_maker, opts.max_results, opts.cwd),
+		previewer = configs.grep_previewer(opts),
+		sorter = require("telescope.sorters").new({
+			scoring_function = function()
+				return 0
+			end,
+		}),
+		tiebreak = function(current, existing)
+			if current.filename == existing.filename then
+				if existing.kind == "begin" then
+					return true
+				else
+					if existing.lnum < current.lnum then
+						return true
+					else
+						return false
+					end
+				end
+			end
+		end,
+	})
+end
+
 M.live_grep = function()
+	local cwd = is_git_repo() and get_git_root() or vim.loop.cwd()
 	local entries = require("plugins.configs.telescope.entry_maker")
 	local opts = {
-		-- NOTE: To add `--hidden` option to `telescope.defaults.vimgrep_arguments` is not working.
-		--       So, I use `additional_args` option instead.
-		additional_args = { "--hidden", "--glob", "!.git" },
-		entry_maker = entries.create_for_live_grep(),
+		cwd = cwd,
+		vimgrep_arguments = {
+			"rg",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+			"--trim",
+			"--glob",
+			"!.git",
+			"--json",
+		},
+		entry_maker = entries.create_for_pretty_live_grep({ cwd = cwd or "" }),
 		layout_config = {
 			preview_width = 0.4,
 		},
+		attach_mappings = function(_)
+			local keys = {
+				"move_selection_next",
+				"move_selection_previous",
+				"move_selection_better",
+				"move_selection_worse",
+			}
+			for _, key in ipairs(keys) do
+				local action = require("telescope.actions")[key]
+				action:enhance({
+					post = function(bufnr)
+						local entry = require("telescope.actions.state").get_selected_entry()
+						if entry and entry.kind == "begin" then
+							-- repeat the action to skip the "begin" entry
+							action(bufnr)
+						end
+					end,
+				})
+			end
+			return true
+		end,
 	}
-	if is_git_repo() then
-		opts["cwd"] = get_git_root()
-	end
-	b().live_grep(opts)
+	pretty_live_grep(opts):find()
+end
 
 M.egrepify = function()
 	t().load_extension("egrepify")
