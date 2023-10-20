@@ -1,6 +1,6 @@
 local function map() {
     if type abbr &>/dev/null; then
-        abbr -g -S -q --force "$@" &>/dev/null
+        abbr -S -q --force "$@" &>/dev/null
     else
         alias "$@"
     fi
