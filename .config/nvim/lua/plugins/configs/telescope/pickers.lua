@@ -137,6 +137,14 @@ M.live_grep = function()
 		opts["cwd"] = get_git_root()
 	end
 	b().live_grep(opts)
+
+M.egrepify = function()
+	t().load_extension("egrepify")
+	t().extensions["egrepify"]["egrepify"]({
+		layout_config = {
+			preview_width = 0.4,
+		},
+	})
 end
 
 M.file_browser = function()
