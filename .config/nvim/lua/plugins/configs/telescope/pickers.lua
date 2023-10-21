@@ -223,9 +223,4 @@ function M.file_browser()
 	})
 end
 
-function M.harpoon()
-	t().load_extension("harpoon")
-	vim.cmd("Telescope harpoon marks")
-end
-
 return M
