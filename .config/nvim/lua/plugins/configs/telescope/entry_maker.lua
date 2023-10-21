@@ -3,6 +3,9 @@ local entry_display = require("telescope.pickers.entry_display")
 local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
 local make_entry = require("telescope.make_entry")
 local utils = require("telescope.utils")
+
+local sep = require("plenary.path").path.sep
+
 ---Spacer item for the picker.
 local spacer = " "
 
@@ -14,6 +17,20 @@ local separator = { ":", "Comment" }
 ---@return string # The stripped string.
 local function strip(str)
 	return string.match(str, "^%s*(.-)%s*$")
+end
+
+---Find the first whitespace in a string.
+---@param str string
+---@return number # The offset of the first whitespace.
+local function find_whitespace(str)
+	local offset = 0
+	for i = 1, #str do
+		if string.sub(str, i, i) == " " then
+			offset = i
+			break
+		end
+	end
+	return offset
 end
 
 ---Get the path and position from a string.
@@ -76,6 +93,105 @@ local function get_highlighted_entry_maker_from_file(opts)
 			})
 		end
 		return entry
+	end
+end
+
+---Get the pretty entry maker for the grep picker.
+---Group the matched lines by file name.
+---@class PrettyVimgrepEntryMakerProps
+---@field cwd string # The current working directory.
+---@field heading boolean # Whether to show the heading.
+---@field filename_hl string # The highlight group for the file name (default: `Title)
+---@field lnum_hl string # The highlight group for the line number (default: `Number`)
+---@field col_hl string # The highlight group for the column number (default: `Number`)
+---@param opts PrettyVimgrepEntryMakerProps
+---@return function
+local function pretty_vimgrep_entry_maker(opts)
+	local displayer = entry_display.create({
+		separator = "",
+		items = {
+			{ width = nil },
+			{ width = nil }, -- Matched char position (lnum)
+			{ width = 1 }, -- Separator (Colon)
+			{ width = nil }, -- Matched char position (col)
+			{ width = 1 }, -- Space
+			{ remaining = true }, -- Matched line text
+		},
+	})
+
+	return function(line)
+		local e = vim.json.decode(line)
+		if not e then
+			return nil
+		end
+
+		if e.type and e.type == "begin" then
+			if not opts.heading then
+				return nil
+			end
+
+			local suffix = string.format(" %s", string.rep("─", 120))
+			local filepath = e.data.path.text
+			local filename = utils.transform_path({ cwd = opts.cwd, path_display = { "truncate" } }, filepath)
+			local display, hl_group = utils.transform_devicons(filename, filename .. suffix, false)
+			local offset = find_whitespace(display)
+			local end_filename = offset + #filename
+			local end_suffix = end_filename + #suffix
+
+			return {
+				value = filepath,
+				ordinal = filepath,
+				filename = filepath,
+				path = opts.cwd .. sep .. filepath,
+				kind = e.type,
+				display = function(_)
+					if hl_group then
+						return display,
+							{
+								{ { 0, offset }, hl_group },
+								{ { offset, end_filename }, opts.filename_hl or "Title" },
+								{ { end_filename, end_suffix }, "Normal" },
+							}
+					else
+						return display
+					end
+				end,
+			}
+		elseif e.type and e.type == "match" then
+			local matched = e.data.lines.text
+			if not matched then
+				return nil
+			end
+
+			local submatches = e.data.submatches
+			local start = not vim.tbl_isempty(submatches) and submatches[1].start or 0
+			local filename = e.data.path.text
+			local lnum = e.data.line_number
+			local col = start + 1
+
+			return {
+				filename = filename,
+				path = opts.cwd .. sep .. filename,
+				lnum = lnum,
+				text = matched,
+				col = col,
+				value = e.data,
+				ordinal = string.format("%s:%s:%s:%s", filename, lnum, col, matched),
+				kind = e.type,
+				display = function(_)
+					return displayer({
+						not opts.heading and { filename, "Normal" } or "",
+						{ tostring(e.data.line_number), "Number" },
+						separator,
+						{ tostring(col), "Number" },
+						spacer,
+						{ strip(string.gsub(matched, "\n", " ")), "Comment" },
+					})
+				end,
+			}
+		else
+			return
+		end
 	end
 end
 
@@ -197,6 +313,19 @@ end
 ---@return function
 function M.create_for_live_grep(opts)
 	return get_highlighted_entry_maker_from_vimgrep(opts)
+end
+
+---Create a new entry maker for the grouped grep picker.
+---@param opts PrettyVimgrepEntryMakerProps
+---@return function
+function M.create_for_pretty_live_grep(opts)
+	local opts = opts or {}
+	opts.cwd = opts.cwd or vim.loop.cwd()
+	opts.heading = opts.heading or true
+	opts.filename_hl = opts.filename_hl or "Title"
+	opts.lnum_hl = opts.lnum_hl or "Number"
+	opts.col_hl = opts.col_hl or "Number"
+	return pretty_vimgrep_entry_maker(opts or {})
 end
 
 ---Create a new entry maker for the lsp_references picker.

@@ -72,6 +72,11 @@ local function config()
 					},
 				},
 			},
+			egrepify = {
+				vimgrep_arguments = { "rg", "--hidden", "--glob", "!.git" },
+				---FIXME: This causes extra lines in the bottom of the result.
+				-- sorting_strategy = "ascending",
+			},
 		},
 	})
 
@@ -87,6 +92,7 @@ return {
 		{ "sharkdp/fd" },
 		{ "ThePrimeagen/harpoon" },
 		{ "nvim-telescope/telescope-file-browser.nvim" },
+		{ "fdschmidt93/telescope-egrepify.nvim" },
 	},
 	keys = {
 		{ ";;", pickers.resume, mode = "n", desc = "Telescope: Resume latest search" },
@@ -96,6 +102,7 @@ return {
 		{ ";e", pickers.diagnostics, mode = "n", desc = "Telescope: Search diagnostics ([E]rrors)" },
 		{ ";f", pickers.find_files, mode = "n", desc = "Telescope: Search [F]iles" },
 		{ ";g", pickers.live_grep, mode = "n", desc = "Telescope: Live [G]rep" },
+		{ ";G", pickers.egrepify, mode = "n", desc = "Telescope: Search with e[G]repify" },
 		{ ";h", pickers.help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
 		{ ";k", pickers.keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
 		{ ";m", pickers.harpoon, mode = "n", desc = "Telescope: Search Harpoon [M]arks" },
