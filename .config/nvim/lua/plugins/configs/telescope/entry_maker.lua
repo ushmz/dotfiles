@@ -105,7 +105,8 @@ end
 ---@class PrettyVimgrepEntryMakerProps
 ---@field cwd string # The current working directory.
 ---@field heading boolean # Whether to show the heading.
----@field filename_hl string # The highlight group for the file name (default: `Title)
+---@field directory_hl string # The highlight group for the directory path (default: `Directory`)
+---@field filename_hl string # The highlight group for the file name (default: `Title`)
 ---@field lnum_hl string # The highlight group for the line number (default: `Number`)
 ---@field col_hl string # The highlight group for the column number (default: `Number`)
 ---@param opts PrettyVimgrepEntryMakerProps
@@ -124,11 +125,12 @@ local function pretty_vimgrep_entry_maker(opts)
 
 			local suffix = string.format(" %s", string.rep("─", 120))
 			local filepath = e.data.path.text
-			local filename =
-				require("telescope.utils").transform_path({ cwd = opts.cwd, path_display = { "truncate" } }, filepath)
+			local filename = require("telescope.utils").transform_path({ cwd = opts.cwd }, filepath)
+			local tail = require("telescope.utils").path_tail(filename)
 			local display, hl_group = require("telescope.utils").transform_devicons(filename, filename .. suffix, false)
 			local offset = find_whitespace(display)
-			local end_filename = offset + #filename
+			local end_directory = offset + (#filename - #tail)
+			local end_filename = end_directory + #tail
 			local end_suffix = end_filename + #suffix
 
 			return {
@@ -142,7 +144,8 @@ local function pretty_vimgrep_entry_maker(opts)
 						return display,
 							{
 								{ { 0, offset }, hl_group },
-								{ { offset, end_filename }, opts.filename_hl or "Title" },
+								{ { offset, end_directory }, opts.directory_hl or "Directory" },
+								{ { end_directory, end_filename }, opts.filename_hl or "Normal" },
 								{ { end_filename, end_suffix }, "Normal" },
 							}
 					else
@@ -321,7 +324,8 @@ function M.pretty_live_grep(opts)
 	local opts = opts or {}
 	opts.cwd = opts.cwd or vim.loop.cwd()
 	opts.heading = opts.heading or true
-	opts.filename_hl = opts.filename_hl or "Title"
+	opts.directory_hl = opts.directory_hl or "Directory"
+	opts.filename_hl = opts.filename_hl or "Normal"
 	opts.lnum_hl = opts.lnum_hl or "Number"
 	opts.col_hl = opts.col_hl or "Number"
 	return pretty_vimgrep_entry_maker(opts or {})
