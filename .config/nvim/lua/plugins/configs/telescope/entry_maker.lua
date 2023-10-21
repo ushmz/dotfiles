@@ -6,7 +6,7 @@ local spacer = " "
 ---Separator item with highlight for the picker.
 local separator = { ":", "Comment" }
 
----Reutrn the default icon and its width.
+---Return the default icon and its width.
 ---@return string icon
 ---@return number width
 local function default_icon()
@@ -71,7 +71,7 @@ end
 ---Put the file name first and the dimmed parent directory path in the second.
 ---@param opts? table
 ---@return function
-local function get_highlighted_entry_maker_from_file(opts)
+local function pretty_file_entry_maker(opts)
 	local _, icon_width = default_icon()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = " ",
@@ -100,8 +100,8 @@ local function get_highlighted_entry_maker_from_file(opts)
 	end
 end
 
----Get the pretty entry maker for the grep picker.
----Group the matched lines by file name.
+---Get the highlighted entry maker for the grep picker.
+---Grouping the matched lines by file name.
 ---@class PrettyVimgrepEntryMakerProps
 ---@field cwd string # The current working directory.
 ---@field heading boolean # Whether to show the heading.
@@ -197,7 +197,7 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local function get_highlighted_entry_maker_from_vimgrep(opts)
+local function vimgrep_entry_maker(opts)
 	local _, icon_width = default_icon()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
@@ -246,7 +246,7 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local function get_highlighted_entry_maker_from_quickfix(opts)
+local function pretty_quickfix_entry_maker(opts)
 	local _, icon_width = default_icon()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
@@ -296,28 +296,28 @@ local M = {}
 ---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
 ---@param opts? any
 ---@return function
-function M.create_for_find_files(opts)
-	return get_highlighted_entry_maker_from_file(opts)
+function M.find_files(opts)
+	return pretty_file_entry_maker(opts)
 end
 
 ---Create a new entry maker for the old file picker.
 ---@param opts? any
 ---@return function
-function M.create_for_old_files(opts)
-	return get_highlighted_entry_maker_from_file(opts)
+function M.old_files(opts)
+	return pretty_file_entry_maker(opts)
 end
 
 ---Create a new entry maker for the grep picker.
 ---@param opts? table
 ---@return function
-function M.create_for_live_grep(opts)
-	return get_highlighted_entry_maker_from_vimgrep(opts)
+function M.live_grep(opts)
+	return vimgrep_entry_maker(opts)
 end
 
 ---Create a new entry maker for the grouped grep picker.
 ---@param opts PrettyVimgrepEntryMakerProps
 ---@return function
-function M.create_for_pretty_live_grep(opts)
+function M.pretty_live_grep(opts)
 	local opts = opts or {}
 	opts.cwd = opts.cwd or vim.loop.cwd()
 	opts.heading = opts.heading or true
@@ -330,15 +330,15 @@ end
 ---Create a new entry maker for the lsp_references picker.
 ---@param opts? table
 ---@return function
-function M.create_for_lsp_references(opts)
-	return get_highlighted_entry_maker_from_quickfix(opts)
+function M.lsp_references(opts)
+	return pretty_quickfix_entry_maker(opts)
 end
 
 ---Create a new entry maker for the lsp_implementations picker.
 ---@param opts? table
 ---@return function
-function M.create_for_lsp_implementations(opts)
-	return get_highlighted_entry_maker_from_quickfix(opts)
+function M.lsp_implementations(opts)
+	return pretty_quickfix_entry_maker(opts)
 end
 
 return M
