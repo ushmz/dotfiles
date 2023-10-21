@@ -1,9 +1,3 @@
-local default_icon = require("nvim-web-devicons").get_icon("fname", { default = true })
-local entry_display = require("telescope.pickers.entry_display")
-local icon_width = require("plenary.strings").strdisplaywidth(default_icon)
-local make_entry = require("telescope.make_entry")
-local utils = require("telescope.utils")
-
 local sep = require("plenary.path").path.sep
 
 ---Spacer item for the picker.
@@ -11,6 +5,15 @@ local spacer = " "
 
 ---Separator item with highlight for the picker.
 local separator = { ":", "Comment" }
+
+---Reutrn the default icon and its width.
+---@return string icon
+---@return number width
+local function default_icon()
+	local icon = require("nvim-web-devicons").get_icon("fname", { default = true })
+	local width = require("plenary.strings").strdisplaywidth(icon)
+	return icon, width
+end
 
 ---Strip the leading and trailing whitespace from a string.
 ---@param str string
@@ -55,13 +58,13 @@ end
 ---e.g. .config/nvim/init.lua -> init.lua, .config/nvim
 ---@param file_path string
 ---@return string tail # The tail of the path (file name in most case).
----@return string directory_path # Directory path to display
+---@return string directory # Directory path to display
 local function get_path_and_tail(file_path)
-	local tail = utils.path_tail(file_path)
+	local tail = require("telescope.utils").path_tail(file_path)
 	local path_without_tail = require("plenary.strings").truncate(file_path, #file_path - #tail, "")
-	local directory_path = utils.transform_path({ path_display = { "truncate" } }, path_without_tail)
+	local directory = require("telescope.utils").transform_path({ path_display = { "truncate" } }, path_without_tail)
 
-	return tail, directory_path
+	return tail, directory
 end
 
 ---Get the highlighted entry maker for the file picker.
@@ -69,7 +72,8 @@ end
 ---@param opts? table
 ---@return function
 local function get_highlighted_entry_maker_from_file(opts)
-	local displayer = entry_display.create({
+	local _, icon_width = default_icon()
+	local displayer = require("telescope.pickers.entry_display").create({
 		separator = " ",
 		items = {
 			{ width = icon_width },
@@ -79,12 +83,12 @@ local function get_highlighted_entry_maker_from_file(opts)
 	})
 
 	return function(line)
-		local entry_make = make_entry.gen_from_file(opts or {})
+		local entry_make = require("telescope.make_entry").gen_from_file(opts or {})
 		local entry = entry_make(line)
 
 		entry.display = function(et)
 			local tail, directory_path = get_path_and_tail(et.value)
-			local icon, iconhl = utils.get_devicons(tail)
+			local icon, iconhl = require("telescope.utils").get_devicons(tail)
 
 			return displayer({
 				{ icon, iconhl },
@@ -107,7 +111,7 @@ end
 ---@param opts PrettyVimgrepEntryMakerProps
 ---@return function
 local function pretty_vimgrep_entry_maker(opts)
-	local displayer = entry_display.create({
+	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
 		items = {
 			{ width = nil },
@@ -132,8 +136,9 @@ local function pretty_vimgrep_entry_maker(opts)
 
 			local suffix = string.format(" %s", string.rep("─", 120))
 			local filepath = e.data.path.text
-			local filename = utils.transform_path({ cwd = opts.cwd, path_display = { "truncate" } }, filepath)
-			local display, hl_group = utils.transform_devicons(filename, filename .. suffix, false)
+			local filename =
+				require("telescope.utils").transform_path({ cwd = opts.cwd, path_display = { "truncate" } }, filepath)
+			local display, hl_group = require("telescope.utils").transform_devicons(filename, filename .. suffix, false)
 			local offset = find_whitespace(display)
 			local end_filename = offset + #filename
 			local end_suffix = end_filename + #suffix
@@ -201,7 +206,8 @@ end
 ---@param opts? table
 ---@return function
 local function get_highlighted_entry_maker_from_vimgrep(opts)
-	local displayer = entry_display.create({
+	local _, icon_width = default_icon()
+	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
 		items = {
 			{ width = icon_width },
@@ -218,13 +224,13 @@ local function get_highlighted_entry_maker_from_vimgrep(opts)
 	})
 
 	return function(line)
-		local entry_maker = make_entry.gen_from_vimgrep(opts or {})
+		local entry_maker = require("telescope.make_entry").gen_from_vimgrep(opts or {})
 		local entry = entry_maker(line)
 
 		entry.display = function(et)
 			local filepath, row, col, text = get_path_and_pos(et.value, ":")
 			local filename, directory_path = get_path_and_tail(filepath)
-			local icon, iconhl = utils.get_devicons(filename)
+			local icon, iconhl = require("telescope.utils").get_devicons(filename)
 
 			return displayer({
 				{ icon, iconhl },
@@ -249,7 +255,8 @@ end
 ---@param opts? table
 ---@return function
 local function get_highlighted_entry_maker_from_quickfix(opts)
-	local displayer = entry_display.create({
+	local _, icon_width = default_icon()
+	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
 		items = {
 			{ width = icon_width },
@@ -266,13 +273,13 @@ local function get_highlighted_entry_maker_from_quickfix(opts)
 	})
 
 	return function(input)
-		local entry_maker = make_entry.gen_from_quickfix(opts or {})
+		local entry_maker = require("telescope.make_entry").gen_from_quickfix(opts or {})
 		local entry = entry_maker(input)
 
 		entry.display = function(et)
 			local filepath = vim.F.if_nil(et.filename, et.bufname)
 			local filename, directory_path = get_path_and_tail(filepath)
-			local icon, iconhl = utils.get_devicons(filename)
+			local icon, iconhl = require("telescope.utils").get_devicons(filename)
 
 			return displayer({
 				{ icon, iconhl },
