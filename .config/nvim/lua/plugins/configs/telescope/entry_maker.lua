@@ -111,18 +111,6 @@ end
 ---@param opts PrettyVimgrepEntryMakerProps
 ---@return function
 local function pretty_vimgrep_entry_maker(opts)
-	local displayer = require("telescope.pickers.entry_display").create({
-		separator = "",
-		items = {
-			{ width = nil },
-			{ width = nil }, -- Matched char position (lnum)
-			{ width = 1 }, -- Separator (Colon)
-			{ width = nil }, -- Matched char position (col)
-			{ width = 1 }, -- Space
-			{ remaining = true }, -- Matched line text
-		},
-	})
-
 	return function(line)
 		local e = vim.json.decode(line)
 		if not e then
@@ -184,14 +172,18 @@ local function pretty_vimgrep_entry_maker(opts)
 				ordinal = string.format("%s:%s:%s:%s", filename, lnum, col, matched),
 				kind = e.type,
 				display = function(_)
-					return displayer({
-						not opts.heading and { filename, "Normal" } or "",
-						{ tostring(e.data.line_number), "Number" },
-						separator,
-						{ tostring(col), "Number" },
-						spacer,
-						{ strip(string.gsub(matched, "\n", " ")), "Comment" },
-					})
+					local title = opts.heading and "" or filename
+					local display = string.format("%s%s:%s %s", title, lnum, col, strip(matched))
+					local lnum_end = #title + #tostring(lnum)
+					local col_end = lnum_end + 1 + #tostring(col)
+					local hl_group = {
+						{ { 0, #title }, "Title" },
+						{ { #title, lnum_end }, "Number" },
+						{ { lnum_end, lnum_end + 1 }, "Comment" },
+						{ { lnum_end + 1, col_end }, "Number" },
+						{ { col_end + 1, col_end + 1 + #matched }, "Comment" },
+					}
+					return display, hl_group
 				end,
 			}
 		else
