@@ -115,7 +115,19 @@ end
 
 function M.grep_string()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
-	local opts = { entry_maker = entry_maker.live_grep() }
+	local opts = {
+		vimgrep_arguments = {
+			"rg",
+			"--vimgrep",
+			"--smart-case",
+			"--hidden",
+			"--trim",
+			"--glob",
+			"!.git",
+			-- "--json",
+		},
+		entry_maker = entry_maker.live_grep(),
+	}
 	if is_git_repo() then
 		opts["cwd"] = get_git_root()
 	end

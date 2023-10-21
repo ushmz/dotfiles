@@ -37,9 +37,8 @@ local function config()
 				"__pycache__/",
 			},
 		},
-		-- NOTE: To add `--hidden` option to this is not working.
-		--       So, I use `additional_args` option of live_grep picker instead.
-		vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--trim" },
+		-- NOTE: To add `--hidden` option to `vimgrep_arguments` is not working.
+		-- Config in each picker instead.
 		pickers = {
 			find_files = {
 				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
@@ -104,8 +103,8 @@ return {
 		{ ";G", pickers.egrepify, mode = "n", desc = "Telescope: Search with e[G]repify" },
 		{ ";h", pickers.help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
 		{ ";k", pickers.keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
+		{ ";l", pickers.grep_string, mode = "n", desc = "Telescope: Search string [L]iteral" },
 		{ ";o", pickers.oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
-		{ ";ss", pickers.grep_string, mode = "n", desc = "Telescope: [S]earch [S]tring" },
 		{ ";sd", pickers.document_symbols, mode = "n", desc = "Telescope: [S]ymbols in [D]ocument" },
 		{ ";sw", pickers.workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in [W]orkspace" },
 		{ "gi", pickers.implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
