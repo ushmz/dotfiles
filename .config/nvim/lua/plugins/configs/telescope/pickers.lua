@@ -22,27 +22,27 @@ local function get_git_root()
 	return vim.fn.fnamemodify(git_path, ":h")
 end
 
-M.buffers = function()
+function M.buffers()
 	b().buffers({})
 end
 
-M.commands = function()
+function M.commands()
 	b().commands({})
 end
 
-M.diagnostics = function()
+function M.diagnostics()
 	b().diagnostics({})
 end
 
-M.help_tags = function()
+function M.help_tags()
 	b().help_tags({})
 end
 
-M.keymaps = function()
+function M.keymaps()
 	b().keymaps({ show_plug = false })
 end
 
-M.oldfiles = function()
+function M.oldfiles()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().oldfiles({
 		entry_maker = entry_maker.create_for_old_files(),
@@ -52,11 +52,11 @@ M.oldfiles = function()
 	})
 end
 
-M.resume = function()
+function M.resume()
 	b().resume({})
 end
 
-M.references = function()
+function M.references()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().lsp_references({
 		include_declaration = false,
@@ -68,7 +68,7 @@ M.references = function()
 	})
 end
 
-M.implementations = function()
+function M.implementations()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().lsp_implementations({
 		entry_maker = entry_maker.create_for_lsp_implementations(),
@@ -78,7 +78,7 @@ M.implementations = function()
 	})
 end
 
-M.type_definitions = function()
+function M.type_definitions()
 	b().lsp_type_definitions({
 		include_declaration = false,
 		include_current_line = false,
@@ -88,15 +88,15 @@ M.type_definitions = function()
 	})
 end
 
-M.document_symbols = function()
+function M.document_symbols()
 	b().lsp_document_symbols({})
 end
 
-M.workspace_symbols = function()
+function M.workspace_symbols()
 	b().lsp_dynamic_workspace_symbols({})
 end
 
-M.find_files = function()
+function M.find_files()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	local opts = {
 		no_ignore = false,
@@ -113,7 +113,7 @@ M.find_files = function()
 	end
 end
 
-M.grep_string = function()
+function M.grep_string()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	local opts = { entry_maker = entry_maker.create_for_live_grep() }
 	if is_git_repo() then
@@ -154,7 +154,7 @@ local function pretty_live_grep(opts)
 	})
 end
 
-M.live_grep = function()
+function M.live_grep()
 	local cwd = is_git_repo() and get_git_root() or vim.loop.cwd()
 	local entries = require("plugins.configs.telescope.entry_maker")
 	local opts = {
@@ -201,7 +201,7 @@ M.live_grep = function()
 	pretty_live_grep(opts):find()
 end
 
-M.egrepify = function()
+function M.egrepify()
 	t().load_extension("egrepify")
 	t().extensions["egrepify"]["egrepify"]({
 		layout_config = {
@@ -210,7 +210,7 @@ M.egrepify = function()
 	})
 end
 
-M.file_browser = function()
+function M.file_browser()
 	t().load_extension("file_browser")
 	t().extensions["file_browser"]["file_browser"]({
 		cwd = vim.fn.expand("%:p:h"),
@@ -223,7 +223,7 @@ M.file_browser = function()
 	})
 end
 
-M.harpoon = function()
+function M.harpoon()
 	t().load_extension("harpoon")
 	vim.cmd("Telescope harpoon marks")
 end
