@@ -22,6 +22,13 @@ local function strip(str)
 	return string.match(str, "^%s*(.-)%s*$")
 end
 
+local function strip_and_refresh_position(str, start_, end_)
+	local leading, text, _ = string.match(str, "^(%s*)(.-)(%s*)$")
+	local new_start = start_ - #leading
+	local new_end = end_ - #leading
+	return text, new_start, new_end
+end
+
 ---Find the first whitespace in a string.
 ---@param str string
 ---@return number # The offset of the first whitespace.
@@ -154,37 +161,43 @@ local function pretty_vimgrep_entry_maker(opts)
 				end,
 			}
 		elseif e.type and e.type == "match" then
-			local matched = e.data.lines.text
-			if not matched then
+			local text = e.data.lines.text
+			if not text then
 				return nil
 			end
 
 			local submatches = e.data.submatches
-			local start = not vim.tbl_isempty(submatches) and submatches[1].start or 0
+			local start_pos = not vim.tbl_isempty(submatches) and submatches[1].start or 0
+			local end_pos = not vim.tbl_isempty(submatches) and submatches[1]["end"] or 0
 			local filename = e.data.path.text
 			local lnum = e.data.line_number
-			local col = start + 1
+			local col = start_pos + 1
+			local title = opts.heading and "" or filename
+			local text_, start_, end_ = strip_and_refresh_position(text, start_pos, end_pos)
+			local display = string.format("%s%s:%s %s", title, lnum, col, text_)
+			local lnum_end = #title + #tostring(lnum)
+			local col_end = lnum_end + 1 + #tostring(col)
+			local matched_start = col_end + 1 + start_
+			local matched_end = col_end + 1 + end_
 
 			return {
 				filename = filename,
 				path = opts.cwd .. sep .. filename,
 				lnum = lnum,
-				text = matched,
+				text = text,
 				col = col,
 				value = e.data,
-				ordinal = string.format("%s:%s:%s:%s", filename, lnum, col, matched),
+				ordinal = string.format("%s:%s:%s:%s", filename, lnum, col, text),
 				kind = e.type,
 				display = function(_)
-					local title = opts.heading and "" or filename
-					local display = string.format("%s%s:%s %s", title, lnum, col, strip(matched))
-					local lnum_end = #title + #tostring(lnum)
-					local col_end = lnum_end + 1 + #tostring(col)
 					local hl_group = {
 						{ { 0, #title }, "Title" },
 						{ { #title, lnum_end }, "Number" },
 						{ { lnum_end, lnum_end + 1 }, "Comment" },
 						{ { lnum_end + 1, col_end }, "Number" },
-						{ { col_end + 1, col_end + 1 + #matched }, "Comment" },
+						{ { col_end + 1, matched_start }, "Comment" },
+						{ { matched_start, matched_end }, "TelescopeMatching" },
+						{ { matched_end, col_end + #text }, "Comment" },
 					}
 					return display, hl_group
 				end,
