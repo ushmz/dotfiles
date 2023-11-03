@@ -6,7 +6,7 @@ local spacer = " "
 ---Separator item with highlight for the picker.
 local separator = { ":", "Comment" }
 
----Reutrn the default icon and its width.
+---Return the default icon and its width.
 ---@return string icon
 ---@return number width
 local function default_icon()
@@ -20,6 +20,13 @@ end
 ---@return string # The stripped string.
 local function strip(str)
 	return string.match(str, "^%s*(.-)%s*$")
+end
+
+local function strip_and_refresh_position(str, start_, end_)
+	local leading, text, _ = string.match(str, "^(%s*)(.-)(%s*)$")
+	local new_start = start_ - #leading
+	local new_end = end_ - #leading
+	return text, new_start, new_end
 end
 
 ---Find the first whitespace in a string.
@@ -71,7 +78,7 @@ end
 ---Put the file name first and the dimmed parent directory path in the second.
 ---@param opts? table
 ---@return function
-local function get_highlighted_entry_maker_from_file(opts)
+local function pretty_file_entry_maker(opts)
 	local _, icon_width = default_icon()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = " ",
@@ -100,12 +107,13 @@ local function get_highlighted_entry_maker_from_file(opts)
 	end
 end
 
----Get the pretty entry maker for the grep picker.
----Group the matched lines by file name.
+---Get the highlighted entry maker for the grep picker.
+---Grouping the matched lines by file name.
 ---@class PrettyVimgrepEntryMakerProps
 ---@field cwd string # The current working directory.
 ---@field heading boolean # Whether to show the heading.
----@field filename_hl string # The highlight group for the file name (default: `Title)
+---@field directory_hl string # The highlight group for the directory path (default: `Directory`)
+---@field filename_hl string # The highlight group for the file name (default: `Title`)
 ---@field lnum_hl string # The highlight group for the line number (default: `Number`)
 ---@field col_hl string # The highlight group for the column number (default: `Number`)
 ---@param opts PrettyVimgrepEntryMakerProps
@@ -124,11 +132,12 @@ local function pretty_vimgrep_entry_maker(opts)
 
 			local suffix = string.format(" %s", string.rep("─", 120))
 			local filepath = e.data.path.text
-			local filename =
-				require("telescope.utils").transform_path({ cwd = opts.cwd, path_display = { "truncate" } }, filepath)
+			local filename = require("telescope.utils").transform_path({ cwd = opts.cwd }, filepath)
+			local tail = require("telescope.utils").path_tail(filename)
 			local display, hl_group = require("telescope.utils").transform_devicons(filename, filename .. suffix, false)
 			local offset = find_whitespace(display)
-			local end_filename = offset + #filename
+			local end_directory = offset + (#filename - #tail)
+			local end_filename = end_directory + #tail
 			local end_suffix = end_filename + #suffix
 
 			return {
@@ -142,7 +151,8 @@ local function pretty_vimgrep_entry_maker(opts)
 						return display,
 							{
 								{ { 0, offset }, hl_group },
-								{ { offset, end_filename }, opts.filename_hl or "Title" },
+								{ { offset, end_directory }, opts.directory_hl or "Directory" },
+								{ { end_directory, end_filename }, opts.filename_hl or "Normal" },
 								{ { end_filename, end_suffix }, "Normal" },
 							}
 					else
@@ -151,37 +161,43 @@ local function pretty_vimgrep_entry_maker(opts)
 				end,
 			}
 		elseif e.type and e.type == "match" then
-			local matched = e.data.lines.text
-			if not matched then
+			local text = e.data.lines.text
+			if not text then
 				return nil
 			end
 
 			local submatches = e.data.submatches
-			local start = not vim.tbl_isempty(submatches) and submatches[1].start or 0
+			local start_pos = not vim.tbl_isempty(submatches) and submatches[1].start or 0
+			local end_pos = not vim.tbl_isempty(submatches) and submatches[1]["end"] or 0
 			local filename = e.data.path.text
 			local lnum = e.data.line_number
-			local col = start + 1
+			local col = start_pos + 1
+			local title = opts.heading and "" or filename
+			local text_, start_, end_ = strip_and_refresh_position(text, start_pos, end_pos)
+			local display = string.format("%s%s:%s %s", title, lnum, col, text_)
+			local lnum_end = #title + #tostring(lnum)
+			local col_end = lnum_end + 1 + #tostring(col)
+			local matched_start = col_end + 1 + start_
+			local matched_end = col_end + 1 + end_
 
 			return {
 				filename = filename,
 				path = opts.cwd .. sep .. filename,
 				lnum = lnum,
-				text = matched,
+				text = text,
 				col = col,
 				value = e.data,
-				ordinal = string.format("%s:%s:%s:%s", filename, lnum, col, matched),
+				ordinal = string.format("%s:%s:%s:%s", filename, lnum, col, text),
 				kind = e.type,
 				display = function(_)
-					local title = opts.heading and "" or filename
-					local display = string.format("%s%s:%s %s", title, lnum, col, strip(matched))
-					local lnum_end = #title + #tostring(lnum)
-					local col_end = lnum_end + 1 + #tostring(col)
 					local hl_group = {
 						{ { 0, #title }, "Title" },
 						{ { #title, lnum_end }, "Number" },
 						{ { lnum_end, lnum_end + 1 }, "Comment" },
 						{ { lnum_end + 1, col_end }, "Number" },
-						{ { col_end + 1, col_end + 1 + #matched }, "Comment" },
+						{ { col_end + 1, matched_start }, "Comment" },
+						{ { matched_start, matched_end }, "TelescopeMatching" },
+						{ { matched_end, col_end + #text }, "Comment" },
 					}
 					return display, hl_group
 				end,
@@ -197,7 +213,7 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local function get_highlighted_entry_maker_from_vimgrep(opts)
+local function vimgrep_entry_maker(opts)
 	local _, icon_width = default_icon()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
@@ -246,7 +262,7 @@ end
 ---added row(line) and column number, and dimmed the matched line text.
 ---@param opts? table
 ---@return function
-local function get_highlighted_entry_maker_from_quickfix(opts)
+local function pretty_quickfix_entry_maker(opts)
 	local _, icon_width = default_icon()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "",
@@ -296,32 +312,33 @@ local M = {}
 ---@see https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541063264
 ---@param opts? any
 ---@return function
-function M.create_for_find_files(opts)
-	return get_highlighted_entry_maker_from_file(opts)
+function M.find_files(opts)
+	return pretty_file_entry_maker(opts)
 end
 
 ---Create a new entry maker for the old file picker.
 ---@param opts? any
 ---@return function
-function M.create_for_old_files(opts)
-	return get_highlighted_entry_maker_from_file(opts)
+function M.old_files(opts)
+	return pretty_file_entry_maker(opts)
 end
 
 ---Create a new entry maker for the grep picker.
 ---@param opts? table
 ---@return function
-function M.create_for_live_grep(opts)
-	return get_highlighted_entry_maker_from_vimgrep(opts)
+function M.live_grep(opts)
+	return vimgrep_entry_maker(opts)
 end
 
 ---Create a new entry maker for the grouped grep picker.
 ---@param opts PrettyVimgrepEntryMakerProps
 ---@return function
-function M.create_for_pretty_live_grep(opts)
+function M.pretty_live_grep(opts)
 	local opts = opts or {}
 	opts.cwd = opts.cwd or vim.loop.cwd()
 	opts.heading = opts.heading or true
-	opts.filename_hl = opts.filename_hl or "Title"
+	opts.directory_hl = opts.directory_hl or "Directory"
+	opts.filename_hl = opts.filename_hl or "Normal"
 	opts.lnum_hl = opts.lnum_hl or "Number"
 	opts.col_hl = opts.col_hl or "Number"
 	return pretty_vimgrep_entry_maker(opts or {})
@@ -330,15 +347,15 @@ end
 ---Create a new entry maker for the lsp_references picker.
 ---@param opts? table
 ---@return function
-function M.create_for_lsp_references(opts)
-	return get_highlighted_entry_maker_from_quickfix(opts)
+function M.lsp_references(opts)
+	return pretty_quickfix_entry_maker(opts)
 end
 
 ---Create a new entry maker for the lsp_implementations picker.
 ---@param opts? table
 ---@return function
-function M.create_for_lsp_implementations(opts)
-	return get_highlighted_entry_maker_from_quickfix(opts)
+function M.lsp_implementations(opts)
+	return pretty_quickfix_entry_maker(opts)
 end
 
 return M

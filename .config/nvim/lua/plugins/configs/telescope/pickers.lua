@@ -45,7 +45,7 @@ end
 function M.oldfiles()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().oldfiles({
-		entry_maker = entry_maker.create_for_old_files(),
+		entry_maker = entry_maker.old_files(),
 		layout_config = {
 			preview_width = 0.4,
 		},
@@ -61,7 +61,7 @@ function M.references()
 	b().lsp_references({
 		include_declaration = false,
 		include_current_line = false,
-		entry_maker = entry_maker.create_for_lsp_references(),
+		entry_maker = entry_maker.lsp_references(),
 		layout_config = {
 			preview_width = 0.4,
 		},
@@ -71,7 +71,7 @@ end
 function M.implementations()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().lsp_implementations({
-		entry_maker = entry_maker.create_for_lsp_implementations(),
+		entry_maker = entry_maker.lsp_implementations(),
 		layout_config = {
 			preview_width = 0.4,
 		},
@@ -101,7 +101,7 @@ function M.find_files()
 	local opts = {
 		no_ignore = false,
 		hidden = true,
-		entry_maker = entry_maker.create_for_find_files(),
+		entry_maker = entry_maker.find_files(),
 		layout_config = {
 			preview_width = 0.4,
 		},
@@ -115,7 +115,19 @@ end
 
 function M.grep_string()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
-	local opts = { entry_maker = entry_maker.create_for_live_grep() }
+	local opts = {
+		vimgrep_arguments = {
+			"rg",
+			"--vimgrep",
+			"--smart-case",
+			"--hidden",
+			"--trim",
+			"--glob",
+			"!.git",
+			-- "--json",
+		},
+		entry_maker = entry_maker.live_grep(),
+	}
 	if is_git_repo() then
 		opts["cwd"] = get_git_root()
 	end
@@ -172,7 +184,7 @@ function M.live_grep()
 			"!.git",
 			"--json",
 		},
-		entry_maker = entries.create_for_pretty_live_grep({ cwd = cwd or "" }),
+		entry_maker = entries.pretty_live_grep({ cwd = cwd or "" }),
 		layout_config = {
 			preview_width = 0.4,
 		},
@@ -221,11 +233,6 @@ function M.file_browser()
 		initial_mode = "normal",
 		layout_config = { height = 40, width = 100 },
 	})
-end
-
-function M.harpoon()
-	t().load_extension("harpoon")
-	vim.cmd("Telescope harpoon marks")
 end
 
 return M
