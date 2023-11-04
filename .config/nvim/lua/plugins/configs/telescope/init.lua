@@ -11,6 +11,7 @@ local function config()
 	telescope.setup({
 		defaults = {
 			layout_strategy = "flex",
+			sorting_strategy = "ascending",
 			buffer_previewer_maker = preview_maker.create(100000),
 			-- FIXME: It's not working with `telescope-file-browser`.
 			-- Now I put this config in each picker.

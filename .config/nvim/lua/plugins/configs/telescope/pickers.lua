@@ -153,12 +153,12 @@ local function pretty_live_grep(opts)
 		tiebreak = function(current, existing)
 			if current.filename == existing.filename then
 				if existing.kind == "begin" then
-					return true
+					return false
 				else
 					if existing.lnum < current.lnum then
-						return true
-					else
 						return false
+					else
+						return true
 					end
 				end
 			end
