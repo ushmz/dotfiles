@@ -46,9 +46,6 @@ function M.oldfiles()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().oldfiles({
 		entry_maker = entry_maker.old_files(),
-		layout_config = {
-			preview_width = 0.4,
-		},
 	})
 end
 
@@ -62,9 +59,6 @@ function M.references()
 		include_declaration = false,
 		include_current_line = false,
 		entry_maker = entry_maker.lsp_references(),
-		layout_config = {
-			preview_width = 0.4,
-		},
 	})
 end
 
@@ -72,9 +66,6 @@ function M.implementations()
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	b().lsp_implementations({
 		entry_maker = entry_maker.lsp_implementations(),
-		layout_config = {
-			preview_width = 0.4,
-		},
 	})
 end
 
@@ -82,9 +73,6 @@ function M.type_definitions()
 	b().lsp_type_definitions({
 		include_declaration = false,
 		include_current_line = false,
-		layout_config = {
-			preview_width = 0.4,
-		},
 	})
 end
 
@@ -102,9 +90,6 @@ function M.find_files()
 		no_ignore = false,
 		hidden = true,
 		entry_maker = entry_maker.find_files(),
-		layout_config = {
-			preview_width = 0.4,
-		},
 	}
 	if is_git_repo() then
 		b().git_files(opts)
@@ -185,9 +170,6 @@ function M.live_grep()
 			"--json",
 		},
 		entry_maker = entries.pretty_live_grep({ cwd = cwd or "" }),
-		layout_config = {
-			preview_width = 0.4,
-		},
 		attach_mappings = function(_)
 			local keys = {
 				"move_selection_next",
@@ -215,11 +197,7 @@ end
 
 function M.egrepify()
 	t().load_extension("egrepify")
-	t().extensions["egrepify"]["egrepify"]({
-		layout_config = {
-			preview_width = 0.4,
-		},
-	})
+	t().extensions["egrepify"]["egrepify"]({})
 end
 
 function M.file_browser()
