@@ -124,6 +124,8 @@ function M.grep_string(word)
 			"--trim",
 			"--glob",
 			"!.git",
+			-- TODO: add --json flag and group results by file
+			-- FIXME: filtering by input word breaks the entries order
 			-- "--json",
 		},
 		entry_maker = entry_maker.live_grep(),
