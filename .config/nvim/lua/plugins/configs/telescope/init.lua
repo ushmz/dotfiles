@@ -117,6 +117,7 @@ return {
 			desc = "Telescope: [S]earch word from [I]nput",
 		},
 		{ ";o", pickers.oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
+		{ ";/", pickers.current_buffer_fuzzy_find, mode = "n", desc = "Telescope: Fuzzily search in current buffer" },
 		{ ";sd", pickers.document_symbols, mode = "n", desc = "Telescope: [S]ymbols in [D]ocument" },
 		{ ";sw", pickers.workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in [W]orkspace" },
 		{ "gi", pickers.implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
