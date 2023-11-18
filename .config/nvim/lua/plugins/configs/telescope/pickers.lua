@@ -144,6 +144,8 @@ local function pretty_live_grep(opts)
 			end
 			return vim.tbl_flatten({ opts.vimgrep_arguments, "--", prompt })
 		end, opts.entry_maker, opts.max_results, opts.cwd),
+		-- ascending has title "before" matches
+		default_selection_index = 2,
 		previewer = configs.grep_previewer(opts),
 		sorter = require("telescope.sorters").new({
 			scoring_function = function()
