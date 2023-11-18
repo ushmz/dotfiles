@@ -77,14 +77,14 @@ return {
 			{ "thenbe/neotest-playwright" },
 		},
 		keys = {
-			{ "tn", test_nearest, mode = "n", desc = "Neotest: Run the [N]earest test" },
-			{ "tb", test_file, mode = "n", desc = "Neotest: Run test for a file on current [B]uffer" },
-			{ "td", test_directory, mode = "n", desc = "Neotest: Run [T]est for current [D]irectory" },
-			{ "tt", test_suite, mode = "n", desc = "Neotest: Run full [T]est suite" },
-			{ "tq", test_stop, mode = "n", desc = "Neotest: [S]top running test" },
-			{ "ta", test_attach, mode = "n", desc = "Neotest: [A]ttach to the nearest test" },
+			{ "<leader>tn", test_nearest, mode = "n", desc = "Neotest: Run the [N]earest test" },
+			{ "<leader>tb", test_file, mode = "n", desc = "Neotest: Run test for a file on current [B]uffer" },
+			{ "<leader>td", test_directory, mode = "n", desc = "Neotest: Run [T]est for current [D]irectory" },
+			{ "<leader>tt", test_suite, mode = "n", desc = "Neotest: Run full [T]est suite" },
+			{ "<leader>tq", test_stop, mode = "n", desc = "Neotest: [S]top running test" },
+			{ "<leader>ta", test_attach, mode = "n", desc = "Neotest: [A]ttach to the nearest test" },
 			{
-				"to",
+				"<leader>to",
 				function()
 					require("neotest").output_panel.toggle({})
 				end,
@@ -92,7 +92,7 @@ return {
 				desc = "Neotest: Toggle [O]utput",
 			},
 			{
-				"ts",
+				"<leader>ts",
 				function()
 					require("neotest").summary.toggle()
 				end,
@@ -107,7 +107,6 @@ return {
 			-- { "<leader>tt", test_suite, mode = "n", desc = "Neotest: Run full [T]est suite" },
 		},
 		config = function()
-			vim.keymap.set("n", "t", "<Nop>")
 			config()
 		end,
 	},
