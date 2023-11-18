@@ -113,7 +113,7 @@ function M.find_files()
 	end
 end
 
-function M.grep_string()
+function M.grep_string(word)
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	local opts = {
 		vimgrep_arguments = {
@@ -130,6 +130,9 @@ function M.grep_string()
 	}
 	if is_git_repo() then
 		opts["cwd"] = get_git_root()
+	end
+	if word then
+		opts["search"] = word
 	end
 	b().grep_string(opts)
 end
