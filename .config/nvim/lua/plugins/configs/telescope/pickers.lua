@@ -113,7 +113,7 @@ function M.find_files()
 	end
 end
 
-function M.grep_string()
+function M.grep_string(word)
 	local entry_maker = require("plugins.configs.telescope.entry_maker")
 	local opts = {
 		vimgrep_arguments = {
@@ -124,12 +124,17 @@ function M.grep_string()
 			"--trim",
 			"--glob",
 			"!.git",
+			-- TODO: add --json flag and group results by file
+			-- FIXME: filtering by input word breaks the entries order
 			-- "--json",
 		},
 		entry_maker = entry_maker.live_grep(),
 	}
 	if is_git_repo() then
 		opts["cwd"] = get_git_root()
+	end
+	if word then
+		opts["search"] = word
 	end
 	b().grep_string(opts)
 end
@@ -222,6 +227,13 @@ function M.egrepify()
 			prompt_position = "top",
 		},
 	})
+end
+
+function M.current_buffer_fuzzy_find()
+	b().current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
 end
 
 function M.file_browser()

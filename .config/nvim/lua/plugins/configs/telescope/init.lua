@@ -107,8 +107,17 @@ return {
 		{ ";G", pickers.egrepify, mode = "n", desc = "Telescope: Search with e[G]repify" },
 		{ ";h", pickers.help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
 		{ ";k", pickers.keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
-		{ ";l", pickers.grep_string, mode = "n", desc = "Telescope: Search string [L]iteral" },
+		{ ";sc", pickers.grep_string, mode = "n", desc = "Telescope: [S]earch word under the [C]ursor" },
+		{
+			";si",
+			function()
+				pickers.grep_string(vim.fn.input("Search: "))
+			end,
+			mode = "n",
+			desc = "Telescope: [S]earch word from [I]nput",
+		},
 		{ ";o", pickers.oldfiles, mode = "n", desc = "Telescope: Search [O]ldfiles" },
+		{ ";/", pickers.current_buffer_fuzzy_find, mode = "n", desc = "Telescope: Fuzzily search in current buffer" },
 		{ ";sd", pickers.document_symbols, mode = "n", desc = "Telescope: [S]ymbols in [D]ocument" },
 		{ ";sw", pickers.workspace_symbols, mode = "n", desc = "Telescope: [S]ymbols in [W]orkspace" },
 		{ "gi", pickers.implementations, mode = "n", desc = "LSP: [G]oto [I]mplementations" },
