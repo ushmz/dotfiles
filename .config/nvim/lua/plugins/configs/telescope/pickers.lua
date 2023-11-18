@@ -47,7 +47,7 @@ function M.oldfiles()
 	b().oldfiles({
 		entry_maker = entry_maker.old_files(),
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 	})
 end
@@ -63,7 +63,7 @@ function M.references()
 		include_current_line = false,
 		entry_maker = entry_maker.lsp_references(),
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 	})
 end
@@ -73,7 +73,7 @@ function M.implementations()
 	b().lsp_implementations({
 		entry_maker = entry_maker.lsp_implementations(),
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 	})
 end
@@ -83,7 +83,7 @@ function M.type_definitions()
 		include_declaration = false,
 		include_current_line = false,
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 	})
 end
@@ -103,7 +103,7 @@ function M.find_files()
 		hidden = true,
 		entry_maker = entry_maker.find_files(),
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 	}
 	if is_git_repo() then
@@ -144,6 +144,8 @@ local function pretty_live_grep(opts)
 			end
 			return vim.tbl_flatten({ opts.vimgrep_arguments, "--", prompt })
 		end, opts.entry_maker, opts.max_results, opts.cwd),
+		-- ascending has title "before" matches
+		default_selection_index = 2,
 		previewer = configs.grep_previewer(opts),
 		sorter = require("telescope.sorters").new({
 			scoring_function = function()
@@ -153,12 +155,12 @@ local function pretty_live_grep(opts)
 		tiebreak = function(current, existing)
 			if current.filename == existing.filename then
 				if existing.kind == "begin" then
-					return true
+					return false
 				else
 					if existing.lnum < current.lnum then
-						return true
-					else
 						return false
+					else
+						return true
 					end
 				end
 			end
@@ -186,7 +188,7 @@ function M.live_grep()
 		},
 		entry_maker = entries.pretty_live_grep({ cwd = cwd or "" }),
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 		attach_mappings = function(_)
 			local keys = {
@@ -217,7 +219,7 @@ function M.egrepify()
 	t().load_extension("egrepify")
 	t().extensions["egrepify"]["egrepify"]({
 		layout_config = {
-			preview_width = 0.4,
+			prompt_position = "top",
 		},
 	})
 end
