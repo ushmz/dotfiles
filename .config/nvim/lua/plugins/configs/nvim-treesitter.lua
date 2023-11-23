@@ -1,6 +1,7 @@
 local function treesitter()
 	local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 	parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+	vim.g.skip_ts_context_commentstring_module = true
 
 	require("nvim-treesitter.configs").setup({
 		highlight = {
@@ -45,9 +46,6 @@ local function treesitter()
 			"typescript",
 			"vim",
 			"yaml",
-		},
-		context_commentstring = {
-			enable = true,
 		},
 		textobjects = {
 			select = {
@@ -198,5 +196,9 @@ return {
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		event = { "BufNewFile", "BufRead" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("ts_context_commentstring").setup({})
+		end,
 	},
 }
