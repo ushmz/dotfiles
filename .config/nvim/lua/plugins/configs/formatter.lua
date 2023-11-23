@@ -44,11 +44,11 @@ local function config()
 	})
 
 	vim.keymap.set("n", "<leader>f", "<cmd>Format<CR>", { noremap = true, silent = true })
-	-- vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 	callback = function()
-	-- 		vim.cmd("Format")
-	-- 	end,
-	-- })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		callback = function()
+			vim.cmd("Format")
+		end,
+	})
 end
 
 return {
