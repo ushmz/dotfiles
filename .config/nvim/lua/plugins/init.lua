@@ -26,6 +26,9 @@ require("lazy").setup("plugins/configs", {
 		enabled = true,
 		notify = false,
 	},
+	defaults = {
+		lazy = true,
+	},
 	performance = {
 		cache = {
 			enabled = true,
