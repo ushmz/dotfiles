@@ -29,6 +29,7 @@ return {
 	---@see https://github.com/akinsho/git-conflict.nvim/issues/14
 	---You shouldn't lazy load this plugin.
 	"akinsho/git-conflict.nvim",
+	lazy = false,
 	version = "1.1.2",
 	config = config,
 }

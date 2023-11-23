@@ -26,7 +26,13 @@ require("lazy").setup("plugins/configs", {
 		enabled = true,
 		notify = false,
 	},
+	defaults = {
+		lazy = true,
+	},
 	performance = {
+		cache = {
+			enabled = true,
+		},
 		rtp = {
 			disabled_plugins = {
 				"2html_plugin",

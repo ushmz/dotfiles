@@ -1,5 +1,6 @@
 return {
 	"w0ng/vim-hybrid",
+	lazy = false,
 	config = function()
 		vim.cmd("syntax on")
 		vim.opt.background = "dark"
