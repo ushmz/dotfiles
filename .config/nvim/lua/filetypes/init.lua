@@ -5,8 +5,7 @@ vim.filetype.add({
 		zsh = "sh",
 	},
 	filename = {
-		Brewfile = "ruby",
-		-- Tmuxfile = "tmux",
+		["Brewfile"] = "ruby",
 		["go.sum"] = "go",
 		["yarn.lock"] = "yaml",
 		[".jscsrc"] = "json",
@@ -18,10 +17,11 @@ vim.filetype.add({
 		["%.config/git/users/.*"] = "gitconfig",
 		[".*%.json%.jbuilder"] = "ruby",
 		[".*%.conf"] = "conf",
-		[".*%.env%..*"] = "env",
+		[".*%.env"] = "env",
 		[".*%tmux.conf"] = "tmux",
-		[".*%.zsh"] = "zsh",
 		[".*%.mdx"] = "jsx",
+		[".*%.js%.snap"] = "javascript",
+		[".*%.ts%.snap"] = "typescript",
 	},
 })
 
