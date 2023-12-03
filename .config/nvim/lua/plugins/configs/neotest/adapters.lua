@@ -39,10 +39,14 @@ end
 
 M.jest_adapter = function()
 	return require("neotest-jest")({
-		jestCommand = "npm test --",
-		jestConfigFile = "custom.jest.config.ts",
-		env = { CI = true },
-		cwd = function(path)
+		jestCommand = "yarn test --runInBand",
+		jestConfigFile = "jest.config.ts",
+		jest_test_discovery = false,
+		env = {
+			CI = true,
+			NODE_OPTIONS = "--dns-result-order=ipv4first",
+		},
+		cwd = function(_)
 			return vim.fn.getcwd()
 		end,
 	})

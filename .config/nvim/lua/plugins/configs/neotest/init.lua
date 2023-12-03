@@ -13,6 +13,7 @@ local function config()
 			adapters.jest_adapter(),
 			adapters.playwright_adapter(),
 		},
+		discovery = { enable = false },
 	})
 	hl.set()
 end
