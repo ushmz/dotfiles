@@ -6,7 +6,7 @@ local function config()
 	key("i", "<C-g><CR>", 'copilot#Accept("")', opt)
 	key("i", "<C-g>j", "<Plug>(copilot-next)")
 	key("i", "<C-g>k", "<Plug>(copilot-previous)")
-	key("i", "<C-g>o", "<Plug>(copilot-dismiss)")
+	key("i", "<C-g>e", "<Plug>(copilot-dismiss)")
 	key("i", "<C-g>s", "<Plug>(copilot-suggest)")
 end
 

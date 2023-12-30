@@ -114,16 +114,10 @@ return {
 		{ "gp", "<Cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "LSP: [G]oto [P]eek window" },
 		{ "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "LSP: Jump to next diagnostic" },
 		{ "<C-k>", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "LSP: Jump to previous diagnostic" },
-		{ "<leader>o", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "LSP: Toggle [O]utline" },
+		{ "go", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "LSP: Toggle [O]utline" },
 		{ "<leader>r", "<Cmd>Lspsaga rename<CR>", mode = "n", desc = "LSP: [R]ename Symbol" },
 		{ "<leader>a", "<cmd>Lspsaga code_action<CR>", mode = "n", desc = "LSP: Execute Code [A]ction" },
 		{ "<leader>a", "<cmd>Lspsaga range_code_action<CR>", mode = "v", desc = "LSP: Code [A]ction to Selected Code" },
-		{
-			"<leader>d",
-			"<cmd>Lspsaga show_cursor_diagnostics<CR>",
-			mode = "n",
-			desc = "LSP: Show [D]iagnostic Message",
-		},
 	},
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons" },

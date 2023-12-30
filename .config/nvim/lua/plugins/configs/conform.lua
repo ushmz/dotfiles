@@ -51,7 +51,7 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>f",
+			"==",
 			function()
 				require("conform").format({ async = true, lsp_fallback = true, timeout_ms = 1000 })
 			end,
