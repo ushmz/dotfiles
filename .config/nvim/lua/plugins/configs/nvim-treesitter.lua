@@ -17,6 +17,10 @@ local function treesitter()
 		indent = { enable = true },
 		autotag = { enable = true },
 		endwise = { enable = true },
+		modules = {},
+		sync_install = false,
+		ignore_install = {},
+		auto_install = true,
 		ensure_installed = {
 			"bash",
 			"css",
@@ -118,64 +122,12 @@ local function treesitter()
 	})
 end
 
-local function treesitter_context()
-	require("treesitter-context").setup({
-		enable = true,
-		max_lines = 10,
-		trim_scope = "outer",
-		min_window_height = 0,
-		patterns = {
-			default = {
-				"class",
-				"function",
-				"method",
-				"for",
-				"while",
-				"if",
-				"switch",
-				"case",
-				"interface",
-				"struct",
-				"enum",
-			},
-			markdown = {
-				"section",
-			},
-			json = {
-				"pair",
-			},
-			typescript = {
-				"export_statement",
-			},
-			yaml = {
-				"block_mapping_pair",
-			},
-		},
-		exact_patterns = {},
-	})
-	-- Set keymap to go to the outer context
-	vim.keymap.set("n", "[c", function()
-		require("treesitter-context").go_to_context()
-	end, { silent = true })
-
-	-- Set highlights
-	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#282A2E" })
-	vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#282A2E" })
-	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { fg = "#808080", underline = true })
-end
-
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = { "BufNewFile", "BufRead" },
 		config = treesitter,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		event = { "BufNewFile", "BufRead" },
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = treesitter_context,
 	},
 	{
 		"RRethy/nvim-treesitter-endwise",

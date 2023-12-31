@@ -19,6 +19,7 @@ M.python_adapter = function()
 		-- 	---Returns if a given file path is a test file.
 		-- 	---NB: This function is called a lot so don't perform any heavy tasks within it.
 		-- 	-- is_test_file = function(file_path) end,
+		-- pytest_discover_instances = true
 	})
 end
 
@@ -44,11 +45,8 @@ M.jest_adapter = function()
 		jest_test_discovery = false,
 		env = {
 			CI = true,
-			NODE_OPTIONS = "--dns-result-order=ipv4first",
+			NODE_OPTIONS = "--dns-result-order=ipv4first --max_old_space_size=6144",
 		},
-		cwd = function(_)
-			return vim.fn.getcwd()
-		end,
 	})
 end
 
