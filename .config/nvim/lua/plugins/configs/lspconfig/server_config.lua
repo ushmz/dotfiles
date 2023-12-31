@@ -14,11 +14,6 @@ local function on_attach(client, bufnr)
 
 	nmap(bufnr, "gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap(bufnr, "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	nmap(bufnr, "<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-	nmap(bufnr, "<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-	nmap(bufnr, "<leader>wl", function()
-		vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)
-	end, "[W]orkspace [L]ist Folders")
 end
 
 ---Return default lsp configs table

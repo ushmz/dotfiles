@@ -4,10 +4,10 @@ local function config()
 	local opt = { silent = true, expr = true, script = true, replace_keycodes = false }
 
 	key("i", "<C-g><CR>", 'copilot#Accept("")', opt)
-	key("i", "<C-j>", "<Plug>(copilot-next)")
-	key("i", "<C-k>", "<Plug>(copilot-previous)")
-	key("i", "<C-o>", "<Plug>(copilot-dismiss)")
-	key("i", "<C-s>", "<Plug>(copilot-suggest)")
+	key("i", "<C-g>j", "<Plug>(copilot-next)")
+	key("i", "<C-g>k", "<Plug>(copilot-previous)")
+	key("i", "<C-g>e", "<Plug>(copilot-dismiss)")
+	key("i", "<C-g>s", "<Plug>(copilot-suggest)")
 end
 
 return {
