@@ -1,5 +1,9 @@
 local function dap_config()
 	-- require("dap").setup({})
+	local sign = vim.fn.sign_define
+	sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+	sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+	sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 end
 
 local function dap_ui()
@@ -10,7 +14,7 @@ return {
 	"rcarriga/nvim-dap-ui",
 	event = { "VeryLazy" },
 	dependencies = {
-		{ "mfussenegger/nvim-dap", config = dap_config },
+		{ "mfussenegger/nvim-dap", event = { "VeryLazy" }, config = dap_config },
 	},
 	config = dap_ui,
 }
