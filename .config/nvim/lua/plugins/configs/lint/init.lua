@@ -1,6 +1,7 @@
+local cspell = require("plugins.configs.lint.cspell")
+
 local function config()
-	local cspell = require("lint").linters.cspell
-	cspell.args = {
+	require("lint").linters.cspell.args = {
 		"lint",
 		"--no-color",
 		"--no-progress",
@@ -23,16 +24,23 @@ local function config()
 		sh = { "shellcheck" },
 		typescript = { "eslint_d" },
 		typescriptreact = { "eslint_d" },
-		vue = { "eslint" },
+		vue = { "eslint_d" },
 		yaml = { "yamllint" },
 	}
 
-	vim.api.nvim_create_autocmd({ "InsertLeave", "BufRead", "TextChanged" }, {
+	-- NOTE: cspell cannot receive inputs from stdin
+	-- spell check doesn't fire with `InsertLeave`
+	vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost", "TextChanged" }, {
 		callback = function()
 			if vim.bo.filetype then
 				require("lint").try_lint("cspell")
 			end
 		end,
+	})
+
+	vim.api.nvim_create_user_command("CSpellAppend", cspell.append_to_dictionary, {
+		nargs = "?",
+		bang = true,
 	})
 end
 
