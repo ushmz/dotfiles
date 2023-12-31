@@ -27,10 +27,9 @@ local function config()
 		yaml = { "yamllint" },
 	}
 
-	vim.api.nvim_create_autocmd({ "InsertLeave", "BufReadPost", "TextChanged", "BufWritePost" }, {
+	vim.api.nvim_create_autocmd({ "InsertLeave", "BufRead", "TextChanged" }, {
 		callback = function()
-			local linters = require("lint").linters_by_ft[vim.bo.filetype]
-			if linters then
+			if vim.bo.filetype then
 				require("lint").try_lint("cspell")
 			end
 		end,
