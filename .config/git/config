@@ -39,8 +39,8 @@
 [diff]
     colorMoved = dimmed-zebra
 [alias]
-    main = "!git checkout main && git pull"
-    master = "!git checkout master && git pull"
+    main = "!git checkout `git branch -l master main | sed 's/^* //'` && git pull"
+    master = "!git checkout `git branch -l master main | sed 's/^* //'` && git pull"
     chore = "!c () { git checkout -b feature/$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10); }; c"
     temp = "!tmp=$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10); git worktree add $(git rev-parse --show-cdup).worktrees/${tmp} -b feature/${tmp}; cd $(git rev-parse --show-cdup).worktrees/${tmp}"
 [ghq]
