@@ -61,7 +61,7 @@ o.wrap = false
 o.backspace = { "start", "eol", "indent" }
 o.path:append({ "**" })
 o.wildignore:append({ "*/__pycache__/*", "*.pyc", "*/node_modules/*", "*.DS_Store" })
-o.updatetime = 300
+o.updatetime = 200
 o.signcolumn = "yes"
 o.colorcolumn = { 100 }
 o.lazyredraw = true
