@@ -146,7 +146,7 @@
   {
     "key": "; d",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "explorerViewletVisible"
+    "when": "neovim.mode != 'insert' && explorerViewletVisible"
   },
   {
     "key": "; f",
@@ -161,7 +161,7 @@
   {
     "key": "; g",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "searchInputBoxFocus"
+    "when": "neovim.mode != 'insert' && searchInputBoxFocus"
   },
   // {
   //   "key": "[Escape]",
