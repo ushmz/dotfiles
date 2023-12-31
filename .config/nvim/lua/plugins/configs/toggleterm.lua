@@ -22,8 +22,8 @@ return {
 	"akinsho/toggleterm.nvim",
 	module = { "toggleterm" },
 	keys = {
-		{ [[<C-\>]], toggle_term, mode = "n", desc = "Toggle default shell terminal" },
-		{ [[<leader>t]], toggle_tig, mode = "n", desc = "Toggle default shell terminal with tig" },
+		{ [[<C-w>\]], toggle_term, mode = "n", desc = "Toggle default shell terminal" },
+		{ [[<C-w>t]], toggle_tig, mode = "n", desc = "Toggle default shell terminal with tig" },
 	},
 	config = config,
 }

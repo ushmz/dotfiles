@@ -7,6 +7,6 @@ return {
 			use_default_keymaps = false,
 		})
 
-		vim.keymap.set("n", "<space>j", require("treesj").toggle())
+		vim.keymap.set("n", "<space>j", require("treesj").toggle)
 	end,
 }

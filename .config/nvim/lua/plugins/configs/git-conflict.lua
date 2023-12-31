@@ -12,7 +12,7 @@ local function config()
 	local key = vim.keymap.set
 	key("n", "<C-g>o", "<Plug>(git-conflict-ours)", { desc = "Git conflict Choose [O]urs" })
 	key("n", "<C-g>t", "<Plug>(git-conflict-theirs)", { desc = "Git conflict Choose [T]heirs" })
-	key("n", "<C-g>b", "<Plug>(git-conflict-both)", { desc = "Git conflict Choose [B]oth" })
+	key("n", "<C-g>a", "<Plug>(git-conflict-both)", { desc = "Git conflict Choose [B]oth" })
 	key("n", "<C-g>n", "<Plug>(git-conflict-none)", { desc = "Git conflict Choose [N]one" })
 	key("n", "<C-g>[", "<Plug>(git-conflict-prev-conflict)", { desc = "Git conflict Go to previous conflict" })
 	key("n", "<C-g>]", "<Plug>(git-conflict-next-conflict)", { desc = "Git conflict Go to next conflict" })

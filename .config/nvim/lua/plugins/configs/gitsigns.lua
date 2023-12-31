@@ -40,13 +40,6 @@ local function config()
 		yadm = {
 			enable = false,
 		},
-		on_attach = function(bufnr)
-			local signs = require("gitsigns")
-			vim.keymap.set("n", "<leader>bl", function()
-				signs.blame_line({ full = true })
-			end, { buffer = bufnr })
-			vim.keymap.set("n", "<leader>tb", signs.toggle_current_line_blame, { buffer = bufnr })
-		end,
 	})
 end
 

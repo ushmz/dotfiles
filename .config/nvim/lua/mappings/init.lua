@@ -2,8 +2,8 @@
 ---@param mode string | table Mode short name or list of modes
 ---@param keys string Left-hand side {lhs} of the mapping.
 ---@param cmd string Right-hand side {rhs} of the mapping.
-local function keymap(mode, keys, cmd)
-	vim.keymap.set(mode, keys, cmd, { noremap = true, silent = true })
+local function keymap(mode, keys, cmd, opts)
+	vim.keymap.set(mode, keys, cmd, { noremap = true, silent = true, unpack(opts or {}) })
 end
 
 keymap("", "<Space>", "<Nop>")
@@ -11,15 +11,14 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 keymap("i", "jj", "<ESC>")
-keymap("i", "<C-]>", "<ESC><Right>")
 keymap("n", "<leader>w", ":<C-u>w<CR>")
 keymap("n", "<leader>q", ":<C-u>q<CR>")
 keymap("n", "mm", "ddp")
-keymap("n", "<leader><Tab>", ":<C-u>tabnew<CR>")
-keymap("n", "<Tab>]", ":<C-u>tabnext<CR>")
-keymap("n", "<Tab>[", ":<C-u>tabprevious<CR>")
 keymap("n", "<ESC><ESC>", ":<C-u>nohlsearch<CR>")
 keymap("n", "<leader>l", ":cclose|lclose<CR>")
+keymap("n", "<C-w>n", ":<C-u>tabnew<CR>")
+keymap("n", "<C-w>[", ":<C-u>tabnext<CR>")
+keymap("n", "<C-w>]", ":<C-u>tabprev<CR")
 keymap("v", "p", '"_xP')
 keymap({ "c", "i" }, "<C-p>", "<Up>")
 keymap({ "c", "i" }, "<C-n>", "<Down>")

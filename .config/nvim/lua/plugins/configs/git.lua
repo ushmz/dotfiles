@@ -8,12 +8,12 @@ local function config()
 			-- Open blame commit
 			blame_commit = "<CR>",
 			-- Open file/folder in git repository
-			browse = "<C-g>o",
+			browse = "<C-g>v",
 			-- Open pull request of the current branch
-			open_pull_request = "<C-g>p",
+			open_pull_request = "<C-g>P",
 			-- Create a pull request with the target branch
 			-- is set in the `target_branch` option
-			create_pull_request = "<C-g>n",
+			create_pull_request = "<C-g>p",
 			-- Opens a new diff that compares against the current index
 			diff = "<C-g>d",
 			-- Close git diff
@@ -28,6 +28,14 @@ end
 
 return {
 	"dinhhuy258/git.nvim",
+	keys = {
+		{ "<C-g>b", mode = { "n", "v" } },
+		{ "<C-g>v", mode = { "n", "v" } },
+		{ "<C-g>P", mode = { "n", "v" } },
+		{ "<C-g>p", mode = { "n", "v" } },
+		{ "<C-g>d", mode = { "n", "v" } },
+		{ "<C-g>r", mode = { "n", "v" } },
+		{ "<C-g>R", mode = { "n", "v" } },
+	},
 	config = config,
-	event = { "VeryLazy" },
 }
