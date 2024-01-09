@@ -1,6 +1,17 @@
 ---@class Cspell
+---@field args table
 ---@field append_to_dictionary function
 local M = {}
+
+M.args = {
+	"lint",
+	"--no-color",
+	"--no-progress",
+	"--no-summary",
+	"--show-suggestions",
+	"--config",
+	"~/.config/cspell/cspell.json",
+}
 
 ---Append a word to cspell dictionary
 ---@param opts table
