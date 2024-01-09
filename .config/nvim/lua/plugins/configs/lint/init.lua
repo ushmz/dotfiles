@@ -28,9 +28,7 @@ local function config()
 		yaml = { "yamllint" },
 	}
 
-	-- NOTE: cspell cannot receive inputs from stdin
-	-- spell check doesn't fire with `InsertLeave`
-	vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost", "TextChanged" }, {
+	vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost" }, {
 		callback = function()
 			if vim.bo.filetype then
 				require("lint").try_lint("cspell")
