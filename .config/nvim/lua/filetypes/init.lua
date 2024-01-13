@@ -1,15 +1,12 @@
 -- Add filetype options
 vim.filetype.add({
 	extension = {
-		lock = "yaml",
-		zsh = "sh",
+		jsonc = "json",
 	},
 	filename = {
 		Brewfile = "ruby",
 		-- Tmuxfile = "tmux",
 		["go.sum"] = "go",
-		["yarn.lock"] = "yaml",
-		[".jscsrc"] = "json",
 	},
 	pattern = {
 		[".*/vscode/.*%.json"] = "jsonc",
