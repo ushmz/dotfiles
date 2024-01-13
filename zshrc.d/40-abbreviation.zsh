@@ -42,11 +42,11 @@ map mv='mv -i'
 map cp='cp -i'
 map wget='wget --hsts-file="${XDG_CACHE_HOME}/wget-hsts"'
 
-if type exa &>/dev/null; then
-    map ls='exa -x --icons --group-directories-first'
-    map ll='exa -ghlxF --icons --group-directories-first --time-style=long-iso'
-    map la='exa -aghlxF --icons --group-directories-first --time-style=long-iso'
-    map gitls='exa -aghlxF --icons --group-directories-first --time-style=long-iso --git --git-ignore'
+if type eza &>/dev/null; then
+    map ls='eza -x --icons --group-directories-first'
+    map ll='eza -ghlxF --icons --group-directories-first --time-style=long-iso'
+    map la='eza -aghlxF --icons --group-directories-first --time-style=long-iso'
+    map gitls='eza -aghlxF --icons --group-directories-first --time-style=long-iso --git --git-ignore'
 fi
 
 if type nvim &>/dev/null; then
