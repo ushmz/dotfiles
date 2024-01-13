@@ -1,6 +1,5 @@
-local cspell = require("plugins.configs.lint.cspell")
-
 local function config()
+	local cspell = require("plugins.configs.lint.cspell")
 	require("lint").linters.cspell.args = cspell.args
 
 	require("lint").linters_by_ft = {
