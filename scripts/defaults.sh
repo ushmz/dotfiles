@@ -4,7 +4,7 @@ set -Cue
 # Thanks for a great resource of `.macos` - https://mths.be/macos
 
 if [ "$(uname)" != "Darwin" ]; then
-    exit 0
+	exit 0
 fi
 
 # Close System Preferences panes
@@ -15,9 +15,9 @@ sudo -v
 
 # Keep-alive
 while true; do
-    sudo -n true
-    sleep 60
-    kill -0 "$$" || exit
+	sudo -n true
+	sleep 60
+	kill -0 "$$" || exit
 done 2>/dev/null &
 
 # -- General UI/UX
@@ -294,9 +294,9 @@ sudo chflags nohidden /Volumes
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-    General -bool true \
-    OpenWith -bool true \
-    Privileges -bool true
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
 
 # -- Dock, Dashboard, and hot corners
 
@@ -662,18 +662,25 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # -- Kill affected applications
 
 for app in "Activity Monitor" \
-    "Address Book" \
-    "Calendar" \
-    "cfprefsd" \
-    "Contacts" \
-    "Dock" \
-    "Finder" \
-    "Mail" \
-    "Messages" \
-    "Photos" \
-    "Safari" \
-    "SystemUIServer" \
-    "Terminal" \
-    "Calendar"; do
-    killall -q "${app}" || true
+	"Address Book" \
+	"Calendar" \
+	"cfprefsd" \
+	"Contacts" \
+	"Dock" \
+	"Finder" \
+	"Mail" \
+	"Messages" \
+	"Photos" \
+	"Safari" \
+	"SystemUIServer" \
+	"Terminal" \
+	"Calendar"; do
+	killall -q "${app}" || true
 done
+
+# VSCode key repeat
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false            # For VS Code
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false    # For VS Code Insider
+defaults write com.vscodium ApplePressAndHoldEnabled -bool false                    # For VS Codium
+defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false # For VS Codium Exploration users
+defaults delete -g ApplePressAndHoldEnabled                                         # If necessary, reset global default
