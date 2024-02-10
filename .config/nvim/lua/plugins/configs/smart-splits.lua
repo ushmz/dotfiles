@@ -12,7 +12,7 @@ local function config()
 		default_amount = 3,
 		at_edge = "stop",
 		move_cursor_same_row = false,
-		cursor_follows_swapped_bufs = false,
+		cursor_follows_swapped_bufs = true,
 		resize_mode = {
 			quit_key = "<ESC>",
 			-- keys to use for moving in resize mode in order of left, down, up' right
