@@ -23,7 +23,7 @@ return {
 	module = { "toggleterm" },
 	keys = {
 		{ [[<C-w>\]], toggle_term, mode = "n", desc = "Toggle default shell terminal" },
-		{ [[<C-w>t]], toggle_tig, mode = "n", desc = "Toggle default shell terminal with tig" },
+		{ [[<C-w>g]], toggle_tig, mode = "n", desc = "Toggle default shell terminal with tig" },
 	},
 	config = config,
 }
