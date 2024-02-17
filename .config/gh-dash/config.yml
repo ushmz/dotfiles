@@ -1,0 +1,47 @@
+defaults:
+  layout:
+    prs:
+      repo:
+        grow: true,
+        width: 10
+        hidden: false
+        # issues: same structure as prs
+  prsLimit: 20
+  issuesLimit: 20
+  preview:
+    open: true
+    width: 60
+  refetchIntervalMinutes: 30
+repoPaths:
+  default_path: ~/src/github.com
+keybindings:
+  prs:
+    - key: c
+      command: |-
+        tmux new-window -c {{.RepoPath}} '
+          tmux rename-window {{.RepoName}}#{{.PrNumber}} &&
+          gh pr checkout {{.PrNumber}} &&
+          nvim -c ":DiffviewOpen origin/$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')...{{.HeadRefName}}"
+        '
+    - key: v
+      command: cd {{.RepoPath}} && code . && gh pr checkout {{.PrNumber}}
+theme:
+  ui:
+    table:
+      showSeparator: true
+    colors:
+      text:
+        primary: "#D4D4D4"
+        secondary: "#808080"
+        inverted: "#1D1F21"
+        faint: "#3E4057"
+        warning: "#CC6666"
+        success: "#B5BD68"
+      background:
+        selected: "#3f4348"
+      border:
+        primary: "#383B5B"
+        secondary: "#39386B"
+        faint: "#2B2B40"
+pager:
+  diff: delta
