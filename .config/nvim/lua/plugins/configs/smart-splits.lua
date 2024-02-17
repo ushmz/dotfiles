@@ -44,11 +44,6 @@ local function config()
 	vim.keymap.set("n", "<C-w>j", require("smart-splits").move_cursor_down, { desc = "smart-split: Move cursor down" })
 	vim.keymap.set("n", "<C-w>k", require("smart-splits").move_cursor_up, { desc = "smart-split: Move cursor up" })
 	vim.keymap.set("n", "<C-w>l", require("smart-splits").move_cursor_right, { desc = "smart-split: Move cursor right" })
-	-- swapping buffers between windows
-	vim.keymap.set("n", "<C-w>H", require("smart-splits").swap_buf_left, { desc = "smart-split: Swap buffer left" })
-	vim.keymap.set("n", "<C-w>J", require("smart-splits").swap_buf_down, { desc = "smart-split: Swap buffer down" })
-	vim.keymap.set("n", "<C-w>K", require("smart-splits").swap_buf_up, { desc = "smart-split: Swap buffer up" })
-	vim.keymap.set("n", "<C-w>L", require("smart-splits").swap_buf_right, { desc = "smart-split: Swap buffer right" })
 	-- stylua: ignore end
 end
 
