@@ -26,7 +26,7 @@ local function config()
 				field = "UPDATED_AT",
 				direction = "DESC",
 			},
-			always_select_remote_on_create = "true",
+			always_select_remote_on_create = true,
 		},
 		file_panel = {
 			size = 10, -- changed files panel rows
