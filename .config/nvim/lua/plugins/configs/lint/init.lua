@@ -21,9 +21,10 @@ local function config()
 
 	vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost" }, {
 		callback = function()
-			if vim.bo.filetype then
-				require("lint").try_lint("cspell")
+			if vim.tbl_contains({ "man", "vim", "help" }, vim.bo.filetype) then
+				return
 			end
+			require("lint").try_lint("cspell")
 		end,
 	})
 
