@@ -16,7 +16,7 @@ repoPaths:
   default_path: ~/src/github.com
 keybindings:
   prs:
-    - key: c
+    - key: d
       command: |-
         tmux new-window -c {{.RepoPath}} '
           tmux rename-window {{.RepoName}}#{{.PrNumber}} &&
