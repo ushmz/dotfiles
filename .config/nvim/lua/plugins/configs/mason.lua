@@ -13,6 +13,7 @@ end
 
 local function mason_lspconfig()
 	require("mason-lspconfig").setup({
+		-- cSpell:disable
 		ensure_installed = {
 			"bashls",
 			"cssls",
@@ -24,19 +25,21 @@ local function mason_lspconfig()
 			"kotlin_language_server",
 			"lua_ls",
 			"pyright",
+			"ruff_lsp",
 			"rust_analyzer",
 			"sqlls",
 			"stylelint_lsp",
 			"tailwindcss",
 			"tsserver",
 		},
+		-- cSpell:enable
 	})
 
 	-- Manually install like this
 	-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
 	-- vim.cmd([[
-	--   MasonInstall black dockerfile-language-server flake8 goimports html-lsp ktlint markdownlint
-	--    \ prettier prisma-language-server rubocop rustfmt shfmt solargraph stylua
+	--   MasonInstall dockerfile-language-server goimports html-lsp markdownlint
+	--    \ prettier rubocop rustfmt shfmt solargraph stylua
 	--    \ yaml-language-server yamlfmt yamllint
 	--   ]])
 end
