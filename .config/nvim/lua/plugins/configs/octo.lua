@@ -77,7 +77,7 @@ local function config()
 				reload = { lhs = "<C-r>", desc = "reload PR" },
 				open_in_browser = { lhs = "<C-b>", desc = "open PR in browser" },
 				copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
-				goto_file = { lhs = "gf", desc = "go to file" },
+				goto_file = { lhs = "<leader>sf", desc = "show file" },
 				add_assignee = { lhs = "<space>aa", desc = "add assignee" },
 				remove_assignee = { lhs = "<space>ad", desc = "remove assignee" },
 				create_label = { lhs = "<space>lc", desc = "create label" },
