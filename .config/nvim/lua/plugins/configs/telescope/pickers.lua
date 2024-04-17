@@ -223,6 +223,19 @@ end
 function M.egrepify()
 	t().load_extension("egrepify")
 	t().extensions["egrepify"]["egrepify"]({
+		vimgrep_arguments = {
+			"rg",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+			"--trim",
+			"--glob",
+			"!.git",
+			"--json",
+		},
 		layout_config = {
 			prompt_position = "top",
 		},

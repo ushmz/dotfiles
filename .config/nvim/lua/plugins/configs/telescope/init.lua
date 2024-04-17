@@ -5,6 +5,7 @@ local function config()
 	local actions = require("telescope.actions")
 	local fb_actions = require("telescope").extensions.file_browser.actions
 	local preview_maker = require("plugins.configs.telescope.preview_maker")
+	local egrep_actions = require("telescope._extensions.egrepify.actions")
 
 	local trouble = require("trouble.providers.telescope")
 
@@ -15,11 +16,6 @@ local function config()
 			scroll_strategy = "limit",
 			layout_strategy = "flex",
 			buffer_previewer_maker = preview_maker.create(100000),
-			-- FIXME: It's not working with `telescope-file-browser`.
-			-- Now I put this config in each picker.
-			-- layout_config = {
-			--   preview_width = 0.4,
-			-- },
 			mappings = {
 				i = {
 					["<C-o>"] = trouble.open_with_trouble,
@@ -41,8 +37,6 @@ local function config()
 				"__pycache__/",
 			},
 		},
-		-- NOTE: To add `--hidden` option to `vimgrep_arguments` is not working.
-		-- Config in each picker instead.
 		pickers = {
 			find_files = {
 				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
@@ -54,7 +48,6 @@ local function config()
 		extensions = {
 			file_browser = {
 				theme = "dropdown",
-				-- disables netrw and use telescope-file-browser in its place
 				hijack_netrw = true,
 				git_status = false,
 				mappings = {
@@ -76,9 +69,28 @@ local function config()
 				},
 			},
 			egrepify = {
-				vimgrep_arguments = { "rg", "--hidden", "--glob", "!.git" },
-				---FIXME: This causes extra lines in the bottom of the result.
-				-- sorting_strategy = "ascending",
+				AND = true,
+				permutations = true,
+				lnum = true,
+				lnum_hl = "EgrepifyLnum",
+				col = true,
+				col_hl = "EgrepifyCol",
+				title = true,
+				filename_hl = "Normal",
+				directory_hl = "Directory",
+				prefixes = {
+					["!"] = {
+						flag = "invert-match",
+					},
+				},
+				mappings = {
+					i = {
+						-- TODO: Would be nice if we unmap the default mappings.
+						["<C-z>"] = egrep_actions.toggle_prefixes,
+						["<C-a>"] = egrep_actions.toggle_and,
+						["<C-r>"] = egrep_actions.toggle_permutations,
+					},
+				},
 			},
 		},
 	})
@@ -94,7 +106,8 @@ return {
 		{ "BurntSushi/ripgrep" },
 		{ "sharkdp/fd" },
 		{ "nvim-telescope/telescope-file-browser.nvim" },
-		{ "fdschmidt93/telescope-egrepify.nvim" },
+		-- { "fdschmidt93/telescope-egrepify.nvim" },
+		{ "ushmz/telescope-egrepify.nvim" },
 	},
 	keys = {
 		{ "<leader><leader>", pickers.resume, mode = "n", desc = "Telescope: Resume latest search" },
@@ -103,8 +116,8 @@ return {
 		{ "<leader>d", pickers.file_browser, mode = "n", desc = "Telescope: [D]irectory & File Browser" },
 		{ "<leader>e", pickers.diagnostics, mode = "n", desc = "Telescope: Search diagnostics ([E]rrors)" },
 		{ "<leader>f", pickers.find_files, mode = "n", desc = "Telescope: Search [F]iles" },
-		{ "<leader>g", pickers.live_grep, mode = "n", desc = "Telescope: Live [G]rep" },
-		{ "<leader>G", pickers.egrepify, mode = "n", desc = "Telescope: Search with e[G]repify" },
+		{ "<leader>G", pickers.live_grep, mode = "n", desc = "Telescope: Live [G]rep" },
+		{ "<leader>g", pickers.egrepify, mode = "n", desc = "Telescope: Search with e[G]repify" },
 		{ "<leader>h", pickers.help_tags, mode = "n", desc = "Telescope: Search [H]elps" },
 		{ "<leader>k", pickers.keymaps, mode = "n", desc = "Telescope: Search [K]eymaps" },
 		{ "<leader>sc", pickers.grep_string, mode = "n", desc = "Telescope: Search word under the [C]ursor" },
