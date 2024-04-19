@@ -1,7 +1,7 @@
 ---Set keymap
 ---@param mode string | table Mode short name or list of modes
 ---@param keys string Left-hand side {lhs} of the mapping.
----@param cmd string Right-hand side {rhs} of the mapping.
+---@param cmd string | function Right-hand side {rhs} of the mapping.
 local function keymap(mode, keys, cmd, opts)
 	vim.keymap.set(mode, keys, cmd, { noremap = true, silent = true, unpack(opts or {}) })
 end
@@ -40,3 +40,12 @@ keymap({ "n", "x" }, "<C-d>", "<C-d>zz")
 keymap({ "n", "x" }, "<C-d>", "<C-u>zz")
 keymap({ "n", "x" }, "gh", "g^")
 keymap({ "n", "x" }, "gl", "g$")
+
+keymap({ "n" }, "gf", function()
+	local cfile = vim.fn.expand("<cfile>")
+	if string.match(cfile, "^https?://") then
+		vim.fn.system({ "open", cfile })
+	else
+		vim.cmd("normal! gF")
+	end
+end)
