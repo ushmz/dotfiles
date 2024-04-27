@@ -110,8 +110,8 @@ return {
 	cmd = { "Lspsaga" },
 	keys = {
 		{ "K", "<Cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "LSP: Hover document with floating window" },
-		{ "gf", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "LSP: [G]oto symbol [F]inder" },
 		{ "gp", "<Cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "LSP: [G]oto [P]eek window" },
+		{ "gP", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "LSP: Goto symbol Finder" },
 		{ "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "LSP: Jump to next diagnostic" },
 		{ "<C-k>", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "LSP: Jump to previous diagnostic" },
 		{ "go", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "LSP: Toggle [O]utline" },
