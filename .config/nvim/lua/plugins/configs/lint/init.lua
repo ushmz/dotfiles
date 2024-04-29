@@ -36,6 +36,7 @@ end
 
 return {
 	"mfussenegger/nvim-lint",
+	cond = false,
 	event = { "BufNewFile", "BufRead" },
 	config = config,
 }

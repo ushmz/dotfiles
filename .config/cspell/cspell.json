@@ -1,4 +1,25 @@
 {
+  "dictionaryDefinitions": [
+    {
+      "name": "dotfiles",
+      "path": "dotfiles.txt",
+      "description": "A list of words that are not in the dictionary but are commonly used in dotfiles.",
+      "addWords": true
+    },
+    {
+      "name": "user",
+      "path": "user.txt",
+      "description": "A list of words that are not in the dictionary but should not staged for git",
+      "addWords": true
+    },
+    {
+      "name": "vim",
+      "path": "vim.txt",
+      "description": "A list of words that are not in the dictionary but are commonly used in vim.",
+      "addWords": false
+    }
+  ],
+  "words": ["fmtag"],
   "dictionaries": [
     "en_US",
     "aws",
@@ -24,29 +45,12 @@
     "user",
     "vim"
   ],
-  "dictionaryDefinitions": [
-    {
-      "name": "dotfiles",
-      "path": "~/.config/cspell/dotfiles.txt",
-      "description": "A list of words that are not in the dictionary but are commonly used in dotfiles."
-    },
-    {
-      "name": "user",
-      "path": "~/.config/cspell/user.txt",
-      "description": "A list of words that are not in the dictionary but should not staged for git"
-    },
-    {
-      "name": "vim",
-      "path": "~/.config/cspell/vim.txt",
-      "description": "A list of words that are not in the dictionary but are commonly used in vim."
-    }
-  ],
   "languageSettings": [
     {
-      "languageId": "lua",
+      "dictionaries": ["lua"],
       "locale": "*",
-      "ignoreRegExpList": ["/require.*/"],
-      "dictionaries": ["lua"]
+      "languageId": "lua",
+      "ignoreRegExpList": ["/require.*/"]
     }
   ]
 }
