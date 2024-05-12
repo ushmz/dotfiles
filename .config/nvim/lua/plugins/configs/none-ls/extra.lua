@@ -12,8 +12,8 @@ local formatters = {
 }
 
 local diagnostics = {
-	"flake8",
 	"rubocop",
+	"ruff-lsp",
 }
 
 local code_actions = {
