@@ -52,6 +52,9 @@ local function config()
 				git_status = false,
 				mappings = {
 					["i"] = {
+						-- ["<C-a>"] = function()
+						-- 	vim.cmd("normal 0")
+						-- end,
 						["<C-w>"] = function()
 							vim.cmd("normal vbd")
 						end,
@@ -85,9 +88,12 @@ local function config()
 				},
 				mappings = {
 					i = {
-						-- TODO: Would be nice if we unmap the default mappings.
+						-- To override the default mappings
+						["<C-a>"] = function()
+							vim.cmd("normal 0")
+						end,
 						["<C-z>"] = egrep_actions.toggle_prefixes,
-						["<C-a>"] = egrep_actions.toggle_and,
+						["<C-m>"] = egrep_actions.toggle_and,
 						["<C-r>"] = egrep_actions.toggle_permutations,
 					},
 				},
