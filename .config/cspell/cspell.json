@@ -48,7 +48,7 @@
   "patterns": [
     {
       "name": "Keymap description",
-      "pattern": "\\[[A-Z]\\][a-z]+",
+      "pattern": "[a-z]*\\[[A-Z]\\][a-z]+",
       "description": "Emphasize key used in keymap"
     }
   ],
