@@ -55,6 +55,36 @@ config["tsserver"] = vim.tbl_deep_extend("force", default_config, {
 	},
 })
 
+config["pyright"] = vim.tbl_deep_extend("force", default_config, {
+	settings = {
+		pyright = {
+			disableOrganizeImports = true,
+		},
+		python = {
+			analysis = {
+				-- Using ruff
+				ignore = { "*" },
+				typeCheckingMode = "off",
+			},
+		},
+	},
+})
+
+config["ruff_lsp"] = vim.tbl_deep_extend("force", default_config, {
+	init_options = {
+		settings = {
+			ruff = {
+				args = {
+					"--no-color",
+					"--no-interactive",
+					"--no-progress",
+					"--no-emoji",
+				},
+			},
+		},
+	},
+})
+
 config["gopls"] = vim.tbl_deep_extend("force", default_config, {
 	hints = {
 		assignVariableTypes = true,
