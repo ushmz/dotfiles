@@ -45,6 +45,14 @@
     "user",
     "vim"
   ],
+  "patterns": [
+    {
+      "name": "Keymap description",
+      "pattern": "[a-z]*\\[[A-Z]\\][a-z]+",
+      "description": "Emphasize key used in keymap"
+    }
+  ],
+  "ignoreRegExpList": ["Keymap description"],
   "languageSettings": [
     {
       "dictionaries": ["lua"],
