@@ -49,7 +49,7 @@ M.make = function()
 end
 
 M.python = function()
-	indent(4, false)
+	indent(4, true)
 end
 
 M.ruby = function()
