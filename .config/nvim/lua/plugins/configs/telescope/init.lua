@@ -93,7 +93,7 @@ local function config()
 							vim.cmd("normal 0")
 						end,
 						["<C-z>"] = egrep_actions.toggle_prefixes,
-						["<C-m>"] = egrep_actions.toggle_and,
+						-- [""] = egrep_actions.toggle_and,
 						["<C-r>"] = egrep_actions.toggle_permutations,
 					},
 				},
