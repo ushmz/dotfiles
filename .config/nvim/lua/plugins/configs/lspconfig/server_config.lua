@@ -43,7 +43,7 @@ config["tsserver"] = vim.tbl_deep_extend("force", default_config, {
 			if vim.tbl_islist(result) and #result > 1 then
 				local filtered_results = {}
 				for _, v in ipairs(result) do
-					if not string.match(v.targetUri, "react/index.d.ts") then
+					if not string.match(v.targetUri, "react/.*/index%.d%.ts") then
 						table.insert(filtered_results, v)
 					end
 				end
