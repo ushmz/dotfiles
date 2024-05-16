@@ -6,6 +6,7 @@ local formatters = {
 	"markdownlint",
 	"rubocop",
 	"black",
+	"gofmt",
 	"goimports",
 	"shfmt",
 	"yamlfmt",
