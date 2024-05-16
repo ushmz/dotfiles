@@ -19,6 +19,8 @@ keymap("n", "<leader>l", ":cclose|lclose<CR>")
 keymap("n", "<C-w>n", ":<C-u>tabnew<CR>")
 keymap("n", "<C-w>[", ":<C-u>tabprev<CR>")
 keymap("n", "<C-w>]", ":<C-u>tabnext<CR>")
+-- TODO: visual mode
+keymap("n", "g/", ":<C-u>norm gcc<CR>")
 keymap("v", "p", '"_xP')
 keymap({ "n", "v" }, "gy", '"+y')
 keymap({ "c", "i" }, "<C-p>", "<Up>")
