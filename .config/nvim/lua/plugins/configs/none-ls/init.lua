@@ -11,6 +11,10 @@ local function format_with_none_ls(bufnr, timeout_ms)
 	})
 end
 
+local function toggle_source(source)
+	require("null-ls").toggle({ name = source })
+end
+
 local function config()
 	local nls_sources = {}
 	for _, package in ipairs(require("mason-registry").get_installed_packages()) do
@@ -72,6 +76,15 @@ local function config()
 			end
 		end,
 	})
+
+	vim.api.nvim_create_user_command("NullLsToggle", function(args)
+		local fargs = args.fargs
+		if #fargs ~= 1 then
+			vim.api.nvim_err_writeln("Invalid number of arguments: " .. #fargs .. ", expected 1")
+			return
+		end
+		toggle_source(fargs[1])
+	end, { nargs = "*", desc = "Toggle null-ls" })
 end
 
 return {
