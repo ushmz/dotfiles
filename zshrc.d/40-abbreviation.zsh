@@ -1,3 +1,4 @@
+# cspell:disable
 local function map() {
     if type abbr &>/dev/null; then
         abbr -S -q --force "$@" &>/dev/null
