@@ -60,10 +60,13 @@ zstyle ':completion:*' keep-prefix
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:sudo:*' command-path /usr/bin
 
+autoload -Uz compinit && compinit -d ${XDG_STATE_HOME}/.zcompdump
+autoload -Uz colors && colors
+
 # less command highlighting
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
-export LESS=' -R '
+export LESS='-R'
 
 # Enable asdf tab complation
 fpath+=${ASDF_DIR}/completions
@@ -78,5 +81,3 @@ if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-autoload -Uz compinit && compinit -d ${XDG_STATE_HOME}/.zcompdump
-autoload -Uz colors && colors
