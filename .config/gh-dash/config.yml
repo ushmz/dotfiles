@@ -13,7 +13,7 @@ defaults:
     width: 60
   refetchIntervalMinutes: 30
 repoPaths:
-  default_path: ~/src/github.com
+  :owner/:repo: ~/src/github.com/:owner/:repo
 keybindings:
   prs:
     - key: d
