@@ -147,7 +147,7 @@ local function pretty_live_grep(opts)
 			if not prompt or prompt == "" then
 				return nil
 			end
-			return vim.tbl_flatten({ opts.vimgrep_arguments, "--", prompt })
+			return require("utils").flatten({ opts.vimgrep_arguments, "--", prompt })
 		end, opts.entry_maker, opts.max_results, opts.cwd),
 		-- ascending has title "before" matches
 		default_selection_index = 2,

@@ -1,16 +1,6 @@
 local M = {}
 
----Return `true` if the plugin should be loaded, otherwise `false`
----@param for_vscode boolean The plugin is needed for VSCode or not
----@return boolean
-M.should_loaded = function(for_vscode)
-	if not vim.g.vscode then
-		return true
-	end
-	return for_vscode
-end
-
-M.theme = {
+M.colors = {
 	red = "#CC6666",
 	yellow = "#F0C674",
 	green = "#B5BD68",
