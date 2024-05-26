@@ -2,8 +2,8 @@ local M = {}
 
 ---Set diagnostic highlight colors
 M.set = function()
-	local theme = require("plugins.utils").theme
-	local set_hl = require("plugins.utils").set_hl
+	local theme = require("theme").colors
+	local set_hl = require("theme").set_hl
 
 	set_hl("DiagnosticError", { fg = theme.red })
 	set_hl("DiagnosticWarn", { fg = theme.yellow })

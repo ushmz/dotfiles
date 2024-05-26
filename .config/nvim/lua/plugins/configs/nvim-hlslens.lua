@@ -20,11 +20,11 @@ local function config()
 	vim.keymap.set("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
 	vim.keymap.set("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 
-	local theme = require("plugins.utils").theme
-	local set_hl = require("plugins.utils").set_hl
-	set_hl("HlSearchNear", { bg = theme.yellow, fg = theme.black })
-	set_hl("HlSearchLens", { bg = theme.green, fg = theme.black })
-	set_hl("HlSearchLensNear", { bg = theme.yellow, fg = theme.black })
+	local colors = require("theme").colors
+	local set_hl = require("theme").set_hl
+	set_hl("HlSearchNear", { bg = colors.yellow, fg = colors.black })
+	set_hl("HlSearchLens", { bg = colors.green, fg = colors.black })
+	set_hl("HlSearchLensNear", { bg = colors.yellow, fg = colors.black })
 end
 
 return {

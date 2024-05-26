@@ -6,7 +6,7 @@ return {
 		{ "kevinhwang91/nvim-hlslens" },
 	},
 	config = function()
-		local theme = require("plugins.utils").theme
+		local colors = require("theme").colors
 		require("scrollbar").setup({
 			max_lines = 2000,
 			handle = {
@@ -15,12 +15,12 @@ return {
 			},
 			marks = {
 				Cursor = { text = " " },
-				Search = { color = theme.yellow },
-				Error = { color = theme.red },
-				Warn = { color = theme.yellow },
-				Info = { color = theme.green },
-				Hint = { color = theme.blue },
-				Misc = { color = theme.cyan },
+				Search = { color = colors.yellow },
+				Error = { color = colors.red },
+				Warn = { color = colors.yellow },
+				Info = { color = colors.green },
+				Hint = { color = colors.blue },
+				Misc = { color = colors.cyan },
 			},
 			excluded_buftypes = {
 				"terminal",

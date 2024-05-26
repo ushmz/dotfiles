@@ -4,15 +4,15 @@ return {
 	cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
 	event = { "BufNewFile", "BufRead" },
 	config = function()
-		local theme = require("plugins.utils").theme
+		local colors = require("theme").colors
 		require("todo-comments").setup({
 			keywords = {
-				FIX = { icon = " ", color = theme.dim.red, alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
-				TODO = { icon = " ", color = theme.dim.green, alt = { "TODO" } },
-				HACK = { icon = " ", color = theme.dim.yellow, alt = { "HELPME" } },
-				WARN = { icon = " ", color = theme.dim.yellow, alt = { "WARNING" } },
-				NOTE = { icon = "󰏫", color = theme.dim.blue, alt = { "INFO" } },
-				TEST = { icon = " ", color = theme.dim.purple, alt = { "TESTING", "PASSED", "FAILED" } },
+				FIX = { icon = " ", color = colors.dim.red, alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
+				TODO = { icon = " ", color = colors.dim.green, alt = { "TODO" } },
+				HACK = { icon = " ", color = colors.dim.yellow, alt = { "HELPME" } },
+				WARN = { icon = " ", color = colors.dim.yellow, alt = { "WARNING" } },
+				NOTE = { icon = "󰏫", color = colors.dim.blue, alt = { "INFO" } },
+				TEST = { icon = " ", color = colors.dim.purple, alt = { "TESTING", "PASSED", "FAILED" } },
 			},
 			gui_style = {
 				fg = "BOLD",

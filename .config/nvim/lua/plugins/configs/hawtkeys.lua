@@ -1,5 +1,5 @@
 local function config()
-	local theme = require("plugins.utils").theme
+	local colors = require("theme").colors
 	require("hawtkeys").setup({
 		homerow = 2,
 		-- the fingers you want to use as the powerfingers, default is {2,3,6,7}
@@ -34,10 +34,10 @@ local function config()
 			},
 		},
 		highlights = {
-			HawtkeysMatchGreat = { fg = theme.green, bold = true },
-			HawtkeysMatchGood = { fg = theme.green },
-			HawtkeysMatchOk = { fg = theme.yellow },
-			HawtkeysMatchBad = { fg = theme.red },
+			HawtkeysMatchGreat = { fg = colors.green, bold = true },
+			HawtkeysMatchGood = { fg = colors.green },
+			HawtkeysMatchOk = { fg = colors.yellow },
+			HawtkeysMatchBad = { fg = colors.red },
 		},
 	})
 end

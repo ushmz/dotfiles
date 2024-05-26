@@ -1,5 +1,5 @@
 local function config()
-	local theme = require("plugins.utils").theme
+	local colors = require("theme").colors
 	require("bufferline").setup({
 		options = {
 			mode = "tabs",
@@ -15,35 +15,35 @@ local function config()
 		---```
 		highlights = {
 			separator = {
-				fg = theme.dim.white,
-				bg = theme.dim.gray,
+				fg = colors.dim.white,
+				bg = colors.dim.gray,
 			},
 			separator_selected = {
-				fg = theme.dim.white,
+				fg = colors.dim.white,
 			},
 			background = {
 				fg = "#657B83",
-				bg = theme.dim.gray,
+				bg = colors.dim.gray,
 			},
 			buffer_visible = {
-				bg = theme.dim.white,
+				bg = colors.dim.white,
 			},
 			buffer_selected = {
 				fg = "#FDF6E3",
-				bg = theme.black,
+				bg = colors.black,
 				italic = false,
 			},
 			duplicate = {
-				bg = theme.dim.gray,
+				bg = colors.dim.gray,
 			},
 			fill = {
-				bg = theme.dim.white,
+				bg = colors.dim.white,
 			},
 		},
 	})
 
-	vim.keymap.set("n", "<leader>]", "<Cmd>BufferLineCycleNext<CR>", { silent = true })
-	vim.keymap.set("n", "<leader>[", "<Cmd>BufferLineCyclePrev<CR>", { silent = true })
+	vim.keymap.set("n", "<C-w>]", "<Cmd>BufferLineCycleNext<CR>", { silent = true })
+	vim.keymap.set("n", "<C-w>[", "<Cmd>BufferLineCyclePrev<CR>", { silent = true })
 end
 
 return {
