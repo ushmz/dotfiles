@@ -40,7 +40,7 @@ config["tsserver"] = vim.tbl_deep_extend("force", default_config, {
 		---filter `index.d.ts` out from `textDocument/definition` result
 		---@see https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
 		["textDocument/definition"] = function(err, result, method, ...)
-			if vim.tbl_islist(result) and #result > 1 then
+			if vim.islist(result) and #result > 1 then
 				local filtered_results = {}
 				for _, v in ipairs(result) do
 					if not string.match(v.targetUri, "react/.*/index%.d%.ts") then
