@@ -8,24 +8,24 @@ mkdir -p "${HOME}/.cache/shell"
 echo "Put slack webhook url for notify (Press Enter to empty)"
 read -r url
 if [ -n "${url}" ]; then
-    echo "export CMD_NOTIFY_SLACK_WEBHOOK_URL='${url}'" >>"${HOME}/.zshenv"
+	echo "export CMD_NOTIFY_SLACK_WEBHOOK_URL='${url}'" >>"${HOME}/.zshenv"
 fi
 
 echo "Put slack user name for notify (Press Enter to empty)"
 read -r name
 if [ -n "${name}" ]; then
-    echo "export CMD_NOTIFY_SLACK_USER_NAME='${name}'" >>"${HOME}/.zshenv"
+	echo "export CMD_NOTIFY_SLACK_USER_NAME='${name}'" >>"${HOME}/.zshenv"
 fi
 
 # Remove `~/.zprofile` if exists, and write my `.zprofile`.
 if [ -L "${HOME}/.zprofile" ]; then
-    unlink "${HOME}/.zprofile"
+	unlink "${HOME}/.zprofile"
 fi
 ln -sf "$(pwd)/zprofile.d/.zprofile" "${HOME}/.zprofile"
 
 # Remove `~/.zshrc` if exists, and write my `.zshrc`.
 if [ -L "${HOME}/.zshrc" ]; then
-    unlink "${HOME}/.zshrc"
+	unlink "${HOME}/.zshrc"
 fi
 ln -sf "$(pwd)/zshrc.d/.zshrc" "${HOME}/.zshrc"
 
@@ -59,8 +59,9 @@ ln -sf "$(pwd)/.config/ranger/*" "${HOME}/.config/ranger/"
 
 # nvim
 mkdir -p "${HOME}/.config/nvim/lua/"
+ln -sf "$(pwd)/.config/nvim/lazy-lock.json" "${HOME}/.config/nvim/lazy-lock.json"
 ln -sf "$(pwd)/.config/nvim/init.lua" "${HOME}/.config/nvim/init.lua"
-ln -sf "$(pwd)/.config/nvim/lua/*" "${HOME}/.config/nvim/lua"
+ln -sf "$(pwd)/.config/nvim/lua" "${HOME}/.config/nvim/lua"
 
 # cspell
 mkdir -p "${HOME}/.config/cspell/"
@@ -78,14 +79,14 @@ ln -sf "$(pwd)/.config/python/pythonrc.py" "${HOME}/.config/python/pythonrc.py"
 
 # Mac OS specific files
 if [ "$(uname)" = "Darwin" ]; then
-    # vscode
-    if (type code >/dev/null); then
-        ln -sf "$(pwd)/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
-        ln -sf "$(pwd)/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
-    fi
+	# vscode
+	if (type code >/dev/null); then
+		ln -sf "$(pwd)/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+		ln -sf "$(pwd)/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+	fi
 
-    # Override for M1 Mac
-    if [ "$(uname -m)" = "arm64" ]; then
-        ln -sf "$(pwd)/.config/alacritty/alacritty.arm.yml" "${HOME}/.config/alacritty/alacritty.yml"
-    fi
+	# Override for M1 Mac
+	if [ "$(uname -m)" = "arm64" ]; then
+		ln -sf "$(pwd)/.config/alacritty/alacritty.arm.yml" "${HOME}/.config/alacritty/alacritty.yml"
+	fi
 fi
