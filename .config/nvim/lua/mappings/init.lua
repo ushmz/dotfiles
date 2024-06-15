@@ -51,3 +51,8 @@ keymap({ "n" }, "gf", function()
 		vim.cmd("normal! gF")
 	end
 end)
+
+-- Edit quoted texts without surrounding whitespaces
+for _, quote in ipairs({ "'", '"', "`" }) do
+	keymap({ "x", "o" }, "a" .. quote, "2i" .. quote)
+end
