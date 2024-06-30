@@ -15,7 +15,6 @@ local function treesitter()
 			end,
 		},
 		indent = { enable = true },
-		autotag = { enable = true },
 		endwise = { enable = true },
 		modules = {},
 		sync_install = false,
