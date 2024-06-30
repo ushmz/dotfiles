@@ -7,7 +7,7 @@ local function config()
 	local preview_maker = require("plugins.configs.telescope.preview_maker")
 	local egrep_actions = require("telescope._extensions.egrepify.actions")
 
-	local trouble = require("trouble.providers.telescope")
+	local trouble = require("trouble.sources.telescope")
 
 	telescope.setup({
 		defaults = {
@@ -18,11 +18,11 @@ local function config()
 			buffer_previewer_maker = preview_maker.create(100000),
 			mappings = {
 				i = {
-					["<C-o>"] = trouble.open_with_trouble,
+					["<C-o>"] = trouble.open,
 				},
 				n = {
 					["q"] = actions.close,
-					["<C-o>"] = trouble.open_with_trouble,
+					["<C-o>"] = trouble.open,
 				},
 			},
 			file_ignore_patterns = {
