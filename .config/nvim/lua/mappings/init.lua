@@ -39,7 +39,7 @@ keymap({ "n", "x" }, "{", "{zz")
 keymap({ "n", "x" }, "x", '"_x')
 keymap({ "n", "x" }, "s", '"_s')
 keymap({ "n", "x" }, "<C-d>", "<C-d>zz")
-keymap({ "n", "x" }, "<C-d>", "<C-u>zz")
+keymap({ "n", "x" }, "<C-u>", "<C-u>zz")
 keymap({ "n", "x" }, "gh", "g^")
 keymap({ "n", "x" }, "gl", "g$")
 
