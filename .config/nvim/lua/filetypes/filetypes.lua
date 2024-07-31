@@ -3,8 +3,8 @@
 local M = {}
 
 ---Set indent options
----@param length number Number of spaces that a <Tab> in the file counts for
----@param expandtab boolean Replace <Tab> to appropriate number of spaces or not
+---@param length number: Number of spaces that a <Tab> in the file counts for
+---@param expandtab boolean: Replace <Tab> to appropriate number of spaces or not
 local function indent(length, expandtab)
 	vim.bo.shiftwidth = length
 	vim.bo.softtabstop = length
