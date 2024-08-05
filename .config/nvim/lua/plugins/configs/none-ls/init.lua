@@ -23,6 +23,16 @@ local function config()
 		for _, cat in ipairs(categories) do
 			if cat == require("mason-core.package").Cat.Formatter then
 				local ok, formatter = pcall(require, "null-ls.builtins.formatting." .. package.name)
+
+				-- FIXME: ad-hoc fix for ignoring specific filetype
+				if formatter.name == "prettierd" then
+					for i = #formatter.filetypes, 1, -1 do
+						if formatter.filetypes[i] == "yaml" then
+							table.remove(formatter.filetypes, i)
+						end
+					end
+				end
+
 				if ok then
 					table.insert(nls_sources, formatter)
 				end
