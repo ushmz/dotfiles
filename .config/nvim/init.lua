@@ -25,3 +25,17 @@ if not vim.g.vscode then
 	-- Plugin configs
 	require("plugins")
 end
+
+-- HACK: Run some Ex commands after loading configs & plugins
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		if vim.g.review then
+			local pn = tonumber(vim.g.review)
+			if not pn then
+				vim.api.nvim_err_writeln("Invalid PR number: " .. vim.g.review)
+				return
+			end
+			vim.cmd(":Octo pr edit" .. vim.g.review)
+		end
+	end,
+})
