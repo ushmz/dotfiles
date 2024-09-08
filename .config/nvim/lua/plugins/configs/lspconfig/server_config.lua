@@ -35,7 +35,7 @@ local default_config = {
 	},
 }
 
-config["tsserver"] = vim.tbl_deep_extend("force", default_config, {
+config["ts_ls"] = vim.tbl_deep_extend("force", default_config, {
 	handlers = {
 		---filter `index.d.ts` out from `textDocument/definition` result
 		---@see https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
