@@ -150,6 +150,13 @@ local function config()
 			-- cSpell:enable
 		},
 	})
+
+	local theme = require("theme")
+	vim.api.nvim_set_hl(0, "OctoFilePanelTitle", { bold = true })
+	vim.api.nvim_set_hl(0, "DiffviewFilePanelTitle", { bold = true })
+	vim.api.nvim_set_hl(0, "OctoDiffstatAdditions", { fg = theme.colors.green })
+	vim.api.nvim_set_hl(0, "OctoDiffstatDeletions", { fg = theme.colors.red })
+	vim.api.nvim_set_hl(0, "OctoDiffstatNeutral", { fg = theme.colors.gray })
 end
 
 return {
