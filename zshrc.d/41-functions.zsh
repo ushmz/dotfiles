@@ -60,5 +60,5 @@ function zshaddhistory() {
 }
 
 function review() {
-    gh pr checkout "$1" && nvim -c ":Octo pr edit "$1""
+    gh pr checkout "$1" && nvim -c "lua vim.g.review = "$1""
 }
