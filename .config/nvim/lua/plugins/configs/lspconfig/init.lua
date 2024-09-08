@@ -12,6 +12,10 @@ local function config()
 
 	require("mason-lspconfig").setup_handlers({
 		function(server_name)
+			-- FIXME: temporary fix for tsserver
+			if server_name == "tsserver" then
+				server_name = "ts_ls"
+			end
 			local conf = require("plugins.configs.lspconfig.server_config")[server_name]
 			require("lspconfig")[server_name].setup(conf)
 		end,
