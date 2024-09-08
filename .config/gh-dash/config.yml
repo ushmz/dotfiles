@@ -28,7 +28,7 @@ keybindings:
         tmux new-window -c {{.RepoPath}} '
           tmux rename-window {{.RepoName}}#{{.PrNumber}} &&
           gh pr checkout {{.PrNumber}} &&
-          nvim -c ":Octo pr edit {{.PrNumber}}"
+          nvim -c "let g:review = {{.PrNumber}}"
         '
     - key: v
       command: cd {{.RepoPath}} && code . && gh pr checkout {{.PrNumber}}
