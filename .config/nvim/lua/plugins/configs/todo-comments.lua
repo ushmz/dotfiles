@@ -13,6 +13,7 @@ return {
 				WARN = { icon = " ", color = colors.dim.yellow, alt = { "WARNING" } },
 				NOTE = { icon = "󰏫", color = colors.dim.blue, alt = { "INFO" } },
 				TEST = { icon = " ", color = colors.dim.purple, alt = { "TESTING", "PASSED", "FAILED" } },
+				QUESTION = { icon = "", color = colors.dim.cyan, alt = { "QUESTION" } },
 			},
 			gui_style = {
 				fg = "BOLD",
