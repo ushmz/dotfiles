@@ -30,7 +30,7 @@ local function mason_lspconfig()
 			"sqlls",
 			"stylelint_lsp",
 			"tailwindcss",
-			"tsserver",
+			"ts_ls",
 		},
 		-- cSpell:enable
 	})
