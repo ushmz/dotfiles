@@ -1,5 +1,75 @@
+# General
 live_config_reload = true
 
+[shell]
+program = "/opt/homebrew/bin/zsh"
+args = [
+  "-l",
+  "-c",
+  "/opt/homebrew/bin/tmux a -t default || /opt/homebrew/bin/tmux new -s default",
+]
+
+# Env
+[env]
+TERM = "alacritty"
+
+# Window
+[window]
+decorations = "Full"
+blur = true
+dynamic_padding = true
+dynamic_title = false
+opacity = 0.95
+[window.dimensions ] 
+columns = 150
+lines = 70
+[window.padding]
+x = 0
+y = 0
+
+# Scrolling
+[scrolling]
+history = 10000
+multiplier = 3
+
+# Font
+[font]
+size = 14
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+[font.bold_italic]
+family = "FiraCode Nerd Font"
+style = "Bold Italic"
+
+# Colors
+[colors]
+transparent_background_colors = true
+draw_bold_text_with_bright_colors = true
+[colors.primary]
+background = "#27292c"
+foreground = "#c5c8c6"
+[colors.cursor]
+cursor = "#ffffff"
+text = "#000000"
+[colors.vi_mode_cursor]
+cursor = "#c5c8c6"
+text = "#000000"
+[colors.normal]
+black = "#1d1f21"
+blue = "#81a2be"
+cyan = "#8abeb7"
+green = "#95ad68"
+magenta = "#b294bb"
+red = "#cc6666"
+white = "#c5c8c6"
+yellow = "#f0c674"
 [colors.bright]
 black = "#484c52"
 blue = "#96b1c9"
@@ -10,68 +80,15 @@ red = "#d27c7b"
 white = "#fcf7e2"
 yellow = "#f0d189"
 
-[colors.cursor]
-cursor = "#ffffff"
-text = "#000000"
-
-[colors.normal]
-black = "#1d1f21"
-blue = "#81a2be"
-cyan = "#8abeb7"
-green = "#95ad68"
-magenta = "#b294bb"
-red = "#cc6666"
-white = "#c5c8c6"
-yellow = "#f0c674"
-
-[colors.primary]
-background = "#27292c"
-foreground = "#c5c8c6"
-
-[colors.vi_mode_cursor]
-cursor = "#c5c8c6"
-text = "#000000"
-
-[font]
-size = 16
-
-[font.bold]
-family = "FiraCode Nerd Font"
-style = "Bold"
-
-[font.bold_italic]
-family = "FiraCode Nerd Font"
-style = "Bold Italic"
-
-[font.italic]
-family = "FiraCode Nerd Font"
-style = "Italic"
-
-[font.normal]
-family = "FiraCode Nerd Font"
-style = "Regular"
-
+# Selection
 [selection]
 save_to_clipboard = true
 
-[shell]
-args = [
-  "-l",
-  "-c",
-  "/opt/homebrew/bin/tmux a -t 0 || /opt/homebrew/bin/tmux -u",
-]
-program = "/opt/homebrew/bin/zsh"
-
-[window]
-decorations = "full"
-dynamic_padding = false
-dynamic_title = true
-opacity = 1.0
-
-[window.dimensions]
-columns = 150
-lines = 70
-
-[window.padding]
-x = 0
-y = 0
+# Hints
+[[hints.enabled]]
+command = "open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse = { mods = "Shift", enabled = true }
+regex = "(https?://|file:|git://|ssh:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
