@@ -1,17 +1,26 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-scan_timeout = 50
-command_timeout = 300
+scan_timeout = 100
+command_timeout = 100
 add_newline = true
 
 [aws]
 disabled = true
 
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
 [battery]
-full_symbol = "🔋 "
-charging_symbol = "🔌 "
-discharging_symbol = "⚡ "
+full_symbol = " "
+charging_symbol = " "
+discharging_symbol = " "
+unknown_symbol = " "
+empty_symbol = " "
+format = "[\\[$symbol$percentage\\]]($style) "
 
 [[battery.display]]
 threshold = 50
@@ -21,28 +30,34 @@ style = "bold yellow"
 format = "$symbol "
 success_symbol = "[❯](bold bright-blue)[❯](bold yellow)[❯](bold magenta)"
 error_symbol = "[❯❯❯](bold red)"
-vicmd_symbol = "[❮](bold bright-blue)[❮](bold yellow)[❮](bold magenta)"
+vimcmd_symbol = '[V](bold green) '
 
 [directory]
 truncation_length = 100
 format = "[$path](bold bright-blue)[$read_only]($read_only_style) "
 
+[git_branch]
+symbol = " "
 [git_status]
-disabled = true
-conflicted = "💥 "
-ahead = "🏎💨x${count} "
-behind = "😰×${count} "
-diverged = "😵×${count} "
-untracked = "🌚×${count} "
-stashed = "📦×${count} "
-modified = "📝×${count} "
-staged = "🔦×${count} "
-renamed = "🏷 ×${count} "
-deleted = "🗑 ×${count} "
+conflicted = " "
+ahead = "󰶼 x${count} " # 󰜞
+behind = "󰶹 ×${count} " # 󰜚
+diverged = " ×${count} "
+# up_to_date = " "
+untracked = " ×${count} "
+stashed = " ×${count} "
+modified = " ×${count} " # 
+staged = " ×${count} "
+renamed = " ×${count} " # 
+deleted = "󰆴 ×${count} " # 
+typechanged = " ×${count} "
 format = '([\[ $all_status$ahead_behind\]]($style) )'
 
 [gcloud]
 disabled = true
+symbol = "󱇶 "
+style = "bold yellow"
+format = "[$symbol$account(@$domain) \\($project\\)]($style) "
 
 [username]
 style_user = "bold blue"
@@ -56,6 +71,3 @@ format = "@[$hostname]($style) "
 trim_at = "-"
 style = "bold blue"
 disabled = false
-
-[package]
-disabled = true
