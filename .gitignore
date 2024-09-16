@@ -1,2 +1,4 @@
 .config/cspell/*.txt
 !.config/cspell/dotfiles.txt
+zshrc.d/99-user.zsh
+.config/starship/gcloud.toml
