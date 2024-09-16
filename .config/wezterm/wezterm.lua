@@ -2,24 +2,8 @@ local wt = require("wezterm")
 
 local config = wt.config_builder()
 
-local COL_ACCENT = "#4F4F4F"
-
-wt.on("format-window-title", function(tab, pane, tabs, panes, config)
+wt.on("format-window-title", function()
 	return "WezTerm"
-end)
-
-wt.on("window-config-reloaded", function(window, pane)
-	window.log_info("Window config reloaded")
-end)
-
-wt.on("update-right-status", function(window, pane, config)
-	local cwd = pane:get_current_working_dir()
-	if cwd then
-		window:set_right_status(wt.format({
-			{ Attribute = { Bold = true } },
-			{ Text = cwd .. " on " },
-		}))
-	end
 end)
 
 -- General
@@ -46,7 +30,7 @@ config.color_scheme = "Hybrid (Gogh)"
 config.colors = {
 	background = "#27292c",
 	foreground = "#c5c8c6",
-	selection_bg = COL_ACCENT,
+	selection_bg = "#4F4F4F",
 	ansi = {
 		"#1d1f21",
 		"#cc6666",
