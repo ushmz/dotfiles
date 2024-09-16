@@ -143,13 +143,5 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = { "BufNewFile", "BufRead" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-	},
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = { "BufNewFile", "BufRead" },
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("ts_context_commentstring").setup({})
-		end,
-	},
+	}
 }
