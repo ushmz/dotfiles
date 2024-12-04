@@ -98,7 +98,7 @@ return {
 				require("spectre").toggle()
 			end,
 			mode = "n",
-			desc = "Toggle Spectre",
+			desc = "Spectre: Toggle Spectre",
 		},
 		{
 			[[\sw]],
@@ -106,7 +106,7 @@ return {
 				require("spectre").open_visual({ select_word = true })
 			end,
 			mode = "n",
-			desc = "Search current word",
+			desc = "Spectre: Search current word",
 		},
 		{
 			[[\\sw]],
@@ -115,7 +115,7 @@ return {
 				require("spectre").open_visual()
 			end,
 			mode = "v",
-			desc = "Search current word",
+			desc = "Spectre: Search current word",
 		},
 		{
 			[[\\sp]],
@@ -123,7 +123,7 @@ return {
 				require("spectre").open_file_search({ select_word = true })
 			end,
 			mode = "n",
-			desc = "Search on current file",
+			desc = "Spectre: Search on current file",
 		},
 	},
 	dependencies = {
