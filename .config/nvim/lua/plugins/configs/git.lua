@@ -29,13 +29,13 @@ end
 return {
 	"dinhhuy258/git.nvim",
 	keys = {
-		{ "<C-g>b", mode = { "n", "v" } },
-		{ "<C-g>v", mode = { "n", "v" } },
-		{ "<C-g>P", mode = { "n", "v" } },
-		{ "<C-g>p", mode = { "n", "v" } },
-		{ "<C-g>d", mode = { "n", "v" } },
-		{ "<C-g>r", mode = { "n", "v" } },
-		{ "<C-g>R", mode = { "n", "v" } },
+		{ "<C-g>b", mode = { "n", "v" }, desc = "git: Open [b]lame window" },
+		{ "<C-g>v", mode = { "n", "v" }, desc = "git: [v]iew file/folder in git repository" },
+		{ "<C-g>P", mode = { "n", "v" }, desc = "git: Open pull request of the current branch" },
+		{ "<C-g>p", mode = { "n", "v" }, desc = "git: Create a [p]ull request with the target branch" },
+		{ "<C-g>d", mode = { "n", "v" }, desc = "git: Opens a new [d]iff that compares against the current index" },
+		{ "<C-g>r", mode = { "n", "v" }, desc = "git: [R]evert to the specific commit" },
+		{ "<C-g>R", mode = { "n", "v" }, desc = "git: [R]evert the current file to the specific commit" },
 	},
 	config = config,
 }
