@@ -53,24 +53,43 @@ if type fzf &>/dev/null; then
     fi
 
 	if type git &>/dev/null; then
+        function select_branch() {
+            user_name=$(git config user.name)
+            fmt="%(if:equals=$user_name)%(authorname)%(then)%(color:default)%(else)%(color:brightred)%(end)%(refname:short)|\
+                %(committerdate:relative)|\
+                %(subject)"
+            git branch --sort=-committerdate --format="${fmt}" --color=always \
+                | column -ts '|' \
+                | fzf -m --ansi --exact --preview='git log --oneline --graph --decorate --color=always -50 {+1}' \
+                | awk '{print $1}'
+        }
+
         function branch() {
-            git checkout $(git branch -vv | fzf +m | awk '{print $1}' | sed "s/^\*\s*//g")
+            select_branch | xargs git switch
         }
 
         function branchd() {
-            git branch -vv | fzf -m | awk '{print $1}' | sed "s/^\*\s*//g" | xargs git branch -d
+            select_branch | xargs git branch -d
         }
 
         function branchdd() {
-            git branch -vv | fzf -m | awk '{print $1}' | sed "s/^\*\s*//g" | xargs git branch -D
+            select_branch | xargs git branch -D
         }
 
         function stash() {
-            git stash list | fzf -m | awk '{print $1}' | xargs -I % git stash pop %
+            git stash list \
+                | fzf -m --preview='git stash show -p $(echo {+1} | sed -e "s/:$//")' \
+                | awk '{print $1}' \
+                | sed -e 's/:$//' \
+                | xargs -I % git stash pop '%'
         }
 
         function stashd() {
-            git stash list | fzf -m | awk '{print $1}' | sed 's/:$//' | xargs -I % git stash drop '%'
+            git stash list \
+                | fzf -m --preview='git stash show -p $(echo {+1} | sed -e "s/:$//")' \
+                | awk '{print $1}' \
+                | sed -e 's/:$//' \
+                | xargs -I % git stash drop '%'
         }
 
         function worktree() {
