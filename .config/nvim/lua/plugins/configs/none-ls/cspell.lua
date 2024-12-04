@@ -43,6 +43,20 @@ local config = {
 
 local cspell = require("cspell")
 return {
-	cspell.diagnostics.with({ config = config }),
-	cspell.code_actions.with({ config = config }),
+	cspell.diagnostics.with({
+		config = config,
+		diagnostics_postprocess = function(diagnostic)
+			diagnostic.message = string.format('Unknown word "%s"', diagnostic.user_data.misspelled)
+			diagnostic.severity = vim.diagnostic.severity.WARN
+		end,
+		condition = function()
+			return vim.fn.executable("cspell") > 0
+		end,
+	}),
+	cspell.code_actions.with({
+		config = config,
+		condition = function()
+			return vim.fn.executable("cspell") > 0
+		end,
+	}),
 }

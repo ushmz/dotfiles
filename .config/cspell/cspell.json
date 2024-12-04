@@ -1,4 +1,7 @@
 {
+  "maxNumberOfProblems": 100,
+  "numSuggestions": 10,
+  "allowCompoundWords": true,
   "dictionaryDefinitions": [
     {
       "name": "dotfiles",
@@ -11,40 +14,31 @@
       "path": "user.txt",
       "description": "A list of words that are not in the dictionary but should not staged for git",
       "addWords": true
-    },
-    {
-      "name": "vim",
-      "path": "vim.txt",
-      "description": "A list of words that are not in the dictionary but are commonly used in vim.",
-      "addWords": false
     }
   ],
   "words": ["fmtag"],
-  "dictionaries": [
-    "en_US",
-    "aws",
-    "bash",
-    "css",
-    "docker",
-    "en-common-misspellings",
-    "filetypes",
-    "fonts",
-    "git",
-    "golang",
-    "html",
-    "lua",
-    "markdown",
-    "node",
-    "python",
-    "rust",
-    "softwareTerms",
-    "sql",
-    "typescript",
-    "html-symbol-entities",
-    "dotfiles",
-    "user",
-    "vim"
+  "import": [
+    "@cspell/dict-bash/cspell-ext.json",
+    "@cspell/dict-css/cspell-ext.json",
+    "@cspell/dict-docker/cspell-ext.json",
+    "@cspell/dict-en-common-misspellings/cspell-ext.json",
+    "@cspell/dict-en_us/cspell-ext.json",
+    "@cspell/dict-filetypes/cspell-ext.json",
+    "@cspell/dict-git/cspell-ext.json",
+    "@cspell/dict-golang/cspell-ext.json",
+    "@cspell/dict-google/cspell-ext.json",
+    "@cspell/dict-html/cspell-ext.json",
+    "@cspell/dict-lua/cspell-ext.json",
+    "@cspell/dict-markdown/cspell-ext.json",
+    "@cspell/dict-node/cspell-ext.json",
+    "@cspell/dict-python/cspell-ext.json",
+    "@cspell/dict-rust/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json",
+    "@cspell/dict-sql/cspell-ext.json",
+    "@cspell/dict-terraform/cspell-ext.json",
+    "@cspell/dict-typescript/cspell-ext.json"
   ],
+  "dictionaries": ["dotfiles", "user", "google", "vim"],
   "patterns": [
     {
       "name": "Keymap description",
