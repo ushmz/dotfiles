@@ -51,6 +51,7 @@ bind branch M none
 bind branch M !git merge %(branch)
 
 bind status C !git commit -v
+bind status + !git commit --amend --allow-empty
 
 # "D" to delete untracked files on status view
 # https://github.com/jonas/tig/issues/31
