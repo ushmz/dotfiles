@@ -37,7 +37,7 @@ multiplier = 3
 size = 14
 [font.normal]
 family = "FiraCode Nerd Font"
-style = "Regular"
+style = "Retina"
 [font.bold]
 family = "FiraCode Nerd Font"
 style = "Bold"
