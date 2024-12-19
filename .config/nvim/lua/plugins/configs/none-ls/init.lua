@@ -62,7 +62,7 @@ local function config()
 		on_attach = function(client, bufnr)
 			local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
 			if ft == "json" or ft == "yaml" or ft == "toml" then
-				require("null-ls").disable({ "prettier", "yamlfmt" })
+				require("null-ls").disable({ "prettier" })
 			end
 			if client.server_capabilities.documentFormattingProvider then
 				vim.keymap.set("n", "==", function()
