@@ -77,7 +77,10 @@ if type gh &>/dev/null; then
     eval "$(gh completion -s zsh)"
 fi
 
+if type pipx &>/dev/null; then
+    eval "$(register-python-argcomplete pipx)"
+fi
+
 if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
-

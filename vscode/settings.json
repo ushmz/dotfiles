@@ -8,10 +8,12 @@
   // Editor settings
   "terminal.integrated.fontSize": 15,
   "bookmarks.treeview.visible": true,
+  "terminal.integrated.fontFamily": "'Hack Nerd Font', 'Source Code Pro'",
   "editor.accessibilitySupport": "off",
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
-  "editor.fontFamily": "'Hack Nerd Font', 'Source Code Pro', 'monospace'",
+  "editor.fontFamily": "Fira Code Retina",
+  "editor.fontLigatures": false,
   "editor.fontSize": 15,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": false,

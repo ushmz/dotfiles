@@ -72,3 +72,8 @@ map soenv='source ~/.zshenv'
 map sorc='source ~/.zshrc'
 map soprof='source ~/.zprofile'
 map dot='cd ~/dotfiles'
+
+# gh copilot alias config
+if type gh &>/dev/null; then
+    eval "$(gh copilot alias -- zsh)"
+fi

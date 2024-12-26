@@ -9,7 +9,6 @@ local formatters = {
 	"gofmt",
 	"goimports",
 	"shfmt",
-	"yamlfmt",
 }
 
 local diagnostics = {

@@ -38,10 +38,15 @@ local function mason_lspconfig()
 	-- Manually install like this
 	-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
 	-- vim.cmd([[
-	--   MasonInstall dockerfile-language-server goimports html-lsp markdownlint
+	--   MasonInstall cspell dockerfile-language-server goimports html-lsp markdownlint
 	--    \ prettier rubocop rustfmt shfmt solargraph stylua
 	--    \ yaml-language-server yamlfmt yamllint
 	--   ]])
+	--
+	-- You should also install the dictionaries for cspell
+	-- vim.cmd([[
+	--  !npm install -g ...
+	-- ]])
 end
 
 return {

@@ -23,16 +23,6 @@ local function config()
 		for _, cat in ipairs(categories) do
 			if cat == require("mason-core.package").Cat.Formatter then
 				local ok, formatter = pcall(require, "null-ls.builtins.formatting." .. package.name)
-
-				-- FIXME: ad-hoc fix for ignoring specific filetype
-				if formatter.name == "prettierd" then
-					for i = #formatter.filetypes, 1, -1 do
-						if formatter.filetypes[i] == "yaml" then
-							table.remove(formatter.filetypes, i)
-						end
-					end
-				end
-
 				if ok then
 					table.insert(nls_sources, formatter)
 				end
@@ -70,6 +60,10 @@ local function config()
 		sources = nls_sources,
 		diagnostics_format = "#{m} (#{s})",
 		on_attach = function(client, bufnr)
+			local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+			if ft == "json" or ft == "yaml" or ft == "toml" then
+				require("null-ls").disable({ "prettier" })
+			end
 			if client.server_capabilities.documentFormattingProvider then
 				vim.keymap.set("n", "==", function()
 					format_with_none_ls(bufnr)
