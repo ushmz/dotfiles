@@ -25,7 +25,7 @@ local function mason_lspconfig()
 			"kotlin_language_server",
 			"lua_ls",
 			"pyright",
-			"ruff_lsp",
+			-- "ruff_lsp",
 			"rust_analyzer",
 			"sqlls",
 			"stylelint_lsp",
