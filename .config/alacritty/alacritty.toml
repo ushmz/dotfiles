@@ -1,7 +1,7 @@
-# General
+[general]
 live_config_reload = true
 
-[shell]
+[terminal.shell]
 program = "/opt/homebrew/bin/zsh"
 args = [
   "-l",
