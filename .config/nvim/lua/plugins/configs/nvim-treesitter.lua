@@ -125,7 +125,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufNewFile", "BufRead" },
+		lazy = false,
 		config = treesitter,
 	},
 	{
@@ -141,12 +141,12 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = { "BufNewFile", "BufRead" },
+		lazy = false,
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = { "BufNewFile", "BufRead" },
+		lazy = false,
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("ts_context_commentstring").setup({
