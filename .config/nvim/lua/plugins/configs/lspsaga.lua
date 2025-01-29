@@ -1,4 +1,5 @@
 local function config()
+	local colors = require("theme").colors
 	require("lspsaga").setup({
 		code_action = {
 			num_shortcut = true,
@@ -74,24 +75,19 @@ local function config()
 			diagnostic = "🐞",
 			incoming = "󰏷 ",
 			outgoing = "󰏻 ",
-			-- colors from hybrid.vim
 			colors = {
-				normal_bg = "#424242",
-				red = "#CC6666",
-				magenta = "#CC6666",
-				orange = "#DE935F",
-				yellow = "#F0C674",
-				green = "#B5BD68",
-				cyan = "#8aBEB7",
-				blue = "#81A2BE",
-				purple = "#B294BB",
-				white = "#D4D4D4",
-				black = "#1D1F21",
+				normal_bg = colors.gray,
+				red = colors.red,
+				magenta = colors.red,
+				orange = colors.yellow,
+				yellow = colors.yellow,
+				green = colors.green,
+				cyan = colors.cyan,
+				blue = colors.blue,
+				purple = colors.purple,
+				white = colors.white,
+				black = colors.gray,
 			},
-			---If you'd like to integrate with colorscheme `catppuccin`, set following
-			---```
-			---kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
-			---```
 			kind = {},
 		},
 	})

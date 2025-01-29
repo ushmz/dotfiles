@@ -2,7 +2,7 @@ local function config()
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
-			theme = "jellybeans", ---`catppuccin`
+			theme = "jellybeans",
 			section_separators = { left = "", right = "" },
 			component_separators = { left = "", right = "" },
 			disabled_filetypes = { "TelescopePrompt" },
@@ -10,7 +10,7 @@ local function config()
 			globalstatus = true,
 		},
 		sections = {
-			lualine_a = { "" },
+			lualine_a = {},
 			lualine_b = { "branch", "diff" },
 			lualine_c = {
 				{
@@ -22,17 +22,15 @@ local function config()
 			lualine_x = {
 				{
 					"diagnostics",
-					-- sources = { "nvim_diagnostic" },
 					source = { "nvim-lsp", "null-ls" },
 					symbols = { error = " ", warn = " ", info = " ", hint = " " },
 				},
-				"encoding",
 				"filetype",
-				"progress",
+        "encoding",
 				"location",
 			},
-			lualine_y = { "" },
-			lualine_z = { "" },
+			lualine_y = {},
+			lualine_z = {},
 		},
 		inactive_sections = {
 			lualine_a = {},
@@ -49,7 +47,6 @@ local function config()
 			lualine_z = {},
 		},
 		tabline = {},
-		extensions = { "fugitive" },
 	})
 end
 
