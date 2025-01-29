@@ -7,8 +7,9 @@ M.colors = {
 	cyan = "#8aBEB7",
 	blue = "#81A2BE",
 	purple = "#B294BB",
-	gray = "#808080",
-	dark_gray = "#26292B",
+	light_gray = "#464749",
+	gray = "#313335",
+	dark_gray = "#242628",
 	black = "#1D1F21",
 	white = "#D4D4D4",
 	dim = {
@@ -19,19 +20,19 @@ M.colors = {
 		blue = "#92A2B0",
 		purple = "#ADA0B1",
 		gray = "#4D4D4D",
-		white = "#666666",
+		white = "#C5C8C6",
 	},
 	---If you'd like to use mode rich colors,
 	---please refer following palette.
-	-- magenta = "#B5585F",
-	-- pink = "#C586C0",
-	-- orange = "#DE935F",
-	-- dark_yellow = "#D4BB6C",
-	-- emerald = "#58B5A8",
-	-- cobalt = "#6C8ED4",
-	-- light_blue = "#9CDCFE",
-	-- dark_gray = "#282A2E",
-	-- light_gray = "#C5C8C6",
+	-- vivid = {
+	-- 	magenta = "#B5585F",
+	-- 	pink = "#C586C0",
+	-- 	orange = "#DE935F",
+	-- 	dark_yellow = "#D4BB6C",
+	-- 	emerald = "#58B5A8",
+	-- 	cobalt = "#6C8ED4",
+	-- 	light_blue = "#9CDCFE",
+	-- },
 }
 
 ---Sets a highlight with `vim.api.nvim_set_hl()`
