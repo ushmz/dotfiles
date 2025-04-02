@@ -13,7 +13,7 @@ local function config()
 		defaults = {
 			sorting_strategy = "ascending",
 			selection_strategy = "closest",
-			scroll_strategy = "limit",
+			scroll_strategy = "cycle",
 			layout_strategy = "flex",
 			buffer_previewer_maker = preview_maker.create(100000),
 			mappings = {
