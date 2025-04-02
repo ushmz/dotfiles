@@ -2,3 +2,4 @@ Alacritty
 peco
 pbcopy
 vimium
+lualine
