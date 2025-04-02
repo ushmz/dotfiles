@@ -63,10 +63,9 @@ typechanged = " ×${count} "
 format = '([\[ $all_status$ahead_behind\]]($style) )'
 
 [gcloud]
-disabled = true
 symbol = "󱇶 "
 style = "bold yellow"
-format = "[$symbol$account(@$domain) \\($project\\)]($style) "
+format = "[$symbol$project]($style) "
 
 [username]
 style_user = "bold blue"
