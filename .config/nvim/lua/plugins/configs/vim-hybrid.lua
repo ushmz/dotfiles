@@ -18,6 +18,7 @@ return {
 					vim.api.nvim_set_hl(0, "SignColumn", { bg = nil })
 					vim.api.nvim_set_hl(0, "LineNR", { fg = colors.dim.white, bg = nil })
 					vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.dim.gray })
+					vim.api.nvim_set_hl(0, "CursorLineNR", { fg = colors.white, bg = colors.gray })
 					vim.api.nvim_set_hl(0, "@variable", { fg = colors.purple })
 					vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = colors.green })
 				end,
