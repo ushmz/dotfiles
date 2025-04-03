@@ -6,7 +6,7 @@ return {
 		{ "kevinhwang91/nvim-hlslens" },
 	},
 	config = function()
-		local colors = require("theme").colors
+		local colors = require("kanagawa.colors").setup({ theme = "dragon" })
 		require("scrollbar").setup({
 			max_lines = 2000,
 			handle = {
@@ -15,12 +15,12 @@ return {
 			},
 			marks = {
 				Cursor = { text = " " },
-				Search = { color = colors.yellow },
-				Error = { color = colors.red },
-				Warn = { color = colors.yellow },
-				Info = { color = colors.green },
-				Hint = { color = colors.blue },
-				Misc = { color = colors.cyan },
+				Search = { color = colors.palette.dragonYellow },
+				Error = { color = colors.palette.dragonRed },
+				Warn = { color = colors.palette.dragonYellow },
+				Info = { color = colors.palette.dragonGreen2 },
+				Hint = { color = colors.palette.dragonBlue },
+				Misc = { color = colors.palette.dragonTeal },
 			},
 			excluded_buftypes = {
 				"terminal",

@@ -1,5 +1,5 @@
 local function config()
-	local colors = require("theme").colors
+	local colors = require("kanagawa.colors").setup({ theme = "dragon" })
 	require("lspsaga").setup({
 		code_action = {
 			num_shortcut = true,
@@ -76,17 +76,17 @@ local function config()
 			incoming = "󰏷 ",
 			outgoing = "󰏻 ",
 			colors = {
-				normal_bg = colors.gray,
-				red = colors.red,
-				magenta = colors.red,
-				orange = colors.yellow,
-				yellow = colors.yellow,
-				green = colors.green,
-				cyan = colors.cyan,
-				blue = colors.blue,
-				purple = colors.purple,
-				white = colors.white,
-				black = colors.gray,
+				normal_bg = colors.palette.dragonGray,
+				red = colors.palette.dragonRed,
+				magenta = colors.palette.dragonPink,
+				orange = colors.palette.dragonOrange,
+				yellow = colors.palette.dragonYellow,
+				green = colors.palette.dragonGreen2,
+				cyan = colors.palette.dragonTeal,
+				blue = colors.palette.dragonBlue2,
+				purple = colors.palette.dragonViolet,
+				white = colors.palette.dragonWhite,
+				black = colors.palette.dragonGray,
 			},
 			kind = {},
 		},
