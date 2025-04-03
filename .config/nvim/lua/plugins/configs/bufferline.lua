@@ -1,15 +1,15 @@
 local function config()
-	local colors = require("theme").colors
+	local colors = require("kanagawa.colors").setup({ theme = "dragon" })
 
-	local text = colors.white
-	local active_bg = colors.black
+	local text = colors.palette.dragonWhite
+	local active_bg = colors.palette.dragonBlack0
 
-	local subtext = colors.dim.white
-	local inactive_bg = colors.light_gray
+	local subtext = colors.palette.dragonGray2
+	local inactive_bg = colors.palette.dragonGray
 
-	local surface = colors.white
-	local separator_bg = colors.light_gray
-	local bg_highlight = colors.gray
+	local surface = colors.palette.dragonWhite
+	local separator_bg = colors.palette.dragonGray
+	local bg_highlight = colors.palette.dragonGray3
 
 	require("bufferline").setup({
 		options = {
@@ -39,10 +39,10 @@ local function config()
 			tab_separator = { bg = separator_bg, fg = inactive_bg },
 			tab_separator_selected = { bg = separator_bg, fg = active_bg },
 
-			tab_close = { bg = bg_highlight, fg = colors.red },
+			tab_close = { bg = bg_highlight, fg = colors.palette.dragonRed },
 
-			indicator_visible = { bg = colors.purple, fg = inactive_bg },
-			indicator_selected = { bg = colors.purple, fg = active_bg },
+			indicator_visible = { bg = colors.palette.dragonViolet, fg = inactive_bg },
+			indicator_selected = { bg = colors.palette.dragonViolet, fg = active_bg },
 
 			separator = { bg = inactive_bg, fg = bg_highlight },
 			separator_visible = { bg = inactive_bg, fg = bg_highlight },
@@ -51,7 +51,7 @@ local function config()
 
 			close_button = { bg = inactive_bg, fg = inactive_bg },
 			close_button_visible = { bg = inactive_bg, fg = inactive_bg },
-			close_button_selected = { bg = active_bg, fg = colors.red },
+			close_button_selected = { bg = active_bg, fg = colors.palette.dragonRed },
 
 			fill = { bg = bg_highlight, fg = bg_highlight },
 
@@ -59,41 +59,41 @@ local function config()
 			numbers_visible = { bg = inactive_bg, fg = subtext },
 			numbers_selected = { bg = inactive_bg, fg = text },
 
-			error = { bg = inactive_bg, fg = colors.red },
-			error_visible = { bg = inactive_bg, fg = colors.red },
-			error_selected = { bg = active_bg, fg = colors.red },
-			error_diagnostic = { bg = inactive_bg, fg = colors.red },
-			error_diagnostic_visible = { bg = inactive_bg, fg = colors.red },
-			error_diagnostic_selected = { bg = active_bg, fg = colors.red },
+			error = { bg = inactive_bg, fg = colors.palette.dragonRed },
+			error_visible = { bg = inactive_bg, fg = colors.palette.dragonRed },
+			error_selected = { bg = active_bg, fg = colors.palette.dragonRed },
+			error_diagnostic = { bg = inactive_bg, fg = colors.palette.dragonRed },
+			error_diagnostic_visible = { bg = inactive_bg, fg = colors.palette.dragonRed },
+			error_diagnostic_selected = { bg = active_bg, fg = colors.palette.dragonRed },
 
-			warning = { bg = inactive_bg, fg = colors.yellow },
-			warning_visible = { bg = inactive_bg, fg = colors.yellow },
-			warning_selected = { bg = active_bg, fg = colors.yellow },
-			warning_diagnostic = { bg = inactive_bg, fg = colors.yellow },
-			warning_diagnostic_visible = { bg = inactive_bg, fg = colors.yellow },
-			warning_diagnostic_selected = { bg = active_bg, fg = colors.yellow },
+			warning = { bg = inactive_bg, fg = colors.palette.dragonYellow },
+			warning_visible = { bg = inactive_bg, fg = colors.palette.dragonYellow },
+			warning_selected = { bg = active_bg, fg = colors.palette.dragonYellow },
+			warning_diagnostic = { bg = inactive_bg, fg = colors.palette.dragonYellow },
+			warning_diagnostic_visible = { bg = inactive_bg, fg = colors.palette.dragonYellow },
+			warning_diagnostic_selected = { bg = active_bg, fg = colors.palette.dragonYellow },
 
-			info = { bg = inactive_bg, fg = colors.green },
-			info_visible = { bg = inactive_bg, fg = colors.green },
-			info_selected = { bg = active_bg, fg = colors.green },
-			info_diagnostic = { bg = inactive_bg, fg = colors.green },
-			info_diagnostic_visible = { bg = inactive_bg, fg = colors.green },
-			info_diagnostic_selected = { bg = active_bg, fg = colors.green },
+			info = { bg = inactive_bg, fg = colors.palette.dragonGreen2 },
+			info_visible = { bg = inactive_bg, fg = colors.palette.dragonGreen2 },
+			info_selected = { bg = active_bg, fg = colors.palette.dragonGreen2 },
+			info_diagnostic = { bg = inactive_bg, fg = colors.palette.dragonGreen2 },
+			info_diagnostic_visible = { bg = inactive_bg, fg = colors.palette.dragonGreen2 },
+			info_diagnostic_selected = { bg = active_bg, fg = colors.palette.dragonGreen2 },
 
-			hint = { bg = inactive_bg, fg = colors.blue },
-			hint_visible = { bg = inactive_bg, fg = colors.blue },
-			hint_selected = { bg = active_bg, fg = colors.blue },
-			hint_diagnostic = { bg = inactive_bg, fg = colors.blue },
-			hint_diagnostic_visible = { bg = inactive_bg, fg = colors.blue },
-			hint_diagnostic_selected = { bg = active_bg, fg = colors.blue },
+			hint = { bg = inactive_bg, fg = colors.palette.dragonBlue },
+			hint_visible = { bg = inactive_bg, fg = colors.palette.dragonBlue },
+			hint_selected = { bg = active_bg, fg = colors.palette.dragonBlue },
+			hint_diagnostic = { bg = inactive_bg, fg = colors.palette.dragonBlue },
+			hint_diagnostic_visible = { bg = inactive_bg, fg = colors.palette.dragonBlue },
+			hint_diagnostic_selected = { bg = active_bg, fg = colors.palette.dragonBlue },
 
 			diagnostic = { bg = inactive_bg, fg = subtext },
 			diagnostic_visible = { bg = inactive_bg, fg = subtext },
 			diagnostic_selected = { bg = active_bg, fg = text },
 
-			modified = { bg = inactive_bg, fg = colors.green },
-			modified_visible = { bg = inactive_bg, fg = colors.green },
-			modified_selected = { bg = active_bg, fg = colors.green },
+			modified = { bg = inactive_bg, fg = colors.palette.dragonGreen2 },
+			modified_visible = { bg = inactive_bg, fg = colors.palette.dragonGreen2 },
+			modified_selected = { bg = active_bg, fg = colors.palette.dragonGreen2 },
 		},
 	})
 

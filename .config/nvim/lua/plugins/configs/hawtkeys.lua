@@ -1,5 +1,5 @@
 local function config()
-	local colors = require("theme").colors
+	local colors = require("kanagawa.colors").setup({ theme = "dragon" })
 	require("hawtkeys").setup({
 		homerow = 2,
 		-- the fingers you want to use as the powerfingers, default is {2,3,6,7}
@@ -34,10 +34,10 @@ local function config()
 			},
 		},
 		highlights = {
-			HawtkeysMatchGreat = { fg = colors.green, bold = true },
-			HawtkeysMatchGood = { fg = colors.green },
-			HawtkeysMatchOk = { fg = colors.yellow },
-			HawtkeysMatchBad = { fg = colors.red },
+			HawtkeysMatchGreat = { fg = colors.palette.dragonGreen2, bold = true },
+			HawtkeysMatchGood = { fg = colors.palette.dragonGreen2 },
+			HawtkeysMatchOk = { fg = colors.palette.dragonYellow },
+			HawtkeysMatchBad = { fg = colors.palette.dragonRed },
 		},
 	})
 end
