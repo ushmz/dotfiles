@@ -1,5 +1,6 @@
 return {
 	"savq/melange-nvim",
+	-- cond = false,
 	config = function()
 		vim.cmd("syntax on")
 		vim.opt.background = "dark"
