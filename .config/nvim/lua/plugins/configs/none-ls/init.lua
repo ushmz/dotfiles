@@ -67,7 +67,7 @@ local function config()
 			if client.server_capabilities.documentFormattingProvider then
 				vim.keymap.set("n", "==", function()
 					format_with_none_ls(bufnr)
-				end, { buffer = true })
+				end, { buffer = true, desc = "LSP: format with none_ls" })
 
 				local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
 				vim.api.nvim_create_autocmd("BufWritePre", {
