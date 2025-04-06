@@ -5,10 +5,10 @@ local function config()
 	local active_bg = colors.palette.dragonBlack0
 
 	local subtext = colors.palette.dragonGray2
-	local inactive_bg = colors.palette.dragonGray
+	local inactive_bg = "#4A4946"
 
 	local surface = colors.palette.dragonWhite
-	local separator_bg = colors.palette.dragonGray
+	local separator_bg = "#4A4946"
 	local bg_highlight = colors.palette.dragonGray3
 
 	require("bufferline").setup({
