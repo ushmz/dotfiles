@@ -23,16 +23,6 @@ end
 local default_config = {
 	on_attach = on_attach,
 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-	handlers = {
-		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-			underline = true,
-			float = { source = "if_many" },
-			severity_sort = true,
-			signs = true,
-			virtual_text = false,
-			update_in_insert = true,
-		}),
-	},
 }
 
 config["ts_ls"] = vim.tbl_deep_extend("force", default_config, {
