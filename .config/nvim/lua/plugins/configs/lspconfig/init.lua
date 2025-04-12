@@ -1,11 +1,19 @@
 local function config()
-  local theme = require("kanagawa.colors").setup({theme = "dragon"})
-
 	-- To apply the default configurations for the server doesn't configure by lspconfig
 	-- e.g. formatter, linter, etc.
 	vim.diagnostic.config({
 		underline = true,
-		float = { source = "if_many" },
+		float = {
+			source = "if_many",
+			format = function(diagnostic)
+				if diagnostic.code then
+					return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+				else
+					return string.format("%s (%ss)", diagnostic.message, diagnostic.source)
+				end
+			end,
+			header = {},
+		},
 		severity_sort = true,
 		signs = {
 			text = {
@@ -14,14 +22,11 @@ local function config()
 				[vim.diagnostic.severity.HINT] = "",
 				[vim.diagnostic.severity.INFO] = "",
 			},
-      numhl = {
-				[vim.diagnostic.severity.ERROR] = theme.palette.dragonRed,
-				[vim.diagnostic.severity.WARN] = theme.palette.dragonYellow,
-				[vim.diagnostic.severity.HINT] = theme.palette.dragonGreen2,
-				[vim.diagnostic.severity.INFO] = theme.palette.dragonBlue2,
-      }
 		},
 		virtual_text = false,
+		-- virtual_lines = {
+		--   current_line = true,
+		-- },
 		update_in_insert = true,
 	})
 
