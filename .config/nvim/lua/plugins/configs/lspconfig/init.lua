@@ -1,6 +1,6 @@
 local function config()
   local theme = require("kanagawa.colors").setup({theme = "dragon"})
-  
+
 	-- To apply the default configurations for the server doesn't configure by lspconfig
 	-- e.g. formatter, linter, etc.
 	vim.diagnostic.config({
