@@ -3,10 +3,30 @@ local function config()
 	-- e.g. formatter, linter, etc.
 	vim.diagnostic.config({
 		underline = true,
-		float = { source = "if_many" },
+		float = {
+			source = "if_many",
+			format = function(diagnostic)
+				if diagnostic.code then
+					return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+				else
+					return string.format("%s (%ss)", diagnostic.message, diagnostic.source)
+				end
+			end,
+			header = {},
+		},
 		severity_sort = true,
-		signs = true,
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "",
+				[vim.diagnostic.severity.WARN] = " ",
+				[vim.diagnostic.severity.HINT] = "",
+				[vim.diagnostic.severity.INFO] = "",
+			},
+		},
 		virtual_text = false,
+		-- virtual_lines = {
+		--   current_line = true,
+		-- },
 		update_in_insert = true,
 	})
 
@@ -16,8 +36,6 @@ local function config()
 			require("lspconfig")[server_name].setup(conf)
 		end,
 	})
-
-	require("plugins.configs.lspconfig.hl").set()
 end
 
 return {

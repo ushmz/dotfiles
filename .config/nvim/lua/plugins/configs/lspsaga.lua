@@ -105,15 +105,63 @@ return {
 	"nvimdev/lspsaga.nvim",
 	cmd = { "Lspsaga" },
 	keys = {
-		{ "K", "<Cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "LSP: Hover document with floating window" },
-		{ "gp", "<Cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "LSP: [G]oto [P]eek window" },
+		{
+			"K",
+			function(args)
+				require("lspsaga.hover"):render_hover_doc(args)
+			end,
+			mode = "n",
+			desc = "LSP: Hover document with floating window",
+		},
+		{
+			"gp",
+			function()
+				require("lspsaga.definition"):init(1, 1)
+			end,
+			mode = "n",
+			desc = "LSP: [G]oto [P]eek window",
+		},
 		{ "gP", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "LSP: Goto symbol Finder" },
-		{ "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "LSP: Jump to next diagnostic" },
-		{ "<C-k>", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "LSP: Jump to previous diagnostic" },
-		{ "go", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "LSP: Toggle [O]utline" },
-		{ "<leader>r", "<Cmd>Lspsaga rename<CR>", mode = "n", desc = "LSP: [R]ename Symbol" },
-		{ "<leader>a", "<cmd>Lspsaga code_action<CR>", mode = "n", desc = "LSP: Execute Code [A]ction" },
-		{ "<leader>a", "<cmd>Lspsaga range_code_action<CR>", mode = "v", desc = "LSP: Code [A]ction to Selected Code" },
+		{
+			"<C-j>",
+			function()
+				require("lspsaga.diagnostic"):goto_next()
+			end,
+			mode = "n",
+			desc = "LSP: Jump to next diagnostic",
+		},
+		{
+			"<C-k>",
+			function()
+				require("lspsaga.diagnostic"):goto_prev()
+			end,
+			mode = "n",
+			desc = "LSP: Jump to previous diagnostic",
+		},
+		{
+			"go",
+			function()
+				require("lspsaga.symbol"):outline()
+			end,
+			mode = "n",
+			desc = "LSP: Toggle [O]utline",
+		},
+		{
+			"<leader>r",
+			function(args)
+				require("lspsaga.rename"):lsp_rename(args)
+			end,
+			mode = "n",
+			desc = "LSP: [R]ename Symbol",
+		},
+		{
+			"<leader>a",
+			function()
+				require("lspsaga.codeaction"):code_action()
+			end,
+			mode = "n",
+			desc = "LSP: Execute Code [A]ction",
+		},
 	},
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons" },

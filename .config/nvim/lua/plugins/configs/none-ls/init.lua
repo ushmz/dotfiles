@@ -58,7 +58,6 @@ local function config()
 
 	require("null-ls").setup({
 		sources = nls_sources,
-		diagnostics_format = "#{m} (#{s})",
 		on_attach = function(client, bufnr)
 			local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
 			if ft == "json" or ft == "yaml" or ft == "toml" then
