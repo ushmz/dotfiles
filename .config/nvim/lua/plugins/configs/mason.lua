@@ -51,10 +51,10 @@ end
 
 return {
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		cmd = "Mason",
 		dependencies = {
-			{ "williamboman/mason.nvim", config = mason },
+			{ "mason-org/mason.nvim", config = mason },
 		},
 		config = mason_lspconfig,
 	},
