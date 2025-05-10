@@ -1,5 +1,17 @@
 vim.cmd("autocmd!")
 
+require("basics")
+
+if vim.g.vscode then
+  require("basics.vscode")
+  require("mappings.vscode")
+  return
+end
+
+require("mappings")
+require("filetypes")
+require("plugins")
+
 -- Auto switch IME
 if jit and jit.os == "OSX" then
 	if vim.fn.executable("im-select") then
@@ -10,20 +22,6 @@ if jit and jit.os == "OSX" then
 			end,
 		})
 	end
-end
-
--- Set options
-require("basics")
-
-if not vim.g.vscode then
-	-- Set filetype options
-	require("filetypes")
-
-	-- Set keymaps
-	require("mappings")
-
-	-- Plugin configs
-	require("plugins")
 end
 
 -- HACK: Run some Ex commands after loading configs & plugins

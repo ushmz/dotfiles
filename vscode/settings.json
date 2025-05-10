@@ -1,4 +1,20 @@
 {
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+      "command": "vscode-neovim.escape"
+    },
+    "jk": {
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "vim.api.nvim_input('<ESC>')",
+          "-- NOTE: synchronously execute formatting before writing",
+          "require('vscode-neovim').call('editor.action.formatDocument')",
+          "require('vscode-neovim').action('workbench.action.files.save')"
+        ]
+      ]
+    }
+  },
   "vscode-neovim.mouseSelectionStartVisualMode": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
