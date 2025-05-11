@@ -30,23 +30,27 @@ local function config()
 		update_in_insert = true,
 	})
 
-	require("mason-lspconfig").setup_handlers({
-		function(server_name)
-			local conf = require("plugins.configs.lspconfig.server_config")[server_name]
-			require("lspconfig")[server_name].setup(conf)
+	vim.lsp.config("*", {
+		on_attach = function(_, bufnr)
+			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+			-- NOTE: To use fuzzy finder instead of quickfix list
+			-- other keymaps like GoToImplementation, GoToReferences are set in telescope.nvim config
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
 		end,
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	})
 end
 
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = { "InsertEnter" },
+		ft = { "*" },
 		dependencies = {
 			-- make sure to setup neodev BEFORE lspconfig
-			{ "folke/neodev.nvim", ft = { "lua" } },
-			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
-			{ "williamboman/mason-lspconfig.nvim" },
+			{ "folke/neodev.nvim", lazy = true },
+			{ "hrsh7th/cmp-nvim-lsp", ft = { "*" } },
+			{ "mason-org/mason-lspconfig.nvim" },
 		},
 		config = config,
 	},
