@@ -97,8 +97,8 @@ local function config()
 		},
 	})
 
-	vim.keymap.set("n", "<C-w>]", "<Cmd>BufferLineCycleNext<CR>", { silent = true })
-	vim.keymap.set("n", "<C-w>[", "<Cmd>BufferLineCyclePrev<CR>", { silent = true })
+	vim.keymap.set("n", "<C-w>.", "<Cmd>BufferLineCycleNext<CR>", { silent = true })
+	vim.keymap.set("n", "<C-w>,", "<Cmd>BufferLineCyclePrev<CR>", { silent = true })
 end
 
 return {
