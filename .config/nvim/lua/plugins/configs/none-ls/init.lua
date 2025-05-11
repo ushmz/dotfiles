@@ -92,10 +92,10 @@ end
 
 return {
 	"nvimtools/none-ls.nvim",
+  ft = {"*"},
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",
 		"davidmh/cspell.nvim",
 	},
-	event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 	config = config,
 }
