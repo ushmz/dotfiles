@@ -13,7 +13,7 @@ return {
 			override = function(_, options)
 				options.enabled = true
 				-- Use treesitter and plenary.nvim as a workspace library
-				options.plugins = { "nvim-treesitter", "plenary.nvim" }
+				options.plugins = { "nvim-treesitter", "plenary.nvim", "nvim-dap-ui" }
 			end,
 			lspconfig = true,
 			pathStrict = true,
