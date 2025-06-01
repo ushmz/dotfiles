@@ -47,8 +47,7 @@ return {
 		"neovim/nvim-lspconfig",
 		ft = { "*" },
 		dependencies = {
-			-- make sure to setup neodev BEFORE lspconfig
-			{ "folke/neodev.nvim", lazy = true },
+			{ "folke/lazydev.nvim", ft = { "lua" } },
 			{ "hrsh7th/cmp-nvim-lsp", ft = { "*" } },
 			{ "mason-org/mason-lspconfig.nvim" },
 		},
