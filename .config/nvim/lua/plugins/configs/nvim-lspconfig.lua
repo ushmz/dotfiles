@@ -37,9 +37,28 @@ local function config()
 			-- other keymaps like GoToImplementation, GoToReferences are set in telescope.nvim config
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
+			vim.keymap.set("n", "==", function()
+				vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
+			end, { buffer = bufnr, desc = "LSP: Document formatting" })
+
+			local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				buffer = bufnr,
+				group = fmtag,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
+				end,
+			})
 		end,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	})
+
+	-- FIXME: Workaround for switching biome and eslint
+	if vim.fs.root(0, { "biome.json", "biome.jsonc" }) then
+    vim.lsp.enable("biome")
+  else
+    vim.lsp.enable("eslint")
+  end
 end
 
 return {

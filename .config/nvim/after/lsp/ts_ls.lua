@@ -1,5 +1,9 @@
 ---@type vim.lsp.Config
 return {
+	on_attach = function(client, _)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+	end,
 	handlers = {
 		---filter `index.d.ts` out from `textDocument/definition` result
 		---@see https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
