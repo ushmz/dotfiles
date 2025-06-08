@@ -22,11 +22,6 @@ local config = {
 	-- See: https://github.com/davidmh/cspell.nvim/issues/25
 	read_config_synchronously = true,
 
-	---@class AddToJSONSuccess
-	---@field new_word string
-	---@field cspell_config_path string
-	---@field generator_params table
-
 	---@param payload AddToJSONSuccess
 	on_add_to_json = function(payload)
 		os.execute(

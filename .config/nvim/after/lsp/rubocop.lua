@@ -1,4 +1,4 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "rubocop", "--lsp" },
+	cmd = { "bundle", "exec", "rubocop", "--lsp" },
 }

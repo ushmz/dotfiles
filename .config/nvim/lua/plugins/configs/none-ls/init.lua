@@ -7,6 +7,7 @@ local function config()
 	require("null-ls").setup({
 		sources = {
       unpack(prettier),
+      unpack(gofmt),
       unpack(cspell),
       unpack(extras)
 		},

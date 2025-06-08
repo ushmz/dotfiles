@@ -17,10 +17,10 @@ return {
 			"kotlin_language_server",
 			"lua_ls",
 			"pyright",
-			-- "ruff_lsp",
-      "rubocop",
+			"ruff",
+			"rubocop",
 			"rust_analyzer",
-      "solargraph",
+			"solargraph",
 			"sqlls",
 			"stylelint_lsp",
 			"tailwindcss",
@@ -38,7 +38,7 @@ return {
 		-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
 		-- vim.cmd([[
 		--   MasonInstall cspell dockerfile-language-server goimports html-lsp markdownlint
-		--    \ prettier rubocop rustfmt shfmt solargraph stylua
+		--    \ prettier rustfmt shfmt
 		--    \ yaml-language-server yamlfmt yamllint
 		--   ]])
 		--
