@@ -7,7 +7,7 @@ local function exec_code_action_sync(client, bufnr, cmd)
 	params.range = cmd.range
 
 	-- NOTE: Use `request_sync` of `vim.lsp.Client` instead of `vim.lsp.buf_request_sync` to filter target language server
-	local res = client.request_sync("textDocument/codeAction", params, 5000, bufnr)
+	local res = client:request_sync("textDocument/codeAction", params, 5000, bufnr)
 	if res and res.result then
 		for _, r in ipairs(res.result) do
 			if r.edit then
