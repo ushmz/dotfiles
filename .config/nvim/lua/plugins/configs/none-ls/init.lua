@@ -3,13 +3,15 @@ local function config()
 	local prettier = require("plugins.configs.none-ls.prettier")
 	local gofmt = require("plugins.configs.none-ls.gofmt")
 	local cspell = require("plugins.configs.none-ls.cspell")
+	local stylua = require("plugins.configs.none-ls.stylua")
 
 	require("null-ls").setup({
 		sources = {
-      unpack(prettier),
-      unpack(gofmt),
-      unpack(cspell),
-      unpack(extras)
+			unpack(prettier),
+			unpack(gofmt),
+			unpack(stylua),
+			unpack(cspell),
+			unpack(extras),
 		},
 	})
 
