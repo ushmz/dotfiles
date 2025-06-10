@@ -2,9 +2,10 @@
 ---@param bufnr number
 ---@param cmd string
 local function exec_code_action_sync(client, bufnr, cmd)
-	local params = vim.lsp.util.make_range_params()
-	params.context = { only = { cmd }, diagnostics = {} }
-	params.range = cmd.range
+	local params = {
+		textDocument = { uri = vim.uri_from_bufnr(bufnr) },
+		context = { only = { cmd }, diagnostics = {} },
+	}
 
 	-- NOTE: Use `request_sync` of `vim.lsp.Client` instead of `vim.lsp.buf_request_sync` to filter target language server
 	local res = client:request_sync("textDocument/codeAction", params, 5000, bufnr)
@@ -20,16 +21,6 @@ end
 
 ---@type vim.lsp.Config
 return {
-	root_markers = { "biome.json", "biome.jsonc" },
-	root_dir = function(bufnr, cb)
-		local root_dir = vim.fs.root(bufnr, { "biome.json", "biome.jsonc" })
-		if root_dir then
-			vim.print("biome config exist: " .. root_dir)
-			cb(vim.fn.fnamemodify(root_dir, ":h"))
-		else
-			cb(nil)
-		end
-	end,
 	single_file_support = true,
 	on_attach = function(client, bufnr)
 		local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
@@ -38,7 +29,6 @@ return {
 			group = fmtag,
 			callback = function(args)
 				vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-				-- TODO : execute "textDocument/codeAction" to apply the fix
 				exec_code_action_sync(client, bufnr, "source.fixAll")
 			end,
 		})
