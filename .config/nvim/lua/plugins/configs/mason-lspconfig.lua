@@ -8,7 +8,6 @@ return {
 		local servers = {
 			-- cSpell:disable
 			"bashls",
-			"cssls",
 			"dockerls",
 			"eslint",
 			"gopls",
@@ -22,7 +21,6 @@ return {
 			"rust_analyzer",
 			"solargraph",
 			"sqlls",
-			"stylelint_lsp",
 			"tailwindcss",
 			"ts_ls",
 			-- cSpell:enable
@@ -30,8 +28,8 @@ return {
 
 		require("mason-lspconfig").setup({
 			automatic_enable = {
-        exclude = { "eslint", "prettier", "biome" }
-      },
+				exclude = { "eslint", "prettier", "biome" },
+			},
 			ensure_installed = servers,
 		})
 		-- Manually install like this
