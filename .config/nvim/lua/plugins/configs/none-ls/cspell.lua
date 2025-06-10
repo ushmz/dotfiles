@@ -41,7 +41,7 @@ return {
 	cspell.diagnostics.with({
 		config = config,
 		diagnostics_postprocess = function(diagnostic)
-			diagnostic.message = string.format('Unknown word "%s"', diagnostic.user_data.misspelled)
+			-- diagnostic.message = string.format('Unknown word "%s"', diagnostic.user_data.misspelled)
 			diagnostic.severity = vim.diagnostic.severity.WARN
 		end,
 		condition = function()
