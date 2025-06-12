@@ -12,6 +12,7 @@ local function config()
 			adapters.go_adapter(),
 			adapters.jest_adapter(),
 			adapters.playwright_adapter(),
+			adapters.vitest_adapter(),
 		},
 		discovery = { enable = false },
 	})
@@ -76,6 +77,7 @@ return {
 			{ "nvim-neotest/neotest-jest" },
 			-- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
 			{ "thenbe/neotest-playwright" },
+			{ "marilari88/neotest-vitest" },
 		},
 		keys = {
 			{ "<leader>tn", test_nearest, mode = "n", desc = "Neotest: Run the [N]earest test" },
