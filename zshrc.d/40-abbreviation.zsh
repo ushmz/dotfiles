@@ -77,3 +77,30 @@ map dot='cd ~/dotfiles'
 if type gh &>/dev/null; then
     eval "$(gh copilot alias -- zsh)"
 fi
+
+if type devcontainer &>/dev/null; then
+    map devc='devcontainer exec'
+    map devx='devcontainer exec -- bash -c'
+    map devup='devcontainer up'
+    map devs='devcontainer start'
+    map devr='devcontainer rebuild'
+    map devp='devcontainer ps'
+
+    map ndev='devcontainer exec --remote-env XDG_CONFIG_HOME=/nvim-config --workspace-folder . nvim'
+
+    ndevcontainer_up () {
+        devcontainer up\
+            --additional-features='{"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {}}' \
+            --mount type=bind,source="${XDG_CONFIG_HOME}/nvim",target=/nvim-config/nvim \
+            --workspace-folder . \
+    }
+    map ndevup='ndevcontainer_up'
+
+    ndevcontainer_exec () {
+        devcontainer exec \
+            --workspace-folder . \
+            --remote-env XDG_CONFIG_HOME=/nvim-config
+            nvim "$@"
+    }
+    map ndev='ndevcontainer_exec'
+fi
