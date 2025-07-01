@@ -102,5 +102,5 @@ if type devcontainer &>/dev/null; then
             --remote-env XDG_CONFIG_HOME=/nvim-config
             nvim "$@"
     }
-    map ndev='ndevcontainer_exec'
+    map ndevx='ndevcontainer_exec'
 fi
