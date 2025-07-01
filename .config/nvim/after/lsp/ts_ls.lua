@@ -1,8 +1,15 @@
 ---@type vim.lsp.Config
 return {
-	on_attach = function(client, _)
+	root_markers = { "turbo.json" },
+	on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
+
+		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+		-- NOTE: To use fuzzy finder instead of quickfix list
+		-- other keymaps like GoToImplementation, GoToReferences are set in telescope.nvim config
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
 	end,
 	handlers = {
 		---filter `index.d.ts` out from `textDocument/definition` result
