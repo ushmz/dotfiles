@@ -16,6 +16,8 @@ path=(
     "/usr/local/opt/gnu-tar/libexec/gnubin"(N-/) # tar
     "/usr/local/opt/grep/libexec/gnubin"(N-/) # grep
 
+    # asdf
+    "${ASDF_DATA_DIR:-$HOME}/.asdf/shims"(N-/)
     # local packages
     "${HOME}/.local/bin"(N-/)
     # GOBIN

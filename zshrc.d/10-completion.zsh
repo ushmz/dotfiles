@@ -69,7 +69,7 @@ export LESSOPEN="| ${LESSPIPE} %s"
 export LESS='-R'
 
 # Enable asdf tab complation
-fpath+=${ASDF_DIR}/completions
+fpath+=${ASDF_DATA_DIR}/completions
 # Enable poetry auto completion
 fpath+=${XDG_CONFIG_HOME}/poetry/.zfunc/_poetry
 # Enable gh completion config
