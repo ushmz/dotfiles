@@ -31,34 +31,32 @@ local function config()
 	})
 
 	vim.lsp.config("*", {
-		on_attach = function(_, bufnr)
+    ---@param client vim.lsp.Client
+    ---@param bufnr number
+		on_attach = function(client, bufnr)
 			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			-- NOTE: To use fuzzy finder instead of quickfix list
 			-- other keymaps like GoToImplementation, GoToReferences are set in telescope.nvim config
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
-			vim.keymap.set("n", "==", function()
-				vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-			end, { buffer = bufnr, desc = "LSP: Document formatting" })
 
-			local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				buffer = bufnr,
-				group = fmtag,
-				callback = function()
+			if client.supports_method("textDocument/formatting") then
+				vim.keymap.set("n", "==", function()
 					vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-				end,
-			})
+				end, { buffer = bufnr, desc = "LSP: Document formatting" })
+
+				local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					group = fmtag,
+					callback = function()
+						vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
+					end,
+				})
+			end
 		end,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	})
-
-	-- FIXME: Workaround for switching biome and eslint
-	if vim.fs.root(0, { "biome.json", "biome.jsonc" }) then
-    vim.lsp.enable("biome")
-  else
-    vim.lsp.enable("eslint")
-  end
 end
 
 return {

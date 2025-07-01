@@ -27,9 +27,7 @@ return {
 		}
 
 		require("mason-lspconfig").setup({
-			automatic_enable = {
-				exclude = { "eslint", "prettier", "biome" },
-			},
+			automatic_enable = true,
 			ensure_installed = servers,
 		})
 		-- Manually install like this

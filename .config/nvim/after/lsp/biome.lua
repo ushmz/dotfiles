@@ -8,7 +8,7 @@ local function exec_code_action_sync(client, bufnr, cmd)
 	}
 
 	-- NOTE: Use `request_sync` of `vim.lsp.Client` instead of `vim.lsp.buf_request_sync` to filter target language server
-	local res = client:request_sync("textDocument/codeAction", params, 5000, bufnr)
+	local res = client:request_sync("textDocument/codeAction", params, 3000, bufnr)
 	if res and res.result then
 		for _, r in ipairs(res.result) do
 			if r.edit then
@@ -21,15 +21,38 @@ end
 
 ---@type vim.lsp.Config
 return {
-	single_file_support = true,
+	-- FIXME: Use local pnpm if available, otherwise use npx, something like `nvim-lspconfig` does
+	-- on_new_config = function(config)
+	-- 	local pnpm = vim.fs.root(0, { "pnpm-lock.yml", "pnpm-lock.yaml" })
+	-- 	local cmd = pnpm and { "pnpm", "biome", "lsp-proxy" } or { "npx", "biome", "lsp-proxy" }
+	-- 	config.cmd = cmd
+	-- end,
+	cmd = { "pnpm", "biome", "lsp-proxy" },
+	root_dir = function(bufnr, cb)
+		local root_dir = vim.fs.root(bufnr, { "biome.json", "biome.jsonc" })
+		if root_dir then
+			cb(root_dir)
+		else
+			cb(nil)
+		end
+	end,
 	on_attach = function(client, bufnr)
-		local fmtag = vim.api.nvim_create_augroup("LspDocumentFormatting", {})
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			buffer = bufnr,
-			group = fmtag,
+			---@param args { buf: integer }
 			callback = function(args)
-				vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-				exec_code_action_sync(client, bufnr, "source.fixAll")
+				if client.supports_method("textDocument/codeAction") then
+					exec_code_action_sync(client, bufnr, "source.fixAll")
+					exec_code_action_sync(client, bufnr, "source.organizeImports")
+				end
+
+				if client.supports_method("textDocument/formatting") then
+					vim.lsp.buf.format({
+						bufnr = bufnr,
+						async = false,
+						timeout_ms = 5000,
+					})
+				end
 			end,
 		})
 	end,
