@@ -50,6 +50,18 @@ M.jest_adapter = function()
 	})
 end
 
+M.vitest_adapter = function()
+	return require("neotest-vitest")({
+		vitestCommand = "pnpm test",
+		vitestConfigFile = "vitest.config.ts",
+		vitest_test_discovery = false,
+		env = {
+			CI = true,
+			-- NODE_OPTIONS = "--dns-result-order=ipv4first --max_old_space_size=6144",
+		},
+	})
+end
+
 M.playwright_adapter = function()
 	return require("neotest-playwright").adapter({
 		options = {

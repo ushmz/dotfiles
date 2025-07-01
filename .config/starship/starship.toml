@@ -66,6 +66,7 @@ format = '([\[ $all_status$ahead_behind\]]($style) )'
 symbol = "󱇶 "
 style = "bold yellow"
 format = "[$symbol$project]($style) "
+disabled = true
 
 [username]
 style_user = "bold blue"

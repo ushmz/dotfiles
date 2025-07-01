@@ -49,3 +49,7 @@ export ANDROID_HOME=${HOME}/Library/Android/sdk
 
 # fzf default options
 export FZF_DEFAULT_OPTS='--height=40% --layout=reverse --tabstop=4 --info=right --no-mouse'
+
+
+# asdf data directory
+export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"

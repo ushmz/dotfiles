@@ -1,5 +1,7 @@
 local function config()
-	require("js-teleporter").setup({})
+	require("js-teleporter").setup({
+		test_roots = { "__test__", "__tests__", "test", "tests" },
+	})
 end
 
 return {

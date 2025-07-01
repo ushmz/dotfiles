@@ -8,7 +8,6 @@ return {
 		local servers = {
 			-- cSpell:disable
 			"bashls",
-			"cssls",
 			"dockerls",
 			"eslint",
 			"gopls",
@@ -17,10 +16,12 @@ return {
 			"kotlin_language_server",
 			"lua_ls",
 			"pyright",
-			-- "ruff_lsp",
+			"ruff",
+			"rubocop",
 			"rust_analyzer",
+			-- "solargraph",
+			"ruby_lsp",
 			"sqlls",
-			"stylelint_lsp",
 			"tailwindcss",
 			"ts_ls",
 			-- cSpell:enable
@@ -34,7 +35,7 @@ return {
 		-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
 		-- vim.cmd([[
 		--   MasonInstall cspell dockerfile-language-server goimports html-lsp markdownlint
-		--    \ prettier rubocop rustfmt shfmt solargraph stylua
+		--    \ prettier rustfmt shfmt
 		--    \ yaml-language-server yamlfmt yamllint
 		--   ]])
 		--

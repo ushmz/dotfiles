@@ -15,6 +15,7 @@ return {
 	event = { "VeryLazy" },
 	dependencies = {
 		{ "mfussenegger/nvim-dap", event = { "VeryLazy" }, config = dap_config },
+		{ "suketa/nvim-dap-ruby" },
 		{ "nvim-neotest/nvim-nio", event = { "VeryLazy" } },
 	},
 	config = dap_ui,

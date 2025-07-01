@@ -22,11 +22,6 @@ local config = {
 	-- See: https://github.com/davidmh/cspell.nvim/issues/25
 	read_config_synchronously = true,
 
-	---@class AddToJSONSuccess
-	---@field new_word string
-	---@field cspell_config_path string
-	---@field generator_params table
-
 	---@param payload AddToJSONSuccess
 	on_add_to_json = function(payload)
 		os.execute(
@@ -46,7 +41,7 @@ return {
 	cspell.diagnostics.with({
 		config = config,
 		diagnostics_postprocess = function(diagnostic)
-			diagnostic.message = string.format('Unknown word "%s"', diagnostic.user_data.misspelled)
+			-- diagnostic.message = string.format('Unknown word "%s"', diagnostic.user_data.misspelled)
 			diagnostic.severity = vim.diagnostic.severity.WARN
 		end,
 		condition = function()
