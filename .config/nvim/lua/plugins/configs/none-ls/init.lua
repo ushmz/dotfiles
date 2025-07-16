@@ -2,7 +2,6 @@ local function config()
 	local extras = require("plugins.configs.none-ls.extra")
 	local prettier = require("plugins.configs.none-ls.prettier")
 	local gofmt = require("plugins.configs.none-ls.gofmt")
-	local cspell = require("plugins.configs.none-ls.cspell")
 	local stylua = require("plugins.configs.none-ls.stylua")
 
 	require("null-ls").setup({
@@ -10,7 +9,6 @@ local function config()
 			unpack(prettier),
 			unpack(gofmt),
 			unpack(stylua),
-			unpack(cspell),
 			unpack(extras),
 		},
 	})
