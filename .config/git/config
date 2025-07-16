@@ -41,9 +41,12 @@
 [alias]
     main = "!git checkout `git branch -l master main | sed 's/^* //'` && git pull"
     master = "!git checkout `git branch -l master main | sed 's/^* //'` && git pull"
+    develop = "!git checkout `git branch -l develop development | sed 's/^* //'` && git pull"
     chore = "!c () { git checkout -b feature/$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10); }; c"
     temp = "!tmp=$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10); git worktree add $(git rev-parse --show-cdup).worktrees/${tmp} -b feature/${tmp}; cd $(git rev-parse --show-cdup).worktrees/${tmp}"
     pushf = "push --force-with-lease --force-if-includes"
+    update = "!fn() { git fetch ${1}; git rebase ${1}/${2} --autostash; }; fn"
+    ; alias = "!if test -z $1; then loop=; for k in `git config --get-regexp ^alias\\. | sort | sed -e 's/^alias\\.\\(\\S*\\).*/\\1/g'`; do echo -n $k; loop="${loop}1"; if test ${#loop} -lt 5; then echo -n '\t'; else echo; loop=; fi; done; exit; fi; git config --list | grep ^alias\\.$1= | sed -e s/^alias\\.//; exit;"
 [ghq]
 	root = ~/src
 [delta]

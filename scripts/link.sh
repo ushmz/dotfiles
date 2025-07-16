@@ -80,10 +80,8 @@ ln -sf "$(pwd)/.config/python/pythonrc.py" "${HOME}/.config/python/pythonrc.py"
 # Mac OS specific files
 if [ "$(uname)" = "Darwin" ]; then
 	# vscode
-	if (type code >/dev/null); then
-		ln -sf "$(pwd)/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
-		ln -sf "$(pwd)/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
-	fi
+	ln -sf "$(pwd)/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+	ln -sf "$(pwd)/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
 
 	# Override for M1 Mac
 	if [ "$(uname -m)" = "arm64" ]; then
