@@ -25,7 +25,7 @@
   "terminal.integrated.fontSize": 15,
   "bookmarks.treeview.visible": true,
   "terminal.integrated.fontFamily": "'Hack Nerd Font', 'Source Code Pro'",
-  "editor.accessibilitySupport": "off",
+  "editor.accessibilitySupport": "on",
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
   "editor.fontFamily": "Fira Code Retina",
@@ -89,14 +89,14 @@
   },
   "[go]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.insertSpaces": false,
     "editor.tabSize": 4
   },
   "[go.mod]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": false
+      "source.organizeImports": "never"
     },
     "editor.formatOnPaste": false,
     "editor.formatOnSave": false
@@ -158,7 +158,6 @@
   "security.workspace.trust.untrustedFiles": "open",
   // Suppress new version notification
   "vsicons.dontShowNewVersionMessage": true,
-  "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.labelFormat": "short",
   "workbench.editor.revealIfOpen": true,
@@ -192,5 +191,10 @@
     "terminal.ansiRed": "#B05655",
     "terminal.ansiWhite": "#848B92",
     "terminal.ansiYellow": "#E1A574"
+  },
+  "workbench.editor.tabActionLocation": "left",
+  "accessibility.signals.chatUserActionRequired": {
+    "sound": "on",
+    "announcement": "auto"
   }
 }
