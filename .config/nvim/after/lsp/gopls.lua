@@ -1,5 +1,10 @@
 ---@type vim.lsp.Config
 return {
+	settings = {
+		gopls = {
+			gofumpt = true, -- Use gofumpt for formatting
+		},
+	},
 	hints = {
 		assignVariableTypes = true,
 		compositeLiteralFields = true,
