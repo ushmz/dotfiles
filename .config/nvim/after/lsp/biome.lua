@@ -2,8 +2,10 @@
 ---@param bufnr number
 ---@param cmd string
 local function exec_code_action_sync(client, bufnr, cmd)
+	local range_params = vim.lsp.util.make_range_params(0, "utf-8")
 	local params = {
-		textDocument = { uri = vim.uri_from_bufnr(bufnr) },
+		textDocument = range_params.textDocument,
+		range = range_params.range,
 		context = { only = { cmd }, diagnostics = {} },
 	}
 
@@ -29,6 +31,8 @@ return {
 	-- end,
 	cmd = { "pnpm", "biome", "lsp-proxy" },
 	root_dir = function(bufnr, cb)
+		-- NOTE: To avoid being used `package.json` as root directory marker (default behavior of `lspconfig`),
+		-- we use only `biome.json` or `biome.jsonc` as root directory marker.
 		local root_dir = vim.fs.root(bufnr, { "biome.json", "biome.jsonc" })
 		if root_dir then
 			cb(root_dir)
