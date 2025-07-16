@@ -12,7 +12,7 @@ local function exec_code_action_sync(client, bufnr, cmd)
 	if res and res.result then
 		for _, r in ipairs(res.result) do
 			if r.edit then
-				local encoding = vim.lsp.get_client_by_id(r.edit.client_id).offset_encoding or "utf-8"
+				local encoding = vim.lsp.get_client_by_id(client.id).offset_encoding or "utf-8"
 				vim.lsp.util.apply_workspace_edit(r.edit, encoding)
 			end
 		end
