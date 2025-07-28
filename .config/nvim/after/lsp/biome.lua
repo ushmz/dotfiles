@@ -1,3 +1,5 @@
+local pnpm = vim.fs.root(0, { "pnpm-lock.yml", "yaml-lock.yaml" })
+
 ---@param client vim.lsp.Client
 ---@param bufnr number
 ---@param cmd string
@@ -23,13 +25,7 @@ end
 
 ---@type vim.lsp.Config
 return {
-	-- FIXME: Use local pnpm if available, otherwise use npx, something like `nvim-lspconfig` does
-	-- on_new_config = function(config)
-	-- 	local pnpm = vim.fs.root(0, { "pnpm-lock.yml", "pnpm-lock.yaml" })
-	-- 	local cmd = pnpm and { "pnpm", "biome", "lsp-proxy" } or { "npx", "biome", "lsp-proxy" }
-	-- 	config.cmd = cmd
-	-- end,
-	cmd = { "pnpm", "biome", "lsp-proxy" },
+	cmd = pnpm and { "pnpm", "biome", "lsp-proxy" } or { "npx", "biome", "lsp-proxy" },
 	root_dir = function(bufnr, cb)
 		-- NOTE: To avoid being used `package.json` as root directory marker (default behavior of `lspconfig`),
 		-- we use only `biome.json` or `biome.jsonc` as root directory marker.
