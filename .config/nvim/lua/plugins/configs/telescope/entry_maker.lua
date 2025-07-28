@@ -335,7 +335,7 @@ end
 ---@return function
 function M.pretty_live_grep(opts)
 	local opts = opts or {}
-	opts.cwd = opts.cwd or vim.loop.cwd()
+	opts.cwd = opts.cwd or vim.fn.getcwd()
 	opts.heading = opts.heading or true
 	opts.directory_hl = opts.directory_hl or "Directory"
 	opts.filename_hl = opts.filename_hl or "Normal"

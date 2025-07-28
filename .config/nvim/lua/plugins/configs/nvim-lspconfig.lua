@@ -31,8 +31,8 @@ local function config()
 	})
 
 	vim.lsp.config("*", {
-    ---@param client vim.lsp.Client
-    ---@param bufnr number
+		---@param client vim.lsp.Client
+		---@param bufnr number
 		on_attach = function(client, bufnr)
 			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			-- NOTE: To use fuzzy finder instead of quickfix list
