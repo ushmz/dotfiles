@@ -24,14 +24,21 @@ asdf plugin add java
 asdf plugin add nodejs
 asdf plugin add python
 asdf plugin add ruby
+asdf plugin add deno
+asdf plugin add poetry
 
 # Install them as necessary
-asdf install nodejs 14.17.1
-asdf install nodejs 16.17.0
-asdf install python 3.6.15
-asdf install python 3.8.16
-asdf install python 3.11.2
-asdf install ruby 3.0.3
+asdf install nodejs 20.19.4
+asdf install nodejs 22.17.1
+asdf install nodejs 23.11.1
+asdf install nodejs 24.4.1
+asdf install python 3.8.20
+asdf install python 3.11.13
+asdf install python 3.13.5
+asdf install ruby 3.2.8
+asdf install ruby 3.4.5
+asdf install deno 2.4.2
+asdf install poetry 2.1.3
 
 # Generate SSH key
 info "SSH setup"
