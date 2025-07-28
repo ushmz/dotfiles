@@ -19,7 +19,6 @@ return {
 			"ruff",
 			"rubocop",
 			"rust_analyzer",
-			-- "solargraph",
 			"ruby_lsp",
 			"sqlls",
 			"tailwindcss",
