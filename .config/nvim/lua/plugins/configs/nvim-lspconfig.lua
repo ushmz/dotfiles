@@ -40,7 +40,7 @@ local function config()
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
 
-			if client.supports_method("textDocument/formatting") then
+			if client:supports_method("textDocument/formatting") then
 				vim.keymap.set("n", "==", function()
 					vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
 				end, { buffer = bufnr, desc = "LSP: Document formatting" })

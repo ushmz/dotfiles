@@ -41,12 +41,12 @@ return {
 			buffer = bufnr,
 			---@param args { buf: integer }
 			callback = function(args)
-				if client.supports_method("textDocument/codeAction") then
+				if client:supports_method("textDocument/codeAction") then
 					exec_code_action_sync(client, bufnr, "source.fixAll")
 					exec_code_action_sync(client, bufnr, "source.organizeImports")
 				end
 
-				if client.supports_method("textDocument/formatting") then
+				if client:supports_method("textDocument/formatting") then
 					vim.lsp.buf.format({
 						bufnr = bufnr,
 						async = false,
