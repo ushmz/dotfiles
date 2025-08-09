@@ -86,12 +86,12 @@ if type devcontainer &>/dev/null; then
     map devr='devcontainer rebuild'
     map devp='devcontainer ps'
 
-    map ndev='devcontainer exec --remote-env XDG_CONFIG_HOME=/nvim-config --workspace-folder . nvim'
+    map ndev='devcontainer exec --remote-env XDG_CONFIG_HOME=/.config --workspace-folder . nvim'
 
     ndevcontainer_up () {
         devcontainer up\
             --additional-features='{"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {}}' \
-            --mount type=bind,source="${XDG_CONFIG_HOME}/nvim",target=/nvim-config/nvim \
+            --mount='source=${XDG_CONFIG_HOME:-$HOME/.config}/nvim,target=/.config/nvim,type=bind' \
             --workspace-folder . \
     }
     map ndevup='ndevcontainer_up'
@@ -99,7 +99,7 @@ if type devcontainer &>/dev/null; then
     ndevcontainer_exec () {
         devcontainer exec \
             --workspace-folder . \
-            --remote-env XDG_CONFIG_HOME=/nvim-config
+            --remote-env XDG_CONFIG_HOME=/.config \
             nvim "$@"
     }
     map ndevx='ndevcontainer_exec'
