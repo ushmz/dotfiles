@@ -26,16 +26,6 @@ end
 ---@type vim.lsp.Config
 return {
 	cmd = pnpm and { "pnpm", "biome", "lsp-proxy" } or { "npx", "biome", "lsp-proxy" },
-	root_dir = function(bufnr, cb)
-		-- NOTE: To avoid being used `package.json` as root directory marker (default behavior of `lspconfig`),
-		-- we use only `biome.json` or `biome.jsonc` as root directory marker.
-		local root_dir = vim.fs.root(bufnr, { "biome.json", "biome.jsonc" })
-		if root_dir then
-			cb(root_dir)
-		else
-			cb(nil)
-		end
-	end,
 	on_attach = function(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			buffer = bufnr,
