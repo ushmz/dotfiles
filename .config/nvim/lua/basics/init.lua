@@ -60,7 +60,7 @@ o.wildignore:append({ "*/__pycache__/*", "*.pyc", "*/node_modules/*", "*.DS_Stor
 o.updatetime = 200
 o.signcolumn = "yes"
 o.colorcolumn = { 100 }
-o.lazyredraw = true
+o.lazyredraw = false
 -- o.ttyfast = true
 -- o.ambiwidth = 'double'
 
