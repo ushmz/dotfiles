@@ -53,10 +53,10 @@ keymap({ "n" }, "gf", function()
 	end
 end)
 
-keymap({ "n" }, "ygf", function()
+keymap({ "n" }, "ygF", function()
 	vim.fn.setreg("+", vim.fn.expand("%:t:r"))
 end, { desc = "Copy basename of current buffer to clipboard" })
 
-keymap({ "n" }, "ygF", function()
+keymap({ "n" }, "ygf", function()
 	vim.fn.setreg("+", vim.fn.expand("%"))
 end, { desc = "Copy filename of current buffer to clipboard" })
