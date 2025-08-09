@@ -23,16 +23,13 @@ function split_tmux_pane() {
             clear
             ;;
         "dev")
-            tmux split-window -v
             tmux split-window -h
-            tmux resize-pane -D 15
             tmux resize-pane -R 50
             tmux last-pane
+            tmux split-pane -v
+            tmux resize-pane -D 15
             tmux split-pane -h
             tmux select-pane -D
-            # tmux split-window -h
-            # tmux resize-pane -R 40
-            # tmux last-pane
             clear
             ;;
         "simple")
