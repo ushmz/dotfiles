@@ -85,28 +85,28 @@ o.wildmode = "list:longest,full"
 o.report = 0
 
 if vim.fn.executable("rg") then
-	o.grepprg = "rg --no-heading --vimgrep"
+  o.grepprg = "rg --no-heading --vimgrep"
 end
 
 -- Create missing directories when saving a file
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	callback = function()
-		local dir = vim.fn.expand("<afile>:p:h")
+  callback = function()
+    local dir = vim.fn.expand("<afile>:p:h")
 
-		if dir:find("%l+://") == 1 then
-			return
-		end
+    if dir:find("%l+://") == 1 then
+      return
+    end
 
-		if vim.fn.isdirectory(dir) == 0 then
-			vim.fn.mkdir(dir, "p")
-		end
-	end,
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end,
 })
 
 -- Highlight yanked word
 vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({})
-	end,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({})
+  end,
 })
