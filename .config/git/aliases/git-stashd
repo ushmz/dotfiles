@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+git stash list |
+    fzf -m --preview='git stash show -p $(echo {+1} | sed -e "s/:$//")' |
+    awk '{print $1}' |
+    sed -e 's/:$//' |
+    xargs -I % git stash drop '%'
