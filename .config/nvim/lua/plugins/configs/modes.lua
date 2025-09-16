@@ -10,7 +10,7 @@ local function config()
 		set_cursor = true,
 		set_cursorline = false,
 		set_number = false,
-		ignore_filetypes = { "TelescopePrompt" },
+		ignore = { "TelescopePrompt" },
 	})
 end
 
