@@ -58,7 +58,3 @@ function zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir)($| )" ]]
 }
-
-function review() {
-    gh pr checkout "$1" && nvim -c "lua vim.g.review = "$1""
-}
