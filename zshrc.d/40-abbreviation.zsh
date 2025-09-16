@@ -91,8 +91,8 @@ if type devcontainer &>/dev/null; then
     ndevcontainer_up () {
         devcontainer up\
             --additional-features='{"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {}}' \
-            --mount='source=${XDG_CONFIG_HOME:-$HOME/.config}/nvim,target=/.config/nvim,type=bind' \
-            --workspace-folder . \
+            --mount="type=bind,source=${HOME}/dotfiles/.config/nvim,target=/root/.config/nvim" \
+            --workspace-folder .
     }
     map ndevup='ndevcontainer_up'
 
