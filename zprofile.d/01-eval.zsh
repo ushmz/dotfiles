@@ -14,3 +14,6 @@ if [ -n "${CARGO_HOME}" ]; then
 	# shellcheck source=/dev/null
 	source "${CARGO_HOME}/env"
 fi
+
+# kiro shell integration
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

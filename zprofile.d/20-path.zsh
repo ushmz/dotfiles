@@ -38,6 +38,9 @@ path=(
     # Rancher Desktop
     "${HOME}/.rd/bin"(N-/)
 
+    # git subcommands
+    "${HOME}/dotfiles/.config/git/aliases"(N-/)
+
     ${path}
 )
 

@@ -1,4 +1,5 @@
 CLAUDE.md
+.devcontainer.json
 
 # Mac users
 .DS_Store
@@ -62,3 +63,5 @@ nohup.out
 
 # storybook
 storybook-static
+
+**/.claude/settings.local.json
