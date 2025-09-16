@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "Usage: git review <PR_NUMBER>"
+    exit 1
+fi
+
+if ! command -v gh &>/dev/null; then
+    echo "gh CLI is not installed. Please install it to use this script."
+    exit 1
+fi
+
+gh pr checkout "$1" && nvim -c "lua vim.g.review = $1"

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+fn() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: git-update <remote> <branch>"
+        return 1
+    fi
+
+    git fetch ${1} && git rebase ${2} --autostash
+}
+
+fn "$@"
