@@ -39,17 +39,3 @@ asdf install ruby 3.2.8
 asdf install ruby 3.4.5
 asdf install deno 2.4.2
 asdf install poetry 2.1.3
-
-# Generate SSH key
-info "SSH setup"
-SSH_KEY_PATH="${HOME}/.ssh"
-if [ ! -e "${SSH_KEY_PATH}/id_rsa.pub" ]; then
-    install -m 0700 -d "${SSH_KEY_PATH}"
-    ssh-keygen -N '' -b 4096 -f "${SSH_KEY_PATH}/id_rsa"
-fi
-
-# Set SSH key to github
-pbcopy <"${SSH_KEY_PATH}/id_rsa.pub"
-echo "SSH key copied to clipboard. Paste it into Github setting."
-sleep 1
-open 'https://github.com/settings/ssh/new'

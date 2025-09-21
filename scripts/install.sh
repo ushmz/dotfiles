@@ -42,8 +42,3 @@ else
 fi
 
 brew cleanup
-
-# Install poetry
-if ! (type poetry 1>/dev/null); then
-    curl -sSL https://install.python-poetry.org | python3 -
-fi

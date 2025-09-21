@@ -1,10 +1,11 @@
 #!/usr/bin/env sh
 set -Cue
+# https://macos-defaults.com/
 
 # Thanks for a great resource of `.macos` - https://mths.be/macos
 
 if [ "$(uname)" != "Darwin" ]; then
-	exit 0
+    exit 0
 fi
 
 # Close System Preferences panes
@@ -15,9 +16,9 @@ sudo -v
 
 # Keep-alive
 while true; do
-	sudo -n true
-	sleep 60
-	kill -0 "$$" || exit
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
 done 2>/dev/null &
 
 # -- General UI/UX
@@ -108,7 +109,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # Enable full keyboard access for all controls
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -294,9 +295,9 @@ sudo chflags nohidden /Volumes
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+    General -bool true \
+    OpenWith -bool true \
+    Privileges -bool true
 
 # -- Dock, Dashboard, and hot corners
 
@@ -662,20 +663,20 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # -- Kill affected applications
 
 for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SystemUIServer" \
-	"Terminal" \
-	"Calendar"; do
-	killall -q "${app}" || true
+    "Address Book" \
+    "Calendar" \
+    "cfprefsd" \
+    "Contacts" \
+    "Dock" \
+    "Finder" \
+    "Mail" \
+    "Messages" \
+    "Photos" \
+    "Safari" \
+    "SystemUIServer" \
+    "Terminal" \
+    "Calendar"; do
+    killall -q "${app}" || true
 done
 
 # VSCode key repeat
@@ -686,4 +687,8 @@ defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool fa
 defaults delete -g ApplePressAndHoldEnabled                                         # If necessary, reset global default
 
 # Sonoma: disable input source switch popup
-defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
+# defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
+defaults -currentHost write -globalDomain com.apple.mouse.tapBehavior -int 0
+
+# Move focus to the next window: ⌘ + `
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>96</integer><integer>50</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>"
