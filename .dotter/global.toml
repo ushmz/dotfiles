@@ -1,0 +1,33 @@
+[helpers]
+
+[default]
+depends = ["zsh", "nvim", "git", "alacritty", "tmux", "starship", "cspell"]
+
+[zsh.files]
+"zprofile.d/.zprofile" = "~/.zprofile"
+"zshrc.d/.zshrc" = "~/.zshrc"
+
+[nvim.files]
+".config/nvim" = "~/.config/nvim"
+
+[git.files]
+".config/git" = "~/.config/git"
+".config/tig/config/.tigrc" = "~/.config/tig/config"
+".config/gh" = "~/.config/gh"
+
+[alacritty.files]
+".config/alacritty/alacritty.toml" = "~/.config/alacritty/alacritty.toml"
+
+[tmux.files]
+".config/tmux" = "~/.config/tmux"
+
+[starship.files]
+".config/starship/starship.toml" = "~/.config/starship.toml"
+
+[cspell.files]
+".config/cspell" = "~/.config/cspell"
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"
