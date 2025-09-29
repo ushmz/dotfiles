@@ -12,7 +12,7 @@ fi
 # cargo env
 if [ -n "${CARGO_HOME}" ]; then
 	# shellcheck source=/dev/null
-	source "${CARGO_HOME}/env"
+	# source "${CARGO_HOME}/env"
 fi
 
 # kiro shell integration

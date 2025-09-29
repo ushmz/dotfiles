@@ -75,7 +75,7 @@ map dot='cd ~/dotfiles'
 
 # gh copilot alias config
 if type gh &>/dev/null; then
-    eval "$(gh copilot alias -- zsh)"
+    # eval "$(gh copilot alias -- zsh)"
 fi
 
 if type devcontainer &>/dev/null; then

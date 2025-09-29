@@ -78,7 +78,7 @@ if type gh &>/dev/null; then
 fi
 
 if type pipx &>/dev/null; then
-    eval "$(register-python-argcomplete pipx)"
+    # eval "$(register-python-argcomplete pipx)"
 fi
 
 if type brew &>/dev/null; then
