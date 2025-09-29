@@ -6,7 +6,7 @@ command_timeout = 150
 add_newline = true
 
 [aws]
-disabled = true
+symbol = "󰸏"
 
 [package]
 disabled = true
