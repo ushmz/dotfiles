@@ -6,7 +6,7 @@ command_timeout = 150
 add_newline = true
 
 [aws]
-disabled = true
+symbol = "󰸏"
 
 [package]
 disabled = true
@@ -21,6 +21,9 @@ disabled = true
 disabled = true
 
 [python]
+disabled = true
+
+[docker_context]
 disabled = true
 
 [battery]
@@ -80,3 +83,11 @@ format = "@[$hostname]($style) "
 trim_at = "-"
 style = "bold blue"
 disabled = false
+
+[custom.gituser]
+description = "Git user name"
+command = "git config user.name"
+style = 'bold yellow'
+symbol = "󰊤 "
+format = '[$symbol($output )]($style)'
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
