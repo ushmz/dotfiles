@@ -8,14 +8,14 @@ mkdir -p "${HOME}/.local/share"
 mkdir -p "${HOME}/.cache"
 
 # Install xcode command line tools
-if [ "$(uname)" = "Darwin" ]; then
-    xcode-select --install
-
-    # If you use Apple Silicon, install Rosetta2
-    if [ "$(uname -m)" = "arm64" ]; then
-        /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-    fi
-fi
+# if [ "$(uname)" = "Darwin" ]; then
+#     xcode-select --install
+# 
+#     # If you use Apple Silicon, install Rosetta2
+#     if [ "$(uname -m)" = "arm64" ]; then
+#         /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+#     fi
+# fi
 
 # Install brew
 if ! (type brew 1>/dev/null); then
