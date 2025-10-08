@@ -1,5 +1,14 @@
 ---@type vim.lsp.Config
 return {
+	single_file_support = false,
+	settings = {
+		typescript = {
+			tsserver = {
+				path = vim.fn.getcwd() .. "/node_modules/typescript/lib/tsserverlibrary.js",
+				maxTsServerMemory = 8192,
+			},
+		},
+	},
 	root_dir = function(bufnr, cb)
 		local turbo_root = vim.fs.root(bufnr, { "turbo.json", "turbo.jsonc" })
 		if turbo_root then
@@ -41,5 +50,15 @@ return {
 			end
 			vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
 		end,
+	},
+	init_options = {
+		hostInfo = "neovim",
+		tsserver = {
+			maxTsServerMemory = 4096,
+			watchOptions = { watchFile = "useFsEvents", watchDirectory = "useFsEvents" },
+		},
+		preferences = {
+			includePackageJsonAutoImports = "on",
+		},
 	},
 }
