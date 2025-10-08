@@ -3,9 +3,9 @@ vim.cmd("autocmd!")
 require("basics")
 
 if vim.g.vscode then
-  require("basics.vscode")
-  require("mappings.vscode")
-  return
+	require("basics.vscode")
+	require("mappings.vscode")
+	return
 end
 
 require("mappings")
