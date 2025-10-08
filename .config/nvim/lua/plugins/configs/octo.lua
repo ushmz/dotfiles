@@ -75,7 +75,7 @@ local function config()
 				reopen_issue = { lhs = "<space>io", desc = "reopen PR" },
 				list_issues = { lhs = "<space>il", desc = "list open issues on same repo" },
 				reload = { lhs = "<C-r>", desc = "reload PR" },
-				open_in_browser = { lhs = "<C-b>", desc = "open PR in browser" },
+				open_in_browser = { lhs = "<C-g>b", desc = "open PR in browser" },
 				copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
 				goto_file = { lhs = "<leader>sf", desc = "show file" },
 				add_assignee = { lhs = "<space>aa", desc = "add assignee" },
