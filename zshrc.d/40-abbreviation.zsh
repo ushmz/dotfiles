@@ -86,7 +86,7 @@ if type devcontainer &>/dev/null; then
     map devr='devcontainer rebuild'
     map devp='devcontainer ps'
 
-    map ndev='devcontainer exec --remote-env XDG_CONFIG_HOME=/.config --workspace-folder . nvim'
+    map ndev='devcontainer exec --workspace-folder . nvim'
 
     ndevcontainer_up () {
         devcontainer up\
@@ -98,8 +98,8 @@ if type devcontainer &>/dev/null; then
 
     ndevcontainer_exec () {
         devcontainer exec \
+            # --remote-env XDG_CONFIG_HOME=/.config \
             --workspace-folder . \
-            --remote-env XDG_CONFIG_HOME=/.config \
             nvim "$@"
     }
     map ndevx='ndevcontainer_exec'
