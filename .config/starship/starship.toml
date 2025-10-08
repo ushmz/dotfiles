@@ -6,6 +6,8 @@ command_timeout = 150
 add_newline = true
 
 [aws]
+format = 'on [$symbol $profile]($style) '
+style = 'bold blue'
 symbol = "󰸏"
 
 [package]
