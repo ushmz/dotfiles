@@ -28,6 +28,9 @@ end
 
 return {
 	"dinhhuy258/git.nvim",
+	cond = function()
+		return vim.bo.filetype ~= "octo"
+	end,
 	keys = {
 		{ "<C-g>b", mode = { "n", "v" }, desc = "git: Open [b]lame window" },
 		{ "<C-g>v", mode = { "n", "v" }, desc = "git: [v]iew file/folder in git repository" },
