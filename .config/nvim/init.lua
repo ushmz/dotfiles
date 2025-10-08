@@ -15,7 +15,7 @@ require("plugins")
 -- Auto switch IME
 if jit and jit.os == "OSX" then
 	if vim.fn.executable("im-select") then
-		vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter" }, {
+		vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "FocusGained" }, {
 			pattern = { "*" },
 			callback = function()
 				vim.fn.system({ "im-select", "com.apple.keylayout.ABC" })
