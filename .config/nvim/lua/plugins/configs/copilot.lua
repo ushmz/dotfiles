@@ -23,7 +23,7 @@ local config = function()
 			keymap = {
 				accept = "<C-g><CR>",
 				accept_word = "<C-g>w",
-				accept_line = false,
+				accept_line = "<C-g>l",
 				next = "<C-g><C-n>",
 				prev = "<C-g><C-p>",
 				dismiss = "<C-g>e",
@@ -41,11 +41,26 @@ local config = function()
 		},
 		copilot_node_command = "node", -- Node.js version must be > 18.x
 		server_opts_overrides = {},
+		nes = {
+			enabled = false,
+			keymap = {
+				accept = "<C-g>a",
+				accept_word = false,
+				accept_line = false,
+				dismiss = "<ESC>",
+			},
+		},
 	})
 end
 
 return {
 	"zbirenbaum/copilot.lua",
+	dependencies = {
+		"copilotlsp-nvim/copilot-lsp",
+		init = function()
+			vim.g.copilot_nes_debounce = 500
+		end,
+	},
 	cmd = "Copilot",
 	event = "InsertEnter",
 	config = config,
