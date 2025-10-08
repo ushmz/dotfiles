@@ -78,6 +78,14 @@ if type gh &>/dev/null; then
     # eval "$(gh copilot alias -- zsh)"
 fi
 
+if type docker &>/dev/null; then
+    map d='docker'
+    map 'docker e'='docker exec'
+    map 'docker c'='docker compose'
+    map 'docker ex'='docker compose exec'
+    map 'docker compose e'='docker compose exec'
+fi
+
 if type devcontainer &>/dev/null; then
     map devc='devcontainer exec'
     map devx='devcontainer exec -- bash -c'
