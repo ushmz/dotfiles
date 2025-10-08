@@ -78,6 +78,14 @@ if type gh &>/dev/null; then
     # eval "$(gh copilot alias -- zsh)"
 fi
 
+if type docker &>/dev/null; then
+    map d='docker'
+    map 'docker e'='docker exec'
+    map 'docker c'='docker compose'
+    map 'docker ex'='docker compose exec'
+    map 'docker compose e'='docker compose exec'
+fi
+
 if type devcontainer &>/dev/null; then
     map devc='devcontainer exec'
     map devx='devcontainer exec -- bash -c'
@@ -86,7 +94,7 @@ if type devcontainer &>/dev/null; then
     map devr='devcontainer rebuild'
     map devp='devcontainer ps'
 
-    map ndev='devcontainer exec --remote-env XDG_CONFIG_HOME=/.config --workspace-folder . nvim'
+    map ndev='devcontainer exec --workspace-folder . nvim'
 
     ndevcontainer_up () {
         devcontainer up\
@@ -98,8 +106,8 @@ if type devcontainer &>/dev/null; then
 
     ndevcontainer_exec () {
         devcontainer exec \
+            # --remote-env XDG_CONFIG_HOME=/.config \
             --workspace-folder . \
-            --remote-env XDG_CONFIG_HOME=/.config \
             nvim "$@"
     }
     map ndevx='ndevcontainer_exec'
