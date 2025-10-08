@@ -28,7 +28,7 @@ return {
 
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
-			ensure_installed = servers,
+			ensure_installed = jit.os == "OSX" and servers or {},
 		})
 		-- Manually install like this
 		-- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
