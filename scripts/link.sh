@@ -39,7 +39,7 @@ ln -sf "$(pwd)/.config/alacritty/alacritty.yml" "${HOME}/.config/alacritty/alacr
 
 # .tmux.conf
 mkdir -p "${HOME}/.config/tmux/"
-ln -sf "$(pwd)/.config/tmux/*" "${HOME}/.config/tmux"
+ln -sf "$(pwd)/.config/tmux/" "${HOME}/.config/tmux/"
 
 # starship.toml
 ln -sf "$(pwd)/.config/starship/starship.toml" "${HOME}/.config/starship.toml"
@@ -61,7 +61,8 @@ ln -sf "$(pwd)/.config/ranger/*" "${HOME}/.config/ranger/"
 mkdir -p "${HOME}/.config/nvim/lua/"
 ln -sf "$(pwd)/.config/nvim/lazy-lock.json" "${HOME}/.config/nvim/lazy-lock.json"
 ln -sf "$(pwd)/.config/nvim/init.lua" "${HOME}/.config/nvim/init.lua"
-ln -sf "$(pwd)/.config/nvim/lua" "${HOME}/.config/nvim/lua"
+ln -sf "$(pwd)/.config/nvim/lua" "${HOME}/.config/nvim/"
+ln -sf "$(pwd)/.config/nvim/after" "${HOME}/.config/nvim/"
 
 # cspell
 mkdir -p "${HOME}/.config/cspell/"

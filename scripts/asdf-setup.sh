@@ -3,7 +3,7 @@ set -Cue
 
 # Setup asdf
 if [ "$(uname)" = "Darwin" ]; then
-    brew install openssl readline
+    brew install openssl readline libyaml
 else
     sudo apt install -y \
         autoconf \
