@@ -37,7 +37,7 @@ local config = function()
 			gitrebase = false,
 			hgcommit = false,
 			svn = false,
-			cvs = false,
+			csv = false,
 		},
 		copilot_node_command = "node", -- Node.js version must be > 18.x
 		server_opts_overrides = {},
