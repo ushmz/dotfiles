@@ -22,7 +22,7 @@ return {
 			"ruby_lsp",
 			"sqlls",
 			"tailwindcss",
-			"ts_ls",
+			"vtsls",
 			-- cSpell:enable
 		}
 
