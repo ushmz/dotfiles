@@ -18,6 +18,11 @@ local function config()
 					file_status = true,
 					path = 1,
 				},
+				{
+					"navic",
+					color_correction = "dynamic",
+					navic_opts = nil,
+				},
 			},
 			lualine_x = {
 				{
@@ -26,7 +31,7 @@ local function config()
 					symbols = { error = " ", warn = " ", info = " ", hint = " " },
 				},
 				"filetype",
-        "encoding",
+				"encoding",
 				"location",
 			},
 			lualine_y = {},

@@ -54,6 +54,10 @@ local function config()
 					end,
 				})
 			end
+
+			if client.server_capabilities.documentSymbolProvider then
+				require("nvim-navic").attach(client, bufnr)
+			end
 		end,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	})
@@ -67,6 +71,7 @@ return {
 			{ "folke/lazydev.nvim", ft = { "lua" } },
 			{ "hrsh7th/cmp-nvim-lsp", ft = { "*" } },
 			{ "mason-org/mason-lspconfig.nvim" },
+			{ "SmiteshP/nvim-navic" },
 		},
 		config = config,
 	},
