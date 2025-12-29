@@ -1,9 +1,13 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		build = ":TSUpdate",
 		branch = "main",
 		config = function()
+			require("nvim-treesitter").setup({
+				install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
+			})
 			vim.g.skip_ts_context_commentstring_module = true
 		end,
 	},
@@ -19,7 +23,7 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		branch = "main",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		event = { "BufNewFile", "BufRead" },
+		event = { "BufEnter" },
 		opts = {
 			select = {
 				lookahead = true,
@@ -34,7 +38,7 @@ return {
 	},
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = { "BufNewFile", "BufRead" },
+		event = { "BufEnter" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("ts_context_commentstring").setup({
