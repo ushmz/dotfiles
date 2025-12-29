@@ -101,6 +101,27 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       vim.fn.mkdir(dir, "p")
     end
   end,
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
+	callback = function(args)
+		if vim.tbl_contains({ "fidget", "cmp_menu", "TelescopePrompt", "TelescopeResults" }, args.match) then
+			return
+		end
+
+		-- Lazy loading nvim-treesitter module
+		pcall(require, "nvim-treesitter")
+		-- Enable treesitter highlight
+		pcall(vim.treesitter.start)
+
+		-- folds
+		vim.wo.foldmethod = "expr"
+		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo.foldtext = ""
+		vim.wo.foldlevel = 99
+
+		-- indentation
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
 })
 
 -- Highlight yanked word
