@@ -3,7 +3,7 @@
 ---@param keys string Left-hand side {lhs} of the mapping.
 ---@param cmd string | function Right-hand side {rhs} of the mapping.
 local function keymap(mode, keys, cmd, opts)
-	vim.keymap.set(mode, keys, cmd, { noremap = true, silent = true, unpack(opts or {}) })
+  vim.keymap.set(mode, keys, cmd, { noremap = true, silent = true, unpack(opts or {}) })
 end
 
 keymap("", "<Space>", "<Nop>")
@@ -45,18 +45,18 @@ keymap({ "n", "x" }, "gh", "g^")
 keymap({ "n", "x" }, "gl", "g$")
 
 keymap({ "n" }, "gf", function()
-	local cfile = vim.fn.expand("<cfile>")
-	if string.match(cfile, "^https?://") then
-		vim.fn.system({ "open", cfile })
-	else
-		vim.cmd("normal! gF")
-	end
+  local cfile = vim.fn.expand("<cfile>")
+  if string.match(cfile, "^https?://") then
+    vim.fn.system({ "open", cfile })
+  else
+    vim.cmd("normal! gF")
+  end
 end)
 
 keymap({ "n" }, "ygF", function()
-	vim.fn.setreg("+", vim.fn.expand("%:t:r"))
+  vim.fn.setreg("+", vim.fn.expand("%:t:r"))
 end, { desc = "Copy basename of current buffer to clipboard" })
 
 keymap({ "n" }, "ygf", function()
-	vim.fn.setreg("+", vim.fn.expand("%"))
+  vim.fn.setreg("+", vim.fn.expand("%"))
 end, { desc = "Copy filename of current buffer to clipboard" })

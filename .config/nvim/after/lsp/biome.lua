@@ -1,4 +1,4 @@
-local pnpm = vim.fs.root(0, { "pnpm-lock.yml", "yaml-lock.yaml" })
+local pnpm = vim.fs.root(0, { "pnpm-lock.yaml", "yaml-lock.yaml" })
 
 ---@param client vim.lsp.Client
 ---@param bufnr number

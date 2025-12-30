@@ -1,5 +1,5 @@
 return {
-	dir = "/Users/ushmz/src/github.com/ushmz/tabi.nvim",
+	"ushmz/tabi.nvim",
 	lazy = false,
 	---@type TabiOptions
 	opts = {
@@ -7,8 +7,8 @@ return {
 			selector = "telescope",
 			note_preview_length = 80,
 		},
-    keymaps = {
-      enabled = false
-    }
+		keymaps = {
+			enabled = false,
+		},
 	},
 }
