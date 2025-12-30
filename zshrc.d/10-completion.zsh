@@ -52,7 +52,7 @@ fi
 # Ignore intermediate files in `cd` command
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
-zstyle ':zle:*' word-chars "*?_.~-=&!#$%^(){}[]<>./;:@,| "
+zstyle ':zle:*' word-chars '*?_.~-=&!#$%^(){}[]<>./;:@,| '
 #zstyle ':zle:*' word-chars ' /=;@:{}[]()<>,|.'
 zstyle ':zle:*' word-style unspecified
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -83,4 +83,8 @@ fi
 
 if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-abbr:$FPATH
 fi

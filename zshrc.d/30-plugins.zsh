@@ -27,11 +27,6 @@ if [ -d "${XDG_CACHE_HOME}/zsh-completions" ]; then
     FPATH="${XDG_CACHE_HOME}/zsh-completions/src:$FPATH"
 fi
 
-if [ -d "${XDG_CACHE_HOME}/zsh-abbr" ]; then
-    # shellcheck source=/dev/null
-    source "${XDG_CACHE_HOME}/zsh-abbr/zsh-abbr.zsh"
-fi
-
 # direnv
 if type direnv &>/dev/null; then
 	eval "$(direnv hook zsh)"
