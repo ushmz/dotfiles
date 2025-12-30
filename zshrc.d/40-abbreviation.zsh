@@ -84,6 +84,10 @@ if type docker &>/dev/null; then
     map 'docker c'='docker compose'
     map 'docker ex'='docker compose exec'
     map 'docker compose e'='docker compose exec'
+
+    map dup='docker compose up -d --remove-orphans'
+    map ddn='docker compose down -v --remove-orphans'
+    map dex='docker compose exec -it'
 fi
 
 if type devcontainer &>/dev/null; then
@@ -97,18 +101,15 @@ if type devcontainer &>/dev/null; then
     map ndev='devcontainer exec --workspace-folder . nvim'
 
     ndevcontainer_up () {
-        devcontainer up\
-            --additional-features='{"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {}}' \
+        devcontainer up \
+            --additional-features='{"ghcr.io/jungaretti/features/ripgrep:1": {}, "ghcr.io/larsnieuwenhuizen/features/neovim:0": {}}' \
             --mount="type=bind,source=${HOME}/dotfiles/.config/nvim,target=/root/.config/nvim" \
             --workspace-folder .
     }
     map ndevup='ndevcontainer_up'
 
     ndevcontainer_exec () {
-        devcontainer exec \
-            # --remote-env XDG_CONFIG_HOME=/.config \
-            --workspace-folder . \
-            nvim "$@"
+        devcontainer exec --workspace-folder . 
     }
     map ndevx='ndevcontainer_exec'
 fi
