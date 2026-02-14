@@ -113,7 +113,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		-- Lazy loading nvim-treesitter module
 		pcall(require, "nvim-treesitter")
 		-- Enable treesitter highlight
-		pcall(vim.treesitter.start)
+		local ok, err = pcall(vim.treesitter.start, args.buf)
+		if not ok then
+			return
+		end
 
 		-- folds
 		vim.wo.foldmethod = "expr"
