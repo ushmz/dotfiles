@@ -9,37 +9,39 @@ return {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
   end,
-	root_dir = function(bufnr, cb)
-		local turbo_root = vim.fs.root(bufnr, { "turbo.json", "turbo.jsonc" })
-		if turbo_root then
-			cb(turbo_root)
-			return
-		end
+  root_dir = function(bufnr, cb)
+    -- Prefer the nearest package/config root so each workspace package resolves its own tsconfig.
+    local package_root = vim.fs.root(bufnr, { "tsconfig.json", "jsconfig.json", "package.json" })
+    if package_root then
+      cb(package_root)
+      return
+    end
 
-		local root_dir = vim.fs.root(bufnr, { "package.json", "tsconfig.json", "jsconfig.json" })
-		if root_dir then
-			cb(root_dir)
-			return
-		end
+    -- Fallback to monorepo root.
+    local monorepo_root = vim.fs.root(bufnr, { "turbo.json", "turbo.jsonc", "pnpm-workspace.yaml", ".git" })
+    if monorepo_root then
+      cb(monorepo_root)
+      return
+    end
 
-		cb(nil)
-	end,
-	settings = {
-		vtsls = {
-			autoUseWorkspaceTsdk = true,
-		},
-		typescript = {
-			preferences = {
-				preferGoToSourceDefinition = true,
-			},
-			tsserver = {
-				maxTsServerMemory = 8 * 1024,
-			},
-		},
-		javascript = {
-			preferences = {
-				preferGoToSourceDefinition = true,
-			},
-		},
-	},
+    cb(nil)
+  end,
+  settings = {
+    vtsls = {
+      autoUseWorkspaceTsdk = true,
+    },
+    typescript = {
+      preferences = {
+        preferGoToSourceDefinition = true,
+      },
+      tsserver = {
+        maxTsServerMemory = 8 * 1024,
+      },
+    },
+    javascript = {
+      preferences = {
+        preferGoToSourceDefinition = true,
+      },
+    },
+  },
 }
