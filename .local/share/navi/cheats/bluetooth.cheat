@@ -1,0 +1,14 @@
+% Bluetooth Commands
+
+# Connect to a Bluetooth headphone (Px7 S2e)
+blueutil --connect 'ec-66-d1-b9-85-40'
+
+# Disconnect from a Bluetooth headphone (Px7 S2e)
+blueutil --disconnect 'ec-66-d1-b9-85-40'
+
+# Connect to a Bluetooth device (select from paired devices)
+blueutil --paired \
+    | awk -F', ' '{addr=$1; sub("address: ","",addr); name=$5; sub("name: \"","",name); sub("\"","",name); print addr "\t" name}' \
+    | fzf -d $'\t' --with-nth=2 --preview 'blueutil --info {1} --format json | jq -r '"'"'"name:,\(.name)\naddress:,\(.address)\npaired:,\(.paired)\nconnected:,\(.connected)"'"'"' | column -t -s $","' \
+    | cut -f1 \
+    | xargs -r blueutil --connect
