@@ -1,0 +1,44 @@
+command = "/opt/homebrew/bin/zsh -l -c '/opt/homebrew/bin/tmux new -A -s ghostty'"
+
+font-size = 13
+font-thicken = true
+font-family = "FiraCode Nerd Font"
+
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-feature = -zero
+
+background-opacity = 0.95
+background-blur = true
+# wait for 1.3.0
+# background-blur = macos-glass-regular
+macos-titlebar-style = transparent
+
+window-padding-x = 0
+window-padding-y = 0
+
+# theme = Hybrid
+theme = Kanagawabones
+background = #1f1f28
+foreground = #ddd8bb
+selection-background = #49473e
+selection-foreground = #ddd8bb
+cursor-color = #e6e0c2
+cursor-text = #1f1f28
+palette = 0=#1f1f28
+palette = 1=#e46a78
+palette = 2=#98bc6d
+palette = 3=#e5c283
+palette = 4=#7eb3c9
+palette = 5=#957fb8
+palette = 6=#7eb3c9
+palette = 7=#ddd8bb
+palette = 8=#49495e
+palette = 9=#ec818c
+palette = 10=#9ec967
+palette = 11=#f1c982
+palette = 12=#7bc2df
+palette = 13=#a98fd2
+palette = 14=#7bc2df
+palette = 15=#a8a48d
