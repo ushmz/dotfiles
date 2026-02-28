@@ -23,7 +23,7 @@ return {
 				Commit = prompts.Commit,
 				CommitStaged = prompts.CommitStaged,
 				Rename = prompts.rename,
-        ExplainVisual = prompts.explain_visual,
+				ExplainVisual = prompts.explain_visual,
 			},
 		},
 		build = "make tiktoken",

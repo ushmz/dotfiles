@@ -1,7 +1,7 @@
 local function dap_config()
 	local dap = require("dap")
 
-  local ruby_adapter = require("plugins.configs.nvim-dap.ruby")
+	local ruby_adapter = require("plugins.configs.nvim-dap.ruby")
 	dap.adapters.ruby = ruby_adapter.adapter
 	dap.configurations.ruby = ruby_adapter.configurations
 

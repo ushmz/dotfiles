@@ -26,7 +26,7 @@ local function config()
 					symbols = { error = " ", warn = " ", info = " ", hint = " " },
 				},
 				"filetype",
-        "encoding",
+				"encoding",
 				"location",
 			},
 			lualine_y = {},

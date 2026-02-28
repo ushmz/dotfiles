@@ -18,7 +18,14 @@ return {
 						end,
 						{ desc = "Open the file in a new split" },
 					},
-					{ "n", "ZZ", function() vim.cmd("DiffviewClose") end, { desc = "Close diffview" } },
+					{
+						"n",
+						"ZZ",
+						function()
+							vim.cmd("DiffviewClose")
+						end,
+						{ desc = "Close diffview" },
+					},
 				},
 				file_panel = {
 					{ "n", "gf", false },
@@ -33,7 +40,14 @@ return {
 						end,
 						{ desc = "Open the file in a new split" },
 					},
-					{ "n", "ZZ", function() vim.cmd("DiffviewClose") end, { desc = "Close diffview" } },
+					{
+						"n",
+						"ZZ",
+						function()
+							vim.cmd("DiffviewClose")
+						end,
+						{ desc = "Close diffview" },
+					},
 				},
 			},
 		})
