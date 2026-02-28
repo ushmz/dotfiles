@@ -1,3 +1,5 @@
+source "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh"
+
 # cspell:disable
 local function map() {
     if type abbr &>/dev/null; then
