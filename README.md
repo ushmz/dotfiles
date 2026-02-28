@@ -51,14 +51,6 @@ Export `Brewfile` with only manually installed formulae
 make brewfile
 ```
 
-### Windows
-
-Install tools with winget
-
-```sh
-make winget
-```
-
 ### Uninstall
 
 Remove all files and symbolic links.

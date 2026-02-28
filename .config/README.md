@@ -15,11 +15,41 @@ export XDG_CACHE_HOME=${HOME}/.cache
 
 <https://github.com/alacritty/alacritty>
 
+## cspell
+
+> A Spell Checker for Code
+
+<https://github.com/streetsidesoftware/cspell>
+
 ## gh
 
-> GitHub’s official command line tool
+> GitHub's official command line tool
 
 <https://github.com/cli/cli>
+
+## gh-dash
+
+> A GitHub CLI extension to display a dashboard with pull requests and issues
+
+<https://github.com/dlvhdr/gh-dash>
+
+## ghostty
+
+> Fast, native, feature-rich terminal emulator
+
+<https://github.com/ghostty-org/ghostty>
+
+## kitty
+
+> Fast, feature-rich, GPU based terminal emulator
+
+<https://github.com/kovidgoyal/kitty>
+
+## navi
+
+> An interactive cheatsheet tool for the command-line
+
+<https://github.com/denisidoro/navi>
 
 ## nvim
 
@@ -37,7 +67,7 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 
 #### Color scheme
 
-[w0ng/vim-hybrid](https://github.com/w0ng/vim-hybrid)
+[rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim)
 
 #### Syntax Highlighting
 
@@ -60,10 +90,10 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 #### LSP & formatter
 
 - [onsails/lspkind-nvim](https://github.com/onsails/lspkind-nvim)
-- [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim)
-- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-- [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- [nvimdev/lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)
+- [mason-org/mason.nvim](https://github.com/mason-org/mason.nvim)
+- [mason-org/mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim)
+- [nvimtools/none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 
 #### Fuzzy finder
@@ -81,6 +111,33 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 - [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
 - [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise)
 - [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
+- [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
+- [levouh/tint.nvim](https://github.com/levouh/tint.nvim)
+- [xiyaowong/transparent.nvim](https://github.com/xiyaowong/transparent.nvim)
+- [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
+- [folke/which-key.nvim](https://github.com/folke/which-key.nvim)
+- [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+
+#### Git / GitHub
+
+- [sindrets/diffview.nvim](https://github.com/sindrets/diffview.nvim)
+- [pwntester/octo.nvim](https://github.com/pwntester/octo.nvim)
+- [dinhhuy258/git.nvim](https://github.com/dinhhuy258/git.nvim)
+
+#### AI / Copilot
+
+- [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua)
+<!-- - [olimorris/codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim) -->
+
+#### Debug
+
+- [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+
+#### File management
+
+- [stevearc/oil.nvim](https://github.com/stevearc/oil.nvim)
 
 #### Others
 
@@ -93,6 +150,15 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 - [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 - [tversteeg/registers.nvim](https://github.com/tversteeg/registers.nvim)
 - [nvim-neotest/neotest](https://github.com/nvim-neotest/neotest)
+- [stevearc/quicker.nvim](https://github.com/stevearc/quicker.nvim)
+- [Wansmer/treesj](https://github.com/Wansmer/treesj)
+- [folke/lazydev.nvim](https://github.com/folke/lazydev.nvim)
+
+## peco
+
+> Simplistic interactive filtering tool
+
+<https://github.com/peco/peco>
 
 ## starship
 
@@ -111,3 +177,9 @@ All plugins are listed [here](https://github.com/stars/ushmz/lists/vim-plugins).
 > terminal multiplexer
 
 <https://github.com/tmux/tmux>
+
+## wezterm
+
+> A GPU-accelerated cross-platform terminal emulator and multiplexer
+
+<https://github.com/wez/wezterm>
