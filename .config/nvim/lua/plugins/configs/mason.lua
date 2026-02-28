@@ -1,7 +1,7 @@
 return {
- "mason-org/mason.nvim",
-  cmd = "Mason",
-  opts = {
+	"mason-org/mason.nvim",
+	cmd = "Mason",
+	opts = {
 		ui = {
 			border = "rounded",
 			icons = {
@@ -10,5 +10,5 @@ return {
 				package_uninstalled = "✗",
 			},
 		},
-  }
+	},
 }
