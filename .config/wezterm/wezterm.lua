@@ -3,7 +3,7 @@ local wt = require("wezterm")
 local config = wt.config_builder()
 
 wt.on("format-window-title", function()
-	return "WezTerm"
+	return ""
 end)
 
 -- General
@@ -14,7 +14,7 @@ config.default_prog = {
 	"/opt/homebrew/bin/zsh",
 	"-l",
 	"-c",
-	"/opt/homebrew/bin/tmux a -t sub || /opt/homebrew/bin/tmux new -s sub",
+	"/opt/homebrew/bin/tmux new -A -s wezterm",
 }
 config.inactive_pane_hsb = {
 	saturation = 0.85,
@@ -55,12 +55,12 @@ config.colors = {
 
 -- Font => --> ~~>>
 config.bold_brightens_ansi_colors = true
-config.font_size = 14
+config.font_size = 13
 config.font = wt.font_with_fallback({
-	{ family = "FiraCode Nerd Font", weight = "Medium", style = "Normal" },
-	{ family = "FiraMono Nerd Font", weight = "Medium", style = "Normal" },
-	{ family = "Mononoki Nerd Font", weight = "Medium", style = "Normal" },
-	{ family = "Hack Nerd Font", weight = "Medium", style = "Normal" },
+	{ family = "UDEV Gothic 35NFLG", weight = "Regular", stretch = "Normal", style = "Normal" },
+	{ family = "FiraCode Nerd Font", weight = 450, stretch = "Normal", style = "Normal" },
+	{ family = "FiraMono Nerd Font", weight = "Regular", stretch = "Normal", style = "Normal" },
+	"Symbols Nerd Font Mono",
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.text_background_opacity = 0.5
@@ -70,7 +70,9 @@ config.use_cap_height_to_scale_fallback_fonts = false
 config.adjust_window_size_when_changing_font_size = false
 
 -- Tab bar
-config.enable_tab_bar = false
+config.use_fancy_tab_bar = true
+config.enable_tab_bar = true
+config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_max_width = 25
 
@@ -78,7 +80,28 @@ config.tab_max_width = 25
 config.initial_cols = 150
 config.initial_rows = 80
 config.window_close_confirmation = "NeverPrompt"
-config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+config.window_background_opacity = 0.95
+config.macos_window_background_blur = 20
+config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
+config.window_padding = { left = 0, right = 0, top = 60, bottom = 0 }
+
+config.window_frame = {
+	-- Title bar
+	inactive_titlebar_bg = "none",
+	active_titlebar_bg = "none",
+	inactive_titlebar_fg = "none",
+	active_titlebar_fg = "none",
+	inactive_titlebar_border_bottom = "none",
+	active_titlebar_border_bottom = "none",
+	-- Border
+	border_bottom_color = "#3b3b3b",
+	border_bottom_height = "1px",
+	border_left_color = "#3b3b3b",
+	border_left_width = "1px",
+	border_right_color = "#3b3b3b",
+	border_right_width = "1px",
+	border_top_height = "0px",
+}
 
 config.hyperlink_rules = {
 	-- Linkify things that look like URLs
