@@ -1,13 +1,13 @@
 if not vim.g.vscode then
-	return
+  return
 end
 
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local action = function(cmd, opts)
-	return function()
-		require("vscode").action(cmd, opts)
-	end
+  return function()
+    require("vscode").action(cmd, opts)
+  end
 end
 
 keymap("", "<Space>", "<Nop>")
@@ -22,9 +22,9 @@ keymap({ "n" }, "<leader><leader>", action("workbench.action.toggleZenMode", opt
 keymap({ "n" }, "gn", action("editor.action.marker.nextInFiles", opts))
 keymap({ "n" }, "gN", action("editor.action.marker.prevInFiles", opts))
 keymap(
-	{ "n" },
-	"gf",
-	action("workbench.action.quickOpen", vim.tbl_extend("force", opts, { args = { query = vim.fn.expand("<cword>") } }))
+  { "n" },
+  "gf",
+  action("workbench.action.quickOpen", vim.tbl_extend("force", opts, { args = { query = vim.fn.expand("<cword>") } }))
 )
 keymap({ "n" }, "ygf", action("workbench.action.files.copyPathOfActiveFile", opts))
 
