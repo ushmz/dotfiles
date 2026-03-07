@@ -2,5 +2,5 @@
 
 ---@type vim.lsp.Config
 return {
-	filetypes = { "css", "less", "scss", "sugarss", "vue", "wxss" },
+  filetypes = { "css", "less", "scss", "sugarss", "vue", "wxss" },
 }

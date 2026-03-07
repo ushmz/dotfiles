@@ -1,4 +1,4 @@
 return {
-	"mizlan/iswap.nvim",
-	cmd = { "ISwap" },
+  "mizlan/iswap.nvim",
+  cmd = { "ISwap" },
 }
