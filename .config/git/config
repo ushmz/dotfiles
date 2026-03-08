@@ -58,3 +58,11 @@
     true-color = always
     hyperlinks = true
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[credential "https://github.com"]
+    # reset existing credential helper setting
+    helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    # reset existing credential helper setting
+    helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

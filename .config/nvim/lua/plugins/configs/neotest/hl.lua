@@ -16,6 +16,7 @@ M.set = function()
   vim.api.nvim_set_hl(0, "NeotestMarked", { fg = "#F0C674", bold = true })
   vim.api.nvim_set_hl(0, "NeotestTarget", { fg = "#CC6666" })
   vim.api.nvim_set_hl(0, "NeotestTest", { fg = "#D4D4D4" })
+  vim.api.nvim_set_hl(0, "NeotestCursorLine", { bg = "#2F3235" })
 end
 
 return M

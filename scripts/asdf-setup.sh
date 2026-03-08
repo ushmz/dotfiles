@@ -35,7 +35,6 @@ asdf install nodejs 24.4.1
 asdf install python 3.8.20
 asdf install python 3.11.13
 asdf install python 3.13.5
-asdf install ruby 3.2.8
-asdf install ruby 3.4.5
+asdf install ruby 3.3.4
 asdf install deno 2.4.2
 asdf install poetry 2.1.3

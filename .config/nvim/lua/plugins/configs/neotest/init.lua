@@ -17,6 +17,13 @@ local function config()
     discovery = { enable = false },
   })
   hl.set()
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "neotest-summary",
+    callback = function()
+      vim.opt_local.cursorline = true
+      vim.opt_local.winhighlight:append("CursorLine:NeotestCursorLine")
+    end,
+  })
 end
 
 local function test_nearest(strategy)
