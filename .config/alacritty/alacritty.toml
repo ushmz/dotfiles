@@ -15,7 +15,7 @@ TERM = "alacritty"
 
 # Window
 [window]
-decorations = "Full"
+decorations = "Transparent"
 blur = true
 dynamic_padding = true
 dynamic_title = false
@@ -25,7 +25,7 @@ columns = 150
 lines = 70
 [window.padding]
 x = 0
-y = 0
+y = 24
 
 # Scrolling
 [scrolling]
