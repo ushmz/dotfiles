@@ -20,10 +20,11 @@ end
 ---@return string
 M.term = function()
   if vim.env.TMUX then
-    return vim.fn.system("tmux display-message -p '#{client_termname}'"):gsub("%s+$", "")
+    local term, _ = vim.fn.system("tmux display-message -p '#{client_termname}'"):gsub("%s+$", "")
+    return term
   end
 
-  return vim.env.TERM_PROGRAM
+  return vim.env.TERM
 end
 
 return M
