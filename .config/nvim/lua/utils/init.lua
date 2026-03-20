@@ -14,4 +14,16 @@ M.flatten = function(tbl)
   return vim.iter(tbl):flatten():totable()
 end
 
+---Return the terminal emulator name.
+---Inside tmux, `TERM_PROGRAM` is overridden to "tmux", so use
+---`#{client_termname}` to get the actual outer terminal's TERM value instead.
+---@return string
+M.term = function()
+  if vim.env.TMUX then
+    return vim.fn.system("tmux display-message -p '#{client_termname}'"):gsub("%s+$", "")
+  end
+
+  return vim.env.TERM_PROGRAM
+end
+
 return M
