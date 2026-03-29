@@ -134,3 +134,10 @@ post_processing = true
 persist = false
 mouse = { mods = "Shift", enabled = true }
 regex = "(https?://|file:|git://|ssh:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[keyboard]
+bindings = [
+  # Force macOS input source to ABC before forwarding Ctrl-t to the terminal.
+  { key = "T", mods = "Control", command = { program = "/opt/homebrew/bin/im-select", args = ["com.apple.keylayout.ABC"] } },
+  { key = "T", mods = "Control", chars = "\u0014" },
+]
