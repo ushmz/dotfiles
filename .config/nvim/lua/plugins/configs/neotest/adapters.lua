@@ -1,5 +1,25 @@
 local M = {}
 
+local function extend_neoconf(key, default_settings)
+  local settings = vim.deepcopy(default_settings)
+
+  local ok, neoconf = pcall(require, "neoconf")
+  if not ok then
+    return settings
+  end
+
+  local ok_get, loaded = pcall(neoconf.get, key, settings)
+  if not ok_get then
+    return settings
+  end
+
+  if type(loaded) ~= "table" then
+    return settings
+  end
+
+  return vim.tbl_deep_extend("force", settings, loaded)
+end
+
 M.python_adapter = function()
   return require("neotest-python")({
     -- 	---Extra arguments for nvim-dap configuration
@@ -50,15 +70,33 @@ M.jest_adapter = function()
   })
 end
 
+local default_vitest_settings = {
+  command = "pnpm test",
+  config_file = "vitest.config.ts",
+  cwd = ".",
+}
+
+local function vitest_settings()
+  return extend_neoconf("neotest.vitest", default_vitest_settings)
+end
+
 M.vitest_adapter = function()
+  local settings = vitest_settings()
+
   return require("neotest-vitest")({
-    vitestCommand = "pnpm test",
-    vitestConfigFile = "vitest.config.ts",
+    vitestCommand = function()
+      return settings.command
+    end,
+    vitestConfigFile = function()
+      return settings.config_file
+    end,
+    cwd = function()
+      return settings.cwd
+    end,
     vitest_test_discovery = false,
-    env = {
-      CI = true,
-      -- NODE_OPTIONS = "--dns-result-order=ipv4first --max_old_space_size=6144",
-    },
+    env = function(spec_env)
+      return vim.tbl_extend("force", settings.env or {}, spec_env)
+    end,
   })
 end
 
