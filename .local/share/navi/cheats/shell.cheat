@@ -1,0 +1,4 @@
+% Shell commands
+
+# Bring disappearing cursor back
+printf '\e[?25h'
