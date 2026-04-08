@@ -7,6 +7,9 @@ CLAUDE.md
 # vim settings
 .vim
 
+# Noevim project-local setting
+.neoconf.json
+
 # VScode users
 .vscode
 *.code-workspace
