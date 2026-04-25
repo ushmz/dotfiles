@@ -15,5 +15,9 @@ if [ -n "${CARGO_HOME}" ]; then
 	# source "${CARGO_HOME}/env"
 fi
 
+if [ -n /opt/homebrew/bin/atuin ]; then
+    eval "$(atuin init zsh)"
+fi
+
 # kiro shell integration
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
