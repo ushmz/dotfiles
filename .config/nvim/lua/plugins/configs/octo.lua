@@ -166,6 +166,7 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },
     { "nvim-tree/nvim-web-devicons" },
+    { "MeanderingProgrammer/render-markdown.nvim"}
   },
   config = config,
 }
