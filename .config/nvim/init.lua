@@ -11,6 +11,7 @@ end
 require("mappings")
 require("filetypes")
 require("plugins")
+require("claude-context").setup()
 
 -- Auto switch IME
 if jit and jit.os == "OSX" then
