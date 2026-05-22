@@ -1,5 +1,6 @@
 return {
   "w0ng/vim-hybrid",
+  pin = true,
   cond = false,
   lazy = false,
   config = function()

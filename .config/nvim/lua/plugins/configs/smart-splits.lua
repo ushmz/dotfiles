@@ -49,6 +49,8 @@ end
 
 return {
   "mrjones2014/smart-splits.nvim",
+  pin = true,
+  commit = "12426763591f06b865c20990d8423345ea96d44f",
   event = { "VeryLazy" },
   config = config,
 }

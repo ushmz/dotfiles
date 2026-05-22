@@ -20,6 +20,8 @@ end
 
 return {
   "akinsho/toggleterm.nvim",
+  pin = true,
+  commit = "9a88eae817ef395952e08650b3283726786fb5fb",
   module = { "toggleterm" },
   keys = {
     { [[<C-w>\]], toggle_term, mode = "n", desc = "Toggle default shell terminal" },

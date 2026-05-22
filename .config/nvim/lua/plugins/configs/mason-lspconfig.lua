@@ -1,8 +1,10 @@
 return {
   "mason-org/mason-lspconfig.nvim",
+  pin = true,
+  commit = "25f609e7fca78af7cede4f9fa3af8a94b1c4950b",
   lazy = true,
   dependencies = {
-    { "mason-org/mason.nvim" },
+    { "mason-org/mason.nvim", pin = true, commit = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" },
   },
   config = function()
     local servers = {

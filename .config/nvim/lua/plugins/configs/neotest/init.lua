@@ -69,22 +69,24 @@ end
 return {
   {
     "nvim-neotest/neotest",
+    pin = true,
+    commit = "6dd5fb1517107e653f420a6e614618ed13c77e33",
     dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
+      { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+      { "nvim-treesitter/nvim-treesitter", pin = true, commit = "4916d6592ede8c07973490d9322f187e07dfefac" },
       ---@see https://github.com/antoinemadec/FixCursorHold.nvim/issues/13
-      { "antoinemadec/FixCursorHold.nvim" },
+      { "antoinemadec/FixCursorHold.nvim", pin = true, commit = "1900f89dc17c603eec29960f57c00bd9ae696495" },
       --[[ ft = { "python" } ]]
-      { "nvim-neotest/neotest-python" },
+      { "nvim-neotest/neotest-python", pin = true, commit = "b0d3a861bd85689d8ed73f0590c47963a7eb1bf9" },
       -- [[ ft = { "lua" } ]]
-      { "nvim-neotest/neotest-plenary" },
+      { "nvim-neotest/neotest-plenary", pin = true, commit = "3523adcf9ffaad1911960c5813b0136c1b63a2ec" },
       -- [[ ft = { "go" } ]]
-      { "nvim-neotest/neotest-go" },
+      { "nvim-neotest/neotest-go", pin = true, commit = "59b50505053f9c45a9febb79e11a56206c3e3901" },
       -- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-      { "nvim-neotest/neotest-jest" },
+      { "nvim-neotest/neotest-jest", pin = true, commit = "3f0cc2cff1ee05394081805c622dc2551b54d8c4" },
       -- ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-      { "thenbe/neotest-playwright" },
-      { "marilari88/neotest-vitest" },
+      { "thenbe/neotest-playwright", pin = true, commit = "6266945039dac27a354de33d2f2a66e75485d5e9" },
+      { "marilari88/neotest-vitest", pin = true, commit = "f01addc6f07b79ef1be5f4297eafbee9e0959018" },
     },
     keys = {
       { "<leader>tn", test_nearest, mode = "n", desc = "Neotest: Run the [N]earest test" },

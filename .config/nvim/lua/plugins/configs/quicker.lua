@@ -16,6 +16,8 @@ end
 
 return {
   "stevearc/quicker.nvim",
+  pin = true,
+  commit = "063cc44da1eef8681bbd653b29d3bc961780886a",
   event = { "FileType qf" },
   opts = {
     opts = {

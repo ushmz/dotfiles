@@ -1,6 +1,7 @@
 local function config()
   require("other-nvim").setup({
     mappings = {
+      "rails",
       "golang",
       {
         pattern = "(.*).ts",
@@ -29,7 +30,9 @@ end
 
 return {
   "rgroli/other.nvim",
-  cond = false,
+  pin = true,
+  commit = "1d48e090f6d1d53dda9fb5094af3f2006ebbb858",
+  -- cond = false,
   cmd = { "Other", "OtherTabNew", "OtherSplit", "OtherVSplit", "OtherClear" },
   config = config,
 }

@@ -1,5 +1,6 @@
 return {
   "savq/melange-nvim",
+  pin = true,
   -- cond = false,
   config = function()
     vim.cmd("syntax on")

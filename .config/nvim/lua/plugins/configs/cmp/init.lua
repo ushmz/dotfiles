@@ -193,15 +193,17 @@ end
 return {
   {
     "hrsh7th/nvim-cmp",
+    pin = true,
+    commit = "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
     lazy = true,
     dependencies = {
-      { "hrsh7th/cmp-path", event = { "InsertEnter" } },
-      { "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
+      { "hrsh7th/cmp-path", pin = true, commit = "c642487086dbd9a93160e1679a1327be111cbc25", event = { "InsertEnter" } },
+      { "hrsh7th/cmp-nvim-lsp", pin = true, commit = "cbc7b02bb99fae35cb42f514762b89b5126651ef", event = { "InsertEnter" } },
       -- { "hrsh7th/cmp-nvim-lsp-signature-help", event = { "InsertEnter" } },
       -- { "hrsh7th/cmp-nvim-lsp-document-symbol", event = { "InsertEnter" } },
-      { "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
-      { "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } },
-      { "onsails/lspkind-nvim", config = lspkind_config, event = { "InsertEnter" } },
+      { "hrsh7th/cmp-cmdline", pin = true, commit = "d126061b624e0af6c3a556428712dd4d4194ec6d", event = { "CmdlineEnter" } },
+      { "saadparwaiz1/cmp_luasnip", pin = true, commit = "98d9cb5c2c38532bd9bdb481067b20fea8f32e90", event = { "InsertEnter" } },
+      { "onsails/lspkind-nvim", pin = true, commit = "c7274c48137396526b59d86232eabcdc7fed8a32", config = lspkind_config, event = { "InsertEnter" } },
     },
     config = completion_config,
   },

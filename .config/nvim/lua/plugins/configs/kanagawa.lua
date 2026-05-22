@@ -1,5 +1,7 @@
 return {
   "rebelot/kanagawa.nvim",
+  pin = true,
+  commit = "aef7f5cec0a40dbe7f3304214850c472e2264b10",
   lazy = false,
   config = function()
     require("kanagawa").setup({
@@ -39,13 +41,16 @@ return {
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "kanagawa",
       callback = function()
+        local theme = "Kanagawa"
         if vim.o.background == "light" then
-          vim.fn.system("kitty +kitten themes Kanagawa_light")
+          theme = "Kanagawa_light"
         elseif vim.o.background == "dark" then
-          vim.fn.system("kitty +kitten themes Kanagawa_dragon")
-        else
-          vim.fn.system("kitty +kitten themes Kanagawa")
+          theme = "Kanagawa_dragon"
         end
+
+        vim.schedule(function()
+          vim.system({ "kitty", "+kitten", "themes", theme }, { detach = true })
+        end)
       end,
     })
     vim.cmd("colorscheme kanagawa")

@@ -1,5 +1,6 @@
 return {
   "AlexvZyl/nordic.nvim",
+  pin = true,
   cond = false,
   config = function()
     vim.cmd("syntax on")

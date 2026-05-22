@@ -69,6 +69,7 @@ end
 
 return {
   "catppuccin/nvim",
+  pin = true,
   cond = false,
   name = "catppuccin",
   config = function()

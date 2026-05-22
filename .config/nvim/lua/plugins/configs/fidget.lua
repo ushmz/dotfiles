@@ -45,6 +45,8 @@ end
 
 return {
   "j-hui/fidget.nvim",
+  pin = true,
+  commit = "7fa433a83118a70fe24c1ce88d5f0bd3453c0970",
   event = { "VeryLazy" },
   config = config,
 }

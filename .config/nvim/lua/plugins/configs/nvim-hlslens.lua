@@ -29,6 +29,8 @@ end
 
 return {
   "kevinhwang91/nvim-hlslens",
+  pin = true,
+  commit = "be2d7b2be01860b5445a007ff2bc72b29896db6b",
   event = { "BufNewFile", "BufRead" },
   config = config,
 }

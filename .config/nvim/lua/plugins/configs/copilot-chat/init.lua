@@ -3,6 +3,8 @@ local prompts = require("plugins.configs.copilot-chat.prompts")
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    pin = true,
+    commit = "d2d2574863529cb76b62b028cb5c3196ef5796d6",
     branch = "main",
     opts = {
       show_help = "yes",
@@ -29,8 +31,8 @@ return {
     build = "make tiktoken",
     dependencies = {
       -- { "github/copilot.vim" },
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
+      { "zbirenbaum/copilot.lua", pin = true, commit = "faa347cef2a9429eec14dada549e000a3b8d0fc9" },
+      { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
     },
     event = "VeryLazy",
     keys = {

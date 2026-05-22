@@ -62,11 +62,13 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
+    pin = true,
+    commit = "8e2084bf5e40c79c1f42210a6ef96a0a4793a763",
     ft = { "*" },
     dependencies = {
-      { "folke/lazydev.nvim", ft = { "lua" } },
-      { "hrsh7th/cmp-nvim-lsp", ft = { "*" } },
-      { "mason-org/mason-lspconfig.nvim" },
+      { "folke/lazydev.nvim", pin = true, commit = "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d", ft = { "lua" } },
+      { "hrsh7th/cmp-nvim-lsp", pin = true, commit = "cbc7b02bb99fae35cb42f514762b89b5126651ef", ft = { "*" } },
+      { "mason-org/mason-lspconfig.nvim", pin = true, commit = "25f609e7fca78af7cede4f9fa3af8a94b1c4950b" },
     },
     config = config,
   },

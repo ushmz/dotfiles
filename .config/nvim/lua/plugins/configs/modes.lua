@@ -16,6 +16,8 @@ end
 
 return {
   "mvllow/modes.nvim",
+  pin = true,
+  commit = "2badf8771dbb2d1e1066fd6a5dddaad2fc836e72",
   event = { "ModeChanged" },
   config = config,
 }

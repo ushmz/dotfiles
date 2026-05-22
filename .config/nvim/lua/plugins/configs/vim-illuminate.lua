@@ -1,5 +1,7 @@
 return {
   "RRethy/vim-illuminate",
+  pin = true,
+  commit = "0d1e93684da00ab7c057410fecfc24f434698898",
   event = { "CursorHold" },
   config = function()
     require("illuminate").configure({

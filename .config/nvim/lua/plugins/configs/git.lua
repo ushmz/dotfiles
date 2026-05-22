@@ -28,6 +28,8 @@ end
 
 return {
   "dinhhuy258/git.nvim",
+  pin = true,
+  commit = "7cfb3080c68125dbf6b7ee129f3108fdb275c4dd",
   cond = function()
     return vim.bo.filetype ~= "octo"
   end,

@@ -1,5 +1,7 @@
 return {
   "3rd/image.nvim",
+  pin = true,
+  commit = "da2be65c153ba15a14a342b05591652a6df70d58",
   lazy = false,
   -- so that it doesn't build the rock
   -- @see https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239

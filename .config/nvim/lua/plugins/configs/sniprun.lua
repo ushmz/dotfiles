@@ -73,6 +73,7 @@ local function config()
 end
 return {
   "michaelb/sniprun",
+  pin = true,
   cond = false,
   event = { "VeryLazy" },
   build = "sh ./install.sh",

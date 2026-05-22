@@ -44,9 +44,11 @@ end
 
 return {
   "tris203/hawtkeys.nvim",
+  pin = true,
+  commit = "27495e633c071ab0881d337e0f59bfbbb19e0ac2",
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
+    { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+    { "nvim-treesitter/nvim-treesitter", pin = true, commit = "4916d6592ede8c07973490d9322f187e07dfefac" },
   },
   cmd = { "Hawtkeys", "HawtkeysAll", "HawtkeysDupes" },
   config = config,

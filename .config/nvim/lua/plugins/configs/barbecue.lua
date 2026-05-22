@@ -33,10 +33,12 @@ end
 return {
   "utilyre/barbecue.nvim",
   name = "barbecue",
+  pin = true,
+  commit = "3e31404f0b93a2c30d151abf0648650ac811c664",
   event = { "BufRead", "BufNewFile" },
   dependencies = {
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons",
+    { "SmiteshP/nvim-navic", pin = true, commit = "f5eba192f39b453675d115351808bd51276d9de5" },
+    { "nvim-tree/nvim-web-devicons", pin = true, commit = "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
   },
   config = config,
 }

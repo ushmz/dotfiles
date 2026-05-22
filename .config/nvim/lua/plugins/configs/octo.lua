@@ -161,12 +161,14 @@ end
 
 return {
   "pwntester/octo.nvim",
+  pin = true,
+  commit = "b51e52888e678441a266bfd5ae2dc0a02a21d67e",
   cmd = { "Octo" },
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope.nvim" },
-    { "nvim-tree/nvim-web-devicons" },
-    { "MeanderingProgrammer/render-markdown.nvim"}
+    { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+    { "nvim-telescope/telescope.nvim", pin = true, commit = "cfb85dcf7f822b79224e9e6aef9e8c794211b20b" },
+    { "nvim-tree/nvim-web-devicons", pin = true, commit = "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
+    { "MeanderingProgrammer/render-markdown.nvim", pin = true, commit = "c7188a8f9d2953696b6303caccbf39c51fa2c1b1" },
   },
   config = config,
 }

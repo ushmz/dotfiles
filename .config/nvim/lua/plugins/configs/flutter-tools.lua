@@ -96,9 +96,11 @@ end
 
 return {
   "akinsho/flutter-tools.nvim",
+  pin = true,
+  commit = "677cc07c16e8b89999108d2ebeefcfc5f539b73c",
   ft = { "dart" },
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
+    { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
     -- { "stevearc/dressing.nvim" },
   },
   config = config,
