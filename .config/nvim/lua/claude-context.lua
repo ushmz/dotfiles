@@ -106,6 +106,11 @@ local function extract_last_assistant_text(jsonl_path)
   return last
 end
 
+local function enable_wrap_for_current_session()
+  local current_win = vim.api.nvim_get_current_win()
+  vim.wo[current_win].wrap = true
+end
+
 -- Open a read-only markdown split on the top showing the given text.
 -- When the prompt buffer is closed, automatically quit nvim so the user
 -- returns to Claude Code immediately without closing the split manually.
@@ -124,6 +129,7 @@ local function open_context_split(text)
   local response_win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(response_win, response_buf)
   vim.api.nvim_win_set_height(response_win, height)
+  vim.wo[response_win].wrap = true
   -- Move cursor to the prompt buffer (bottom pane)
   vim.cmd("wincmd j")
 
@@ -155,6 +161,7 @@ function M.setup()
       if not fname:match("claude%-prompt%-[0-9a-f%-]+%.md$") then
         return
       end
+      enable_wrap_for_current_session()
 
       local cwd = vim.fn.getcwd()
       local jsonl = find_jsonl(cwd)
