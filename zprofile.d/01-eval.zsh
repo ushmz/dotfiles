@@ -19,5 +19,9 @@ if [ -n /opt/homebrew/bin/atuin ]; then
     eval "$(atuin init zsh)"
 fi
 
+if [ -n /opt/homebrew/bin/zoxide ]; then
+    eval "$(zoxide init zsh)"
+fi
+
 # kiro shell integration
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
