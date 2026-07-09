@@ -18,5 +18,6 @@ return {
     anti_conceal = {
       enabled = false,
     },
+    checked = { scope_highlight = "@markup.strikethrough" },
   },
 }
