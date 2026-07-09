@@ -1,26 +1,27 @@
-# tsgo-warmup
+# ts-warmup
 
-tsgo (TypeScript 7 native) only searches **already-loaded** projects when finding
-references, so cross-package find-references misses packages you haven't opened.
-This eagerly loads one file per project so references span the whole workspace.
+tsgo (TypeScript 7 native) and vtsls both only search **already-loaded**
+projects when finding references, so cross-package find-references misses
+packages you haven't opened. This eagerly loads one file per project so
+references span the whole workspace.
 
 > [!NOTE]
-> A stopgap for tsgo's current behaviour. If tsgo gains eager cross-project
-> reference search (as tsserver has), it becomes redundant.
+> A stopgap for that behaviour. If the TS server in use gains eager
+> cross-project reference search (as tsserver has), it becomes redundant.
 
 ## Usage
 
-Set defaults once, then call `run(root)` when tsgo attaches (see
+Set defaults once, then call `run(root)` when the TS server attaches (see
 `lua/plugins/configs/mason-lspconfig.lua`):
 
 ```lua
-require("tsgo-warmup").setup({ globs = { "packages/*/index.ts" } })
+require("ts-warmup").setup({ globs = { "packages/*/index.ts" } })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.name == "tsgo" and client.config.root_dir then
-      require("tsgo-warmup").run(client.config.root_dir)
+    if client and (client.name == "tsgo" or client.name == "vtsls") and client.config.root_dir then
+      require("ts-warmup").run(client.config.root_dir)
     end
   end,
 })
@@ -32,7 +33,7 @@ Overridable per repository via `.neoconf.json` (neoconf wins over `setup`):
 
 ```json
 {
-  "tsgo": {
+  "ts": {
     "warmup": {
       "enabled": true,
       "rootOnly": true,

@@ -1,11 +1,12 @@
--- tsgo-warmup
--- tsgo (TypeScript 7 native) only searches already-loaded projects when finding
--- references, so cross-package find-references misses packages you have not
--- opened yet. This eagerly loads one file per project (in hidden buffers) so
--- their programs load and references span the whole workspace.
+-- ts-warmup
+-- tsgo (TypeScript 7 native) and vtsls both only search already-loaded
+-- projects when finding references, so cross-package find-references misses
+-- packages you have not opened yet. This eagerly loads one file per project
+-- (in hidden buffers) so their programs load and references span the whole
+-- workspace.
 --
--- NOTE: a stopgap for tsgo's current behaviour. If tsgo gains eager cross-project
--- reference search (as tsserver has), it becomes redundant.
+-- NOTE: a stopgap for that behaviour. If the TS server in use gains eager
+-- cross-project reference search (as tsserver has), it becomes redundant.
 local M = {}
 
 local defaults = {
@@ -23,12 +24,12 @@ function M.setup(user)
 end
 
 -- Merge the setup() defaults with per-repo overrides from neoconf
--- (`.neoconf.json` -> `tsgo.warmup`). neoconf wins where it sets a value.
+-- (`.neoconf.json` -> `ts.warmup`). neoconf wins where it sets a value.
 local function resolve()
   local enabled, globs, root_only = opts.enabled, opts.globs, opts.root_only
   local ok, neoconf = pcall(require, "neoconf")
   if ok then
-    local ok_get, cfg = pcall(neoconf.get, "tsgo.warmup", {})
+    local ok_get, cfg = pcall(neoconf.get, "ts.warmup", {})
     if ok_get and type(cfg) == "table" then
       if type(cfg.enabled) == "boolean" then
         enabled = cfg.enabled
