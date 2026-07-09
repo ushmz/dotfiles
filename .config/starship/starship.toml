@@ -92,4 +92,4 @@ command = "git config user.name"
 style = 'bold yellow'
 symbol = "󰊤 "
 format = '[$symbol($output )]($style)'
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+when = 'case "$PWD/" in "$HOME/src/"* | "$HOME/dotfiles/"*) ;; *) exit 1 ;; esac; git rev-parse --is-inside-work-tree >/dev/null 2>&1'
