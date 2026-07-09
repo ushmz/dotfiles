@@ -32,6 +32,25 @@ return {
       automatic_enable = true,
       ensure_installed = jit.os == "OSX" and servers or {},
     })
+    -- tsgo (TypeScript 7 native) is a node_modules binary, not a mason package,
+    -- so automatic_enable does not cover it. Its config lives in after/lsp/tsgo.lua
+    -- (and vtsls defers to it in after/lsp/vtsls.lua); enable it explicitly.
+    vim.lsp.enable("tsgo")
+
+    -- tsgo/vtsls only search loaded projects for find-references, so warm up
+    -- projects (via the local tsgo-warmup plugin) when whichever TS server is
+    -- active attaches. Only one of tsgo/vtsls runs per buffer (utils.ts_server
+    -- gates them). Defaults set here; overridable per-repo via the tsgo.warmup
+    -- neoconf setting.
+    require("tsgo-warmup").setup({ globs = { "packages/*/index.ts" } })
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and (client.name == "tsgo" or client.name == "vtsls") and client.config.root_dir then
+          require("tsgo-warmup").run(client.config.root_dir)
+        end
+      end,
+    })
     -- Manually install like this
     -- FYI: 'WhoIsSethDaniel/mason-tool-installer.nvim'
     -- vim.cmd([[
