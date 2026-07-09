@@ -19,6 +19,7 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc.py"
 export REDISCLI_RCFILE="${XDG_CONFIG_HOME}/redis/redisclirc"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship.toml"
 export WGETRC="${XDG_CONFIG_HOME}/wgetrc"
+export CLAUDE_CONFIG_DIR="${XDG_CONFIG_HOME}/claude"
 
 export HISTSIZE=100000  # save in RAM
 export SAVEHIST=1000000 # save in file
