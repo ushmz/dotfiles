@@ -60,31 +60,24 @@ zstyle ':completion:*' keep-prefix
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:sudo:*' command-path /usr/bin
 
+# Enable asdf tab completion
+fpath+=${ASDF_DATA_DIR}/completions
+# Enable poetry auto completion
+fpath+=${XDG_CONFIG_HOME}/poetry/.zfunc
+
+if type brew &>/dev/null; then
+    fpath=("$(brew --prefix)/share/zsh/site-functions" "$(brew --prefix)/share/zsh-abbr" $fpath)
+fi
+
 autoload -Uz compinit && compinit -d ${XDG_STATE_HOME}/.zcompdump
 autoload -Uz colors && colors
+
+# Enable gh completion (must be after compinit)
+if type gh &>/dev/null; then
+    eval "$(gh completion -s zsh)"
+fi
 
 # less command highlighting
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS='-R'
-
-# Enable asdf tab complation
-fpath+=${ASDF_DATA_DIR}/completions
-# Enable poetry auto completion
-fpath+=${XDG_CONFIG_HOME}/poetry/.zfunc/_poetry
-# Enable gh completion config
-if type gh &>/dev/null; then
-    eval "$(gh completion -s zsh)"
-fi
-
-if type pipx &>/dev/null; then
-    # eval "$(register-python-argcomplete pipx)"
-fi
-
-if type brew &>/dev/null; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-abbr:$FPATH
-fi
