@@ -1,9 +1,11 @@
 return {
   "petertriho/nvim-scrollbar",
+  pin = true,
+  commit = "f8e87b96cd6362ef8579be456afee3b38fd7e2a8",
   event = { "BufNewFile", "BufRead" },
   dependencies = {
-    { "lewis6991/gitsigns.nvim" },
-    { "kevinhwang91/nvim-hlslens" },
+    { "lewis6991/gitsigns.nvim", pin = true, commit = "0f00d07c2c3106ba6abd594ac1c17f211141b7b5" },
+    { "kevinhwang91/nvim-hlslens", pin = true, commit = "be2d7b2be01860b5445a007ff2bc72b29896db6b" },
   },
   config = function()
     local colors = require("kanagawa.colors").setup({ theme = "dragon" })

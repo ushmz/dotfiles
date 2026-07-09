@@ -26,10 +26,12 @@ end
 
 return {
   "nvimtools/none-ls.nvim",
+  pin = true,
+  commit = "c9317c2a8629d4e39e7cf47be74cb67f3ab37cda",
   ft = { "*" },
   dependencies = {
-    "nvimtools/none-ls-extras.nvim",
-    "davidmh/cspell.nvim",
+    { "nvimtools/none-ls-extras.nvim", pin = true, commit = "c6fa39ac52814182c05552cb5d3750cae23ff0f0" },
+    { "davidmh/cspell.nvim", pin = true, commit = "5feecef8d109f5460c576596aba44a6253127aa4" },
   },
   config = config,
 }

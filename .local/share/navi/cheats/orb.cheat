@@ -1,0 +1,4 @@
+% Orbctl
+
+# Restart orbstack
+orbctl stop && orbctl start

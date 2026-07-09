@@ -42,6 +42,8 @@ end
 
 return {
   "lewis6991/gitsigns.nvim",
+  pin = true,
+  commit = "0f00d07c2c3106ba6abd594ac1c17f211141b7b5",
   event = { "BufNewFile", "BufRead" },
   config = config,
 }

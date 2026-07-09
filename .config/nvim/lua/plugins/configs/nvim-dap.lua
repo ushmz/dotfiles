@@ -30,11 +30,13 @@ end
 
 return {
   "rcarriga/nvim-dap-ui",
+  pin = true,
+  commit = "f5b6673f374626515401c5bc51b005f784a4f252",
   event = { "VeryLazy" },
   dependencies = {
-    { "mfussenegger/nvim-dap", event = { "VeryLazy" }, config = dap_config },
+    { "mfussenegger/nvim-dap", pin = true, commit = "4f5deb110d9ff8994d96c21df95e2271d11214f9", event = { "VeryLazy" }, config = dap_config },
     -- { "suketa/nvim-dap-ruby" },
-    { "nvim-neotest/nvim-nio", event = { "VeryLazy" } },
+    { "nvim-neotest/nvim-nio", pin = true, commit = "21f5324bfac14e22ba26553caf69ec76ae8a7662", event = { "VeryLazy" } },
   },
   config = dap_ui,
 }

@@ -1,5 +1,19 @@
 local pickers = require("plugins.configs.telescope.pickers")
 
+local function load_neoconf()
+  local ok, neoconf = pcall(require, "neoconf")
+  if not ok then
+    return {}
+  end
+
+  local ok_get, defaults = pcall(neoconf.get, "telescope.defaults")
+  if not ok_get then
+    return {}
+  end
+
+  return defaults or {}
+end
+
 local function config()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
@@ -7,10 +21,11 @@ local function config()
   local preview_maker = require("plugins.configs.telescope.preview_maker")
   local egrep_actions = require("telescope._extensions.egrepify.actions")
 
+  local local_conf = load_neoconf()
   local trouble = require("trouble.sources.telescope")
 
   telescope.setup({
-    defaults = {
+    defaults = vim.tbl_extend("force", {
       sorting_strategy = "ascending",
       selection_strategy = "closest",
       scroll_strategy = "cycle",
@@ -36,7 +51,7 @@ local function config()
         "site_packages/",
         "__pycache__/",
       },
-    },
+    }, local_conf),
     pickers = {
       find_files = {
         find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
@@ -106,14 +121,15 @@ end
 
 return {
   "nvim-telescope/telescope.nvim",
+  pin = true,
+  commit = "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",
   cmd = { "Telescope" },
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    { "BurntSushi/ripgrep" },
-    { "sharkdp/fd" },
-    { "nvim-telescope/telescope-file-browser.nvim" },
+    { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+    { "nvim-telescope/telescope-fzf-native.nvim", pin = true, commit = "b25b749b9db64d375d782094e2b9dce53ad53a40", build = "make" },
+    { "nvim-telescope/telescope-file-browser.nvim", pin = true, commit = "3610dc7dc91f06aa98b11dca5cc30dfa98626b7e" },
     -- { "fdschmidt93/telescope-egrepify.nvim" },
-    { "ushmz/telescope-egrepify.nvim" },
+    { "ushmz/telescope-egrepify.nvim", pin = true, commit = "e486598389308131008715d064708531368919f5" },
   },
   keys = {
     { "<leader><leader>", pickers.resume, mode = "n", desc = "Telescope: Resume latest search" },

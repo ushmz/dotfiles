@@ -1,5 +1,7 @@
 return {
   "levouh/tint.nvim",
+  pin = true,
+  commit = "586e87f00c8b0f5e857cefe10839e41f3e8c6d01",
   event = { "BufRead" },
   config = function()
     require("tint").setup({

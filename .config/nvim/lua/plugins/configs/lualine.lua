@@ -52,6 +52,8 @@ end
 
 return {
   "nvim-lualine/lualine.nvim",
+  pin = true,
+  commit = "47f91c416daef12db467145e16bed5bbfe00add8",
   event = { "VeryLazy" },
   config = config,
 }

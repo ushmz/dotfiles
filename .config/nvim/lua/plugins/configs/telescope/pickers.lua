@@ -22,6 +22,32 @@ local function get_git_root()
   return vim.fn.fnamemodify(git_path, ":h")
 end
 
+---@param path string
+---@return integer
+local function path_depth(path)
+  if not path or path == "" then
+    return -1
+  end
+
+  local normalized = vim.fs.normalize(vim.fn.fnamemodify(path, ":p"))
+  return #vim.split(normalized, "/", { trimempty = true })
+end
+
+---@return string
+local function get_search_root()
+  local cwd = vim.fn.getcwd()
+  if not is_git_repo() then
+    return cwd
+  end
+
+  local git_root = get_git_root()
+  if path_depth(git_root) > path_depth(cwd) then
+    return git_root
+  end
+
+  return cwd
+end
+
 function M.buffers()
   b().buffers({})
 end
@@ -116,6 +142,7 @@ end
 function M.grep_string(word)
   local entry_maker = require("plugins.configs.telescope.entry_maker")
   local opts = {
+    cwd = get_search_root(),
     vimgrep_arguments = {
       "rg",
       "--vimgrep",
@@ -130,9 +157,6 @@ function M.grep_string(word)
     },
     entry_maker = entry_maker.live_grep(),
   }
-  if is_git_repo() then
-    opts["cwd"] = get_git_root()
-  end
   if word then
     opts["search"] = word
   end
@@ -174,7 +198,7 @@ local function pretty_live_grep(opts)
 end
 
 function M.live_grep()
-  local cwd = is_git_repo() and get_git_root() or vim.loop.cwd()
+  local cwd = get_search_root()
   local entries = require("plugins.configs.telescope.entry_maker")
   local opts = {
     cwd = cwd,

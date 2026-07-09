@@ -1,6 +1,8 @@
 return {
   "folke/todo-comments.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  pin = true,
+  commit = "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
+  dependencies = { { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" } },
   cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
   event = { "BufNewFile", "BufRead" },
   config = function()

@@ -10,22 +10,18 @@ return {
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
   end,
   root_dir = function(bufnr, cb)
-    -- Prefer the nearest package/config root so each workspace package resolves its own tsconfig.
-    local package_root = vim.fs.root(bufnr, { "tsconfig.json", "jsconfig.json", "package.json" })
-    if package_root then
-      cb(package_root)
+    -- Only run when vtsls is the selected server (see utils.ts_server).
+    if require("utils").ts_server(bufnr) ~= "vtsls" then
+      cb(nil)
       return
     end
-
-    -- Fallback to monorepo root.
-    local monorepo_root = vim.fs.root(bufnr, { "turbo.json", "turbo.jsonc", "pnpm-workspace.yaml", ".git" })
-    if monorepo_root then
-      cb(monorepo_root)
-      return
-    end
-
-    cb(nil)
+    -- Single monorepo root: one instance for the whole workspace so warm-up can
+    -- make find-references span packages.
+    cb(vim.fs.root(bufnr, { "turbo.json", "turbo.jsonc", "pnpm-workspace.yaml", ".git" }))
   end,
+  -- Without this, `cb(nil)` above (tsgo owns the buffer, or no root found) would
+  -- still start vtsls in single-file mode, so both servers would attach.
+  workspace_required = true,
   settings = {
     vtsls = {
       autoUseWorkspaceTsdk = true,
@@ -36,6 +32,10 @@ return {
       },
       tsserver = {
         maxTsServerMemory = 8 * 1024,
+        experimental = {
+          enableProjectDiagnostics = true,
+          disableReferencedProjectLoad = false,
+        },
       },
     },
     javascript = {

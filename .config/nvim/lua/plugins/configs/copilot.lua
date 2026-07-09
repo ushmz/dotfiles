@@ -55,13 +55,10 @@ end
 
 return {
   "zbirenbaum/copilot.lua",
-  dependencies = {
-    "copilotlsp-nvim/copilot-lsp",
-    init = function()
-      vim.g.copilot_nes_debounce = 500
-    end,
-  },
+  pin = true,
+  commit = "faa347cef2a9429eec14dada549e000a3b8d0fc9",
   cmd = "Copilot",
   event = "InsertEnter",
   config = config,
+  cond = false,
 }

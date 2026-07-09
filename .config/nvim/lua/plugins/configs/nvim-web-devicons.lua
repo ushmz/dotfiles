@@ -11,6 +11,8 @@ end
 
 return {
   "nvim-tree/nvim-web-devicons",
+  pin = true,
+  commit = "d7462543c9e366c0d196c7f67a945eaaf5d99414",
   lazy = true,
   config = config,
 }

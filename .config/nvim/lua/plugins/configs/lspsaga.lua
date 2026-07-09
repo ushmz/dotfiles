@@ -103,6 +103,8 @@ end
 
 return {
   "nvimdev/lspsaga.nvim",
+  pin = true,
+  commit = "562d9724e3869ffd1801c572dd149cc9f8d0cc36",
   cmd = { "Lspsaga" },
   keys = {
     {
@@ -164,8 +166,8 @@ return {
     },
   },
   dependencies = {
-    { "nvim-tree/nvim-web-devicons" },
-    { "nvim-treesitter/nvim-treesitter" },
+    { "nvim-tree/nvim-web-devicons", pin = true, commit = "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
+    { "nvim-treesitter/nvim-treesitter", pin = true, commit = "4916d6592ede8c07973490d9322f187e07dfefac" },
   },
   config = config,
 }

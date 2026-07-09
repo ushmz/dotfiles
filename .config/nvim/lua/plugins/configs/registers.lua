@@ -81,6 +81,8 @@ end
 
 return {
   "tversteeg/registers.nvim",
+  pin = true,
+  commit = "c217f8f369e0886776cda6c94eab839b30a8940d",
   cmd = "Registers",
   keys = {
     { '"', mode = { "n", "v" } },

@@ -91,6 +91,8 @@ end
 
 return {
   "nvim-pack/nvim-spectre",
+  pin = true,
+  commit = "72f56f7585903cd7bf92c665351aa585e150af0f",
   keys = {
     {
       [[\S"]],
@@ -127,7 +129,7 @@ return {
     },
   },
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
+    { "nvim-lua/plenary.nvim", pin = true, commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   },
   config = config,
 }

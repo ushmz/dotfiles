@@ -1,8 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-scan_timeout = 150
-command_timeout = 150
+scan_timeout = 100
+command_timeout = 100
 add_newline = true
 
 [aws]
@@ -92,4 +92,4 @@ command = "git config user.name"
 style = 'bold yellow'
 symbol = "󰊤 "
 format = '[$symbol($output )]($style)'
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+when = 'case "$PWD/" in "$HOME/src/"* | "$HOME/dotfiles/"*) ;; *) exit 1 ;; esac; git rev-parse --is-inside-work-tree >/dev/null 2>&1'

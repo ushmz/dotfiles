@@ -35,14 +35,31 @@ keymap({ "c", "i" }, "<C-h>", "<BS>")
 keymap({ "n", "x" }, "G", "Gzz")
 keymap({ "n", "x" }, "n", "nzz")
 keymap({ "n", "x" }, "N", "Nzz")
+keymap({ "n", "x" }, "*", "*zz")
+keymap({ "n", "x" }, ")", ")zz")
+keymap({ "n", "x" }, "(", "(zz")
 keymap({ "n", "x" }, "}", "}zz")
 keymap({ "n", "x" }, "{", "{zz")
+keymap({ "n", "x" }, "<C-f>", "<C-f>zz")
+keymap({ "n", "x" }, "<C-b>", "<C-b>zz")
+keymap({ "n", "x" }, "<C-d>", "<C-d>zz")
+keymap({ "n", "x" }, "<C-u>", "<C-u>zz")
 keymap({ "n", "x" }, "x", '"_x')
 keymap({ "n", "x" }, "s", '"_s')
--- keymap({ "n", "x" }, "<C-d>", "<C-d>zz")
--- keymap({ "n", "x" }, "<C-u>", "<C-u>zz")
 keymap({ "n", "x" }, "gh", "g^")
 keymap({ "n", "x" }, "gl", "g$")
+
+keymap("x", "<leader>q", function()
+  local region = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() })
+
+  local result = {}
+  for _, line in ipairs(region) do
+    table.insert(result, '"' .. line .. '",')
+  end
+
+  vim.fn.setreg("+", table.concat(result, "\n") .. "\n")
+  vim.api.nvim_input("<Esc>")
+end, { desc = "Wrap selected lines with quotes, append comma, copy to clipboard" })
 
 keymap({ "n" }, "gf", function()
   local cfile = vim.fn.expand("<cfile>")
@@ -54,9 +71,9 @@ keymap({ "n" }, "gf", function()
 end)
 
 keymap({ "n" }, "ygF", function()
-  vim.fn.setreg("+", vim.fn.expand("%:t:r"))
-end, { desc = "Copy basename of current buffer to clipboard" })
+  vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, { desc = "Copy file name to clipboard" })
 
 keymap({ "n" }, "ygf", function()
   vim.fn.setreg("+", vim.fn.expand("%:."))
-end, { desc = "Copy filename of current buffer to clipboard" })
+end, { desc = "Copy relative path to clipboard" })
