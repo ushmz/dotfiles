@@ -38,16 +38,16 @@ return {
     vim.lsp.enable("tsgo")
 
     -- tsgo/vtsls only search loaded projects for find-references, so warm up
-    -- projects (via the local ts-warmup plugin) when whichever TS server is
+    -- projects (via the local.ts-warmup plugin) when whichever TS server is
     -- active attaches. Only one of tsgo/vtsls runs per buffer (utils.ts_server
     -- gates them). Defaults set here; overridable per-repo via the ts.warmup
     -- neoconf setting.
-    require("ts-warmup").setup({ globs = { "packages/*/index.ts" } })
+    require("local.ts-warmup").setup({ globs = { "packages/*/index.ts" } })
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client and (client.name == "tsgo" or client.name == "vtsls") and client.config.root_dir then
-          require("ts-warmup").run(client.config.root_dir)
+          require("local.ts-warmup").run(client.config.root_dir)
         end
       end,
     })

@@ -15,13 +15,13 @@ Set defaults once, then call `run(root)` when the TS server attaches (see
 `lua/plugins/configs/mason-lspconfig.lua`):
 
 ```lua
-require("ts-warmup").setup({ globs = { "packages/*/index.ts" } })
+require("local.ts-warmup").setup({ globs = { "packages/*/index.ts" } })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client and (client.name == "tsgo" or client.name == "vtsls") and client.config.root_dir then
-      require("ts-warmup").run(client.config.root_dir)
+      require("local.ts-warmup").run(client.config.root_dir)
     end
   end,
 })

@@ -1,4 +1,4 @@
--- claude-context.lua
+-- local.claude-context
 -- Shows the previous Claude Code assistant response in a top split
 -- when Neovim is opened as $EDITOR via <C-g> in Claude Code.
 --
@@ -6,7 +6,7 @@
 -- Claude Code creates temp files matching: claude-prompt-<UUID>.md
 --
 -- Usage:
---   In init.lua: require("claude-context").setup()
+--   In init.lua: require("local.claude-context").setup()
 
 local M = {}
 
