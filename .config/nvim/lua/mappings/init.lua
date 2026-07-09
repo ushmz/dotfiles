@@ -49,6 +49,18 @@ keymap({ "n", "x" }, "s", '"_s')
 keymap({ "n", "x" }, "gh", "g^")
 keymap({ "n", "x" }, "gl", "g$")
 
+keymap("x", "<leader>q", function()
+  local region = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() })
+
+  local result = {}
+  for _, line in ipairs(region) do
+    table.insert(result, '"' .. line .. '",')
+  end
+
+  vim.fn.setreg("+", table.concat(result, "\n") .. "\n")
+  vim.api.nvim_input("<Esc>")
+end, { desc = "Wrap selected lines with quotes, append comma, copy to clipboard" })
+
 keymap({ "n" }, "gf", function()
   local cfile = vim.fn.expand("<cfile>")
   if string.match(cfile, "^https?://") then
