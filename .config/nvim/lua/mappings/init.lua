@@ -71,9 +71,9 @@ keymap({ "n" }, "gf", function()
 end)
 
 keymap({ "n" }, "ygF", function()
-  vim.fn.setreg("+", vim.fn.expand("%:t:r"))
-end, { desc = "Copy basename of current buffer to clipboard" })
+  vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, { desc = "Copy file name to clipboard" })
 
 keymap({ "n" }, "ygf", function()
   vim.fn.setreg("+", vim.fn.expand("%:."))
-end, { desc = "Copy filename of current buffer to clipboard" })
+end, { desc = "Copy relative path to clipboard" })
