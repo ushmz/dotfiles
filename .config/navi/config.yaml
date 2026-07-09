@@ -1,1 +1,14 @@
 # https://github.com/denisidoro/navi/blob/master/docs/configuration/README.md
+style:
+  tag:
+    color: blue
+    width_percentage: 10
+    min_width: 10
+  comment:
+    color: yellow
+    width_percentage: 30
+    min_width: 20
+  snippet:
+    color: white
+    width_percentage: 60
+    min_width: 30
