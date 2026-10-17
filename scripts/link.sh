@@ -1,20 +1,17 @@
 #!/usr/bin/env sh
 set -ue
 
-# Make directory for cdr
-mkdir -p "${HOME}/.cache/shell"
-
 # Set environment variables for slack notify
 echo "Put slack webhook url for notify (Press Enter to empty)"
 read -r url
 if [ -n "${url}" ]; then
-	echo "export CMD_NOTIFY_SLACK_WEBHOOK_URL='${url}'" >>"${HOME}/.zshenv"
+	echo "export SLACK_NOTIFY_WEBHOOK_URL='${url}'" >>"${HOME}/.zshenv"
 fi
 
 echo "Put slack user name for notify (Press Enter to empty)"
 read -r name
 if [ -n "${name}" ]; then
-	echo "export CMD_NOTIFY_SLACK_USER_NAME='${name}'" >>"${HOME}/.zshenv"
+	echo "export SLACK_NOTIFY_USER_NAME='${name}'" >>"${HOME}/.zshenv"
 fi
 
 # Remove `~/.zprofile` if exists, and write my `.zprofile`.
