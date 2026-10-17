@@ -60,8 +60,6 @@ zstyle ':completion:*' keep-prefix
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:sudo:*' command-path /usr/bin
 
-# Enable asdf tab completion
-fpath+=${ASDF_DATA_DIR}/completions
 # Enable poetry auto completion
 fpath+=${XDG_CONFIG_HOME}/poetry/.zfunc
 
