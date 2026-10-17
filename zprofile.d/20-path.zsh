@@ -23,14 +23,6 @@ typeset -U PATH path MANPATH manpath
 # source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
 path=(
-    # GNU/Linux commands
-    "/usr/local/opt/coreutils/libexec/gnubin"(N-/) # coreutils
-    "/usr/local/opt/ed/libexec/gnubin"(N-/) # ed
-    "/usr/local/opt/findutils/libexec/gnubin"(N-/) # findutils
-    "/usr/local/opt/gnu-sed/libexec/gnubin"(N-/) # sed
-    "/usr/local/opt/gnu-tar/libexec/gnubin"(N-/) # tar
-    "/usr/local/opt/grep/libexec/gnubin"(N-/) # grep
-
     # asdf
     "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"(N-/)
     # local packages
@@ -59,22 +51,6 @@ path=(
     "${DOTFILES}/.config/git/aliases"(N-/)
 
     ${path}
-)
-
-manpath=(
-    # coreutils
-    "/usr/local/opt/coreutils/libexec/gnuman"(N-/)
-    # ed
-    "/usr/local/opt/ed/libexec/gnuman"(N-/)
-    # findutils
-    "/usr/local/opt/findutils/libexec/gnuman"(N-/)
-    # sed
-    "/usr/local/opt/gnu-sed/libexec/gnuman"(N-/)
-    # tar
-    "/usr/local/opt/gnu-tar/libexec/gnuman"(N-/)
-    # grep
-    "/usr/local/opt/grep/libexec/gnuman"(N-/)
-    ${manpath}
 )
 
 # Exports that need the final PATH
