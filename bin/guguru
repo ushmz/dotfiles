@@ -1,0 +1,4 @@
+#!/bin/sh
+# Search Google in Japanese: guguru <words...>
+IFS=+
+open "https://www.google.com/search?q=$*&gl=ja&hl=ja" >/dev/null 2>&1

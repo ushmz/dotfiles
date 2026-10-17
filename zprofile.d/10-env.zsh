@@ -1,8 +1,9 @@
+# Static exports only: no commands, no conditionals.
+# Anything that depends on PATH belongs to 20-path.zsh.
+
 export EDITOR=nvim
 
-export TMUX_SHELL=$(which zsh)
-
-# XDG_CONFIG_HOME
+# XDG Base Directory
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_STATE_HOME=${HOME}/.local/state
 export XDG_DATA_HOME=${HOME}/.local/share
@@ -21,9 +22,6 @@ export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship.toml"
 export WGETRC="${XDG_CONFIG_HOME}/wgetrc"
 export CLAUDE_CONFIG_DIR="${XDG_CONFIG_HOME}/claude"
 
-export HISTSIZE=100000  # save in RAM
-export SAVEHIST=1000000 # save in file
-export HISTFILE="${XDG_STATE_HOME}/.zsh_history"
 export MYSQL_HISTFILE="${XDG_STATE_HOME}/.mysql_history"
 export NODE_REPL_HISTORY="${XDG_STATE_HOME}/.node_history"
 export PSQL_HISTORY="${XDG_STATE_HOME}/.psql_history"
@@ -35,6 +33,7 @@ export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 export STACK_ROOT="${XDG_DATA_HOME}/stack"
 export VAGRANT_HOME="${XDG_DATA_HOME}/vagrant"
 export VAGRANT_ALIAS_FILE="${XDG_DATA_HOME}/vagrant/aliases"
+export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
 
 export NUGET_PACKAGES="${XDG_CACHE_HOME}/NuGetPackages"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
@@ -45,12 +44,9 @@ export GOPATH=${XDG_DATA_HOME}/go
 export GOBIN=${GOPATH}/bin
 
 # android
-# export ANDROID_SDK_HOME=${HOME}/Library/Android/sdk
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 
 # fzf default options
 export FZF_DEFAULT_OPTS='--height=40% --layout=reverse --tabstop=4 --info=right --no-mouse'
 
-
-# asdf data directory
-export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
+export LESS='-R'

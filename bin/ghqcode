@@ -1,0 +1,3 @@
+#!/bin/sh
+# Select a ghq repository with fzf and open it in VSCode
+ghq list -p | fzf +m | xargs -I % code %

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Select ghq repositories with fzf and remove them
+ghq list -p | fzf -m | while IFS= read -r dir; do
+	rm -rf -- "${dir}"
+done

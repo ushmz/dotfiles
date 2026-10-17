@@ -1,0 +1,11 @@
+#!/bin/sh
+# Start the devcontainer in the current directory with neovim, ripgrep and the local nvim config
+set -eu
+
+dotfiles=$(cd "$(dirname "$0")/.." && pwd -P)
+
+exec devcontainer up \
+	--additional-features='{"ghcr.io/jungaretti/features/ripgrep:1": {}, "ghcr.io/larsnieuwenhuizen/features/neovim:0": {}}' \
+	--mount="type=bind,source=${dotfiles}/.config/nvim,target=/root/.config/nvim" \
+	--workspace-folder . \
+	"$@"

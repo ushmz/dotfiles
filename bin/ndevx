@@ -1,0 +1,3 @@
+#!/bin/sh
+# Run a command in the devcontainer of the current directory: ndevx <command...>
+exec devcontainer exec --workspace-folder . "$@"

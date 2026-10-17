@@ -1,0 +1,6 @@
+#!/bin/sh
+# Browse git log with fzf. Enter shows the commit, ctrl-s toggles sorting.
+git log --graph --color=always \
+	--format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+		--bind "ctrl-m:execute:(echo {} | grep -o '[a-f0-9]\{7,\}' | head -1 | xargs -I % git show --color=always % | less -R)"

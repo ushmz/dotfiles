@@ -1,0 +1,6 @@
+#!/bin/sh
+# Create a GitHub repository and clone it with ghq: ghcr <name> [gh repo create options...]
+set -eu
+
+gh repo create "$@"
+ghq get "git@github.com:ushmz/${1}.git"

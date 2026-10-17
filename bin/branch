@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Select git branches with fzf (sorted by last commit, others' branches in red)
+#   branch   : switch to the branch
+#   branchd  : delete the branches (git branch -d)
+#   branchdd : force delete the branches (git branch -D)
+set -euo pipefail
+
+select_branch() {
+	local user_name fmt
+	user_name=$(git config user.name)
+	fmt="%(if:equals=${user_name})%(authorname)%(then)%(color:default)%(else)%(color:brightred)%(end)%(refname:short)|%(committerdate:relative)|%(subject)"
+	git branch --sort=-committerdate --format="${fmt}" --color=always |
+		column -ts '|' |
+		fzf -m --ansi --exact --preview='git log --oneline --graph --decorate --color=always -50 {+1}' |
+		awk '{print $1}'
+}
+
+case "${0##*/}" in
+branch) select_branch | xargs git switch ;;
+branchd) select_branch | xargs git branch -d ;;
+branchdd) select_branch | xargs git branch -D ;;
+esac

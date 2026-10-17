@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# tmux pane layout presets: tm [simple|ide|dev|remote <host>]
+# Outside tmux, creates a session named "<layout>-<host or dir>" and applies the layout in it.
+set -eu
+
+apply_layout() {
+	case "${1:-simple}" in
+	simple)
+		tmux split-window -v
+		tmux split-window -h
+		tmux resize-pane -D 15
+		tmux select-pane -D
+		clear
+		;;
+	ide)
+		tmux split-window -v
+		tmux split-window -h
+		tmux resize-pane -D 15
+		tmux select-pane -D
+		tmux split-window -h
+		tmux select-pane -D
+		clear
+		;;
+	dev)
+		tmux split-window -h
+		tmux resize-pane -R 50
+		tmux last-pane
+		tmux split-pane -v
+		tmux resize-pane -D 15
+		tmux split-pane -h
+		tmux select-pane -D
+		clear
+		;;
+	remote)
+		tmux split-window -h
+		tmux split-window -v
+		tmux resize-pane -D 15
+		tmux select-pane -t 0
+		clear
+		if [ -n "${2:-}" ]; then
+			exec /usr/bin/ssh "$2"
+		fi
+		;;
+	*)
+		echo "[ERROR] Unknown layout: ${1}" >&2
+		exit 1
+		;;
+	esac
+}
+
+if [ -n "${TMUX:-}" ]; then
+	apply_layout "$@"
+	exit 0
+fi
+
+if [ $# -eq 0 ]; then
+	exec tmux
+fi
+
+session="${1}-${2:-${PWD##*/}}"
+tmux new -d -s "${session}"
+tmux send-keys -t "${session}" "tm $*" C-m
+exec tmux attach-session -t "${session}"
