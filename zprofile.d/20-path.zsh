@@ -17,7 +17,7 @@ path=(
     "/usr/local/opt/grep/libexec/gnubin"(N-/) # grep
 
     # asdf
-    "${ASDF_DATA_DIR:-$HOME}/.asdf/shims"(N-/)
+    "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"(N-/)
     # local packages
     "${HOME}/.local/bin"(N-/)
     # GOBIN
