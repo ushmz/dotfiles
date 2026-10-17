@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Select git stashes with fzf
+#   stash  : pop the stashes
+#   stashd : drop the stashes
+set -euo pipefail
+
+select_stash() {
+	git stash list |
+		fzf -m --preview='git stash show -p $(echo {+1} | sed -e "s/:$//")' |
+		awk '{print $1}' |
+		sed -e 's/:$//'
+}
+
+case "${0##*/}" in
+stash) select_stash | xargs -I % git stash pop '%' ;;
+stashd) select_stash | xargs -I % git stash drop '%' ;;
+esac

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Select git worktrees with fzf and remove them
+git worktree list | awk '{print $1}' | fzf -m | xargs -I % git worktree remove -f %

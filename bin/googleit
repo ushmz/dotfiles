@@ -1,0 +1,4 @@
+#!/bin/sh
+# Search Google in English: googleit <words...>
+IFS=+
+open "https://www.google.com/search?q=$*&gl=us&hl=en" >/dev/null 2>&1

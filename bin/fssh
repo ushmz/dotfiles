@@ -1,0 +1,6 @@
+#!/bin/sh
+# Select a host from ~/.ssh/config with fzf and connect to it
+set -eu
+
+host=$(awk '$1 == "Host" { for (i = 2; i <= NF; i++) if ($i !~ /[*?]/) print $i }' ~/.ssh/config | fzf +m) || exit 0
+exec ssh "${host}"
