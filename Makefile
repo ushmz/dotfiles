@@ -8,6 +8,7 @@ define _help
 	echo 'install'		"\t" ': Install plugins and packages'
 	echo ""
 	echo 'brewfile'		"\t" ': Export `Brewfile` with only manually installed formulae and casks'
+	echo 'check'		"\t" ': Check shell config syntax and zshrc.d rules'
 endef
 
 .PHONY: default
@@ -43,3 +44,10 @@ install: scripts/install.sh
 .PHONY: brewfile
 brewfile: scripts/brewfile.sh
 	sh `pwd`/scripts/brewfile.sh > Brewfile
+
+# Syntax check, and conf.d must not run compinit/compdef (see zshrc.d/README.md)
+.PHONY: check
+check:
+	@for f in zprofile.d/.zprofile zprofile.d/*.zsh zshrc.d/.zshrc zshrc.d/*.zsh zshrc.d/conf.d/*.zsh; do zsh -n "$$f" || exit 1; done
+	@for f in bin/*; do bash -n "$$f" || exit 1; done
+	@! grep -nE '^[[:space:]]*(compinit|compdef)([[:space:]]|$$)' zshrc.d/conf.d/*.zsh
