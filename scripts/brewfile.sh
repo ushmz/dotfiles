@@ -11,12 +11,19 @@ echo "# Taps"
 brew tap | sed -r "s/(.*)/tap \'\1\'/"
 
 # formulae
+# NOTE: Formulae from untrusted taps are silently dropped by `brew leaves`;
+formulae=$(brew leaves -r | xargs brew info --json=v2)
 echo "\n# Formulae"
-brew leaves -r | xargs brew desc | sed -E "s/^([^:]*):(.*)$/'\1'\:#\2/" | column -t -s ':' | sed -r "s/(.*)/brew \1/"
+printf '%s\n' "${formulae}" \
+    | jq -r '.formulae[] | "'"'"'\(.full_name)'"'"'\t# \(.desc // "")"' \
+    | column -t -s "$(printf '\t')" | sed -r "s/(.*)/brew \1/"
 
 # casks
+casks=$(brew info --json=v2 --cask --installed)
 echo "\n# Casks"
-brew list --cask | xargs brew desc | sed -E "s/^([^:]*):(.*)$/'\1'\:#\2/" | column -t -s ':' | sed -r "s/(.*)/cask \1/"
+printf '%s\n' "${casks}" \
+    | jq -r '.casks[] | "'"'"'\(.full_token)'"'"'\t# (\(.name | join(", "))) \(.desc // "")"' \
+    | sed -E 's/ +$//' | column -t -s "$(printf '\t')" | sed -r "s/(.*)/cask \1/"
 
 # mas
 if ! (type mas >/dev/null 2>&1); then

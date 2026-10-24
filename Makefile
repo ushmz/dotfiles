@@ -43,7 +43,7 @@ install: scripts/install.sh
 
 .PHONY: brewfile
 brewfile: scripts/brewfile.sh
-	sh `pwd`/scripts/brewfile.sh > Brewfile
+	sh `pwd`/scripts/brewfile.sh > Brewfile.tmp && mv Brewfile.tmp Brewfile || { rm -f Brewfile.tmp; exit 1; }
 
 # Syntax check, and conf.d must not run compinit/compdef (see zshrc.d/README.md)
 .PHONY: check
