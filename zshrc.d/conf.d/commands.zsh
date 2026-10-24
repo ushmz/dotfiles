@@ -13,6 +13,9 @@ if [[ ${OSTYPE} == darwin* ]]; then
     has gfind && map find='gfind'
     has gdirname && map dirname='gdirname'
     has gxargs && map xargs='gxargs'
+    has gawk && map awk='gawk'
+    has gtar && map tar='gtar'
+    has gmake && map make='gmake'
 fi
 
 # ls
