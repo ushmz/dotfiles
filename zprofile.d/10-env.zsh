@@ -13,7 +13,7 @@ export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export FFMPEG_DATADIR="${XDG_CONFIG_HOME}/ffmpeg"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/jupyter"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
-export LESSKEY=${XDG_CONFIG_HOME}/less/lesskey
+export LESSKEYIN=${XDG_CONFIG_HOME}/less/lesskey
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc.py"
@@ -48,5 +48,3 @@ export ANDROID_HOME=${HOME}/Library/Android/sdk
 
 # fzf default options
 export FZF_DEFAULT_OPTS='--height=40% --layout=reverse --tabstop=4 --info=right --no-mouse'
-
-export LESS='-R'

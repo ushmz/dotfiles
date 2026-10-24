@@ -75,6 +75,10 @@ ln -sf "$(pwd)/.config/less/lesskey" "${HOME}/.config/less/lesskey"
 mkdir -p "${HOME}/.config/python"
 ln -sf "$(pwd)/.config/python/pythonrc.py" "${HOME}/.config/python/pythonrc.py"
 
+# homebrew trusted tap formulae (must exist before `brew bundle`)
+mkdir -p "${HOME}/.config/homebrew"
+ln -sf "$(pwd)/.config/homebrew/trust.json" "${HOME}/.config/homebrew/trust.json"
+
 # Mac OS specific files
 if [ "$(uname)" = "Darwin" ]; then
 	# vscode

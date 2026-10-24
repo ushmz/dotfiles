@@ -1,0 +1,6 @@
+{
+  "trustedformulae": [
+    "daipeihust/tap/im-select",
+    "olets/tap/zsh-abbr"
+  ]
+}

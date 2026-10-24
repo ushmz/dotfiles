@@ -8,6 +8,7 @@ unlink "${HOME}/Library/Application Support/Code/User/settings.json"
 unlink "${HOME}/Library/Application Support/Code/User/keybindings.json"
 unlink "${XDG_DATA_HOME}/tig/.tigrc"
 unlink "${XDG_CONFIG_HOME}/starship.toml"
+unlink "${XDG_CONFIG_HOME}/homebrew/trust.json"
 
 rm -rf "${XDG_CONFIG_HOME}/alacritty"
 rm -rf "${XDG_CONFIG_HOME}/tmux"
