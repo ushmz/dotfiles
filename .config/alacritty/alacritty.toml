@@ -6,7 +6,7 @@ program = "/opt/homebrew/bin/zsh"
 args = [
   "-l",
   "-c",
-  "/opt/homebrew/bin/tmux new -A -s default",
+  "/opt/homebrew/bin/tmux new -A -s alacritty",
 ]
 
 # Env
